@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<GridPane>
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="200.0"
+					prefWidth="200.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="100.0" prefHeight="30.0"
+					vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Label alignment="CENTER" text="Home">
+					<GridPane.margin>
+						<Insets left="98.0" />
+					</GridPane.margin>
+					<font>
+						<Font name="Segoe UI Bold" size="36.0" />
+					</font>
+				</Label>
+				<Label text="Notifications" GridPane.columnIndex="1">
+					<font>
+						<Font name="Segoe UI Bold" size="36.0" />
+					</font>
+					<GridPane.margin>
+						<Insets left="20.0" />
+					</GridPane.margin>
+				</Label>
+				<Label text="Sheetu Ahuja" GridPane.columnIndex="2">
+					<padding>
+						<Insets bottom="40.0" left="20.0" />
+					</padding>
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+				</Label>
+				<Label text="sheetu@iiitd.ac.in" GridPane.columnIndex="2">
+					<GridPane.margin>
+						<Insets bottom="20.0" left="20.0" top="40.0" />
+					</GridPane.margin>
+					<font>
+						<Font name="Segoe UI Bold" size="18.0" />
+					</font>
+				</Label>
+				<Label text="ADMIN" GridPane.columnIndex="2">
+					<GridPane.margin>
+						<Insets left="20.0" top="75.0" />
+					</GridPane.margin>
+					<font>
+						<Font name="Segoe UI Bold" size="18.0" />
+					</font>
+				</Label>
+			</children>
+		</GridPane>
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="141.0"
+			layoutY="218.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="480.0"
+			layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="490.0"
+			layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="150.0"
+			layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+	</children>
+</Pane>
