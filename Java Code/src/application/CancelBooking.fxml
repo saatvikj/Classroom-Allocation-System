@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="-27.0" layoutY="-10.0" prefHeight="641.0" prefWidth="867.0">
+         <children>
+            <Label alignment="TOP_LEFT" layoutX="195.0" layoutY="59.0" text="BOOKED ROOM RECORDS">
+               <font>
+                  <Font name="Segoe UI" size="36.0" />
+               </font>
+            </Label>
+            <ListView layoutX="157.0" layoutY="263.0" prefHeight="200.0" prefWidth="200.0">
+            	<items>
+	                <FXCollections fx:factory="observableArrayList">
+	                    <String fx:value="C11, Dated: 12/10/2017" />
+	                    <String fx:value="C02, Dated: 5/10/2017" />
+	                    <String fx:value="C01, Dated: 4/10/2017" />
+	                    <String fx:value="C23, Dated: 2/10/2017" />
+	                    <String fx:value="C12, Dated: 10/10/2017" />
+	                </FXCollections>
+	            </items>
+	         </ListView>
+            
+            <Label layoutX="475.0" layoutY="263.0" prefHeight="24.0" prefWidth="75.0" text="ROOM:">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="475.0" layoutY="310.0" prefHeight="24.0" prefWidth="74.0" text="DATE:">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="475.0" layoutY="357.0" prefHeight="24.0" prefWidth="172.0" text="ROOM CAPACITY:">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="475.0" layoutY="404.0" prefHeight="24.0" prefWidth="200.0" text="REQUIRED CAPACITY: ">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="699.0" layoutY="263.0" text="CO1">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="699.0" layoutY="310.0" text="12/10/17">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="701.0" layoutY="355.0" text="200">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="702.0" layoutY="404.0" text="140">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

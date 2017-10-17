@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="TOP_LEFT" layoutX="63.0" layoutY="87.0" text="CHECK ROOM AVAILABILITY">
+         <font>
+            <Font name="Segoe UI" size="36.0" />
+         </font>
+      </Label>
+      <TextField layoutX="84.0" layoutY="203.0" prefHeight="41.0" prefWidth="489.0" promptText="Enter preferred Room" />
+      <TextField layoutX="88.0" layoutY="269.0" prefHeight="41.0" prefWidth="487.0" promptText="Enter required Capacity" />
+      <DatePicker layoutX="88.0" layoutY="339.0" prefHeight="31.0" prefWidth="485.0" promptText="Enter preferred date" />
+      <Button layoutX="363.0" layoutY="428.0" mnemonicParsing="false" text="CHECK">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="724.0" layoutY="38.0" text="Sheetu Ahuja">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="723.0" layoutY="74.0" text="sheetu@iiitd.ac.in">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="798.0" layoutY="103.0" text="ADMIN" />
+      
+   </children>
+</Pane>
