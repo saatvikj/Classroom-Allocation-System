@@ -7,15 +7,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane alignment="CENTER" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" text="IIIT Delhi" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-	<content>
-		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-			<children>
-				<Label alignment="CENTER" layoutX="95.0" layoutY="185.0" text="IIIT Delhi Classroom Allocation System">
-					<font>
-						<Font name="Segoe UI" size="36.0" />
-					</font>
-				</Label>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Label alignment="CENTER" layoutX="95.0" layoutY="185.0" text="IIIT Delhi Classroom Allocation System">
+               <font>
+                  <Font name="Segoe UI" size="36.0" />
+               </font>
+            </Label>
             <Button layoutX="299.0" layoutY="284.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Log In">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
@@ -23,10 +24,10 @@
             </Button>
             <Button layoutX="299.0" layoutY="360.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Sign Up">
                <font>
-                  <Font name="Segoe UI" size="15.0" />
+                  <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-			</children>
-		</AnchorPane>
-	</content>
-</TitledPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
