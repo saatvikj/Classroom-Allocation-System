@@ -24,7 +24,7 @@
             </Button>
             <Button layoutX="299.0" layoutY="360.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Sign Up">
                <font>
-                  <Font name="Segoe UI Bold" size="15.0" />
+                  <Font name="Segoe UI" size="15.0" />
                </font>
             </Button>
          </children>
