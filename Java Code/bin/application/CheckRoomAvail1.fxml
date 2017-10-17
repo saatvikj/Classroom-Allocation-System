@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="TOP_LEFT" layoutX="63.0" layoutY="87.0" text="CHECK ROOM AVAILABILITY">
@@ -22,17 +21,17 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="724.0" layoutY="38.0" text="Sheetu Ahuja">
+      <Label layoutX="636.0" layoutY="36.0" text="Sheetu Ahuja">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="723.0" layoutY="74.0" text="sheetu@iiitd.ac.in">
+            <Label layoutX="644.0" layoutY="76.0" text="sheetu@iiitd.ac.in">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="798.0" layoutY="103.0" text="ADMIN" />
+            <Label layoutX="694.0" layoutY="110.0" text="ADMIN" />
       
    </children>
 </Pane>
