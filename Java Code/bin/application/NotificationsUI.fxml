@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane>
+         <children>
+            <Label alignment="CENTER" text="Home">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="98.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Notifications" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Sheetu Ahuja" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="40.0" left="20.0" />
+               </padding>
+            </Label>
+            <Label text="sheetu@iiitd.ac.in" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Segoe UI Bold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="ADMIN" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Segoe UI Bold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" top="75.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <ListView layoutX="67.0" layoutY="256.0" prefHeight="200.0" prefWidth="673.0">
+      	<items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="You have a class today at 11" />
+               <String fx:value="You have C01 booked at 2pm" />
+               <String fx:value="Nothing there!" />
+               
+            </FXCollections>
+         </items>
+      </ListView>
+   </children>
+</Pane>

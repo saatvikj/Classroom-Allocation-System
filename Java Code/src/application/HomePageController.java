@@ -23,7 +23,7 @@ public class HomePageController {
 		
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("Signup.fxml"));
+            root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
             Stage stage = new Stage();
             stage.setTitle("IIIT Delhi");
             stage.setScene(new Scene(root, 800, 600));
