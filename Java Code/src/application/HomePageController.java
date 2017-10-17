@@ -15,6 +15,8 @@ public class HomePageController {
 
 	@FXML
 	private Button buttonSignUp;
+	@FXML
+	private Button buttonLogin;
 	
 	@FXML
 	private void signup(ActionEvent event) {
@@ -35,4 +37,22 @@ public class HomePageController {
         }
 	}
 	
+	@FXML
+	private void login(ActionEvent event) {
+		
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("IIIT Delhi");
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+            
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 }

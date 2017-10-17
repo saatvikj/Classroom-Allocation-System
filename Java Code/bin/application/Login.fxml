@@ -6,19 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="500.0" prefWidth="682.0">
+      <Pane layoutX="-14.0" prefHeight="600" prefWidth="800">
          <children>
-            <Label layoutX="297.0" layoutY="107.0" text="Login">
+            <Label layoutX="356.0" layoutY="108.0" text="Login">
                <font>
                   <Font name="Segoe UI" size="36.0" />
                </font>
             </Label>
-            <TextField layoutX="56.0" layoutY="217.0" prefHeight="25.0" prefWidth="569.0" promptText="Email Address" />
-            <TextField layoutX="56.0" layoutY="277.0" prefHeight="25.0" prefWidth="569.0" promptText="Password" />
-            <Button layoutX="241.0" layoutY="349.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="LOGIN" />
+            <TextField layoutX="116.0" layoutY="216.0" prefHeight="25.0" prefWidth="569.0" promptText="Email Address" />
+            <TextField layoutX="116.0" layoutY="275.0" prefHeight="25.0" prefWidth="569.0" promptText="Password" />
+            <Button layoutX="301.0" layoutY="349.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="LOGIN" />
          </children>
       </Pane>
    </children>
