@@ -7,34 +7,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="655.0" layoutY="36.0" text="Saatvik Jain">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="608.0" layoutY="70.0" text="saatvik16261@iiitd.ac.in">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="714.0" layoutY="101.0" text="STUDENT" />
-      <Label alignment="TOP_LEFT" layoutX="73.0" layoutY="97.0" text="MAKE A REQUEST">
-         <font>
-            <Font name="Segoe UI" size="36.0" />
-         </font>
-      </Label>
-      <TextField layoutX="73.0" layoutY="173.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter preferred room" />
-      <TextField layoutX="73.0" layoutY="224.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter required Capacity" />
-      <TextField layoutX="73.0" layoutY="275.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter purpose" />
-      <DatePicker layoutX="73.0" layoutY="328.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter date" />
-      <TextField layoutX="73.0" layoutY="377.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter start time" />
-      <TextField layoutX="73.0" layoutY="424.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter end time" />
-      <Button layoutX="315.0" layoutY="496.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="SUBMIT">
-         <font>
-            <Font name="Segoe UI" size="15.0" />
-         </font>
-      </Button>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Label layoutX="655.0" layoutY="36.0" text="Saatvik Jain">
+			<font>
+				<Font size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="608.0" layoutY="70.0" text="saatvik16261@iiitd.ac.in">
+			<font>
+				<Font size="15.0" />
+			</font>
+		</Label>
+		<Label layoutX="714.0" layoutY="101.0" text="STUDENT" />
+		<Label alignment="TOP_LEFT" layoutX="73.0" layoutY="97.0"
+			text="MAKE A REQUEST">
+			<font>
+				<Font name="Segoe UI" size="36.0" />
+			</font>
+		</Label>
+		<TextField layoutX="73.0" layoutY="173.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter preferred room" />
+		<TextField layoutX="73.0" layoutY="224.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter required Capacity" />
+		<TextField layoutX="73.0" layoutY="275.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter purpose" />
+		<DatePicker layoutX="73.0" layoutY="328.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter date" />
+		<TextField layoutX="73.0" layoutY="377.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter start time" />
+		<TextField layoutX="73.0" layoutY="424.0" prefHeight="32.0"
+			prefWidth="600.0" promptText="Enter end time" />
+		<Button layoutX="315.0" layoutY="496.0" mnemonicParsing="false"
+			prefHeight="50.0" prefWidth="200.0" text="SUBMIT">
+			<font>
+				<Font name="Segoe UI" size="15.0" />
+			</font>
+		</Button>
+	</children>
 </Pane>

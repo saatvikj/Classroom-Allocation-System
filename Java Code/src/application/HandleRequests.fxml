@@ -8,79 +8,87 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane prefHeight="600.0" prefWidth="800.0">
-         <children>
-            <Label alignment="TOP_LEFT" layoutX="244.0" layoutY="141.0" text="HANDLE REQUESTS">
-               <font>
-                  <Font name="Segoe UI" size="36.0" />
-               </font>
-            </Label>
-            <ListView layoutX="116.0" layoutY="263.0" prefHeight="200.0" prefWidth="200.0">
-            	<items>
-	                <FXCollections fx:factory="observableArrayList">
-	                    <String fx:value="C11, Dated: 12/10/2017" />
-	                    <String fx:value="C02, Dated: 5/10/2017" />
-	                    <String fx:value="C01, Dated: 4/10/2017" />
-	                    <String fx:value="C23, Dated: 2/10/2017" />
-	                    <String fx:value="C12, Dated: 10/10/2017" />
-	                </FXCollections>
-	            </items>
-	         </ListView>
-            
-            <Label layoutX="367.0" layoutY="263.0" prefHeight="24.0" prefWidth="75.0" text="ROOM:">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="367.0" layoutY="310.0" prefHeight="24.0" text="PURPOSE:">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="367.0" layoutY="357.0" prefHeight="24.0" text="REQUIRED CAPACITY:">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="367.0" layoutY="451.0" prefHeight="24.0" prefWidth="200.0" text="SOURCE STUDENT:">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="598.0" layoutY="263.0" text="CO1">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="599.0" layoutY="310.0" text="LOREM IPSUM">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="599.0" layoutY="357.0" text="130">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="598.0" layoutY="404.0" text="6th October, 11:15 AM">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="367.0" layoutY="404.0" prefHeight="24.0" prefWidth="200.0" text="TIME SLOT:">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="599.0" layoutY="451.0" text="Saatvik Jain">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="566.0" layoutY="507.0" mnemonicParsing="false" prefHeight="50.0" text="Accept" />
-            <Button layoutX="667.0" layoutY="507.0" mnemonicParsing="false" prefHeight="50.0" text="Reject" />
-         </children>
-      </Pane>
-   </children>
+	<children>
+		<Pane prefHeight="600.0" prefWidth="800.0">
+			<children>
+				<Label alignment="TOP_LEFT" layoutX="244.0" layoutY="141.0"
+					text="HANDLE REQUESTS">
+					<font>
+						<Font name="Segoe UI" size="36.0" />
+					</font>
+				</Label>
+				<ListView layoutX="116.0" layoutY="263.0" prefHeight="200.0"
+					prefWidth="200.0">
+					<items>
+						<FXCollections fx:factory="observableArrayList">
+							<String fx:value="C11, Dated: 12/10/2017" />
+							<String fx:value="C02, Dated: 5/10/2017" />
+							<String fx:value="C01, Dated: 4/10/2017" />
+							<String fx:value="C23, Dated: 2/10/2017" />
+							<String fx:value="C12, Dated: 10/10/2017" />
+						</FXCollections>
+					</items>
+				</ListView>
+
+				<Label layoutX="367.0" layoutY="263.0" prefHeight="24.0"
+					prefWidth="75.0" text="ROOM:">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="367.0" layoutY="310.0" prefHeight="24.0" text="PURPOSE:">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="367.0" layoutY="357.0" prefHeight="24.0"
+					text="REQUIRED CAPACITY:">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="367.0" layoutY="451.0" prefHeight="24.0"
+					prefWidth="200.0" text="SOURCE STUDENT:">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="598.0" layoutY="263.0" text="CO1">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="599.0" layoutY="310.0" text="LOREM IPSUM">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="599.0" layoutY="357.0" text="130">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="598.0" layoutY="404.0" text="6th October, 11:15 AM">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="367.0" layoutY="404.0" prefHeight="24.0"
+					prefWidth="200.0" text="TIME SLOT:">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Label layoutX="599.0" layoutY="451.0" text="Saatvik Jain">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+				<Button layoutX="566.0" layoutY="507.0" mnemonicParsing="false"
+					prefHeight="50.0" text="Accept" />
+				<Button layoutX="667.0" layoutY="507.0" mnemonicParsing="false"
+					prefHeight="50.0" text="Reject" />
+			</children>
+		</Pane>
+	</children>
 </AnchorPane>

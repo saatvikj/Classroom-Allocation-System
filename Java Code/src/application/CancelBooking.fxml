@@ -68,6 +68,7 @@
                   <Font name="Segoe UI" size="20.0" />
                </font>
             </Label>
+            <Button layoutX="517.0" layoutY="455.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Cancel Booking" />
          </children>
       </Pane>
    </children>

@@ -7,94 +7,105 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label alignment="TOP_LEFT" layoutX="61.0" layoutY="139.0" text="CREATE YOUR PERSONALIZED TIME TABLE">
-         <font>
-            <Font name="Segoe UI" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="633.0" layoutY="23.0" text="Saatvik Jain">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="630.0" layoutY="57.0" text="saatvik16261@iiitd.ac.in">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="632.0" layoutY="86.0" text="STUDENT" />
-      <Label layoutX="66.0" layoutY="210.0" prefHeight="21.0" prefWidth="270.0" text="Here are the list of relevant courses - ">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ListView layoutX="89.0" layoutY="258.0" prefHeight="150.0" prefWidth="200.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="C11, Dated: 12/10/2017" />
-               <String fx:value="C02, Dated: 5/10/2017" />
-               <String fx:value="C01, Dated: 4/10/2017" />
-               <String fx:value="C23, Dated: 2/10/2017" />
-               <String fx:value="C12, Dated: 10/10/2017" />
-            </FXCollections>
-         </items>
-      </ListView>
-      <Button layoutX="497.0" layoutY="491.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Label layoutX="631.0" layoutY="388.0" text="None">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="630.0" layoutY="339.0" text="4">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="628.0" layoutY="292.0" text="Intro to Programming">
-         <font>
-            <Font name="Segoe UI" size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="628.0" layoutY="247.0" text="CSE101">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="404.0" layoutY="388.0" prefHeight="24.0" prefWidth="200.0" text="Pre-requisites:">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="404.0" layoutY="341.0" prefHeight="24.0" prefWidth="172.0" text="Credits:">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="404.0" layoutY="294.0" prefHeight="24.0" prefWidth="143.0" text="Course Name: ">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="404.0" layoutY="247.0" prefHeight="24.0" prefWidth="150.0" text="Course Code:">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="404.0" layoutY="435.0" prefHeight="24.0" prefWidth="200.0" text="Post-conditions:">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="631.0" layoutY="435.0" text="Lorem Ipsum">
-         <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Label>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Label alignment="TOP_LEFT" layoutX="61.0" layoutY="139.0"
+			text="CREATE YOUR PERSONALIZED TIME TABLE">
+			<font>
+				<Font name="Segoe UI" size="36.0" />
+			</font>
+		</Label>
+		<Label layoutX="633.0" layoutY="23.0" text="Saatvik Jain">
+			<font>
+				<Font size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="630.0" layoutY="57.0" text="saatvik16261@iiitd.ac.in">
+			<font>
+				<Font size="15.0" />
+			</font>
+		</Label>
+		<Label layoutX="632.0" layoutY="86.0" text="STUDENT" />
+		<Label layoutX="66.0" layoutY="210.0" prefHeight="21.0"
+			prefWidth="270.0" text="Here are the list of relevant courses - ">
+			<font>
+				<Font size="15.0" />
+			</font>
+		</Label>
+		<ListView layoutX="89.0" layoutY="258.0" prefHeight="150.0"
+			prefWidth="200.0">
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+					<String fx:value="C11, Dated: 12/10/2017" />
+					<String fx:value="C02, Dated: 5/10/2017" />
+					<String fx:value="C01, Dated: 4/10/2017" />
+					<String fx:value="C23, Dated: 2/10/2017" />
+					<String fx:value="C12, Dated: 10/10/2017" />
+				</FXCollections>
+			</items>
+		</ListView>
+		<Button layoutX="497.0" layoutY="491.0" mnemonicParsing="false"
+			prefHeight="50.0" prefWidth="200.0" text="ADD">
+			<font>
+				<Font size="16.0" />
+			</font>
+		</Button>
+		<Label layoutX="631.0" layoutY="388.0" text="None">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="630.0" layoutY="339.0" text="4">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="628.0" layoutY="292.0" text="Intro to Programming">
+			<font>
+				<Font name="Segoe UI" size="17.0" />
+			</font>
+		</Label>
+		<Label layoutX="628.0" layoutY="247.0" text="CSE101">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="404.0" layoutY="388.0" prefHeight="24.0"
+			prefWidth="200.0" text="Pre-requisites:">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="404.0" layoutY="341.0" prefHeight="24.0"
+			prefWidth="172.0" text="Credits:">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="404.0" layoutY="294.0" prefHeight="24.0"
+			prefWidth="143.0" text="Course Name: ">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="404.0" layoutY="247.0" prefHeight="24.0"
+			prefWidth="150.0" text="Course Code:">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="404.0" layoutY="435.0" prefHeight="24.0"
+			prefWidth="200.0" text="Post-conditions:">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+		<Label layoutX="631.0" layoutY="435.0" text="Lorem Ipsum">
+			<font>
+				<Font name="Segoe UI" size="20.0" />
+			</font>
+		</Label>
+	</children>
 </Pane>

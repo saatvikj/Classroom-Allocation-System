@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane fx:controller="application.HomePageController" maxHeight="-Infinity"
-	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-	prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.HomePageController">
 	<children>
 		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0"
 			prefWidth="800.0">
@@ -21,16 +21,16 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<Button fx:id="buttonLogin" layoutX="299.0" layoutY="284.0" mnemonicParsing="false"
-					prefHeight="50.0" prefWidth="200.0" text="Log In"
-					onAction="#login">
+				<Button layoutX="299.0" layoutY="284.0"
+					mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0"
+					prefWidth="200.0" text="Log In">
 					<font>
 						<Font name="Segoe UI Bold" size="15.0" />
 					</font>
 				</Button>
-				<Button fx:id="buttonSignUp" layoutX="299.0" layoutY="360.0"
-					mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Sign Up"
-					onAction="#signup">
+				<Button layoutX="299.0" layoutY="360.0"
+					mnemonicParsing="false" onAction="#openSignUp" prefHeight="50.0"
+					prefWidth="200.0" text="Sign Up">
 					<font>
 						<Font name="Segoe UI Bold" size="15.0" />
 					</font>

@@ -8,22 +8,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomePageController">
 	<children>
 		<GridPane>
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
-					prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
-					prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="200.0"
-					prefWidth="200.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="100.0" prefHeight="30.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
 				<Label alignment="CENTER" text="Home">
@@ -34,7 +28,7 @@
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
 				</Label>
-				<Label text="Notifications" GridPane.columnIndex="1">
+				<Label onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -68,11 +62,8 @@
 				</Label>
 			</children>
 		</GridPane>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
-			layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
-			layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
-			layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="300.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="300.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0" layoutY="300.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true" />
 	</children>
 </Pane>

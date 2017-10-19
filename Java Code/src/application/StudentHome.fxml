@@ -10,7 +10,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
 	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.HomePageController">
 	<children>
 		<GridPane>
 			<columnConstraints>
@@ -69,16 +70,22 @@
 			</children>
 		</GridPane>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
-			layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
+			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
-			layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="225.0" onMouseClicked="#makeBooking" pickOnBounds="true"
+			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
-			layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true"
+			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
-			layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="400.0" onMouseClicked="#viewTimeTable" pickOnBounds="true"
+			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
-			layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true"
+			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
-			layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+			layoutY="400.0" onMouseClicked="#cancelRequest" pickOnBounds="true"
+			preserveRatio="true" />
 	</children>
 </Pane>
