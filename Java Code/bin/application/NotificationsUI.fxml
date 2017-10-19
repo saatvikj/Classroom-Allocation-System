@@ -63,13 +63,12 @@
             <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <ListView layoutX="67.0" layoutY="256.0" prefHeight="200.0" prefWidth="673.0">
+      <ListView layoutX="72.0" layoutY="258.0" prefHeight="127.0" prefWidth="673.0">
       	<items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="You have a class today at 11" />
-               <String fx:value="You have C01 booked at 2pm" />
-               <String fx:value="Nothing there!" />
-               
+                <String fx:value="You have a class today at 11" />
+                <String fx:value="You have C01 booked at 2pm" />
+                <String fx:value="Nothing there!" />
             </FXCollections>
          </items>
       </ListView>
