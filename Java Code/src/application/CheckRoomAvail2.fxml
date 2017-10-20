@@ -6,6 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.*?>
 
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
@@ -43,5 +44,45 @@
 		</Label>
 		<Label layoutX="523.0" layoutY="313.0" text="C11 is booked !" />
 		<Label layoutX="105.0" layoutY="454.0" text="*Tap to book the room" />
+		<GridPane alignment="CENTER_RIGHT">
+			<columnConstraints>
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="10.0" prefWidth="800.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Label alignment="CENTER_RIGHT" contentDisplay="TOP"
+					text="saatvik16261@iiitd.ac.in">
+					<font>
+						<Font name="Segoe UI Bold" size="14.0" />
+					</font>
+					<GridPane.margin>
+						<Insets right="12.0" top="54.0" />
+					</GridPane.margin>
+				</Label>
+
+				<Label text="STUDENT">
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+					<GridPane.margin>
+						<Insets right="12.0" top="12.0" />
+					</GridPane.margin>
+				</Label>
+
+				<Label text="Saatvik Jain">
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+					<GridPane.margin>
+						<Insets bottom="40.0" right="12.0" />
+					</GridPane.margin>
+				</Label>
+			</children>
+		</GridPane>
+		
 	</children>
 </Pane>

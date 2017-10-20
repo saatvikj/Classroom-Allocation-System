@@ -6,34 +6,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 
-		<Label alignment="TOP_LEFT" layoutX="61.0" layoutY="139.0"
-			text="CANCEL REQUEST">
+		<Label alignment="TOP_LEFT" layoutX="61.0" layoutY="139.0" text="CANCEL REQUEST">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
 
-		<Label layoutX="633.0" layoutY="23.0" text="Saatvik Jain">
-			<font>
-				<Font size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="630.0" layoutY="57.0" text="saatvik16261@iiitd.ac.in">
-			<font>
-				<Font size="15.0" />
-			</font>
-		</Label>
-		<Label layoutX="632.0" layoutY="86.0" text="STUDENT" />
 
-
-		<ListView layoutX="157.0" layoutY="263.0" prefHeight="200.0"
-			prefWidth="226.0">
+		<ListView layoutX="157.0" layoutY="263.0" prefHeight="200.0" prefWidth="226.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="Request 1, Dated: 12/10/2017" />
@@ -46,26 +31,22 @@
 		</ListView>
 
 
-		<Label layoutX="475.0" layoutY="263.0" prefHeight="24.0"
-			prefWidth="75.0" text="ROOM:">
+		<Label layoutX="475.0" layoutY="263.0" prefHeight="24.0" prefWidth="75.0" text="ROOM:">
 			<font>
 				<Font name="Segoe UI" size="20.0" />
 			</font>
 		</Label>
-		<Label layoutX="475.0" layoutY="310.0" prefHeight="24.0"
-			prefWidth="74.0" text="DATE:">
+		<Label layoutX="475.0" layoutY="310.0" prefHeight="24.0" prefWidth="74.0" text="DATE:">
 			<font>
 				<Font name="Segoe UI" size="20.0" />
 			</font>
 		</Label>
-		<Label layoutX="475.0" layoutY="357.0" prefHeight="24.0"
-			prefWidth="172.0" text="ROOM CAPACITY:">
+		<Label layoutX="475.0" layoutY="357.0" prefHeight="24.0" prefWidth="172.0" text="ROOM CAPACITY:">
 			<font>
 				<Font name="Segoe UI" size="20.0" />
 			</font>
 		</Label>
-		<Label layoutX="475.0" layoutY="404.0" prefHeight="24.0"
-			prefWidth="200.0" text="REQUIRED CAPACITY: ">
+		<Label layoutX="475.0" layoutY="404.0" prefHeight="24.0" prefWidth="200.0" text="REQUIRED CAPACITY: ">
 			<font>
 				<Font name="Segoe UI" size="20.0" />
 			</font>
@@ -90,8 +71,44 @@
 				<Font name="Segoe UI" size="20.0" />
 			</font>
 		</Label>
-		<Button layoutX="547.0" layoutY="449.0" mnemonicParsing="false"
-			prefHeight="50.0" prefWidth="200.0" text="CANCEL REQUEST" />
+		<Button layoutX="547.0" layoutY="449.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="CANCEL REQUEST" />
+			
+		         	<GridPane alignment="CENTER_RIGHT" layoutX="10.0">
+			<columnConstraints>
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="800.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
+					<font>
+						<Font name="Segoe UI Bold" size="14.0" />
+					</font>
+					<GridPane.margin>
+						<Insets right="12.0" top="54.0" />
+					</GridPane.margin>
+				</Label>
+
+				<Label text="STUDENT">
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+					<GridPane.margin>
+						<Insets right="12.0" top="12.0" />
+					</GridPane.margin>
+				</Label>
+
+				<Label text="Saatvik Jain">
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+					<GridPane.margin>
+						<Insets bottom="40.0" right="12.0" />
+					</GridPane.margin>
+				</Label>
+			</children>
+		</GridPane>
 
 	</children>
 
