@@ -12,7 +12,7 @@
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="application.BookRoomUI">
 	<children>
-		<Label alignment="TOP_LEFT" layoutX="63.0" layoutY="87.0"
+		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160"
 			text="CHECK ROOM AVAILABILITY">
 			<font>
 				<Font name="Segoe UI" size="36.0" />

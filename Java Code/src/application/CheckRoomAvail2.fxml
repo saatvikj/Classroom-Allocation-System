@@ -13,7 +13,7 @@
 	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<Label alignment="TOP_LEFT" layoutX="73.0" layoutY="97.0"
+		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160"
 			text="CHECK ROOM AVAILABILITY">
 			<font>
 				<Font name="Segoe UI" size="36.0" />

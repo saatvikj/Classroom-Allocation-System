@@ -11,7 +11,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 
-		<Label alignment="TOP_LEFT" layoutX="61.0" layoutY="139.0" text="CANCEL REQUEST">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="150.0" text="CANCEL REQUEST">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
@@ -86,7 +86,7 @@
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
 					<GridPane.margin>
-						<Insets right="12.0" top="54.0" />
+						<Insets right="24.0" top="54.0" />
 					</GridPane.margin>
 				</Label>
 
@@ -95,7 +95,7 @@
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
 					<GridPane.margin>
-						<Insets right="12.0" top="12.0" />
+						<Insets right="24.0" top="12.0" />
 					</GridPane.margin>
 				</Label>
 
@@ -104,7 +104,7 @@
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
 					<GridPane.margin>
-						<Insets bottom="40.0" right="12.0" />
+						<Insets bottom="40.0" right="24.0" />
 					</GridPane.margin>
 				</Label>
 			</children>
