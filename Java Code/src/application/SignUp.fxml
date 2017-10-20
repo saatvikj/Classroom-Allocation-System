@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="49.0" prefWidth="83.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.SignUpUI">
 	<children>
 		<Pane prefHeight="600.0" prefWidth="800.0">
 			<children>
@@ -33,7 +34,7 @@
 					</items>
 				</MenuButton>
 				<Button layoutX="300.0" layoutY="441.0" mnemonicParsing="false"
-					prefHeight="50.0" prefWidth="200.0" text="REGISTER">
+					onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="REGISTER">
 					<font>
 						<Font name="Segoe UI" size="16.0" />
 					</font>

@@ -1,28 +1,35 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SignUpUI extends Application {
-	@Override
-	public void start(Stage primaryStage) {
+public class SignUpUI {
+	
+	@FXML
+	public void openLogin(ActionEvent event) {
+		Parent root;
 		try {
-
 			
-			Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
-			Scene s = new Scene(root, 800,600);
-			primaryStage.setTitle("IIIT Delhi");
-			primaryStage.setScene(s);
-			primaryStage.show();
-		} catch(Exception e) {
+			FXMLLoader ldr = new FXMLLoader(getClass().getResource("Login.fxml"));
+			root = ldr.load();
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
 }
