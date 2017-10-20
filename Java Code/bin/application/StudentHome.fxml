@@ -19,11 +19,11 @@
 					prefWidth="300.0" />
 				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
 					prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="200.0"
-					prefWidth="200.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="100.0" prefHeight="30.0"
+				<RowConstraints minHeight="150.0" prefHeight="150.0"
 					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
@@ -44,27 +44,28 @@
 					</GridPane.margin>
 				</Label>
 				<Label text="Saatvik Jain" GridPane.columnIndex="2">
-					<padding>
-						<Insets bottom="40.0" left="20.0" />
-					</padding>
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
+					<GridPane.margin>
+						<Insets bottom="40.0" right="12.0" />
+					</GridPane.margin>
 				</Label>
+				<Label text="STUDENT" GridPane.columnIndex="2">
+					<font>
+						<Font name="Segoe UI Bold" size="24.0" />
+					</font>
+					<GridPane.margin>
+						<Insets right="12.0" top="12.0" />
+					</GridPane.margin>
+				</Label>
+
 				<Label text="saatvik16261@iiitd.ac.in" GridPane.columnIndex="2">
 					<GridPane.margin>
-						<Insets bottom="20.0" left="20.0" top="40.0" />
+						<Insets right="12.0" top="54.0" />
 					</GridPane.margin>
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
-					</font>
-				</Label>
-				<Label text="STUDENT" GridPane.columnIndex="2">
-					<GridPane.margin>
-						<Insets left="20.0" top="75.0" />
-					</GridPane.margin>
-					<font>
-						<Font name="Segoe UI Bold" size="18.0" />
 					</font>
 				</Label>
 			</children>
