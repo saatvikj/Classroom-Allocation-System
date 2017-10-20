@@ -7,23 +7,17 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<GridPane alignment="CENTER_RIGHT">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="800.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="800.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label alignment="CENTER_RIGHT" contentDisplay="TOP"
-					text="saatvik16261@iiitd.ac.in">
+				<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -52,26 +46,18 @@
 			</children>
 		</GridPane>
 
-		<Label alignment="TOP_LEFT" layoutX="73.0" layoutY="97.0"
-			text="MAKE A REQUEST">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="MAKE A REQUEST">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<TextField layoutX="73.0" layoutY="173.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter preferred room" />
-		<TextField layoutX="73.0" layoutY="224.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter required Capacity" />
-		<TextField layoutX="73.0" layoutY="275.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter purpose" />
-		<DatePicker layoutX="73.0" layoutY="328.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter date" />
-		<TextField layoutX="73.0" layoutY="377.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter start time" />
-		<TextField layoutX="73.0" layoutY="424.0" prefHeight="32.0"
-			prefWidth="600.0" promptText="Enter end time" />
-		<Button layoutX="315.0" layoutY="496.0" mnemonicParsing="false"
-			prefHeight="50.0" prefWidth="200.0" text="SUBMIT">
+		<TextField layoutX="73.0" layoutY="173.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter preferred room" />
+		<TextField layoutX="73.0" layoutY="224.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter required Capacity" />
+		<TextField layoutX="73.0" layoutY="275.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter purpose" />
+		<DatePicker layoutX="73.0" layoutY="328.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter date" />
+		<TextField layoutX="73.0" layoutY="377.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter start time" />
+		<TextField layoutX="73.0" layoutY="424.0" prefHeight="32.0" prefWidth="600.0" promptText="Enter end time" />
+		<Button layoutX="315.0" layoutY="496.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="SUBMIT">
 			<font>
 				<Font name="Segoe UI" size="15.0" />
 			</font>
