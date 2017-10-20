@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class HomePageController {
+	
 
 	@FXML
 	private void openSignUp(ActionEvent event) {
@@ -38,7 +39,9 @@ public class HomePageController {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			
+			FXMLLoader ldr = new FXMLLoader(getClass().getResource("Login.fxml"));
+			root = ldr.load();
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -51,24 +54,7 @@ public class HomePageController {
 		}
 	}
 
-	@FXML
-	private void login(ActionEvent event) {
 
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	@FXML
 	private void showNotifications(MouseEvent event) {
@@ -133,6 +119,25 @@ public class HomePageController {
 		Parent root;
 		try {
 			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail1.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@FXML
+	private void makeRequest(MouseEvent event) {
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("MakeRequest.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));

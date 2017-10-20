@@ -73,7 +73,7 @@
 			layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
 			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
-			layoutY="225.0" onMouseClicked="#makeBooking" pickOnBounds="true"
+			layoutY="225.0" onMouseClicked="#makeRequest" pickOnBounds="true"
 			preserveRatio="true" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
 			layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true"

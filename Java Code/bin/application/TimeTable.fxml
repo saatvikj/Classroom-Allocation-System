@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="TOP_LEFT" layoutX="52.0" layoutY="88.0" text=" YOUR TIME-TABLE">
+         <font>
+            <Font name="Segoe UI" size="36.0" />
+         </font>
+      </Label>
+      <ListView layoutX="101.0" layoutY="246.0" prefHeight="161.0" prefWidth="331.0">
+      	<items>
+	        <FXCollections fx:factory="observableArrayList">
+	        <String fx:value="AP, 11-12, C21, Vivek Kumar" />
+	        <String fx:value="DM, 1:30-3, C21, Donghoon Chang" />
+	        <String fx:value="Math3, 3-4, C21, Sarthok Sircar" />
+	        <String fx:value="IDE, 4-5:30, C11, Sriram Venkatraman" />
+	        </FXCollections>
+	    </items>
+	   </ListView>
+      <Label layoutX="189.0" layoutY="191.0" text="Today's Time-Table">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="578.0" layoutY="249.0" text="Select a day ">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Label>
+      <MenuButton layoutX="561.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Day">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Monday" />
+          <MenuItem mnemonicParsing="false" text="Tuesday" />
+          <MenuItem mnemonicParsing="false" text="Wednesday" />
+          <MenuItem mnemonicParsing="false" text="Thursday" />
+          <MenuItem mnemonicParsing="false" text="Friday" />
+        </items>
+      </MenuButton>
+   </children>
+</Pane>

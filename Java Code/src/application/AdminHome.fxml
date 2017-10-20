@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomePageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<GridPane>
 			<columnConstraints>
@@ -28,7 +28,7 @@
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
 				</Label>
-				<Label onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
+				<Label text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -62,9 +62,12 @@
 				</Label>
 			</children>
 		</GridPane>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="141.0" layoutY="218.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="150.0" layoutY="400.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="490.0" layoutY="400.0" onMouseClicked="#handleRequests" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="141.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@create.png" />
+         </image></ImageView>
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="490.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="150.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
 	</children>
 </Pane>
