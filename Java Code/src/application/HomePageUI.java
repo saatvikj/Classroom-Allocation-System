@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class HomePageController {
+public class HomePageUI {
 	
 
 	@FXML

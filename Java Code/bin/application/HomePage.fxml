@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
 	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.HomePageController">
+	fx:controller="application.HomePageUI">
 	<children>
 		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0"
 			prefWidth="800.0">
@@ -21,16 +21,14 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<Button layoutX="299.0" layoutY="284.0"
-					mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0"
-					prefWidth="200.0" text="Log In">
+				<Button layoutX="299.0" layoutY="284.0" mnemonicParsing="false"
+					onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="Log In">
 					<font>
 						<Font name="Segoe UI Bold" size="15.0" />
 					</font>
 				</Button>
-				<Button layoutX="299.0" layoutY="360.0"
-					mnemonicParsing="false" onAction="#openSignUp" prefHeight="50.0"
-					prefWidth="200.0" text="Sign Up">
+				<Button layoutX="299.0" layoutY="360.0" mnemonicParsing="false"
+					onAction="#openSignUp" prefHeight="50.0" prefWidth="200.0" text="Sign Up">
 					<font>
 						<Font name="Segoe UI Bold" size="15.0" />
 					</font>

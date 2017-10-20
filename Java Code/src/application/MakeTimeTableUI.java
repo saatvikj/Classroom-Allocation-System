@@ -2,29 +2,27 @@ package application;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class LoginUI {
-	
+public class MakeTimeTableUI {
+
 	
 	@FXML
-	private void login(ActionEvent event) {
+	private void searchResults(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("CreateTT2.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
 			stage.show();
-			
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
@@ -34,8 +32,4 @@ public class LoginUI {
 
 	}
 	
-	@FXML
-	private Button butt;
-	
-
 }

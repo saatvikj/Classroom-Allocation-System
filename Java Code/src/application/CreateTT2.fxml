@@ -38,11 +38,11 @@
 			prefWidth="200.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
-					<String fx:value="C11, Dated: 12/10/2017" />
-					<String fx:value="C02, Dated: 5/10/2017" />
-					<String fx:value="C01, Dated: 4/10/2017" />
-					<String fx:value="C23, Dated: 2/10/2017" />
-					<String fx:value="C12, Dated: 10/10/2017" />
+					<String fx:value="CSE101" />
+					<String fx:value="CSE201" />
+					<String fx:value="CSE502" />
+					<String fx:value="CSE2XX" />
+					<String fx:value="MTH2XX" />
 				</FXCollections>
 			</items>
 		</ListView>
