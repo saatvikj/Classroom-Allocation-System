@@ -70,47 +70,53 @@
 				</Label>
 			</children>
 		</GridPane>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0"
 			layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
-			preserveRatio="true" >
+			preserveRatio="true">
 			<image>
-            	<Image url="@search.png" />
-         	</image>
+				<Image url="@search.png" />
+			</image>
 		</ImageView>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0"
 			layoutY="225.0" onMouseClicked="#makeRequest" pickOnBounds="true"
-			preserveRatio="true" >
+			preserveRatio="true">
 			<image>
-            	<Image url="@create.png" />
-         	</image>
-		</ImageView>	
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
+				<Image url="@create.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0"
 			layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true"
-			preserveRatio="true" >
+			preserveRatio="true">
 			<image>
-            	<Image url="@create.png" />
-         	</image>
+				<Image url="@create.png" />
+			</image>
 		</ImageView>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0"
 			layoutY="400.0" onMouseClicked="#viewTimeTable" pickOnBounds="true"
-			preserveRatio="true" >
+			preserveRatio="true">
 			<image>
-            	<Image url="@search.png" />
-         	</image>
+				<Image url="@search.png" />
+			</image>
 		</ImageView>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0"
 			layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true"
-			preserveRatio="true" >
+			preserveRatio="true">
 			<image>
-            	<Image url="@cancel.png" />
-         	</image>
+				<Image url="@cancel.png" />
+			</image>
 		</ImageView>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0"
 			layoutY="400.0" onMouseClicked="#cancelRequest" pickOnBounds="true"
 			preserveRatio="true">
 			<image>
-            	<Image url="@cancel.png" />
-         	</image>
+				<Image url="@cancel.png" />
+			</image>
 		</ImageView>
+		<Label layoutX="82.0" layoutY="332.0" text="View Booked Rooms" />
+		<Label layoutX="346.0" layoutY="332.0" text="Make A Request" />
+		<Label layoutX="592.0" layoutY="332.0" text="Cancel A Booking" />
+		<Label layoutX="592.0" layoutY="508.0" text="Cancel A Request" />
+		<Label layoutX="342.0" layoutY="508.0" text="Create TimeTable" />
+		<Label layoutX="98.0" layoutY="508.0" text="View TimeTable" />
 	</children>
 </Pane>
