@@ -72,21 +72,45 @@
 		</GridPane>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
 			layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true" >
+			<image>
+            	<Image url="@search.png" />
+         	</image>
+		</ImageView>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
 			layoutY="225.0" onMouseClicked="#makeRequest" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true" >
+			<image>
+            	<Image url="@create.png" />
+         	</image>
+		</ImageView>	
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0"
 			layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true" >
+			<image>
+            	<Image url="@create.png" />
+         	</image>
+		</ImageView>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0"
 			layoutY="400.0" onMouseClicked="#viewTimeTable" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true" >
+			<image>
+            	<Image url="@search.png" />
+         	</image>
+		</ImageView>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
 			layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true" >
+			<image>
+            	<Image url="@cancel.png" />
+         	</image>
+		</ImageView>
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0"
 			layoutY="400.0" onMouseClicked="#cancelRequest" pickOnBounds="true"
-			preserveRatio="true" />
+			preserveRatio="true">
+			<image>
+            	<Image url="@cancel.png" />
+         	</image>
+		</ImageView>
 	</children>
 </Pane>

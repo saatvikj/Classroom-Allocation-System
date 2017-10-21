@@ -64,8 +64,20 @@
 
 			</children>
 		</GridPane>
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="300.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="300.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true" />
-		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0" layoutY="300.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true" />
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="300.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true">
+			<image>
+	            <Image url="@search.png" />
+	         </image>
+         </ImageView>
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="300.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true">
+			<image>
+            	<Image url="@create.png" />
+         	</image>
+         </ImageView>
+		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="525.0" layoutY="300.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true">
+			<image>
+            	<Image url="@cancel.png" />
+         	</image>
+		</ImageView>
 	</children>
 </Pane>
