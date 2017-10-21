@@ -6,24 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.LoginUI">
-	<children>
-		<Pane layoutX="-14.0" prefHeight="600" prefWidth="800">
-			<children>
-				<Label layoutX="356.0" layoutY="108.0" text="Login">
-					<font>
-						<Font name="Segoe UI" size="36.0" />
-					</font>
-				</Label>
-				<TextField layoutX="116.0" layoutY="216.0" prefHeight="25.0"
-					prefWidth="569.0" promptText="Email Address" />
-				<TextField layoutX="116.0" layoutY="275.0" prefHeight="25.0"
-					prefWidth="569.0" promptText="Password" />
-				<Button fx:id="butt" layoutX="301.0" layoutY="349.0"
-					mnemonicParsing="false" onAction="#login" prefHeight="50.0"
-					prefWidth="200.0" text="LOGIN" />
-			</children>
-		</Pane>
-	</children>
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginUI">
+   <children>
+      <Label layoutX="356.0" layoutY="108.0" text="Login">
+         <font>
+            <Font name="Segoe UI" size="36.0" />
+         </font>
+      </Label>
+      <TextField layoutX="100.0" layoutY="240.0" prefHeight="40.0" prefWidth="600.0" promptText="Email Address" />
+      <TextField layoutX="100.0" layoutY="304.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
+      <Button layoutX="300.0" layoutY="392.0" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" text="LOGIN" />
+   </children>
+</Pane>

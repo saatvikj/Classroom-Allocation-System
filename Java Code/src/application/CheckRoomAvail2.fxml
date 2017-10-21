@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
 	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
@@ -19,13 +18,13 @@
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<Label layoutX="73.0" layoutY="185.0" prefHeight="26.0"
+		<Label layoutX="76.0" layoutY="220.0" prefHeight="26.0"
 			prefWidth="406.0" text="List of available rooms as per your requirement: ">
 			<font>
 				<Font size="17.0" />
 			</font>
 		</Label>
-		<ListView layoutX="102.0" layoutY="267.0" prefHeight="150.0"
+		<ListView layoutX="76.0" layoutY="260.0" prefHeight="150.0"
 			prefWidth="200.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
@@ -37,13 +36,13 @@
 				</FXCollections>
 			</items>
 		</ListView>
-		<Label layoutX="483.0" layoutY="270.0" text="CONFIRM MESSAGE">
+		<Label layoutX="450.0" layoutY="340.0" text="CONFIRM MESSAGE">
 			<font>
 				<Font size="18.0" />
 			</font>
 		</Label>
-		<Label layoutX="523.0" layoutY="313.0" text="C11 is booked !" />
-		<Label layoutX="105.0" layoutY="454.0" text="*Tap to book the room" />
+		<Label layoutX="450.0" layoutY="382.0" text="C11 is booked." />
+		<Label layoutX="76.0" layoutY="434.0" text="*Tap to book the room" />
 		<GridPane alignment="CENTER_RIGHT">
 			<columnConstraints>
 				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
@@ -83,6 +82,8 @@
 				</Label>
 			</children>
 		</GridPane>
-		
+		<Button layoutX="450.0" layoutY="260.0" mnemonicParsing="false"
+			prefHeight="50.0" prefWidth="200.0" text="BOOK ROOM" />
+
 	</children>
 </Pane>

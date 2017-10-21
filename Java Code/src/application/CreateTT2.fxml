@@ -8,17 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<GridPane alignment="CENTER_RIGHT">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="800.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="10.0" prefWidth="800.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
+				<Label alignment="CENTER_RIGHT" contentDisplay="TOP"
+					text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -48,18 +53,21 @@
 		</GridPane>
 
 
-		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="CREATE YOUR PERSONALIZED TIME TABLE">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+			text="CREATE YOUR PERSONALIZED TIME TABLE">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
 
-		<Label layoutX="66.0" layoutY="210.0" prefHeight="21.0" prefWidth="270.0" text="Here are the list of relevant courses - ">
+		<Label layoutX="76.0" layoutY="220.0" prefHeight="21.0"
+			prefWidth="270.0" text="Here are the list of relevant courses- ">
 			<font>
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<ListView layoutX="89.0" layoutY="258.0" prefHeight="150.0" prefWidth="200.0">
+		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0"
+			prefWidth="200.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="CSE101" />
@@ -70,60 +78,40 @@
 				</FXCollections>
 			</items>
 		</ListView>
-		<Button layoutX="497.0" layoutY="491.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD">
-			<font>
-				<Font size="16.0" />
-			</font>
-		</Button>
-		<Label layoutX="631.0" layoutY="388.0" text="None">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="630.0" layoutY="339.0" text="4">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="628.0" layoutY="292.0" text="Intro to Programming">
-			<font>
-				<Font name="Segoe UI" size="17.0" />
-			</font>
-		</Label>
-		<Label layoutX="628.0" layoutY="247.0" text="CSE101">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="404.0" layoutY="388.0" prefHeight="24.0" prefWidth="200.0" text="Pre-requisites:">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="404.0" layoutY="341.0" prefHeight="24.0" prefWidth="172.0" text="Credits:">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="404.0" layoutY="294.0" prefHeight="24.0" prefWidth="143.0" text="Course Name: ">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="404.0" layoutY="247.0" prefHeight="24.0" prefWidth="150.0" text="Course Code:">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="404.0" layoutY="435.0" prefHeight="24.0" prefWidth="200.0" text="Post-conditions:">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
-		<Label layoutX="631.0" layoutY="435.0" text="Lorem Ipsum">
-			<font>
-				<Font name="Segoe UI" size="20.0" />
-			</font>
-		</Label>
+		<Button layoutX="475.0" layoutY="508.0" mnemonicParsing="false"
+			prefHeight="50.0" prefWidth="200.0" text="ADD" />
+		<GridPane layoutX="400.0" layoutY="258.0">
+			<children>
+				<Label text="CODE" />
+				<Label text="CSE101" GridPane.columnIndex="1" />
+				<Label text="ABBREVIATION" GridPane.rowIndex="1" />
+				<Label text="IP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label text="CREDITS" GridPane.rowIndex="2" />
+				<Label text="4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Label text="PRE REQUISITES" GridPane.rowIndex="3" />
+				<Label text="None" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Label text="POST CONDITIONS" GridPane.rowIndex="4" />
+				<Label text="Lorem Ipsum" GridPane.columnIndex="1"
+					GridPane.rowIndex="4" />
+			</children>
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+					prefWidth="150.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+					prefWidth="200.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+			</rowConstraints>
+		</GridPane>
 	</children>
 </Pane>

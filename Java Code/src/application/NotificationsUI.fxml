@@ -70,8 +70,8 @@
 					vgrow="SOMETIMES" />
 			</rowConstraints>
 		</GridPane>
-		<ListView layoutX="72.0" layoutY="258.0" prefHeight="127.0"
-			prefWidth="673.0">
+		<ListView layoutX="76.0" layoutY="220.0" prefHeight="200.0"
+			prefWidth="500.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="You have a class today at 11" />
