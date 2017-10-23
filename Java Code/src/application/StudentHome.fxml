@@ -8,23 +8,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-	minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.StudentHomeUI">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentHomeUI">
 	<children>
 		<GridPane>
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
-					prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
-					prefWidth="300.0" />
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
-					minWidth="200.0" prefWidth="200.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="150.0" prefHeight="150.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
 				<Label alignment="CENTER" text="Home">
@@ -35,7 +28,7 @@
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
 				</Label>
-				<Label text="Notifications" GridPane.columnIndex="1">
+				<Label onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -70,44 +63,32 @@
 				</Label>
 			</children>
 		</GridPane>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0"
-			layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0" layoutY="225.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@search.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0"
-			layoutY="225.0" onMouseClicked="#makeRequest" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0" layoutY="225.0" onMouseClicked="#makeRequest" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@create.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0"
-			layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0" layoutY="400.0" onMouseClicked="#createTimeTable" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@create.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0"
-			layoutY="400.0" onMouseClicked="#viewTimeTable" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0" layoutY="400.0" onMouseClicked="#viewTimeTable" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@search.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0"
-			layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0" layoutY="225.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@cancel.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0"
-			layoutY="400.0" onMouseClicked="#cancelRequest" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0" layoutY="400.0" onMouseClicked="#cancelRequest" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@cancel.png" />
 			</image>
@@ -118,5 +99,10 @@
 		<Label layoutX="592.0" layoutY="508.0" text="Cancel A Request" />
 		<Label layoutX="342.0" layoutY="508.0" text="Create TimeTable" />
 		<Label layoutX="98.0" layoutY="508.0" text="View TimeTable" />
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0" layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logouticon.png" />
+         </image>
+      </ImageView>
 	</children>
 </Pane>

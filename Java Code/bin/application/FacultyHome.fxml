@@ -82,5 +82,10 @@
       <Label layoutX="82.0" layoutY="408.0" text="View Booked Rooms" />
       <Label layoutX="346.0" layoutY="408.0" text="Make A Booking" />
       <Label layoutX="592.0" layoutY="408.0" text="Cancel A Booking" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0" layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logouticon.png" />
+         </image>
+      </ImageView>
 	</children>
 </Pane>
