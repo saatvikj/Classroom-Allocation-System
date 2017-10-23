@@ -58,7 +58,7 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView layoutX="76.0" layoutY="240.0" prefHeight="200.0" prefWidth="200.0">
+				<ListView id="cancelList" layoutX="76.0" layoutY="240.0" prefHeight="200.0" prefWidth="200.0">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 							<String fx:value="C11, Dated: 12/10/2017" />

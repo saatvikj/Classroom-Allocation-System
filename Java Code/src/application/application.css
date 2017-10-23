@@ -27,3 +27,26 @@
 	
 	-fx-focus-color: green;
 }
+
+.list-cell {
+    -fx-control-inner-background: white ;
+}
+
+.list-cell:filled:selected { 
+    -fx-background-color: green; /* 2 */
+    -fx-text-fill: white; /* 5 */
+}
+
+.menu-item:focused {
+     -fx-background-color: green;
+}
+
+.date-cell-today { 
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.date-cell:hover {
+  -fx-background-color: green ;
+  /* etc */
+}
