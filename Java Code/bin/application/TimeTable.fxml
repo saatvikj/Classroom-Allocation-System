@@ -91,5 +91,10 @@
             <Image url="@back.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="725.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logouticon.png" />
+         </image>
+      </ImageView>
 	</children>
 </Pane>

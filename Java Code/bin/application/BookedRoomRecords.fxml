@@ -14,9 +14,9 @@
 		<Pane prefHeight="600.0" prefWidth="800.0">
 			<children>
 
-				<GridPane alignment="CENTER_RIGHT" layoutX="75.0">
+				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 					<columnConstraints>
-						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="725.0" />
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
 					</columnConstraints>
 					<rowConstraints>
 						<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
@@ -96,9 +96,14 @@
                   <Image url="@home.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="71.0" fitWidth="64.0" layoutX="11.0" layoutY="75.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logouticon.png" />
                </image>
             </ImageView>
 			</children>
