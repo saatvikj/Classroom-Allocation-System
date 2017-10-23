@@ -10,14 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class CancelBooking {
+public class CancelRequestUI {
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -36,7 +36,7 @@ public class CancelBooking {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -49,6 +49,5 @@ public class CancelBooking {
 		}
 
 	}
-
 
 }

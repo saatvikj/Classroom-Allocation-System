@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -9,9 +10,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MakeTimeTableUI">
 	<children>
-		<GridPane alignment="CENTER_RIGHT">
+		<GridPane alignment="CENTER_RIGHT" layoutX="75.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="800.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="725.0" />
 			</columnConstraints>
 			<rowConstraints>
 				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
@@ -61,6 +62,16 @@
 			</items>
 		</MenuButton>
 		<Button layoutX="300.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#searchResults" prefHeight="50.0" prefWidth="200.0" text="Search" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@home.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="64.0" layoutX="11.0" layoutY="75.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back.png" />
+         </image>
+      </ImageView>
 
 	</children>
 </Pane>

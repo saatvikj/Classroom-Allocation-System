@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class CancelBooking {
+public class BookedRoomsUI {
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
@@ -49,6 +49,5 @@ public class CancelBooking {
 		}
 
 	}
-
 
 }

@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 
 public class App extends Application {
@@ -17,6 +18,7 @@ public class App extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
 			Scene s = new Scene(root, 800,600);
 			primaryStage.setTitle("IIIT Delhi");
+		    s.setFill(Color.WHITE);
 			primaryStage.setScene(s);
 			primaryStage.show();
 			
