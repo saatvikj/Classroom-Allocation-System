@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HandleRequestsUI">
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HandleRequestsUI">
 	<children>
-		<Pane prefHeight="600.0" prefWidth="800.0">
+		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 
 				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
@@ -81,12 +81,12 @@
 						<Label text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 						<Label text="SOURCE STUDENT" GridPane.rowIndex="4" />
 						<Label text="Saatvik Jain" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-						<Button mnemonicParsing="false" text="Accept" GridPane.rowIndex="5">
+						<Button id="button" mnemonicParsing="false" text="Accept" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="70.0" />
 							</GridPane.margin>
 						</Button>
-						<Button mnemonicParsing="false" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
+						<Button id="button" mnemonicParsing="false" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="20.0" />
 							</GridPane.margin>

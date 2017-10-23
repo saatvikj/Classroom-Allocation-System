@@ -1,4 +1,29 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-#homePane{
+.button{
+    -fx-border-color: green;
+    -fx-border-width: 1, 1;
+    -fx-border-radius:15 15 15 15;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: #828282;
+}
+
+
+.button:pressed {
+    -fx-border-color: green;
+    -fx-border-width: 1, 1;
+    -fx-border-radius:15 15 15 15;
+    -fx-background-radius: 15 15 15 15;
+    -fx-background-color: #dcdcdc;
+    -fx-text-fill: white;
+}
+
+#homePane {
+	
 	-fx-background-color: white;
+}
+
+.root {
+	
+	-fx-focus-color: green;
 }

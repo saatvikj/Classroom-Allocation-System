@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NotificationsUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NotificationsUI">
 	<children>
 		<GridPane>
 			<children>
@@ -61,7 +61,7 @@
 				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 		</GridPane>
 		<ListView layoutX="76.0" layoutY="220.0" prefHeight="200.0" prefWidth="500.0">

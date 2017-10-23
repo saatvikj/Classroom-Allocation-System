@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MakeTimeTableUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MakeTimeTableUI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
@@ -61,7 +61,7 @@
 				<MenuItem mnemonicParsing="false" text="Audit" />
 			</items>
 		</MenuButton>
-		<Button layoutX="300.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#searchResults" prefHeight="50.0" prefWidth="200.0" text="Search" />
+		<Button id="button" layoutX="300.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#searchResults" prefHeight="50.0" prefWidth="200.0" text="Search" />
       <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@home.png" />

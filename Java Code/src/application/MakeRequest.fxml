@@ -8,7 +8,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MakeRequestUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MakeRequestUI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
@@ -58,7 +58,7 @@
 		<DatePicker layoutX="76.0" layoutY="385.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter date" />
 		<TextField layoutX="76.0" layoutY="440.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter start time" />
 		<TextField layoutX="76.0" layoutY="495.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter end time" />
-		<Button layoutX="300.0" layoutY="546.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="SUBMIT">
+		<Button id="button" layoutX="300.0" layoutY="546.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="SUBMIT">
 			<font>
 				<Font name="Segoe UI" size="15.0" />
 			</font>

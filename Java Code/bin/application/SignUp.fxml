@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="49.0" prefWidth="83.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpUI">
+<AnchorPane stylesheets="@application.css" prefHeight="49.0" prefWidth="83.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpUI">
 	<children>
-		<Pane prefHeight="600.0" prefWidth="800.0">
+		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 				<Label layoutX="337.0" layoutY="108.0" text="Sign Up">
 					<font>
@@ -26,7 +26,7 @@
 						<MenuItem mnemonicParsing="false" text="Student" />
 					</items>
 				</MenuButton>
-				<Button layoutX="300.0" layoutY="516.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="REGISTER">
+				<Button id="button" layoutX="300.0" layoutY="516.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="REGISTER">
 					<font>
 						<Font name="Segoe UI" size="16.0" />
 					</font>
