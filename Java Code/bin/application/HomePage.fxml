@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane stylesheets="@application.css"  id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomePageUI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomePageUI">
 	<children>
 		<AnchorPane id="homePane" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
 			<children>
@@ -26,6 +26,7 @@
 						<Font name="Segoe UI Bold" size="15.0" />
 					</font>
 				</Button>
+            <Label layoutX="568.0" layoutY="567.0" text="made with \U2665" />
 			</children>
 		</AnchorPane>
 	</children>

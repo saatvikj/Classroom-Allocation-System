@@ -13,7 +13,7 @@
 	<children>
 		<GridPane>
 			<children>
-				<Label alignment="CENTER" onMouseClicked="#homeButtonClicked" text="Home">
+				<Label id="homeHead" alignment="CENTER" onMouseClicked="#homeButtonClicked" text="Home">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -21,7 +21,7 @@
 						<Insets left="98.0" />
 					</GridPane.margin>
 				</Label>
-				<Label text="Notifications" GridPane.columnIndex="1">
+				<Label id="notifHead" text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>

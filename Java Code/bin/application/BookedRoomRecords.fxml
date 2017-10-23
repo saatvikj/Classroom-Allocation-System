@@ -3,6 +3,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.Tooltip?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
@@ -91,7 +92,7 @@
 						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 				</GridPane>
-            <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@home.png" />
                </image>

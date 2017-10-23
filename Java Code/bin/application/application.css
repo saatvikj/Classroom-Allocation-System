@@ -50,3 +50,14 @@
   -fx-background-color: green ;
   /* etc */
 }
+
+#homeHead:hover{
+	-fx-text-fill: blue;
+	-fx-font-size: 48px;
+}
+
+#notifHead:hover{
+	-fx-text-fill: blue;
+	-fx-font-size: 48px;
+}
+

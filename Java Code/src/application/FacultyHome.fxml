@@ -20,7 +20,7 @@
 				<RowConstraints minHeight="150.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label alignment="CENTER" text="Home">
+				<Label id="homeHead" alignment="CENTER" text="Home">
 					<GridPane.margin>
 						<Insets left="98.0" />
 					</GridPane.margin>
@@ -28,7 +28,7 @@
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
 				</Label>
-				<Label onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
+				<Label id="notifHead" onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
