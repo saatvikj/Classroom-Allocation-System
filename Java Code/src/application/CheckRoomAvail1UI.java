@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class BookRoomUI {
+public class CheckRoomAvail1UI {
 
 
 	@FXML
@@ -56,7 +56,7 @@ public class BookRoomUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));

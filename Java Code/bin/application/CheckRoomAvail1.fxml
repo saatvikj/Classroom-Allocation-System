@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookRoomUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CheckRoomAvail1UI">
 	<children>
 		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160" text="CHECK ROOM AVAILABILITY">
 			<font>
