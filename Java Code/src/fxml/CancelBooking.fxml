@@ -96,17 +96,17 @@
 		</Pane>
       <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/res/@home.png" />
+            <Image url="/res/home.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/res/@back.png" />
+            <Image url="/res/back.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/res/@logouticon.png" />
+            <Image url="/res/logouticon.png" />
          </image>
       </ImageView>
    </children>
