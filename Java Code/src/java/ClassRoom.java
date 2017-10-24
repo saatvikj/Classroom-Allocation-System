@@ -30,6 +30,7 @@ public class ClassRoom {
 		 * Goes through the hashmap and checks if the slot is available in that
 		 * day’s hashmap Returns true if available, else returns false
 		 */
+		return true;
 	}
 
 	public void makeBooking(Slot timeslot, Object source) {
