@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminHomeUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdminHomeUI">
 	<children>
 		<GridPane prefHeight="150.0">
 			<columnConstraints>
@@ -67,19 +67,19 @@
 		</GridPane>
 		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@search.png" />
+            <Image url="/res/search.png" />
          </image></ImageView>
 		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="480.0" layoutY="200.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@create.png" />
+            <Image url="/res/create.png" />
          </image></ImageView>
 		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="480.0" layoutY="400.0" onMouseClicked="#handleRequests" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@handle.png" />
+            <Image url="/res/handle.png" />
          </image></ImageView>
 		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="400.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@cancel.png" />
+            <Image url="/res/cancel.png" />
          </image></ImageView>
       <Label layoutX="182.0" layoutY="309.0" text="View Booked Rooms" />
       <Label layoutX="476.0" layoutY="309.0" text="Make A Booking" />
@@ -87,7 +87,7 @@
       <Label layoutX="475.0" layoutY="506.0" text="Handle Requests" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0" layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logouticon.png" />
+            <Image url="/res/logouticon.png" />
          </image>
       </ImageView>
 	</children>
