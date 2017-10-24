@@ -1,10 +1,15 @@
-package java;
+package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Course {
+public class Course implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String[] preReqs;
 	private String[] postConditions;
 	private String acronym;
@@ -12,6 +17,11 @@ public class Course {
 	private String instructor;
 	private String courseCode;
 	private int credits;
+
+	public Course() {
+
+	}
+
 	private Map<Slot, ClassRoom> courseTimeTable;
 	private ArrayList<ClassRoom> allRooms;
 

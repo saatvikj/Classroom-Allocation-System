@@ -1,14 +1,20 @@
-package java;
+package backend;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-public class Slot {
+public class Slot implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Date date;
 	private String day;
 	private Time startTime;
 	private Time endTime;
+
+	public Slot() {
+
+	}
 
 	@Override
 	public boolean equals(Object arg0) {

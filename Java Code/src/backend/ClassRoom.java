@@ -1,13 +1,20 @@
-package java;
+package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ClassRoom {
+public class ClassRoom implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String roomNumber;
 	private int capacity;
 	private ArrayList<Map<Slot, Object>> bookedSlots;
+
+	public ClassRoom() {
+
+	}
 
 	public String getRoomNumber() {
 		return roomNumber;
