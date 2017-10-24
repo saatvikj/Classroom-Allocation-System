@@ -18,7 +18,7 @@ public class SignUpUI {
 		Parent root;
 		try {
 			
-			FXMLLoader ldr = new FXMLLoader(getClass().getResource("Login.fxml"));
+			FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
 			root = ldr.load();
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");

@@ -18,7 +18,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("NotificationsUI.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/NotificationsUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -37,7 +37,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("BookedRoomRecords.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -56,7 +56,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CancelBooking.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CancelBooking.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -75,7 +75,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -94,7 +94,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("MakeRequest.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/MakeRequest.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -113,7 +113,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("HandleRequests.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/HandleRequests.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -132,7 +132,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail2.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail2.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -152,7 +152,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CreateTT1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -171,7 +171,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/TimeTable.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -190,7 +190,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CancelRequest.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CancelRequest.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -209,7 +209,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CreateTT2.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT2.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -228,7 +228,7 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));

@@ -21,7 +21,7 @@ public class HomePageUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -40,7 +40,7 @@ public class HomePageUI {
 		Parent root;
 		try {
 			
-			FXMLLoader ldr = new FXMLLoader(getClass().getResource("Login.fxml"));
+			FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
 			root = ldr.load();
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");

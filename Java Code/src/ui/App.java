@@ -15,7 +15,7 @@ public class App extends Application {
 		try {
 
 			
-			Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
 			Scene s = new Scene(root, 800,600);
 			primaryStage.setTitle("IIIT Delhi");
 		    s.setFill(Color.WHITE);

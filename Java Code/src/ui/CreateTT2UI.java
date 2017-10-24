@@ -17,7 +17,7 @@ public class CreateTT2UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -36,7 +36,7 @@ public class CreateTT2UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CreateTT1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -55,7 +55,7 @@ public class CreateTT2UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
