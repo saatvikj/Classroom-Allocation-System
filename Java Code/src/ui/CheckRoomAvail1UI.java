@@ -1,4 +1,4 @@
-package application;
+package ui;
 
 import java.io.IOException;
 
@@ -10,15 +10,34 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ViewTimeTableUI {
-	
+public class CheckRoomAvail1UI {
 
+
+	@FXML
+	private void confirmBooking(MouseEvent event) {
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail2.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -37,7 +56,7 @@ public class ViewTimeTableUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -69,5 +88,5 @@ public class ViewTimeTableUI {
 		}
 
 	}
-
+	
 }

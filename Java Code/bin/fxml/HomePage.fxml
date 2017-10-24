@@ -19,7 +19,7 @@
 				<Button id="button" layoutX="299.0" layoutY="284.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="Log In">
 					<font>
 						<Font name="Segoe UI Bold" size="15.0" />
-					</font>1
+					</font>
 				</Button>
 				<Button id="button" layoutX="299.0" layoutY="360.0" mnemonicParsing="false" onAction="#openSignUp" prefHeight="50.0" prefWidth="200.0" text="Sign Up">
 					<font>

@@ -1,8 +1,7 @@
-package application;
+package ui;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,52 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class FacultyHomeUI {
+public class ViewTimeTableUI {
+	
 
 	@FXML
-	private void showNotifications(MouseEvent event) {
+	private void homeButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("NotificationsUI.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	private void viewBookedRooms(MouseEvent event) {
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("BookedRoomRecords.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	private void cancelBooking(MouseEvent event) {
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("CancelBooking.fxml"));
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -71,11 +33,11 @@ public class FacultyHomeUI {
 	}
 	
 	@FXML
-	private void makeBooking(MouseEvent event) {
+	private void backButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -107,6 +69,5 @@ public class FacultyHomeUI {
 		}
 
 	}
-	
-	
+
 }

@@ -1,27 +1,23 @@
-package application;
+package ui;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class HomePageUI {
+public class CancelRequestUI {
 	
-
 	@FXML
-	private void openSignUp(ActionEvent event) {
+	private void homeButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -32,16 +28,15 @@ public class HomePageUI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
+	
 	@FXML
-	private void openLogin(ActionEvent event) {
+	private void backButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			
-			FXMLLoader ldr = new FXMLLoader(getClass().getResource("Login.fxml"));
-			root = ldr.load();
+			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -52,6 +47,26 @@ public class HomePageUI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
+	
+	@FXML
+	private void logout(MouseEvent event) {
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene(root, 800, 600));
+			stage.show();
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
-

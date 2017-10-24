@@ -1,4 +1,4 @@
-package application;
+package ui;
 
 import java.io.IOException;
 
@@ -10,14 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class CreateTT2UI {
+public class HandleRequestsUI {
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("StudentHome.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -36,7 +36,7 @@ public class CreateTT2UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CreateTT1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));

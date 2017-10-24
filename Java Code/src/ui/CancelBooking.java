@@ -1,4 +1,4 @@
-package application;
+package ui;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class CheckRoomAvail2UI {
+public class CancelBooking {
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
@@ -36,7 +36,7 @@ public class CheckRoomAvail2UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("CheckRoomAvail1.fxml"));
+			root = FXMLLoader.load(getClass().getResource("AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(root, 800, 600));
@@ -49,7 +49,8 @@ public class CheckRoomAvail2UI {
 		}
 
 	}
-	
+
+
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -68,5 +69,6 @@ public class CheckRoomAvail2UI {
 		}
 
 	}
-
+	
+	
 }
