@@ -11,8 +11,8 @@ public class ClassRoom implements Serializable {
 
 	private String roomNumber;
 	private int capacity;
-	private ArrayList<Map<Slot, Object>> bookedSlots = new ArrayList<Map<Slot, Object>>(7);
-
+	private Map<String,Map<Slot,Object>> bookedSlots = new HashMap<String,Map<Slot,Object>>();
+	
 	public ClassRoom() {
 		
 	}
@@ -25,11 +25,12 @@ public class ClassRoom implements Serializable {
 		this.roomNumber = roomNumber;
 	}
 
-	public ArrayList<Map<Slot, Object>> getBookedSlots() {
+
+	public Map<String, Map<Slot, Object>> getBookedSlots() {
 		return bookedSlots;
 	}
 
-	public void setBookedSlots(ArrayList<Map<Slot, Object>> bookedSlots) {
+	public void setBookedSlots(Map<String, Map<Slot, Object>> bookedSlots) {
 		this.bookedSlots = bookedSlots;
 	}
 

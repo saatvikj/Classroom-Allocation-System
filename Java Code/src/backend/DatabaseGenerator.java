@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class DatabaseGenerator {
 
@@ -65,22 +67,6 @@ public class DatabaseGenerator {
 					ClassRoom rm = new ClassRoom();
 					rm.setRoomNumber(roomName);
 					rm.setCapacity(100);
-					// Date dt = new Date(0000,00,00);
-					// String startTime = splitDateVenue[0].split("\\-")[0];
-					// int startTimeHour =
-					// Integer.parseInt(startTime.split("\\:")[0]);
-					// int startTimeMinute =
-					// Integer.parseInt(startTime.split("\\:")[1]);
-					// Time sTime = new Time(startTimeHour,startTimeMinute,0);
-					// String endTime = splitDateVenue[0].split("\\-")[1];
-					// int endTimeHour =
-					// Integer.parseInt(endTime.split("\\:")[0]);
-					// int endTimeMinute =
-					// Integer.parseInt(endTime.split("\\:")[1]);
-					// Time eTime = new Time(endTimeHour,endTimeMinute,0);
-					// Slot slt = new Slot(dt,this.daysOfWeek[i-6],sTime,eTime);
-					//
-					// rm.getBookedSlots().add(new HashMap<slt,>)
 					allRooms.add(rm);
 				}
 
@@ -128,10 +114,8 @@ public class DatabaseGenerator {
 
 					for (int i = 6; i <= 10; i++) {
 
-						// System.out.println("a");
-
 						if (!(courseDetails[i].equals("-"))) {
-							// System.out.println("b");
+
 							String[] splitDateVenue = courseDetails[i].split("\\$");
 							String roomName = splitDateVenue[1];
 							Date dt = new Date(0000, 00, 00);
@@ -205,20 +189,23 @@ public class DatabaseGenerator {
 							Time eTime = new Time(endTimeHour, endTimeMinute, 0);
 							Slot slt = new Slot(dt, this.daysOfWeek[i - 6], sTime, eTime);
 							ClassRoom c = getCorrespondingRoom(roomName);
-							System.out.println("size = " + c.getBookedSlots().size()+" i "+i); 
-							if (c.getBookedSlots().size() != i - 6) {
-								int x = c.getBookedSlots().size();
-								for (int j = 0; j < i - 6 - x; j++) {
-									c.getBookedSlots().add(null);
-								}
+							Course crs = getCorrespondingCourse(courseDetails[1]);
+
+							Map<String, Map<Slot, Object>> newMap = c.getBookedSlots();
+
+							if (newMap.containsKey(this.daysOfWeek[i - 6])) {
+
+								newMap.get(this.daysOfWeek[i - 6]).put(slt, crs);
+
+							} else {
+
+								Map<Slot, Object> map = new HashMap<Slot, Object>();
+								map.put(slt, crs);
+								newMap.put(this.daysOfWeek[i - 6], map);
+
 							}
 
-							System.out.println(c.getBookedSlots().size());
-							
-							Map<Slot, Object> element = new HashMap<Slot, Object>();
-							Course crs = getCorrespondingCourse(courseDetails[1]);
-							element.put(slt, crs);
-							c.getBookedSlots().add(i-6, element);
+							c.setBookedSlots(newMap);
 
 						}
 
@@ -281,8 +268,29 @@ public class DatabaseGenerator {
 			out = new ObjectOutputStream(new FileOutputStream("./src/res/rooms.txt"));
 
 			for (int i = 0; i < allRooms.size(); i++) {
-				ClassRoom r = allRooms.get(i);
-				out.writeObject(r);
+				ClassRoom classroom = allRooms.get(i);
+				out.writeObject(classroom);
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
+	public void serializeCourses() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/courses.txt"));
+
+			for (int i = 0; i < allCourses.size(); i++) {
+				Course course = allCourses.get(i);
+				out.writeObject(course);
 			}
 
 		} finally {
@@ -302,9 +310,9 @@ public class DatabaseGenerator {
 
 		ob.bookSlots();
 
-		for (int i = 0; i < ob.allRooms.size(); i++) {
-			System.out.println(ob.allRooms.get(i).toString());
-		}
+		ob.serializeRooms();
+
+		ob.serializeCourses();
 
 	}
 
