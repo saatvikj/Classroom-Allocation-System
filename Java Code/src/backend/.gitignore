@@ -2,3 +2,7 @@
 /Course.class
 /DatabaseGenerator.class
 /Slot.class
+/SignUp.class
+/InvalidEmailException.class
+/WeakPasswordException.class
+/PasswordNotMatchException.class
