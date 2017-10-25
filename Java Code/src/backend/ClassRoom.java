@@ -2,6 +2,7 @@ package backend;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ClassRoom implements Serializable {
@@ -10,10 +11,10 @@ public class ClassRoom implements Serializable {
 
 	private String roomNumber;
 	private int capacity;
-	private ArrayList<Map<Slot, Object>> bookedSlots;
+	private ArrayList<Map<Slot, Object>> bookedSlots = new ArrayList<Map<Slot, Object>>(7);
 
 	public ClassRoom() {
-
+		
 	}
 
 	public String getRoomNumber() {

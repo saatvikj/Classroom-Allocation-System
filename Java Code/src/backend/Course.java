@@ -3,6 +3,7 @@ package backend;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Course implements Serializable {
@@ -16,8 +17,16 @@ public class Course implements Serializable {
 	private String courseCode;
 	private int credits;
 	private String courseName;
-	private Map<Slot, ClassRoom> courseTimeTable;
+	private Map<Slot, ClassRoom> courseTimeTable = new HashMap<Slot, ClassRoom>();
 	private ArrayList<ClassRoom> allRooms;
+
+	public Map<Slot, ClassRoom> getCourseTimeTable() {
+		return courseTimeTable;
+	}
+
+	public void setCourseTimeTable(Map<Slot, ClassRoom> courseTimeTable) {
+		this.courseTimeTable = courseTimeTable;
+	}
 
 	public Course() {
 

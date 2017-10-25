@@ -71,4 +71,11 @@ public class Slot implements Serializable {
 		this.endTime = endTime;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Slot [date=" + date + ", day=" + day + ", startTime=" + startTime + ", endTime=" + endTime + "]";
+	}
+
 }
