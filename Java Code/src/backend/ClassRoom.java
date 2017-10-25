@@ -24,6 +24,14 @@ public class ClassRoom implements Serializable {
 		this.roomNumber = roomNumber;
 	}
 
+	public ArrayList<Map<Slot, Object>> getBookedSlots() {
+		return bookedSlots;
+	}
+
+	public void setBookedSlots(ArrayList<Map<Slot, Object>> bookedSlots) {
+		this.bookedSlots = bookedSlots;
+	}
+
 	public int getCapacity() {
 		return capacity;
 	}
@@ -54,5 +62,12 @@ public class ClassRoom implements Serializable {
 		 * found else do nothing
 		 */
 	}
+
+	@Override
+	public String toString() {
+		return "ClassRoom [roomNumber=" + roomNumber + ", capacity=" + capacity + ", bookedSlots=" + bookedSlots + "]";
+	}
+	
+	
 
 }

@@ -2,13 +2,11 @@ package backend;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 public class Course implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String[] preReqs;
 	private String[] postConditions;
@@ -17,13 +15,21 @@ public class Course implements Serializable {
 	private String instructor;
 	private String courseCode;
 	private int credits;
+	private String courseName;
+	private Map<Slot, ClassRoom> courseTimeTable;
+	private ArrayList<ClassRoom> allRooms;
 
 	public Course() {
 
 	}
 
-	private Map<Slot, ClassRoom> courseTimeTable;
-	private ArrayList<ClassRoom> allRooms;
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 
 	public String[] getPreReqs() {
 		return preReqs;
@@ -103,6 +109,14 @@ public class Course implements Serializable {
 		/*
 		 * It serializes the arraylist allRooms into its text file.
 		 */
+	}
+
+	@Override
+	public String toString() {
+		return "Course [preReqs=" + Arrays.toString(preReqs) + ", postConditions=" + Arrays.toString(postConditions)
+				+ ", acronym=" + acronym + ", courseType=" + courseType + ", instructor=" + instructor + ", courseCode="
+				+ courseCode + ", credits=" + credits + ", courseName=" + courseName + ", courseTimeTable="
+				+ courseTimeTable + ", allRooms=" + allRooms + "]";
 	}
 
 }

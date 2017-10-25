@@ -15,6 +15,18 @@ public class Slot implements Serializable {
 	public Slot() {
 
 	}
+	
+	
+
+	public Slot(Date date, String day, Time startTime, Time endTime) {
+		super();
+		this.date = date;
+		this.day = day;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+
+
 
 	@Override
 	public boolean equals(Object arg0) {
