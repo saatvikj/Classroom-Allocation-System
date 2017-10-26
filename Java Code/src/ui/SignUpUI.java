@@ -37,18 +37,31 @@ public class SignUpUI {
 
 	@FXML
 	private MenuButton userType;
-		
+	
+	boolean flag = false;
+
 	@FXML
 	public void admin(ActionEvent event) {
 		
 		for(MenuItem item: userType.getItems()) {
 			
-			CheckMenuItem chk = (CheckMenuItem) item;
-			if(chk.getText().equals("Admin")) {
-				chk.setSelected(true);
-				userType.setText("Admin");
+				CheckMenuItem chk = (CheckMenuItem) item;
+				if(chk.getText().equals("Admin")) {
+					chk.setSelected(true);
+					flag = true;
+					userType.setText("Admin");
+				}
+	
+		}
+		for(MenuItem it: userType.getItems()){
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if(!ch.getText().equals("Admin"))
+			{
+				if(ch.isSelected())
+				{
+					ch.setSelected(false);
+				}
 			}
-			
 		}
 		
 	}
@@ -61,8 +74,19 @@ public class SignUpUI {
 			CheckMenuItem chk = (CheckMenuItem) item;
 			if(chk.getText().equals("Faculty")) {
 				chk.setSelected(true);
+				userType.setText("Faculty");
 			}
 			
+		}
+		for(MenuItem it: userType.getItems()){
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if(!ch.getText().equals("Faculty"))
+			{
+				if(ch.isSelected())
+				{
+					ch.setSelected(false);
+				}
+			}
 		}
 		
 	}
@@ -75,8 +99,19 @@ public class SignUpUI {
 			CheckMenuItem chk = (CheckMenuItem) item;
 			if(chk.getText().equals("Student")) {
 				chk.setSelected(true);
+				userType.setText("Student");
 			}
 			
+		}
+		for(MenuItem it: userType.getItems()){
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if(!ch.getText().equals("Student"))
+			{
+				if(ch.isSelected())
+				{
+					ch.setSelected(false);
+				}
+			}
 		}
 		
 	}
@@ -88,15 +123,17 @@ public class SignUpUI {
 		String email = userEmail.getText();
 		String password = userPass.getText();
 		String confirmPass = userConfirmPass.getText();
-
+		String typeUser = "";
+		
 		for(MenuItem item: userType.getItems()) {
 		
 			CheckMenuItem chk = (CheckMenuItem) item;
 			if(chk.isSelected()) {
-				System.out.println(chk.getText());
+				typeUser = chk.getText();
 			}
 			
 		}
+		//System.out.println(typeUser);
 		
 		boolean validity = checkEmptiness(name, email, password, confirmPass);
 		if (!validity) {
@@ -114,6 +151,7 @@ public class SignUpUI {
 			page.setEmailID(email);
 			page.setPassword(password);
 			page.setConfirmPassword(confirmPass);
+			page.setTypeOfUser(typeUser);
 			boolean allResults = false;
 
 			try {
@@ -156,7 +194,7 @@ public class SignUpUI {
 
 			if (allResults) {
 
-				
+				 
 				
 				 Parent root;
 				 try {
