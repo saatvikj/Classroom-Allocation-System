@@ -163,12 +163,22 @@ public class SignUp {
 		return md5;
 	}
 
-	public void addCoursesToFaculty() {
+	public ArrayList<Course> addCoursesToFaculty(String facultyName) {
+		
 		/*
 		 * If the user is a faculty, iterate over the entire courses objects and
 		 * see if that faculty has any courses taught, if yes then append the
 		 * course objects to the list of courses in the faculty.
 		 */
+		
+		ArrayList<Course> facCourses = new ArrayList<Course>();
+		for(int i=0;i<allCourses.size();i++) {
+			if(allCourses.get(i).getInstructor().equals(facultyName)) {
+				facCourses.add(allCourses.get(i));
+			}
+		}
+		
+		return facCourses;
 	}
 
 	public void addUserToDatabase(User newUser) throws FileNotFoundException, ClassNotFoundException, IOException {
@@ -249,10 +259,35 @@ public class SignUp {
 
 	}
 
-	public void deserializeCourses() {
+	public void deserializeCourses() throws IOException, ClassNotFoundException {
 		/*
 		 * Deserialize the file listofcourses.txt into the arraylist
 		 */
+
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/courses.txt"));
+			Course course;
+
+			try {
+
+				while (true) {
+					course = (Course) in.readObject();
+					allCourses.add(course);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} finally {
+
+			in.close();
+
+		}
+
 	}
 
 }
