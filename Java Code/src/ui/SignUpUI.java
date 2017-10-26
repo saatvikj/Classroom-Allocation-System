@@ -1,12 +1,12 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import backend.InvalidEmailException;
 import backend.PasswordNotMatchException;
 import backend.SignUp;
+import backend.User;
 import backend.WeakPasswordException;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -117,7 +117,7 @@ public class SignUpUI {
 	}
 	
 	@FXML
-	public void openLogin(ActionEvent event) {
+	public void openLogin(ActionEvent event) throws FileNotFoundException, ClassNotFoundException, IOException {
 
 		String name = userName.getText();
 		String email = userEmail.getText();
@@ -194,7 +194,10 @@ public class SignUpUI {
 
 			if (allResults) {
 
-				 
+				 String encryptedPass = page.encryptPassword();
+				 User user = new User(name, email, encryptedPass, typeUser);
+				 page.addUserToDatabase(user);
+				 System.out.println(page.getListOfUsers().get(0).getName() + " " + page.getListOfUsers().get(0).getEmailID() + " " + page.getListOfUsers().get(0).getEncryptedPassword());
 				
 				 Parent root;
 				 try {

@@ -1,21 +1,32 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class User {
+public class User implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
 	protected String name;
 	protected String emailID;
 	protected String encryptedPassword;
 	protected Map<Slot, ClassRoom> bookedRooms;
+	protected String typeOfUser;
 	public ArrayList<String> listOfNotifications;
 
-	public User(String name, String emailID, String encryptedPassword) {
+	public User() {
+		
+		
+	}
+	
+	
+	public User(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super();
 		this.name = name;
 		this.emailID = emailID;
 		this.encryptedPassword = encryptedPassword;
+		this.typeOfUser = typeOfUser;
 	}
 
 	public String getName() {

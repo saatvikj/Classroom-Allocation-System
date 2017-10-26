@@ -1,5 +1,12 @@
 package backend;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +19,7 @@ public class SignUp {
 	private String typeOfUser;
 	private String password;
 	private String confirmPassword;
-	private ArrayList<User> listOfUsers;
+	private ArrayList<User> listOfUsers = new ArrayList<User>();
 	private ArrayList<Course> allCourses;
 
 	public String getName() {
@@ -77,13 +84,19 @@ public class SignUp {
 		 * Check after @ it is iiitd.ac.in or not (Substring) Returns true if it
 		 * is a valid email ID, else returns false meghna16056@iiitd.ac.in
 		 */
+		if (this.getEmailID().contains("@")) {
 
-		if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
-			return true;
-		} else {
-			throw new InvalidEmailException("Not a valid IIITD Email ID");
+			System.out.println("Hello");
 
+			if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
+				return true;
+			} else {
+				throw new InvalidEmailException("Not a valid IIITD Email ID");
+
+			}
 		}
+		throw new InvalidEmailException("Not a valid IIITD Email ID");
+
 	}
 
 	public boolean checkStrongPassword() throws WeakPasswordException {
@@ -117,13 +130,14 @@ public class SignUp {
 
 		}
 
-		throw new WeakPasswordException("Password is weak. It must contain at least 8 characters, at least one digit and one alphabet.");
+		throw new WeakPasswordException(
+				"Password is weak. It must contain at least 8 characters, at least one digit and one alphabet.");
 	}
 
 	public String encryptPassword() {
 		/*
-		 * It encrypts the user’s password (safety feature) Encryption
-		 * function (to be thought of) Returns the encrypted password
+		 * It encrypts the user’s password (safety feature) Encryption function
+		 * (to be thought of) Returns the encrypted password
 		 */
 
 		return md5(this.password);
@@ -159,11 +173,14 @@ public class SignUp {
 		 */
 	}
 
-	public void addUserToDatabase(User newUser) {
+	public void addUserToDatabase(User newUser) throws FileNotFoundException, ClassNotFoundException, IOException {
 		/*
 		 * First deserializes the file to populate array list,adds newUser to it
 		 * and then serializes it back again.
 		 */
+		//deserializeUsers();
+		listOfUsers.add(newUser);
+		serializeUsers();
 	}
 
 	public boolean passwordMatch() throws PasswordNotMatchException {
@@ -179,16 +196,56 @@ public class SignUp {
 		}
 	}
 
-	public void deserializeUsers() {
-		/*
-		 * Deserialize the file listofusers.txt into the arraylist
-		 */
+	public void deserializeUsers() throws FileNotFoundException, IOException, ClassNotFoundException {
+
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/users.txt"));
+			User user;
+
+			try {
+
+				while (true) {
+					user = (User) in.readObject();
+					listOfUsers.add(user);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} finally {
+
+			try {
+				in.close();
+			} catch (NullPointerException e) {
+				listOfUsers = new ArrayList<User>();
+			}
+		}
+
 	}
 
-	public void serializeUsers() {
-		/*
-		 * Serialize the arraylist into the file listofusers.txt.
-		 */
+	public void serializeUsers() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/users.txt"));
+
+			for (int i = 0; i < listOfUsers.size(); i++) {
+				User newUser = listOfUsers.get(i);
+				out.writeObject(newUser);
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
 	}
 
 	public void deserializeCourses() {
