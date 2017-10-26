@@ -10,3 +10,6 @@
 /UnregisteredUserExcpetion.class
 /WrongPasswordException.class
 /User.class
+/Student.class
+/NoResultFoundException.class
+/Admin.class
