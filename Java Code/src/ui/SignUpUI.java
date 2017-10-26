@@ -197,8 +197,7 @@ public class SignUpUI {
 				 String encryptedPass = page.encryptPassword();
 				 User user = new User(name, email, encryptedPass, typeUser);
 				 page.addUserToDatabase(user);
-				 System.out.println(page.getListOfUsers().get(0).getName() + " " + page.getListOfUsers().get(0).getEmailID() + " " + page.getListOfUsers().get(0).getEncryptedPassword());
-				
+				 
 				 Parent root;
 				 try {
 				

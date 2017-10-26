@@ -86,8 +86,6 @@ public class SignUp {
 		 */
 		if (this.getEmailID().contains("@")) {
 
-			System.out.println("Hello");
-
 			if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
 				return true;
 			} else {
@@ -136,8 +134,8 @@ public class SignUp {
 
 	public String encryptPassword() {
 		/*
-		 * It encrypts the user’s password (safety feature) Encryption function
-		 * (to be thought of) Returns the encrypted password
+		 * It encrypts the user’s password (safety feature) Encryption
+		 * function (to be thought of) Returns the encrypted password
 		 */
 
 		return md5(this.password);
@@ -178,7 +176,7 @@ public class SignUp {
 		 * First deserializes the file to populate array list,adds newUser to it
 		 * and then serializes it back again.
 		 */
-		//deserializeUsers();
+		deserializeUsers();
 		listOfUsers.add(newUser);
 		serializeUsers();
 	}
@@ -216,13 +214,16 @@ public class SignUp {
 
 			}
 
+		} catch (FileNotFoundException e) {
+
 		} finally {
 
-			try {
+			if (in != null) {
 				in.close();
-			} catch (NullPointerException e) {
+			} else {
 				listOfUsers = new ArrayList<User>();
 			}
+
 		}
 
 	}
