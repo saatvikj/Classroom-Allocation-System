@@ -6,3 +6,7 @@
 /InvalidEmailException.class
 /WeakPasswordException.class
 /PasswordNotMatchException.class
+/Login.class
+/UnregisteredUserExcpetion.class
+/WrongPasswordException.class
+/User.class
