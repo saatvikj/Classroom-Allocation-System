@@ -67,7 +67,7 @@ public class ClassRoom implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ClassRoom [roomNumber=" + roomNumber + ", capacity=" + capacity + ", bookedSlots=" + bookedSlots + "]";
+		return "ClassRoom [roomNumber=" + roomNumber + ", capacity=" + capacity + "]";
 	}
 	
 	

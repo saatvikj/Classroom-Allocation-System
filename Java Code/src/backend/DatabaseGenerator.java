@@ -20,7 +20,7 @@ public class DatabaseGenerator {
 	private ArrayList<Course> allCourses = new ArrayList<Course>();
 	private ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 	private String fileName = "./src/res/MainTT.csv";
-	private String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+	private String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
 	public void populateRooms() {
 		BufferedReader br = null;
@@ -313,6 +313,20 @@ public class DatabaseGenerator {
 		ob.serializeRooms();
 
 		ob.serializeCourses();
+
+//		for (int i = 0; i < ob.allRooms.size(); i++) {
+//
+//			for (int j = 0; j < ob.daysOfWeek.length; j++) {
+//				if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) != null) {
+//					Map<Slot, Object> m = ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
+//					Iterator it = m.entrySet().iterator();
+//					while (it.hasNext()) {
+//						Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
+//						System.out.println(mm.getKey().toString() + "  " + ((Course) mm.getValue()).getCourseName());
+//					}
+//				}
+//			}
+//		}
 
 	}
 

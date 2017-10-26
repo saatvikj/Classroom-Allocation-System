@@ -1,5 +1,7 @@
 package backend;
 
+import java.util.ArrayList;
+
 public class Login {
 
 	private String emailID;
@@ -65,14 +67,24 @@ public class Login {
 		 */
 
 	}
-	
+
 	public void deserializeUsers() {
-		
+
 		/*
-		 * Deserializes the list of registered users into the ArrayList so that checking can be done.
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
 		 * 
 		 */
-		
+
+	}
+
+	public User getLoggedInUser() {
+
+		/*
+		 * It iterates through the list of users and returns the current user
+		 * who just entered the details.
+		 */
+
 	}
 
 }
