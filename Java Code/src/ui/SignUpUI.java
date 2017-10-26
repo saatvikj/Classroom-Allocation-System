@@ -2,9 +2,13 @@ package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import backend.Admin;
+import backend.Faculty;
 import backend.InvalidEmailException;
 import backend.PasswordNotMatchException;
 import backend.SignUp;
+import backend.Student;
 import backend.User;
 import backend.WeakPasswordException;
 import javafx.event.ActionEvent;
@@ -195,8 +199,25 @@ public class SignUpUI {
 			if (allResults) {
 
 				 String encryptedPass = page.encryptPassword();
-				 User user = new User(name, email, encryptedPass, typeUser);
-				 page.addUserToDatabase(user);
+				 if(typeUser.equals("Admin"))
+				 {
+					 Admin user = new Admin(name, email, encryptedPass, typeUser);
+					 page.addUserToDatabase((user));
+					 
+				 }
+				 else if(typeUser.equals("Faculty"))
+				 {
+					 Faculty user = new Faculty(name, email, encryptedPass, typeUser);
+					 user.setCoursesTaught(page.addCoursesToFaculty(name));
+					 page.addUserToDatabase(user);
+					 System.out.println(user.getName() + " " + user.getCoursesTaught().size());
+				 }
+				 else
+				 {
+					 Student user = new Student(name, email, encryptedPass, typeUser);
+					 page.addUserToDatabase(user);
+				 }
+				 
 				 
 				 Parent root;
 				 try {

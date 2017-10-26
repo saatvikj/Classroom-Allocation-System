@@ -20,7 +20,7 @@ public class SignUp {
 	private String password;
 	private String confirmPassword;
 	private ArrayList<User> listOfUsers = new ArrayList<User>();
-	private ArrayList<Course> allCourses;
+	private ArrayList<Course> allCourses = new ArrayList<Course>();
 
 	public String getName() {
 		return name;
