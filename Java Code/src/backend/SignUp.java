@@ -163,14 +163,14 @@ public class SignUp {
 		return md5;
 	}
 
-	public ArrayList<Course> addCoursesToFaculty(String facultyName) {
+	public ArrayList<Course> addCoursesToFaculty(String facultyName) throws ClassNotFoundException, IOException {
 		
 		/*
 		 * If the user is a faculty, iterate over the entire courses objects and
 		 * see if that faculty has any courses taught, if yes then append the
 		 * course objects to the list of courses in the faculty.
 		 */
-		
+		deserializeCourses();
 		ArrayList<Course> facCourses = new ArrayList<Course>();
 		for(int i=0;i<allCourses.size();i++) {
 			if(allCourses.get(i).getInstructor().equals(facultyName)) {
