@@ -2,6 +2,10 @@ package ui;
 
 import java.io.IOException;
 
+import backend.InvalidEmailException;
+import backend.PasswordNotMatchException;
+import backend.SignUp;
+import backend.WeakPasswordException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,8 +45,8 @@ public class SignUpUI {
 		String confirmPass = userConfirmPass.getText();
 
 		boolean validity = checkEmptiness(name, email, password, confirmPass);
-		if(!validity) {
-			
+		if (!validity) {
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Error!");
 			alert.setHeaderText(null);
@@ -50,22 +54,79 @@ public class SignUpUI {
 			alert.showAndWait();
 		}
 
-		
-//		Parent root;
-//		try {
-//
-//			FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
-//			root = ldr.load();
-//			Stage stage = new Stage();
-//			stage.setTitle("IIIT Delhi");
-//			stage.setScene(new Scene(root, 800, 600));
-//			stage.show();
-//
-//			((Node) (event.getSource())).getScene().getWindow().hide();
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		if (validity) {
+			SignUp page = new SignUp();
+			page.setName(name);
+			page.setEmailID(email);
+			page.setPassword(password);
+			page.setConfirmPassword(confirmPass);
+			boolean allResults = false;
+
+			try {
+				boolean emailResult = page.validateEmail();
+
+				try {
+					boolean matchResult = page.passwordMatch();
+
+					try {
+						boolean strongResult = page.checkStrongPassword();
+						allResults = true;
+
+					} catch (WeakPasswordException e) {
+
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Error!");
+						alert.setHeaderText(null);
+						alert.setContentText(e.getMessage());
+						alert.showAndWait();
+					}
+
+				} catch (PasswordNotMatchException e) {
+
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Error!");
+					alert.setHeaderText(null);
+					alert.setContentText(e.getMessage());
+					alert.showAndWait();
+				}
+
+			} catch (InvalidEmailException e) {
+
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error!");
+				alert.setHeaderText(null);
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+
+			}
+
+			if (allResults) {
+
+				
+				
+				 Parent root;
+				 try {
+				
+				 FXMLLoader ldr = new
+				 FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+				 root = ldr.load();
+				 Stage stage = new Stage();
+				 stage.setTitle("IIIT Delhi");
+				 stage.setScene(new Scene(root, 800, 600));
+				 stage.show();
+				
+				 ((Node) (event.getSource())).getScene().getWindow().hide();
+				
+				 } catch (IOException e) {
+				 e.printStackTrace();
+				 }
+				
+				
+			}
+
+		}
+
+
 	}
 
 	public boolean checkEmptiness(String enteredName, String enteredEmail, String enteredPassword,

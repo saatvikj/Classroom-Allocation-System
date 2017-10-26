@@ -43,7 +43,7 @@ public class SignUp {
 		return password;
 	}
 
-	public void setPasswword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -78,10 +78,10 @@ public class SignUp {
 		 * is a valid email ID, else returns false meghna16056@iiitd.ac.in
 		 */
 
-		if (this.getEmailID().split("\\@")[2].split("\\.")[0].equals("iiitd")) {
+		if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
 			return true;
 		} else {
-			throw new InvalidEmailException("Not a valid IIITD emailID");
+			throw new InvalidEmailException("Not a valid IIITD Email ID");
 
 		}
 	}
@@ -92,70 +92,64 @@ public class SignUp {
 		 * Length >= 8 At Least one digit and at least one alphabet Returns true
 		 * when a password is strong, false when it is not
 		 */
-		
+
 		String pass = this.password;
-		if(pass.length() >= 8)
-		{
+		if (pass.length() >= 8) {
 			boolean flag = false;
-			for(int i = 0; i < pass.length(); i++)
-			{
-				if(Character.isDigit(pass.charAt(i)))
-				{
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isDigit(pass.charAt(i))) {
 					flag = true;
 					break;
 				}
 			}
-			if(flag == true)
-			{
+			if (flag == true) {
 				boolean check = false;
-				for(int i = 0; i < pass.length(); i++)
-				{
-					if(Character.isUpperCase(pass.charAt(i)) || Character.isLowerCase(pass.charAt(i)))
-					{
+				for (int i = 0; i < pass.length(); i++) {
+					if (Character.isUpperCase(pass.charAt(i)) || Character.isLowerCase(pass.charAt(i))) {
 						check = true;
 						break;
 					}
 				}
-				if(check == true)
-				{
+				if (check == true) {
 					return true;
 				}
 			}
-				
+
 		}
-		
-		return false;
+
+		throw new WeakPasswordException("Password is weak. It must contain at least 8 characters, at least one digit and one alphabet.");
 	}
 
 	public String encryptPassword() {
 		/*
-		 * It encrypts the user’s password (safety feature) Encryption function
-		 * (to be thought of) Returns the encrypted password
+		 * It encrypts the user’s password (safety feature) Encryption
+		 * function (to be thought of) Returns the encrypted password
 		 */
-		
+
 		return md5(this.password);
 	}
-	
+
 	public static String md5(String input) {
-			
-			String md5 = null;
-			if(null == input) return null;
-			try {
-			//Create MessageDigest object for MD5
+
+		String md5 = null;
+		if (null == input)
+			return null;
+		try {
+			// Create MessageDigest object for MD5
 			MessageDigest digest = MessageDigest.getInstance("MD5");
-	
-			//Update input string in message digest
+
+			// Update input string in message digest
 			digest.update(input.getBytes(), 0, input.length());
-	
-			//Converts message digest value in base 16 (hex) 
+
+			// Converts message digest value in base 16 (hex)
 			md5 = new BigInteger(1, digest.digest()).toString(16);
-	
-			} catch (NoSuchAlgorithmException e) {
-	
-				e.printStackTrace();
-			}
-			return md5;
+
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
 		}
+		return md5;
+	}
 
 	public void addCoursesToFaculty() {
 		/*
@@ -177,7 +171,12 @@ public class SignUp {
 		 * If confirmed and entered password match, it returns true, else
 		 * returns false
 		 */
-		return (this.getPassword().equals(this.getConfirmPassword()));
+
+		if (this.getPassword().equals(this.getConfirmPassword())) {
+			return true;
+		} else {
+			throw new PasswordNotMatchException("Passwords don't match");
+		}
 	}
 
 	public void deserializeUsers() {
