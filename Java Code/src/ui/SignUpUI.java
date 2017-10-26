@@ -15,7 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -35,7 +37,50 @@ public class SignUpUI {
 
 	@FXML
 	private MenuButton userType;
-
+		
+	@FXML
+	public void admin(ActionEvent event) {
+		
+		for(MenuItem item: userType.getItems()) {
+			
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if(chk.getText().equals("Admin")) {
+				chk.setSelected(true);
+				userType.setText("Admin");
+			}
+			
+		}
+		
+	}
+	
+	@FXML
+	public void faculty(ActionEvent event) {
+		
+		for(MenuItem item: userType.getItems()) {
+			
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if(chk.getText().equals("Faculty")) {
+				chk.setSelected(true);
+			}
+			
+		}
+		
+	}
+	
+	@FXML
+	public void student(ActionEvent event) {
+		
+		for(MenuItem item: userType.getItems()) {
+			
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if(chk.getText().equals("Student")) {
+				chk.setSelected(true);
+			}
+			
+		}
+		
+	}
+	
 	@FXML
 	public void openLogin(ActionEvent event) {
 
@@ -44,6 +89,15 @@ public class SignUpUI {
 		String password = userPass.getText();
 		String confirmPass = userConfirmPass.getText();
 
+		for(MenuItem item: userType.getItems()) {
+		
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if(chk.isSelected()) {
+				System.out.println(chk.getText());
+			}
+			
+		}
+		
 		boolean validity = checkEmptiness(name, email, password, confirmPass);
 		if (!validity) {
 

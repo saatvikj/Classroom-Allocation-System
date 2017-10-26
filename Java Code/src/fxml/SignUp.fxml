@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="49.0" prefWidth="83.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SignUpUI">
+<AnchorPane prefHeight="49.0" prefWidth="83.0" stylesheets="@application.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="ui.SignUpUI">
 	<children>
 		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
@@ -15,18 +17,27 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<TextField fx:id="userName" layoutX="100.0" layoutY="182.0" prefHeight="40.0" prefWidth="600.0" promptText="Name" />
-				<TextField fx:id="userEmail" layoutX="100.0" layoutY="246.0" prefHeight="40.0" prefWidth="600.0" promptText="Email ID" />
-				<PasswordField fx:id="userPass" layoutX="100.0" layoutY="308.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
-				<PasswordField fx:id="userConfirmPass" layoutX="100.0" layoutY="372.0" prefHeight="40.0" prefWidth="600.0" promptText="Confirm Password" />
-				<MenuButton fx:id="userType" layoutX="100.0" layoutY="436.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Type of User">
+				<TextField fx:id="userName" layoutX="100.0" layoutY="182.0"
+					prefHeight="40.0" prefWidth="600.0" promptText="Name" />
+				<TextField fx:id="userEmail" layoutX="100.0" layoutY="246.0"
+					prefHeight="40.0" prefWidth="600.0" promptText="Email ID" />
+				<PasswordField fx:id="userPass" layoutX="100.0"
+					layoutY="308.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
+				<PasswordField fx:id="userConfirmPass" layoutX="100.0"
+					layoutY="372.0" prefHeight="40.0" prefWidth="600.0" promptText="Confirm Password" />
+				<MenuButton fx:id="userType" layoutX="100.0" layoutY="436.0"
+					mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Type of User">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Admin" />
-						<MenuItem mnemonicParsing="false" text="Faculty" />
-						<MenuItem mnemonicParsing="false" text="Student" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#admin" text="Admin" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#faculty"
+							text="Faculty" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#student"
+							text="Student" />
 					</items>
 				</MenuButton>
-				<Button id="button" layoutX="300.0" layoutY="516.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="REGISTER">
+				<Button id="button" layoutX="300.0" layoutY="516.0"
+					mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0"
+					prefWidth="200.0" text="REGISTER">
 					<font>
 						<Font name="Segoe UI" size="16.0" />
 					</font>
