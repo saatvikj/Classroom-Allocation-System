@@ -13,8 +13,8 @@
             <Font name="Segoe UI" size="36.0" />
          </font>
       </Label>
-      <TextField layoutX="100.0" layoutY="240.0" prefHeight="40.0" prefWidth="600.0" promptText="Email Address" />
-      <TextField layoutX="100.0" layoutY="304.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
-      <Button id="button" layoutX="300.0" layoutY="392.0" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" text="LOGIN" />
+      <TextField fx:id="userEmail" layoutX="100.0" layoutY="240.0" prefHeight="40.0" prefWidth="600.0" promptText="Email Address" />
+      <TextField fx:id="userPassword" layoutX="100.0" layoutY="304.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
+      <Button fx:id="loginButton" id="button" layoutX="300.0" layoutY="392.0" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" text="LOGIN" />
    </children>
 </Pane>

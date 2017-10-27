@@ -29,6 +29,16 @@ public class User implements Serializable {
 		this.typeOfUser = typeOfUser;
 	}
 
+	public String getTypeOfUser() {
+		return typeOfUser;
+	}
+
+
+	public void setTypeOfUser(String typeOfUser) {
+		this.typeOfUser = typeOfUser;
+	}
+
+
 	public String getName() {
 		return name;
 	}

@@ -74,6 +74,7 @@ public class Login {
 		 * It checks if that emailID is of a registered user or not. Returns
 		 * true if it is, else returns false.
 		 */
+		deserializeUsers();
 		for(int i = 0; i < listOfUsers.size(); i++)
 		{
 			if(listOfUsers.get(i).getEmailID().equals(emailID))
