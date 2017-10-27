@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import backend.Login;
@@ -28,7 +29,7 @@ public class LoginUI {
 	private TextField userPassword;
 
 	@FXML
-	private void login(ActionEvent event) {
+	private void login(ActionEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 
 		String email = userEmail.getText();
 		String password = userPassword.getText();
