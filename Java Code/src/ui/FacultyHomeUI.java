@@ -1,11 +1,14 @@
 package ui;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import backend.Faculty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FacultyHomeUI {
+public class FacultyHomeUI implements Initializable {
 
 	private Faculty currFaculty;
 
@@ -27,17 +30,21 @@ public class FacultyHomeUI {
 	@FXML
 	private Pane main;
 	
-	public void initialize() throws IOException {
-		
-		FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/FacultyHome.fxml"));
-		Parent p = (Parent) ldr.load();
-		currFaculty = (Faculty) p.getUserData();
+	@Override 
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		Parent p = null;
+		try {
+			p = FXMLLoader.load(getClass().getResource("/fxml/FacultyHome.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Faculty f = (Faculty) p.getUserData();	
+		currFaculty = f;
 		nameFaculty.setText(currFaculty.getName());
 		emailFaculty.setText(currFaculty.getEmailID());
-		
 	}
-	
-
 	
 	@FXML
 	private void showNotifications(MouseEvent event) {

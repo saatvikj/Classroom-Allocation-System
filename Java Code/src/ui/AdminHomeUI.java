@@ -2,15 +2,33 @@ package ui;
 
 import java.io.IOException;
 
+import backend.Admin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AdminHomeUI {
+	
+	private Admin currAdmin;
+	
+	@FXML
+	private Label nameAdmin;
+	
+	@FXML
+	private Label emailAdmin;
+	
+	public void initialize()
+	{
+		Parent root;
+		try{
+			root
+		}
+	}
 	
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {

@@ -36,7 +36,7 @@
 						<Insets left="20.0" />
 					</GridPane.margin>
 				</Label>
-				<Label text="Sheetu Ahuja" GridPane.columnIndex="2">
+				<Label fx:id="nameAdmin" text="Sheetu Ahuja" GridPane.columnIndex="2">
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
@@ -53,7 +53,7 @@
 					</font>
 				</Label>
 
-				<Label text="sheetu@iiitd.ac.in" GridPane.columnIndex="2">
+				<Label fx:id="emailAdmin" text="sheetu@iiitd.ac.in" GridPane.columnIndex="2">
 					<GridPane.margin>
 						<Insets right="12.0" top="54.0" />
 					</GridPane.margin>

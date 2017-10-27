@@ -220,7 +220,6 @@ public class SignUpUI {
 					 Faculty user = new Faculty(name, email, encryptedPass, typeUser);
 					 user.setCoursesTaught(page.addCoursesToFaculty(name));
 					 page.addUserToDatabase(user);
-					 System.out.println(user.getName() + " " + user.getCoursesTaught().size());
 				 }
 				 else
 				 {
