@@ -8,16 +8,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane stylesheets="@application.css" fx:id="main" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FacultyHomeUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity"
+	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+	prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FacultyHomeUI">
 	<children>
 		<GridPane>
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="150.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="150.0" prefHeight="30.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
 				<Label id="homeHead" alignment="CENTER" text="Home">
@@ -28,7 +35,8 @@
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
 				</Label>
-				<Label id="notifHead" onMouseClicked="#showNotifications" text="Notifications" GridPane.columnIndex="1">
+				<Label id="notifHead" onMouseClicked="#showNotifications"
+					text="Notifications" GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -36,7 +44,8 @@
 						<Insets left="20.0" />
 					</GridPane.margin>
 				</Label>
-				<Label fx:id="nameFaculty" text="Vivek Kumar" GridPane.columnIndex="2">
+				<Label fx:id="nameFaculty" text="Vivek Kumar"
+					GridPane.columnIndex="2">
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
@@ -53,7 +62,8 @@
 					</font>
 				</Label>
 
-				<Label fx:id="emailFaculty" text="vivekk@iiitd.ac.in" GridPane.columnIndex="2">
+				<Label fx:id="emailFaculty" text="vivekk@iiitd.ac.in"
+					GridPane.columnIndex="2">
 					<GridPane.margin>
 						<Insets right="12.0" top="54.0" />
 					</GridPane.margin>
@@ -64,28 +74,36 @@
 
 			</children>
 		</GridPane>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0" layoutY="300.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true" preserveRatio="true">
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0"
+			layoutY="300.0" onMouseClicked="#viewBookedRooms" pickOnBounds="true"
+			preserveRatio="true">
 			<image>
-	            <Image url="/res/search.png" />
-	         </image>
-         </ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0" layoutY="300.0" onMouseClicked="#makeBooking" pickOnBounds="true" preserveRatio="true">
-			<image>
-            	<Image url="/res/create.png" />
-         	</image>
-         </ImageView>
-		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0" layoutY="300.0" onMouseClicked="#cancelBooking" pickOnBounds="true" preserveRatio="true">
-			<image>
-            	<Image url="/res/cancel.png" />
-         	</image>
+				<Image url="/res/search.png" />
+			</image>
 		</ImageView>
-      <Label layoutX="82.0" layoutY="408.0" text="View Booked Rooms" />
-      <Label layoutX="346.0" layoutY="408.0" text="Make A Booking" />
-      <Label layoutX="592.0" layoutY="408.0" text="Cancel A Booking" />
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0" layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="350.0"
+			layoutY="300.0" onMouseClicked="#makeBooking" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/create.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="600.0"
+			layoutY="300.0" onMouseClicked="#cancelBooking" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/cancel.png" />
+			</image>
+		</ImageView>
+		<Label layoutX="82.0" layoutY="408.0" text="View Booked Rooms" />
+		<Label layoutX="346.0" layoutY="408.0" text="Make A Booking" />
+		<Label layoutX="592.0" layoutY="408.0" text="Cancel A Booking" />
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0"
+			layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </Pane>

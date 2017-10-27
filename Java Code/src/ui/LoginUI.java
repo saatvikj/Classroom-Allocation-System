@@ -103,24 +103,27 @@ public class LoginUI {
 					Parent root;
 					try {
 
-						root = FXMLLoader.load(getClass().getResource(path));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 						Stage stage = new Stage();
 						stage.setTitle("IIIT Delhi");
-
+						stage.setScene(new Scene((Parent) loader.load(), 800, 600));
 						if (typeOfUser.equals("Admin")) {
 							Admin admin = (Admin) page.getLoggedInUser();
-							root.setUserData(admin);
+							AdminHomeUI controller = loader.<AdminHomeUI>getController();
+							controller.currAdmin = admin;
+							controller.populate();
 						} else if (typeOfUser.equals("Faculty")) {
 							Faculty faculty = (Faculty) page.getLoggedInUser();
-							root.setUserData(faculty);
+							FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
+							controller.currFaculty = faculty;
+							controller.populate();
 						} else {
 							Student student = (Student) page.getLoggedInUser();
-							root.setUserData(student);
+							StudentHomeUI controller = loader.<StudentHomeUI>getController();
+							controller.currStudent = student;
+							controller.populate();
 						}
-
-						stage.setScene(new Scene(root, 800, 600));
 						stage.show();
-
 						((Node) (event.getSource())).getScene().getWindow().hide();
 
 					} catch (IOException e) {

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
+
 import backend.Faculty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,35 +19,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FacultyHomeUI implements Initializable {
+public class FacultyHomeUI {
 
-	private Faculty currFaculty;
+	public Faculty currFaculty;
 
 	@FXML
 	private Label nameFaculty;
-	
+
 	@FXML
 	private Label emailFaculty;
-	
-	@FXML
-	private Pane main;
-	
-	@Override 
-	public void initialize(URL location, ResourceBundle resources)
-	{
-		Parent p = null;
-		try {
-			p = FXMLLoader.load(getClass().getResource("/fxml/FacultyHome.fxml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Faculty f = (Faculty) p.getUserData();	
-		currFaculty = f;
+
+	public void initialize() {
+
+	}
+
+	public void populate() {
 		nameFaculty.setText(currFaculty.getName());
 		emailFaculty.setText(currFaculty.getEmailID());
 	}
-	
+
 	@FXML
 	private void showNotifications(MouseEvent event) {
 
@@ -102,7 +94,7 @@ public class FacultyHomeUI implements Initializable {
 		}
 
 	}
-	
+
 	@FXML
 	private void makeBooking(MouseEvent event) {
 
@@ -121,7 +113,7 @@ public class FacultyHomeUI implements Initializable {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -140,6 +132,5 @@ public class FacultyHomeUI implements Initializable {
 		}
 
 	}
-	
-	
+
 }
