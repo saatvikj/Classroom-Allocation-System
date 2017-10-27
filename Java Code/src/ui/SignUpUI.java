@@ -5,12 +5,13 @@ import java.io.IOException;
 
 import backend.Admin;
 import backend.Faculty;
-import backend.InvalidEmailException;
-import backend.PasswordNotMatchException;
 import backend.SignUp;
 import backend.Student;
 import backend.User;
-import backend.WeakPasswordException;
+import exceptions.AlreadyRegisteredUserException;
+import exceptions.InvalidEmailException;
+import exceptions.PasswordNotMatchException;
+import exceptions.WeakPasswordException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -159,6 +160,7 @@ public class SignUpUI {
 			boolean allResults = false;
 
 			try {
+				boolean registeredResult = page.alreadyRegistered();
 				boolean emailResult = page.validateEmail();
 
 				try {
@@ -194,6 +196,14 @@ public class SignUpUI {
 				alert.setContentText(e.getMessage());
 				alert.showAndWait();
 
+			} catch (AlreadyRegisteredUserException e) {
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error!");
+				alert.setHeaderText(null);
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+				
 			}
 
 			if (allResults) {

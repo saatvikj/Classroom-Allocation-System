@@ -5,6 +5,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import exceptions.InvalidEmailException;
+import exceptions.UnregisteredUserExcpetion;
+import exceptions.WrongPasswordException;
+
 public class Login {
 
 	private String emailID;

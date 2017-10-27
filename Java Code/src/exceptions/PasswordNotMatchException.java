@@ -1,4 +1,4 @@
-package backend;
+package exceptions;
 
 public class PasswordNotMatchException extends Exception {
 	

@@ -1,4 +1,4 @@
-package backend;
+package exceptions;
 
 public class NoResultFoundException extends Exception {
 	

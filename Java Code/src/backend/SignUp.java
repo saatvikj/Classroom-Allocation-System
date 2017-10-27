@@ -12,6 +12,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import exceptions.AlreadyRegisteredUserException;
+import exceptions.InvalidEmailException;
+import exceptions.PasswordNotMatchException;
+import exceptions.WeakPasswordException;
+
 public class SignUp {
 
 	private String name;
@@ -202,6 +207,19 @@ public class SignUp {
 		} else {
 			throw new PasswordNotMatchException("Passwords don't match");
 		}
+	}
+	
+	public boolean alreadyRegistered() throws AlreadyRegisteredUserException, FileNotFoundException, ClassNotFoundException, IOException {
+		
+		deserializeUsers();
+		for(int i=0;i<listOfUsers.size();i++) {
+			if(listOfUsers.get(i).getEmailID().equals(emailID)) {
+				throw new AlreadyRegisteredUserException("User is already registered!");
+			}
+		}
+		
+		return false;
+		
 	}
 
 	public void deserializeUsers() throws FileNotFoundException, IOException, ClassNotFoundException {

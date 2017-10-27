@@ -3,6 +3,8 @@ package backend;
 import java.util.ArrayList;
 import java.util.Map;
 
+import exceptions.NoResultFoundException;
+
 public class Student extends User{
 	
 	private Map<Slot, Course> timetable;
