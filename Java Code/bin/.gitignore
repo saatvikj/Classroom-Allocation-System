@@ -1,4 +1,7 @@
+/.classpath
+/.project
 /backend/
+/exceptions/
+/fxml/
 /res/
 /ui/
-/exceptions/

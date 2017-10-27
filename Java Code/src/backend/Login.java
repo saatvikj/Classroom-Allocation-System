@@ -160,7 +160,6 @@ public class Login {
 
 				while (true) {
 					user = (User) in.readObject();
-					System.out.println(user.getName());
 					listOfUsers.add(user);
 				}
 

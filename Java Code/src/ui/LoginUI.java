@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class LoginUI {
 	private TextField userEmail;
 
 	@FXML
-	private TextField userPassword;
+	private PasswordField userPassword;
 
 	@FXML
 	private void login(ActionEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
@@ -87,12 +88,19 @@ public class LoginUI {
 
 				try {
 					String typeOfUser = page.getLoggedInUser().getTypeOfUser();
-					
+					String path;
+
+					if (typeOfUser.equals("Admin")) {
+						path = "/fxml/AdminHome.fxml";
+					} else if (typeOfUser.equals("Faculty")) {
+						path = "/fxml/FacultyHome.fxml";
+					} else {
+						path = "/fxml/StudentHome.fxml";
+					}
 					Parent root;
 					try {
-						
-						System.out.println("Login successful");
-						root = FXMLLoader.load(getClass().getResource("/fxml/StudentHome.fxml"));
+
+						root = FXMLLoader.load(getClass().getResource(path));
 						Stage stage = new Stage();
 						stage.setTitle("IIIT Delhi");
 						stage.setScene(new Scene(root, 800, 600));
@@ -103,8 +111,7 @@ public class LoginUI {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-				
-				
+
 				} catch (UnregisteredUserExcpetion e) {
 					// TODO Auto-generated catch block
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -113,8 +120,6 @@ public class LoginUI {
 					alert.setContentText(e.getMessage());
 					alert.showAndWait();
 				}
-
-
 
 			}
 
