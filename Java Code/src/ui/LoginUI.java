@@ -3,7 +3,10 @@ package ui;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import backend.Admin;
+import backend.Faculty;
 import backend.Login;
+import backend.Student;
 import exceptions.InvalidEmailException;
 import exceptions.PasswordNotMatchException;
 import exceptions.UnregisteredUserExcpetion;
@@ -103,6 +106,18 @@ public class LoginUI {
 						root = FXMLLoader.load(getClass().getResource(path));
 						Stage stage = new Stage();
 						stage.setTitle("IIIT Delhi");
+
+						if (typeOfUser.equals("Admin")) {
+							Admin admin = (Admin) page.getLoggedInUser();
+							root.setUserData(admin);
+						} else if (typeOfUser.equals("Faculty")) {
+							Faculty faculty = (Faculty) page.getLoggedInUser();
+							root.setUserData(faculty);
+						} else {
+							Student student = (Student) page.getLoggedInUser();
+							root.setUserData(student);
+						}
+
 						stage.setScene(new Scene(root, 800, 600));
 						stage.show();
 
