@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FacultyHomeUI">
+<Pane stylesheets="@application.css" fx:id="main" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FacultyHomeUI">
 	<children>
 		<GridPane>
 			<columnConstraints>
@@ -36,7 +36,7 @@
 						<Insets left="20.0" />
 					</GridPane.margin>
 				</Label>
-				<Label text="Vivek Kumar" GridPane.columnIndex="2">
+				<Label fx:id="nameFaculty" text="Vivek Kumar" GridPane.columnIndex="2">
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
@@ -53,7 +53,7 @@
 					</font>
 				</Label>
 
-				<Label text="vivekk@iiitd.ac.in" GridPane.columnIndex="2">
+				<Label fx:id="emailFaculty" text="vivekk@iiitd.ac.in" GridPane.columnIndex="2">
 					<GridPane.margin>
 						<Insets right="12.0" top="54.0" />
 					</GridPane.margin>
