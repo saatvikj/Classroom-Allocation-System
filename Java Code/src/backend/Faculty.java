@@ -28,8 +28,5 @@ public class Faculty extends User {
 
 	}
 
-	public void serialize() {
-
-	}
 
 }

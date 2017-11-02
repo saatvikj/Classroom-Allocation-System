@@ -91,6 +91,8 @@ public class User implements Serializable {
 		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
 		 * with reqSlot as the parameter.
 		 */
+		
+		
 		return true;
 	}
 
@@ -116,5 +118,16 @@ public class User implements Serializable {
 		 * request status for student etc etc)
 		 */
 	}
+	
+	public void deserialize()
+	{
+		
+	}
+	
+	public void seialize()
+	{
+		
+	}
+	
 
 }

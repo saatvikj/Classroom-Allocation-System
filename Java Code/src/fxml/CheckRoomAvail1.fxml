@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail1UI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail1UI">
 	<children>
 		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160" text="CHECK ROOM AVAILABILITY">
 			<font>
@@ -18,7 +18,7 @@
 		<TextField layoutX="76.0" layoutY="220.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred Room" />
 		<TextField layoutX="76.0" layoutY="284.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter required Capacity" />
 		<DatePicker layoutX="76.0" layoutY="348.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred date" />
-		<Button id="button" layoutX="300.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#confirmBooking" prefHeight="50.0" prefWidth="200.0" text="CHECK">
+		<Button id="button" layoutX="300.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#confirmBooking" prefHeight="50.0" prefWidth="200.0" text="CHECK">
 			<font>
 				<Font size="16.0" />
 			</font>
@@ -74,6 +74,7 @@
             <Image url="/res/logouticon.png" />
          </image>
       </ImageView>
+      <TextField layoutX="76.0" layoutY="412.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter time slot" />
 
 	</children>
 </Pane>
