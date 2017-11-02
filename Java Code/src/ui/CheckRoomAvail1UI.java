@@ -1,9 +1,11 @@
 package ui;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
 import java.sql.Time;
 
+import backend.ClassRoom;
 import backend.Slot;
 import backend.User;
 import javafx.fxml.FXML;
@@ -19,7 +21,7 @@ import javafx.stage.Stage;
 
 public class CheckRoomAvail1UI {
 
-	public String[] daysOfWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+	public String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 	public User currUser;
 
 	@FXML
@@ -44,7 +46,7 @@ public class CheckRoomAvail1UI {
 	private DatePicker date;
 
 	@FXML
-	private void confirmBooking(MouseEvent event) {
+	private void confirmBooking(MouseEvent event) throws ClassNotFoundException {
 
 		Parent root;
 		try {
@@ -55,8 +57,9 @@ public class CheckRoomAvail1UI {
 			stage.show();
 
 			Date dt;
-			dt = new Date(date.getValue().getYear(), date.getValue().getMonthValue(), date.getValue().getDayOfMonth());
-			String day = daysOfWeek[dt.getDay()];
+			String dat[] = date.getValue().toString().split("\\-");
+			dt = new Date(Integer.parseInt(dat[0]) - 1900, Integer.parseInt(dat[1]) - 1, Integer.parseInt(dat[2]));
+			String day = daysOfWeek[date.getValue().getDayOfWeek().getValue() - 1];
 			String timeSlot = slot.getText();
 
 			String startTime = timeSlot.split("\\-")[0];
@@ -69,7 +72,16 @@ public class CheckRoomAvail1UI {
 			Time eTime = new Time(endTimeHour, endTimeMinute, 0);
 
 			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
+			ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
+
+			ArrayList<ClassRoom> yay = currUser.checkRoomAvailability(userRoom, userSlot);
 			
+			for (int i = 0; i < yay.size(); i++) {
+
+				System.out.println(yay.get(i).getRoomNumber());
+
+			}
+
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {

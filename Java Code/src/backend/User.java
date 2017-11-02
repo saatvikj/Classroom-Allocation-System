@@ -88,31 +88,40 @@ public class User implements Serializable {
 		 */
 	}
 
-	public boolean checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot) throws ClassNotFoundException, IOException {
+	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot) throws ClassNotFoundException, IOException {
 		/*
 		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
 		 * with reqSlot as the parameter.
 		 */
 		deserializeRooms();
+		
+		ArrayList<ClassRoom> eligibleRooms = new ArrayList<ClassRoom>();
+		
 		for(int i = 0; i < allRooms.size(); i++)
 		{
 			ClassRoom cr = allRooms.get(i);
 			String day = reqSlot.getDay();
-			Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
-			Iterator it = dayMap.entrySet().iterator();
-			boolean res = true;
-			while(it.hasNext()){
-				Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>)it.next();
-				Slot slt = pair.getKey();
-				res = res && checkIfValidSlot(slt, reqSlot);
+			if(allRooms.get(i).getBookedSlots().containsKey(day))
+			{
+				Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
+				System.out.println(dayMap);
+				Iterator it = dayMap.entrySet().iterator();
+				boolean res = true;
+				while(it.hasNext()){
+					Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>)it.next();
+					Slot slt = pair.getKey();
+					res = res && checkIfValidSlot(slt, reqSlot);
+					
+				}
+	
+				if(res) {
+					eligibleRooms.add(cr);
+				}
 				
 			}
-			return res;
-				
-			
 		}
 
-		return true;
+		return eligibleRooms;
 	}
 	
 	public boolean checkIfValidSlot(Slot slot1, Slot slot2)
@@ -182,7 +191,7 @@ public class User implements Serializable {
 		 */
 
 		ObjectInputStream in = null;
-
+		allRooms = new ArrayList<ClassRoom>();
 		try {
 
 			in = new ObjectInputStream(new FileInputStream("./src/res/rooms.txt"));
@@ -207,7 +216,9 @@ public class User implements Serializable {
 
 	}
 	
-	public ClassRoom getCorrespondingRoom(String venue) {
+	public ClassRoom getCorrespondingRoom(String venue) throws ClassNotFoundException, IOException {
+		
+		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
 			if (allRooms.get(i).getRoomNumber().equals(venue)) {
 				return allRooms.get(i);
