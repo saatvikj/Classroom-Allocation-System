@@ -60,19 +60,34 @@ public class DatabaseGenerator {
 
 		for (int i = 6; i <= 10; i++) {
 
-			if (!(details[i].equals("-"))) {
-				String[] splitDateVenue = details[i].split("\\$");
-				String roomName = splitDateVenue[1];
+			String[] subdetails = details[i].split("\\~");
+			for(int j = 0; j < 3; j++)
+			{
+				makeRoom(subdetails[j]);
+			}
+		}
+
+	}
+	
+	public void makeRoom(String bookingDetails){
+		
+		
+		if (!(bookingDetails.equals("-"))) {
+			String[] details = bookingDetails.split("\\$");
+			for(int i = 1; i < details.length; i++)
+			{
+				String roomName = details[i];
 				if (checkNewRoom(roomName)) {
 					ClassRoom rm = new ClassRoom();
 					rm.setRoomNumber(roomName);
 					rm.setCapacity(100);
 					allRooms.add(rm);
 				}
-
+				
 			}
-		}
 
+		}
+	
 	}
 
 	public boolean checkNewRoom(String roomName) {
@@ -306,13 +321,13 @@ public class DatabaseGenerator {
 
 		ob.populateRooms();
 
-		ob.populateCourses();
+//		ob.populateCourses();
 
-		ob.bookSlots();
+//		ob.bookSlots();
 
 		ob.serializeRooms();
 
-		ob.serializeCourses();
+//		ob.serializeCourses();
 
 //		for (int i = 0; i < ob.allRooms.size(); i++) {
 //
