@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 
+import backend.Admin;
 import backend.Faculty;
+import backend.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,12 +64,16 @@ public class FacultyHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			BookedRoomsUI controller = loader.<BookedRoomsUI>getController();
+			controller.currUser = currFaculty;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {
@@ -76,6 +82,8 @@ public class FacultyHomeUI {
 
 	}
 
+	
+	
 	@FXML
 	private void cancelBooking(MouseEvent event) {
 
@@ -100,12 +108,16 @@ public class FacultyHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
+			controller.currUser = currFaculty;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {

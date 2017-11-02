@@ -2,7 +2,7 @@ package backend;
 
 import java.util.ArrayList;
 
-public class Admin extends User{
+public class Admin extends User {
 	
 	private ArrayList<Request> listOfRequests;
 	

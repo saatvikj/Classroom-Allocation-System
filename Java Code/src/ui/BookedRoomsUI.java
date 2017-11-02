@@ -2,15 +2,28 @@ package ui;
 
 import java.io.IOException;
 
+import backend.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class BookedRoomsUI {
+	
+	public User currUser;
+	
+	@FXML
+	private Label name;
+
+	@FXML
+	private Label email;
+
+	@FXML
+	private Label title;
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
@@ -29,6 +42,12 @@ public class BookedRoomsUI {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void populate() {
+		name.setText(currUser.getName());
+		email.setText(currUser.getEmailID());
+		title.setText(currUser.getTypeOfUser().toUpperCase());
 	}
 	
 	@FXML

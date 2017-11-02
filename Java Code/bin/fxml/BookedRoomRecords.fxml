@@ -10,20 +10,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BookedRoomsUI">
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BookedRoomsUI">
 	<children>
-		<Pane prefHeight="600.0" prefWidth="800.0" id="homePane">
+		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 
 				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 					<columnConstraints>
-						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="575.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="150.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
+						<Label fx:id="email" alignment="CENTER_RIGHT"
+							contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 							<font>
 								<Font name="Segoe UI Bold" size="14.0" />
 							</font>
@@ -32,7 +36,7 @@
 							</GridPane.margin>
 						</Label>
 
-						<Label text="ADMIN">
+						<Label fx:id="title" text="ADMIN">
 							<font>
 								<Font name="Segoe UI Bold" size="24.0" />
 							</font>
@@ -41,7 +45,7 @@
 							</GridPane.margin>
 						</Label>
 
-						<Label text="Sheetu Ahuja">
+						<Label fx:id="name" text="Sheetu Ahuja">
 							<font>
 								<Font name="Segoe UI Bold" size="24.0" />
 							</font>
@@ -54,12 +58,14 @@
 
 
 
-				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="BOOKED ROOM RECORDS">
+				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+					text="BOOKED ROOM RECORDS">
 					<font>
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="200.0">
+				<ListView layoutX="76.0" layoutY="240.0" prefHeight="250.0"
+					prefWidth="200.0">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 							<String fx:value="C11, Dated: 12/10/2017" />
@@ -75,38 +81,53 @@
 						<Label text="ROOM" />
 						<Label text="C01" GridPane.columnIndex="1" />
 						<Label text="ROOM CAPACITY" GridPane.rowIndex="1" />
-						<Label text="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Label text="200" GridPane.columnIndex="1"
+							GridPane.rowIndex="1" />
 						<Label text="REQUIRED CAPACITY" GridPane.rowIndex="2" />
-						<Label text="130" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<Label text="130" GridPane.columnIndex="1"
+							GridPane.rowIndex="2" />
 						<Label text="TIME SLOT" GridPane.rowIndex="3" />
-						<Label text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<Label text="11th October, 11:30-1" GridPane.columnIndex="1"
+							GridPane.rowIndex="3" />
 					</children>
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="150.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="200.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 				</GridPane>
-            <ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="/res/home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="/res/back.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="/res/logouticon.png" />
-               </image>
-            </ImageView>
+				<ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0"
+					onMouseClicked="#homeButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/home.png" />
+					</image>
+				</ImageView>
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+					layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/back.png" />
+					</image>
+				</ImageView>
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+					layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/logouticon.png" />
+					</image>
+				</ImageView>
 			</children>
 		</Pane>
 	</children>
