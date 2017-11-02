@@ -1,11 +1,16 @@
 package backend;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 public class User implements Serializable {
-
 
 	private static final long serialVersionUID = 1L;
 	protected String name;
@@ -14,13 +19,12 @@ public class User implements Serializable {
 	protected Map<Slot, ClassRoom> bookedRooms;
 	protected String typeOfUser;
 	public ArrayList<String> listOfNotifications;
+	private ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
 	public User() {
-		
-		
+
 	}
-	
-	
+
 	public User(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super();
 		this.name = name;
@@ -33,11 +37,9 @@ public class User implements Serializable {
 		return typeOfUser;
 	}
 
-
 	public void setTypeOfUser(String typeOfUser) {
 		this.typeOfUser = typeOfUser;
 	}
-
 
 	public String getName() {
 		return name;
@@ -86,14 +88,60 @@ public class User implements Serializable {
 		 */
 	}
 
-	public boolean checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot) {
+	public boolean checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot) throws ClassNotFoundException, IOException {
 		/*
 		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
 		 * with reqSlot as the parameter.
 		 */
-		
-		
+		deserializeRooms();
+		for(int i = 0; i < allRooms.size(); i++)
+		{
+			ClassRoom cr = allRooms.get(i);
+			String day = reqSlot.getDay();
+			Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
+			Iterator it = dayMap.entrySet().iterator();
+			boolean res = true;
+			while(it.hasNext()){
+				Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>)it.next();
+				Slot slt = pair.getKey();
+				res = res && checkIfValidSlot(slt, reqSlot);
+				
+			}
+			return res;
+				
+			
+		}
+
 		return true;
+	}
+	
+	public boolean checkIfValidSlot(Slot slot1, Slot slot2)
+	{
+		if(slot1.equals(slot2)){
+			if((slot1.getDate().equals(new Date(0000, 00, 00)))){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		else
+		{
+			
+			if((slot1.getStartTime().getHours() < slot2.getStartTime().getHours()) || ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours()) && ((slot1.getStartTime().getMinutes() < slot2.getStartTime().getMinutes()))))
+			{
+				if(slot1.getEndTime().getHours() <= slot2.getStartTime().getHours()){
+					return true;
+				}
+			}
+			else if((slot1.getStartTime().getHours() > slot2.getStartTime().getHours()) || ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours()) && ((slot1.getStartTime().getMinutes() > slot2.getStartTime().getMinutes())))){
+				if(slot2.getEndTime().getHours() <= slot1.getStartTime().getHours()){
+					return true;
+				}
+			}
+			
+		}
+		return false;
 	}
 
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot) {
@@ -101,6 +149,7 @@ public class User implements Serializable {
 		 * It calls the method makeBooking of the reqRoom object with reqSlot as
 		 * the first parameter rest is handled by inheritance (comment).
 		 */
+
 	}
 
 	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot) {
@@ -118,15 +167,53 @@ public class User implements Serializable {
 		 * request status for student etc etc)
 		 */
 	}
-	
-	public void deserialize()
-	{
-		
+
+	public void deserialize() {
+
+	}
+
+	public void seialize() {
+
 	}
 	
-	public void seialize()
-	{
-		
+	public void deserializeRooms() throws IOException, ClassNotFoundException {
+		/*
+		 * Deserialize the file listofcourses.txt into the arraylist
+		 */
+
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/rooms.txt"));
+			ClassRoom room;
+
+			try {
+
+				while (true) {
+					room = (ClassRoom) in.readObject();
+					allRooms.add(room);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} finally {
+
+			in.close();
+
+		}
+
+	}
+	
+	public ClassRoom getCorrespondingRoom(String venue) {
+		for (int i = 0; i < allRooms.size(); i++) {
+			if (allRooms.get(i).getRoomNumber().equals(venue)) {
+				return allRooms.get(i);
+			}
+		}
+		return null;
 	}
 	
 
