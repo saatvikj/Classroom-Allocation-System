@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class AdminHomeUI {
 	
-	private Admin currAdmin;
+	public Admin currAdmin;
 	
 	@FXML
 	private Label nameAdmin;
@@ -24,10 +24,12 @@ public class AdminHomeUI {
 	
 	public void initialize()
 	{
-		Parent root;
-		try{
-			root
-		}
+		
+	}
+	
+	public void populate() {
+		nameAdmin.setText(currAdmin.getName());
+		emailAdmin.setText(currAdmin.getEmailID());
 	}
 	
 	@FXML

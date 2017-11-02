@@ -2,16 +2,36 @@ package ui;
 
 import java.io.IOException;
 
+import backend.Student;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class StudentHomeUI {
 	
+	public Student currStudent;
+	
+	@FXML
+	private Label nameStudent;
+	
+	@FXML
+	private Label emailStudent;
+	
+	public void initialize()
+	{
+		
+	}
+	
+	public void populate()
+	{
+		nameStudent.setText(currStudent.getName());
+		emailStudent.setText(currStudent.getEmailID());
+	}
 	
 	@FXML
 	private void showNotifications(MouseEvent event) {
