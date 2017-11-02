@@ -7,8 +7,14 @@ import java.util.Date;
 public class Slot implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String TYPE_LECTURE = "Lecture";
+	public static final String TYPE_TUTORIAL = "Tutorial";
+	public static final String TYPE_LAB = "Lab";
+	public static final String TYPE_OTHER = "Other";
 	private Date date;
 	private String day;
+	private String purpose;
 	private Time startTime;
 	private Time endTime;
 
@@ -16,15 +22,18 @@ public class Slot implements Serializable {
 
 	}
 	
-	
 
-	public Slot(Date date, String day, Time startTime, Time endTime) {
+
+	public Slot(Date date, String day, String purpose, Time startTime, Time endTime) {
 		super();
 		this.date = date;
 		this.day = day;
+		this.purpose = purpose;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
+
+
 
 
 
@@ -35,7 +44,8 @@ public class Slot implements Serializable {
 
 		return ((this.date.compareTo(newSlot.date) == 0) && this.day.equals(newSlot.day)
 				&& this.startTime.getTime() == newSlot.startTime.getTime()
-				&& this.endTime.getTime() == newSlot.endTime.getTime());
+				&& this.endTime.getTime() == newSlot.endTime.getTime()
+				&& this.purpose.equals(newSlot.purpose));
 
 	}
 

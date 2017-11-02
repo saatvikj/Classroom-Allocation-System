@@ -1,0 +1,7 @@
+/AlreadyRegisteredUserException.class
+/InvalidEmailException.class
+/NoResultFoundException.class
+/PasswordNotMatchException.class
+/UnregisteredUserExcpetion.class
+/WeakPasswordException.class
+/WrongPasswordException.class
