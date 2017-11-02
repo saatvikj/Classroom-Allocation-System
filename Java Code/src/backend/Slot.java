@@ -8,10 +8,7 @@ public class Slot implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final String TYPE_LECTURE = "Lecture";
-	public static final String TYPE_TUTORIAL = "Tutorial";
-	public static final String TYPE_LAB = "Lab";
-	public static final String TYPE_OTHER = "Other";
+	public static final String[] TYPES = {"Lecture","Lab","Tutorial","Other"};
 	private Date date;
 	private String day;
 	private String purpose;
