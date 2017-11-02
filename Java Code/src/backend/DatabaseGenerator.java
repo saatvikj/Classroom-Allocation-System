@@ -183,10 +183,6 @@ public class DatabaseGenerator {
 
 	}
 
-	public void setCourseDetails(String details, int type) {
-
-	}
-
 	public void bookSlots() {
 		BufferedReader br = null;
 		String line = "";
@@ -201,45 +197,55 @@ public class DatabaseGenerator {
 					String[] courseDetails = line.split(splitby);
 					for (int i = 6; i <= 10; i++) {
 
-						if (!(courseDetails[i].equals("-"))) {
-							String[] splitDateVenue = courseDetails[i].split("\\$");
-							String roomName = splitDateVenue[1];
+						String[] courseSubDetails = courseDetails[i].split("\\~");
 
-							Date dt = new Date(0000, 00, 00);
-							String startTime = splitDateVenue[0].split("\\-")[0];
-							int startTimeHour = Integer.parseInt(startTime.split("\\:")[0]);
-							int startTimeMinute = Integer.parseInt(startTime.split("\\:")[1]);
-							Time sTime = new Time(startTimeHour, startTimeMinute, 0);
-							String endTime = splitDateVenue[0].split("\\-")[1];
-							int endTimeHour = Integer.parseInt(endTime.split("\\:")[0]);
-							int endTimeMinute = Integer.parseInt(endTime.split("\\:")[1]);
-							Time eTime = new Time(endTimeHour, endTimeMinute, 0);
-							Slot slt = new Slot(dt, this.daysOfWeek[i - 6], sTime, eTime);
-							ClassRoom c = getCorrespondingRoom(roomName);
-							Course crs = getCorrespondingCourse(courseDetails[1]);
+						for (int j = 0; j < 3; j++) {
 
-							Map<String, Map<Slot, Object>> newMap = c.getBookedSlots();
+							if (!(courseSubDetails[j].equals("-"))) {
 
-							if (newMap.containsKey(this.daysOfWeek[i - 6])) {
+								String[] splitDateVenue = courseSubDetails[j].split("\\$");
+								Date dt = new Date(0000, 00, 00);
+								String startTime = splitDateVenue[0].split("\\-")[0];
+								int startTimeHour = Integer.parseInt(startTime.split("\\:")[0]);
+								int startTimeMinute = Integer.parseInt(startTime.split("\\:")[1]);
+								Time sTime = new Time(startTimeHour, startTimeMinute, 0);
+								String endTime = splitDateVenue[0].split("\\-")[1];
+								int endTimeHour = Integer.parseInt(endTime.split("\\:")[0]);
+								int endTimeMinute = Integer.parseInt(endTime.split("\\:")[1]);
+								Time eTime = new Time(endTimeHour, endTimeMinute, 0);
+								String purpose = Slot.TYPES[j];
+								Slot slt = new Slot(dt, this.daysOfWeek[i - 6], purpose, sTime, eTime);
 
-								newMap.get(this.daysOfWeek[i - 6]).put(slt, crs);
+								for (int k = 1; k < splitDateVenue.length; k++) {
+									String roomName = splitDateVenue[k];
+									ClassRoom c = getCorrespondingRoom(roomName);
+									Course crs = getCorrespondingCourse(courseDetails[1]);
 
-							} else {
+									Map<String, Map<Slot, Object>> newMap = c.getBookedSlots();
 
-								Map<Slot, Object> map = new HashMap<Slot, Object>();
-								map.put(slt, crs);
-								newMap.put(this.daysOfWeek[i - 6], map);
+									if (newMap.containsKey(this.daysOfWeek[i - 6])) {
+
+										newMap.get(this.daysOfWeek[i - 6]).put(slt, crs);
+
+									} else {
+
+										Map<Slot, Object> map = new HashMap<Slot, Object>();
+										map.put(slt, crs);
+										newMap.put(this.daysOfWeek[i - 6], map);
+
+									}
+
+									c.setBookedSlots(newMap);
+
+								}
 
 							}
-
-							c.setBookedSlots(newMap);
 
 						}
 
 					}
 
 				}
-
 			}
 		} catch (FileNotFoundException e) {
 			// TODO: handle exception
@@ -339,24 +345,21 @@ public class DatabaseGenerator {
 
 		ob.serializeRooms();
 
-		// ob.serializeCourses();
+		ob.serializeCourses();
 
-		// for (int i = 0; i < ob.allRooms.size(); i++) {
-		//
-		// for (int j = 0; j < ob.daysOfWeek.length; j++) {
-		// if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) !=
-		// null) {
-		// Map<Slot, Object> m =
-		// ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
-		// Iterator it = m.entrySet().iterator();
-		// while (it.hasNext()) {
-		// Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
-		// System.out.println(mm.getKey().toString() + " " + ((Course)
-		// mm.getValue()).getCourseName());
-		// }
-		// }
-		// }
-		// }
+//		for (int i = 0; i < ob.allRooms.size(); i++) {
+//
+//			for (int j = 0; j < ob.daysOfWeek.length; j++) {
+//				if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) != null) {
+//					Map<Slot, Object> m = ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
+//					Iterator it = m.entrySet().iterator();
+//					while (it.hasNext()) {
+//						Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
+//						System.out.println(mm.getKey().toString() + " " + ((Course) mm.getValue()).getCourseName());
+//					}
+//				}
+//			}
+//		}
 
 	}
 
