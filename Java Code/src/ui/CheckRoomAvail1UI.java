@@ -61,6 +61,8 @@ public class CheckRoomAvail1UI {
 			dt = new Date(Integer.parseInt(dat[0]) - 1900, Integer.parseInt(dat[1]) - 1, Integer.parseInt(dat[2]));
 			String day = daysOfWeek[date.getValue().getDayOfWeek().getValue() - 1];
 			String timeSlot = slot.getText();
+			String requiredCap = reqCapacity.getText();
+			int reqcap = Integer.parseInt(requiredCap);
 
 			String startTime = timeSlot.split("\\-")[0];
 			int startTimeHour = Integer.parseInt(startTime.split("\\:")[0]);
@@ -74,7 +76,7 @@ public class CheckRoomAvail1UI {
 			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
 			ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
 
-			ArrayList<ClassRoom> yay = currUser.checkRoomAvailability(userRoom, userSlot);
+			ArrayList<ClassRoom> yay = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
 			
 			for (int i = 0; i < yay.size(); i++) {
 

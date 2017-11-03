@@ -88,7 +88,7 @@ public class User implements Serializable {
 		 */
 	}
 
-	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot) throws ClassNotFoundException, IOException {
+	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot, int reqCap) throws ClassNotFoundException, IOException {
 		/*
 		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
 		 * with reqSlot as the parameter.
@@ -101,7 +101,7 @@ public class User implements Serializable {
 		{
 			ClassRoom cr = allRooms.get(i);
 			String day = reqSlot.getDay();
-			if(allRooms.get(i).getBookedSlots().containsKey(day))
+			if(allRooms.get(i).getBookedSlots().containsKey(day) && reqCap <= cr.getCapacity())
 			{
 				Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
 				System.out.println(dayMap);
