@@ -50,12 +50,11 @@ public class CheckRoomAvail1UI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail2.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckRoomAvail2.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			
 			Date dt;
 			String dat[] = date.getValue().toString().split("\\-");
 			dt = new Date(Integer.parseInt(dat[0]) - 1900, Integer.parseInt(dat[1]) - 1, Integer.parseInt(dat[2]));
@@ -77,6 +76,31 @@ public class CheckRoomAvail1UI {
 			ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
 
 			ArrayList<ClassRoom> eligibleRooms = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
+			for(int c = 0; c < eligibleRooms.size(); c++)
+			{
+				if(eligibleRooms.get(c).getRoomNumber().equals(userRoom.getRoomNumber()))
+				{
+					ClassRoom temp = eligibleRooms.get(c);
+					ClassRoom pref = eligibleRooms.get(0);
+					eligibleRooms.remove(0);
+					eligibleRooms.add(0, temp);
+					eligibleRooms.remove(c);
+					eligibleRooms.add(c, pref);
+					
+				}
+			}
+			
+			for(int k = 0; k < eligibleRooms.size(); k++)
+			{
+				System.out.println(eligibleRooms.get(k).getRoomNumber());
+			}
+			
+			CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
+			controller.currUser = currUser;
+			controller.relevantRooms = eligibleRooms;
+			controller.populate();
+			stage.show();
+
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {
