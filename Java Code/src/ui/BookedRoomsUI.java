@@ -27,7 +27,16 @@ public class BookedRoomsUI {
 	private Label title;
 	
 	@FXML
-	private ListView roomRecordsList;
+	private Label roomName;
+
+	@FXML
+	private Label roomCapacity;
+
+	@FXML
+	private Label roomSlot;
+	
+	@FXML
+	private ListView<String> roomRecordsList;
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
