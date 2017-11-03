@@ -170,7 +170,7 @@ public class User implements Serializable {
 		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
 
-			if (allRooms.get(i).getRoomNumber().equals(reqRoom.getRoomNumber())) {
+			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(reqRoom.getRoomNumber())) {
 
 				allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
 			}
@@ -267,7 +267,7 @@ public class User implements Serializable {
 
 		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
-			if (allRooms.get(i).getRoomNumber().equals(venue)) {
+			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(venue)) {
 				return allRooms.get(i);
 			}
 		}

@@ -178,7 +178,7 @@ public class SignUp {
 		deserializeCourses();
 		ArrayList<Course> facCourses = new ArrayList<Course>();
 		for(int i=0;i<allCourses.size();i++) {
-			if(allCourses.get(i).getInstructor().equals(facultyName)) {
+			if(allCourses.get(i).getInstructor().equalsIgnoreCase(facultyName)) {
 				facCourses.add(allCourses.get(i));
 			}
 		}

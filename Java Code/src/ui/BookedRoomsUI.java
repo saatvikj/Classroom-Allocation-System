@@ -83,6 +83,25 @@ public class BookedRoomsUI {
 			}
 
 		}
+		
+		roomRecordsList.getSelectionModel().selectedItemProperty()
+		.addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				// TODO Auto-generated method stub
+				String[] details = newValue.split(",");
+				roomName.setText(details[0]);
+				try {
+					roomCapacity.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
+				} catch (ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				roomSlot.setText(details[1] + details[2]);	
+				
+			}
+		});
 
 	}
 
