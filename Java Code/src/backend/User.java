@@ -112,7 +112,6 @@ public class User implements Serializable {
 					Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>) it.next();
 					Slot slt = pair.getKey();
 					res = res && checkIfValidSlot(slt, reqSlot);
-
 				}
 
 				if (res) {
@@ -132,7 +131,13 @@ public class User implements Serializable {
 			if ((slot1.getDate().equals(new Date(0000, 00, 00)))) {
 				return false;
 			} else {
-				return true;
+
+				if(slot1.getDate().equals(slot2.getDate())) {
+					return false;
+				} else {
+					return true;
+				}
+			
 			}
 		} else {
 
@@ -167,11 +172,11 @@ public class User implements Serializable {
 			if (allRooms.get(i).getRoomNumber().equals(reqRoom.getRoomNumber())) {
 
 				allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
-				System.out.println("Booking confirmed");
 			}
 
 		}
-		
+
+
 		serializeRooms();
 
 	}

@@ -75,12 +75,16 @@ public class AdminHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
+			controller.currUser = currAdmin;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {

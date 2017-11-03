@@ -11,8 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -115,7 +117,11 @@ public class CheckRoomAvail2UI {
 	public void bookRoom() throws ClassNotFoundException, IOException{
 				
 		currUser.makeBooking(relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()), requiredSlot, requiredCapacity);
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Confirm Message");
+		alert.setHeaderText(null);
+		alert.setContentText("Your room "+relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()).getRoomNumber().toUpperCase()+" has been booked!");
+		alert.showAndWait();
 	}
 
 }
