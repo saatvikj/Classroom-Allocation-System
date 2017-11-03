@@ -13,36 +13,39 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AdminHomeUI {
-	
+
 	public Admin currAdmin;
-	
+
 	@FXML
 	private Label nameAdmin;
-	
+
 	@FXML
 	private Label emailAdmin;
-	
-	public void initialize()
-	{
-		
+
+	public void initialize() {
+
 	}
-	
+
 	public void populate() {
 		nameAdmin.setText(currAdmin.getName());
 		emailAdmin.setText(currAdmin.getEmailID());
 	}
-	
+
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			BookedRoomsUI controller = loader.<BookedRoomsUI>getController();
+			controller.currUser = currAdmin;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {
@@ -69,7 +72,7 @@ public class AdminHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void makeBooking(MouseEvent event) {
 
@@ -92,7 +95,7 @@ public class AdminHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void handleRequests(MouseEvent event) {
 
@@ -111,7 +114,7 @@ public class AdminHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void showNotifications(MouseEvent event) {
 
@@ -130,7 +133,7 @@ public class AdminHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -149,7 +152,7 @@ public class AdminHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
@@ -168,6 +171,5 @@ public class AdminHomeUI {
 		}
 
 	}
-	
 
 }

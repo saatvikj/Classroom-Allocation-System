@@ -36,8 +36,7 @@ public class Slot implements Serializable {
 		if (newSlot.date.equals(dt)) {
 			return false;
 		} else {
-			return (this.day.equals(newSlot.day)
-					&& this.startTime.getTime() == newSlot.startTime.getTime()
+			return (this.day.equals(newSlot.day) && this.startTime.getTime() == newSlot.startTime.getTime()
 					&& this.endTime.getTime() == newSlot.endTime.getTime());
 		}
 
@@ -78,6 +77,13 @@ public class Slot implements Serializable {
 	@Override
 	public String toString() {
 		return "Slot [date=" + date + ", day=" + day + ", startTime=" + startTime + ", endTime=" + endTime + "]";
+	}
+
+	public String displayFormattedDate() {
+
+		return this.date.getDate() + "/" + (this.date.getMonth()+1) + "/" +  (this.date.getYear()+1900) + ", " + this.startTime.getHours()
+				+ ":" + this.startTime.getMinutes() + "-" + this.endTime.getHours() + ":" + this.endTime.getMinutes();
+
 	}
 
 }

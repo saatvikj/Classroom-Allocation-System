@@ -193,7 +193,7 @@ public class CheckRoomAvail2UI {
 
 			in = new ObjectInputStream(new FileInputStream("./src/res/users.txt"));
 			User user;
-
+			listOfUsers = new ArrayList<User>();
 			try {
 
 				while (true) {

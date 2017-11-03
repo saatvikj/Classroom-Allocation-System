@@ -1,8 +1,14 @@
 package ui;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 
+import backend.ClassRoom;
+import backend.Slot;
 import backend.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,9 +20,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class BookedRoomsUI {
-	
+
 	public User currUser;
-	
+
 	@FXML
 	private Label name;
 
@@ -25,7 +31,7 @@ public class BookedRoomsUI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private Label roomName;
 
@@ -34,10 +40,10 @@ public class BookedRoomsUI {
 
 	@FXML
 	private Label roomSlot;
-	
+
 	@FXML
 	private ListView<String> roomRecordsList;
-	
+
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
@@ -56,13 +62,30 @@ public class BookedRoomsUI {
 		}
 
 	}
-	
+
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
+
+		if (currUser.getBookedRooms().isEmpty()) {
+			roomRecordsList.getItems().add("No booking!");
+		} else {
+
+			for (Map.Entry<Slot, ClassRoom> entry : currUser.getBookedRooms().entrySet()) {
+
+				Slot key = entry.getKey();
+				ClassRoom value = entry.getValue();
+
+				roomRecordsList.getItems().add(value.getRoomNumber().toUpperCase() + ", "
+						+ key.displayFormattedDate());
+
+			}
+
+		}
+
 	}
-	
+
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
@@ -98,7 +121,6 @@ public class BookedRoomsUI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 }

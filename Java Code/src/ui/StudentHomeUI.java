@@ -13,26 +13,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class StudentHomeUI {
-	
+
 	public Student currStudent;
-	
+
 	@FXML
 	private Label nameStudent;
-	
+
 	@FXML
 	private Label emailStudent;
-	
-	public void initialize()
-	{
-		
+
+	public void initialize() {
+
 	}
-	
-	public void populate()
-	{
+
+	public void populate() {
 		nameStudent.setText(currStudent.getName());
 		emailStudent.setText(currStudent.getEmailID());
 	}
-	
+
 	@FXML
 	private void showNotifications(MouseEvent event) {
 
@@ -57,12 +55,16 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookedRoomRecords.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			BookedRoomsUI controller = loader.<BookedRoomsUI>getController();
+			controller.currUser = currStudent;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {
@@ -89,7 +91,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void makeBooking(MouseEvent event) {
 
@@ -108,7 +110,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void makeRequest(MouseEvent event) {
 
@@ -127,7 +129,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void handleRequests(MouseEvent event) {
 
@@ -146,7 +148,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void confirmBooking(MouseEvent event) {
 
@@ -166,7 +168,6 @@ public class StudentHomeUI {
 
 	}
 
-	
 	@FXML
 	private void createTimeTable(MouseEvent event) {
 
@@ -185,7 +186,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void viewTimeTable(MouseEvent event) {
 
@@ -204,7 +205,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void cancelRequest(MouseEvent event) {
 
@@ -223,7 +224,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void searchResults(MouseEvent event) {
 
@@ -242,7 +243,7 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 

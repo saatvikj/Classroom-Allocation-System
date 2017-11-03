@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class User implements Serializable {
 	protected String name;
 	protected String emailID;
 	protected String encryptedPassword;
-	protected Map<Slot, ClassRoom> bookedRooms;
+	protected Map<Slot, ClassRoom> bookedRooms = new HashMap<Slot, ClassRoom>();
 	protected String typeOfUser;
 	public ArrayList<String> listOfNotifications;
 	private ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
@@ -176,7 +177,12 @@ public class User implements Serializable {
 
 		}
 		
-		bookedRooms.put(reqSlot, reqRoom);
+		if (bookedRooms == null) {
+			bookedRooms = new HashMap<Slot, ClassRoom>();
+			bookedRooms.put(reqSlot, reqRoom);
+		} else {
+			bookedRooms.put(reqSlot, reqRoom);
+		}
 		
 		serializeRooms();
 
