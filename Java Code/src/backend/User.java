@@ -104,7 +104,6 @@ public class User implements Serializable {
 			if(allRooms.get(i).getBookedSlots().containsKey(day) && reqCap <= cr.getCapacity())
 			{
 				Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
-				System.out.println(dayMap);
 				Iterator it = dayMap.entrySet().iterator();
 				boolean res = true;
 				while(it.hasNext()){
@@ -118,6 +117,8 @@ public class User implements Serializable {
 					eligibleRooms.add(cr);
 				}
 				
+			} else if(!(allRooms.get(i).getBookedSlots().containsKey(day)) && reqCap <= cr.getCapacity()) {
+				eligibleRooms.add(cr);
 			}
 		}
 

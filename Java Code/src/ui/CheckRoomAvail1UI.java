@@ -76,14 +76,7 @@ public class CheckRoomAvail1UI {
 			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
 			ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
 
-			ArrayList<ClassRoom> yay = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
-			
-			for (int i = 0; i < yay.size(); i++) {
-
-				System.out.println(yay.get(i).getRoomNumber());
-
-			}
-
+			ArrayList<ClassRoom> eligibleRooms = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class DatabaseGenerator {
 
 	}
 
-	public void checkAndMakeRoom(String[] details) {
+	public void checkAndMakeRoom(String[] details) throws IOException {
 
 		for (int i = 6; i <= 10; i++) {
 
@@ -68,7 +69,7 @@ public class DatabaseGenerator {
 
 	}
 
-	public void makeRoom(String bookingDetails) {
+	public void makeRoom(String bookingDetails) throws IOException {
 
 		if (!(bookingDetails.equals("-"))) {
 			String[] details = bookingDetails.split("\\$");
@@ -77,7 +78,17 @@ public class DatabaseGenerator {
 				if (checkNewRoom(roomName)) {
 					ClassRoom rm = new ClassRoom();
 					rm.setRoomNumber(roomName);
-					rm.setCapacity(100);
+
+					InputStreamReader isr = new InputStreamReader(System.in);
+					BufferedReader br = new BufferedReader(isr);
+					
+					System.out.println("Capacity of "+roomName+":");
+					
+					String cap = br.readLine();
+					int capacity = Integer.parseInt(cap);
+					
+					rm.setCapacity(capacity);
+					
 					allRooms.add(rm);
 				}
 
