@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -24,6 +25,9 @@ public class BookedRoomsUI {
 
 	@FXML
 	private Label title;
+	
+	@FXML
+	private ListView roomRecordsList;
 	
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
