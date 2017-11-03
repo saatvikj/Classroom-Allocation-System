@@ -70,7 +70,7 @@
 				</Label>
 			</children>
 		</GridPane>
-		<Button id="button" layoutX="450.0" layoutY="320.0"
+		<Button fx:id="book" id="button" layoutX="450.0" layoutY="320.0"
 			mnemonicParsing="false" onMouseClicked="#bookRoom" prefHeight="50.0"
 			prefWidth="200.0" text="BOOK ROOM" />
 		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"

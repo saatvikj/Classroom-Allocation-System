@@ -175,11 +175,13 @@ public class User implements Serializable {
 			}
 
 		}
-
-
+		
+		bookedRooms.put(reqSlot, reqRoom);
+		
 		serializeRooms();
 
 	}
+	
 
 	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot) {
 		/*
@@ -196,6 +198,8 @@ public class User implements Serializable {
 		 * request status for student etc etc)
 		 */
 	}
+	
+	
 
 	public void deserialize() {
 
