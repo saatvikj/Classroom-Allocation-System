@@ -2,8 +2,11 @@ package backend;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -88,77 +91,88 @@ public class User implements Serializable {
 		 */
 	}
 
-	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot, int reqCap) throws ClassNotFoundException, IOException {
+	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot, int reqCap)
+			throws ClassNotFoundException, IOException {
 		/*
 		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
 		 * with reqSlot as the parameter.
 		 */
 		deserializeRooms();
-		
+
 		ArrayList<ClassRoom> eligibleRooms = new ArrayList<ClassRoom>();
-		
-		for(int i = 0; i < allRooms.size(); i++)
-		{
+
+		for (int i = 0; i < allRooms.size(); i++) {
 			ClassRoom cr = allRooms.get(i);
 			String day = reqSlot.getDay();
-			if(allRooms.get(i).getBookedSlots().containsKey(day) && reqCap <= cr.getCapacity())
-			{
+			if (allRooms.get(i).getBookedSlots().containsKey(day) && reqCap <= cr.getCapacity()) {
 				Map<Slot, Object> dayMap = allRooms.get(i).getBookedSlots().get(day);
 				Iterator it = dayMap.entrySet().iterator();
 				boolean res = true;
-				while(it.hasNext()){
-					Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>)it.next();
+				while (it.hasNext()) {
+					Map.Entry<Slot, Object> pair = (Map.Entry<Slot, Object>) it.next();
 					Slot slt = pair.getKey();
 					res = res && checkIfValidSlot(slt, reqSlot);
-					
+
 				}
-	
-				if(res) {
+
+				if (res) {
 					eligibleRooms.add(cr);
 				}
-				
-			} else if(!(allRooms.get(i).getBookedSlots().containsKey(day)) && reqCap <= cr.getCapacity()) {
+
+			} else if (!(allRooms.get(i).getBookedSlots().containsKey(day)) && reqCap <= cr.getCapacity()) {
 				eligibleRooms.add(cr);
 			}
 		}
 
 		return eligibleRooms;
 	}
-	
-	public boolean checkIfValidSlot(Slot slot1, Slot slot2)
-	{
-		if(slot1.equals(slot2)){
-			if((slot1.getDate().equals(new Date(0000, 00, 00)))){
+
+	public boolean checkIfValidSlot(Slot slot1, Slot slot2) {
+		if (slot1.equals(slot2)) {
+			if ((slot1.getDate().equals(new Date(0000, 00, 00)))) {
 				return false;
-			}
-			else{
+			} else {
 				return true;
 			}
-		}
-		else
-		{
-			
-			if((slot1.getStartTime().getHours() < slot2.getStartTime().getHours()) || ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours()) && ((slot1.getStartTime().getMinutes() < slot2.getStartTime().getMinutes()))))
-			{
-				if(slot1.getEndTime().getHours() <= slot2.getStartTime().getHours()){
+		} else {
+
+			if ((slot1.getStartTime().getHours() < slot2.getStartTime().getHours())
+					|| ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours())
+							&& ((slot1.getStartTime().getMinutes() < slot2.getStartTime().getMinutes())))) {
+				if (slot1.getEndTime().getHours() <= slot2.getStartTime().getHours()) {
+					return true;
+				}
+			} else if ((slot1.getStartTime().getHours() > slot2.getStartTime().getHours())
+					|| ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours())
+							&& ((slot1.getStartTime().getMinutes() > slot2.getStartTime().getMinutes())))) {
+				if (slot2.getEndTime().getHours() <= slot1.getStartTime().getHours()) {
 					return true;
 				}
 			}
-			else if((slot1.getStartTime().getHours() > slot2.getStartTime().getHours()) || ((slot1.getStartTime().getHours() == slot2.getStartTime().getHours()) && ((slot1.getStartTime().getMinutes() > slot2.getStartTime().getMinutes())))){
-				if(slot2.getEndTime().getHours() <= slot1.getStartTime().getHours()){
-					return true;
-				}
-			}
-			
+
 		}
 		return false;
 	}
 
-	public void makeBooking(ClassRoom reqRoom, Slot reqSlot) {
+	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
+			throws ClassNotFoundException, IOException {
 		/*
 		 * It calls the method makeBooking of the reqRoom object with reqSlot as
 		 * the first parameter rest is handled by inheritance (comment).
 		 */
+
+		deserializeRooms();
+		for (int i = 0; i < allRooms.size(); i++) {
+
+			if (allRooms.get(i).getRoomNumber().equals(reqRoom.getRoomNumber())) {
+
+				allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
+				System.out.println("Booking confirmed");
+			}
+
+		}
+		
+		serializeRooms();
 
 	}
 
@@ -182,10 +196,27 @@ public class User implements Serializable {
 
 	}
 
-	public void seialize() {
+	public void serializeRooms() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/rooms.txt"));
+
+			for (int i = 0; i < allRooms.size(); i++) {
+				ClassRoom classroom = allRooms.get(i);
+				out.writeObject(classroom);
+			}
+
+		} finally {
+
+			out.close();
+
+		}
 
 	}
-	
+
 	public void deserializeRooms() throws IOException, ClassNotFoundException {
 		/*
 		 * Deserialize the file listofcourses.txt into the arraylist
@@ -216,9 +247,9 @@ public class User implements Serializable {
 		}
 
 	}
-	
+
 	public ClassRoom getCorrespondingRoom(String venue) throws ClassNotFoundException, IOException {
-		
+
 		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
 			if (allRooms.get(i).getRoomNumber().equals(venue)) {
@@ -227,6 +258,5 @@ public class User implements Serializable {
 		}
 		return null;
 	}
-	
 
 }

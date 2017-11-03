@@ -18,12 +18,6 @@ public class Admin extends User {
 	public void setListOfRequests(ArrayList<Request> listOfRequests) {
 		this.listOfRequests = listOfRequests;
 	}
-
-	@Override
-	public void makeBooking(ClassRoom reqRoom, Slot reqSlot)
-	{
-		
-	}
 	
 	public void handleRequests(int indexOfRequest, boolean choice)
 	{

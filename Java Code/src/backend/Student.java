@@ -32,7 +32,7 @@ public class Student extends User{
 	}
 
 	@Override
-	public void makeBooking(ClassRoom reqRoom, Slot reqSlot)
+	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 	{
 		
 	}

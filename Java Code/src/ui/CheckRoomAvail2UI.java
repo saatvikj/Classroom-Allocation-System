@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import backend.ClassRoom;
+import backend.Slot;
 import backend.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,8 @@ public class CheckRoomAvail2UI {
 	
 	public User currUser;
 	public ArrayList<ClassRoom> relevantRooms;
+	public Slot requiredSlot;
+	public int requiredCapacity;
 	
 	@FXML
 	private ListView<String> relevantRoomsList;
@@ -109,9 +112,10 @@ public class CheckRoomAvail2UI {
 	}
 	
 	@FXML
-	public void bookRoom(){
+	public void bookRoom() throws ClassNotFoundException, IOException{
+				
+		currUser.makeBooking(relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()), requiredSlot, requiredCapacity);
 		
-		System.out.println(relevantRoomsList.getSelectionModel().getSelectedIndex());
 	}
 
 }

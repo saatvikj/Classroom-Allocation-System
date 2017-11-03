@@ -19,11 +19,6 @@ public class Faculty extends User {
 	}
 
 	@Override
-	public void makeBooking(ClassRoom reqRoom, Slot reqSlot) {
-
-	}
-
-	@Override
 	public void populateNotifications() {
 
 	}
