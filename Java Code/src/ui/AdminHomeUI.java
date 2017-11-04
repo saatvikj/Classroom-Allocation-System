@@ -59,10 +59,12 @@ public class AdminHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CancelBooking.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CancelBooking.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			BookedRoomsUI controller = loader.<BookedRoomsUI>getController();
+			controller.currUser = currAdmin;
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
