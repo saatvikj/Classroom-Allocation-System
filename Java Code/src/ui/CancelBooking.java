@@ -148,7 +148,7 @@ public class CancelBooking {
 				} catch (ClassNotFoundException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				} 
 				roomSlot.setText(details[1] + details[2]);
 
 			}
@@ -207,15 +207,27 @@ public class CancelBooking {
 	@FXML
 	private void cancelBooking(MouseEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 		String selectedItem = roomRecordsList.getSelectionModel().getSelectedItem();
+		int index = roomRecordsList.getSelectionModel().getSelectedIndex();
 		String[] bookingdetails = selectedItem.split(",");
 		for (Map.Entry<Slot, ClassRoom> mp : currUser.getBookedRooms().entrySet()) {
 			Slot key = mp.getKey();
 			ClassRoom value = mp.getValue();
 			String[] slot = key.displayFormattedDate().split(",");
+			bookingdetails[1] = bookingdetails[1].replaceAll(" ", "");
 			if (value.getRoomNumber().equalsIgnoreCase(bookingdetails[0]) && slot[0].equalsIgnoreCase(bookingdetails[1])
-					&& slot[1].equalsIgnoreCase(bookingdetails[1])) {
+					&& slot[1].equalsIgnoreCase(bookingdetails[2])) {
+				
+				try {
+					String removed = roomRecordsList.getItems().remove(index);					
+				} catch (NullPointerException e) {
+					
+					roomDetails.setVisible(false);
+					cancelBookingButton.setVisible(false);
+					roomRecordsList.getItems().add("No booked rooms");
+				}
+				
 				currUser.cancelBooking(value, key);
-
+				currUser.getBookedRooms().remove(key);
 			}
 		}
 

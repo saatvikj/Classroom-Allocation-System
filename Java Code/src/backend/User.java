@@ -206,19 +206,29 @@ public class User implements Serializable {
 		for (int i = 0; i < allRooms.size(); i++) {
 
 			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(bookedRoom.getRoomNumber())) {
+				System.out.println("a");
 
 				if (allRooms.get(i).getBookedSlots().containsKey(bookedSlot.getDay())) {
-
+					
+					System.out.println("b");
 					for(Map.Entry<Slot, Object> map: allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).entrySet() ) {
+						System.out.println("c");
 						Slot key = map.getKey();
 						Object value = map.getValue();
-						
-						if (key.getDate().getDay() == bookedSlot.getDate().getDay() && 
+//						System.out.println(key.toString());
+//						System.out.println(key.getDate().getDate());
+//						System.out.println(bookedSlot.getDate().getDate());
+//						System.out.println(key.getDate().getDate() == bookedSlot.getDate().getDate());
+//						System.out.println(key.getDate().getMonth() == bookedSlot.getDate().getMonth());
+//						System.out.println(key.getDate().getYear() == bookedSlot.getDate().getYear());
+//						System.out.println(key.getStartTime().equals(bookedSlot.getStartTime()));
+//						System.out.println(key.getEndTime().equals(bookedSlot.getEndTime()));
+						if (key.getDate().getDate() == bookedSlot.getDate().getDate() && 
 							key.getDate().getMonth() == bookedSlot.getDate().getMonth() &&
 							key.getDate().getYear() == bookedSlot.getDate().getYear() &&
 							key.getStartTime().equals(bookedSlot.getStartTime()) &&
 							key.getEndTime().equals(bookedSlot.getEndTime())) {
-							
+							System.out.println("d");
 							allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).remove(key);
 							break;
 						}
