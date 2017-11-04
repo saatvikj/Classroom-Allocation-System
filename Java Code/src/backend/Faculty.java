@@ -19,7 +19,9 @@ public class Faculty extends User {
 	}
 
 	@Override
-	public void populateNotifications() {
+	public ArrayList<String> populateNotifications() {
+		
+		return listOfNotifications;
 
 	}
 

@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -242,12 +243,29 @@ public class User implements Serializable {
 
 	}
 
-	public void populateNotifications() {
+	public ArrayList<String> populateNotifications() {
 		/*
 		 * It goes through the required things to give notification about and
 		 * refreshes the listOfNotifications attribute. (New requests for admin,
 		 * request status for student etc etc)
 		 */
+		listOfNotifications = new ArrayList<String>();
+		Calendar calendar = Calendar.getInstance();
+		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		for (Map.Entry<Slot, ClassRoom> map: bookedRooms.entrySet()) {
+			
+			Slot key = map.getKey();
+			ClassRoom value = map.getValue();
+			if (key.getDate().getDay() == day) {
+				
+				String notification = "You have " + value.getRoomNumber() + " booked today at " + key.getStartTime();
+				listOfNotifications.add(notification);
+				
+			}
+		}
+		
+		return this.listOfNotifications;
+		
 	}
 
 	public void deserialize() {
