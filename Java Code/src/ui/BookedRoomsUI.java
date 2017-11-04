@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
+import backend.Admin;
 import backend.ClassRoom;
+import backend.Faculty;
 import backend.Slot;
+import backend.Student;
 import backend.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -51,12 +54,43 @@ public class BookedRoomsUI {
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/AdminHome.fxml"));
+
+			String path;
+			if(currUser.getTypeOfUser().equals("Admin")) {
+				path = "/fxml/AdminHome.fxml";
+			} else if(currUser.getTypeOfUser().equals("Faculty")) {
+				path = "/fxml/FacultyHome.fxml";
+			} else {
+				path = "/fxml/StudentHome.fxml";
+			}
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+			
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			
+			
+			if (currUser.getTypeOfUser().equals("Admin")) {
+				Admin admin = (Admin) currUser;
+				AdminHomeUI controller = loader.<AdminHomeUI>getController();
+				controller.currAdmin = admin;
+				controller.populate();
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
+				Faculty faculty = (Faculty) currUser;
+				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
+				controller.currFaculty = faculty;
+				controller.populate();
+			} else {
+				
+				Student student = (Student) currUser;
+				StudentHomeUI controller = loader.<StudentHomeUI>getController();
+				controller.currStudent = student;
+				controller.populate();
+			}
+			
+			
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -114,12 +148,43 @@ public class BookedRoomsUI {
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/AdminHome.fxml"));
+
+			String path;
+			if(currUser.getTypeOfUser().equals("Admin")) {
+				path = "/fxml/AdminHome.fxml";
+			} else if(currUser.getTypeOfUser().equals("Faculty")) {
+				path = "/fxml/FacultyHome.fxml";
+			} else {
+				path = "/fxml/StudentHome.fxml";
+			}
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+			
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			
+			
+			if (currUser.getTypeOfUser().equals("Admin")) {
+				Admin admin = (Admin) currUser;
+				AdminHomeUI controller = loader.<AdminHomeUI>getController();
+				controller.currAdmin = admin;
+				controller.populate();
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
+				Faculty faculty = (Faculty) currUser;
+				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
+				controller.currFaculty = faculty;
+				controller.populate();
+			} else {
+				
+				Student student = (Student) currUser;
+				StudentHomeUI controller = loader.<StudentHomeUI>getController();
+				controller.currStudent = student;
+				controller.populate();
+			}
+			
+			
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();

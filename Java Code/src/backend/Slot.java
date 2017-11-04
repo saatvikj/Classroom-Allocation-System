@@ -81,8 +81,22 @@ public class Slot implements Serializable {
 
 	public String displayFormattedDate() {
 
+		String startMinutes;
+		String endMinutes;
+		if(this.startTime.getMinutes()<10) {
+			startMinutes = "0" + this.startTime.getMinutes();
+		} else {
+			startMinutes = Integer.toString(this.startTime.getMinutes());
+		}
+		
+		if(this.endTime.getMinutes()<10) {
+			endMinutes = "0" + this.endTime.getMinutes();
+		} else {
+			endMinutes = Integer.toString(this.endTime.getMinutes());
+		}
+		
 		return this.date.getDate() + "/" + (this.date.getMonth()+1) + "/" +  (this.date.getYear()+1900) + ", " + this.startTime.getHours()
-				+ ":" + this.startTime.getMinutes() + "-" + this.endTime.getHours() + ":" + this.endTime.getMinutes();
+				+ ":" + startMinutes + "-" + this.endTime.getHours() + ":" + endMinutes;
 
 	}
 
