@@ -138,31 +138,28 @@ public class CancelBooking {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				// TODO Auto-generated method stub
-				try{
-					if(!(newValue.equalsIgnoreCase("No booked rooms!")))
-					{
+				try {
+					if (!(newValue.equalsIgnoreCase("No booked rooms!"))) {
 						roomDetails.setVisible(true);
 						cancelBookingButton.setVisible(true);
 						String[] details = newValue.split(",");
 						roomName.setText(details[0]);
 						try {
-							roomCapacity
-									.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
+							roomCapacity.setText(
+									Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
 						} catch (ClassNotFoundException | IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
+
 						roomSlot.setText(details[1] + details[2]);
-						
+
 					}
-				}
-				catch(NullPointerException e){
+				} catch (NullPointerException e) {
 					roomDetails.setVisible(false);
 					cancelBookingButton.setVisible(false);
 					roomRecordsList.getItems().add("No booked rooms!");
 				}
-				
 
 			}
 		});
@@ -229,16 +226,16 @@ public class CancelBooking {
 			bookingdetails[1] = bookingdetails[1].replaceAll(" ", "");
 			if (value.getRoomNumber().equalsIgnoreCase(bookingdetails[0]) && slot[0].equalsIgnoreCase(bookingdetails[1])
 					&& slot[1].equalsIgnoreCase(bookingdetails[2])) {
-				
+
 				try {
-					String removed = roomRecordsList.getItems().remove(index);					
+					String removed = roomRecordsList.getItems().remove(index);
 				} catch (NullPointerException e) {
-					
+
 					roomDetails.setVisible(false);
 					cancelBookingButton.setVisible(false);
 					roomRecordsList.getItems().add("No booked rooms");
 				}
-				
+
 				currUser.cancelBooking(value, key);
 				currUser.getBookedRooms().remove(key);
 			}
