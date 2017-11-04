@@ -116,6 +116,7 @@ public class CheckRoomAvail2UI {
 		if(relevantRooms.size() == 0)
 		{
 			relevantRoomsList.getItems().add("No Rooms found!");
+			
 		}
 		else
 		{

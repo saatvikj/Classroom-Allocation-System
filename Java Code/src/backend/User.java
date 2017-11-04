@@ -172,7 +172,16 @@ public class User implements Serializable {
 
 			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(reqRoom.getRoomNumber())) {
 
-				allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
+				if(allRooms.get(i).getBookedSlots().containsKey(reqSlot.getDay()))
+				{
+					allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
+			
+				}
+				else{
+					Map<Slot, Object> newmap = new HashMap<Slot, Object>();
+					newmap.put(reqSlot, this);
+					allRooms.get(i).getBookedSlots().put(reqSlot.getDay(), newmap);
+				}
 			}
 
 		}

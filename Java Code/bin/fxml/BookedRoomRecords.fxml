@@ -62,14 +62,14 @@
 				<ListView fx:id="roomRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="200.0">
 					
 				</ListView>
-				<GridPane layoutX="400.0" layoutY="220.0">
+				<GridPane visible="false" fx:id="roomDetails" layoutX="400.0" layoutY="220.0">
 					<children>
 						<Label text="ROOM" />
-						<Label fx:id="roomName" text="C01" GridPane.columnIndex="1" />
+						<Label fx:id="roomName" GridPane.columnIndex="1" />
 						<Label text="ROOM CAPACITY" GridPane.rowIndex="1" />
-						<Label fx:id="roomCapacity" text="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Label fx:id="roomCapacity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 						<Label text="TIME SLOT" GridPane.rowIndex="2" />
-						<Label fx:id="roomSlot" text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<Label fx:id="roomSlot" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 					</children>
 					<columnConstraints>
 						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />

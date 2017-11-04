@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class BookedRoomsUI {
@@ -40,6 +41,9 @@ public class BookedRoomsUI {
 
 	@FXML
 	private Label roomSlot;
+	
+	@FXML
+	private GridPane roomDetails;
 
 	@FXML
 	private ListView<String> roomRecordsList;
@@ -70,6 +74,7 @@ public class BookedRoomsUI {
 
 		if (currUser.getBookedRooms().isEmpty()) {
 			roomRecordsList.getItems().add("No booking!");
+			roomDetails.setVisible(false);
 		} else {
 
 			for (Map.Entry<Slot, ClassRoom> entry : currUser.getBookedRooms().entrySet()) {
@@ -90,6 +95,7 @@ public class BookedRoomsUI {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				// TODO Auto-generated method stub
+				roomDetails.setVisible(true);
 				String[] details = newValue.split(",");
 				roomName.setText(details[0]);
 				try {
