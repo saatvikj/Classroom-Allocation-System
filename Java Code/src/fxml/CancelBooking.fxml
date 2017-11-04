@@ -9,20 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CancelBooking">
-   <children>
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CancelBooking">
+	<children>
 		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 
 				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 					<columnConstraints>
-						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="575.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="150.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
+						<Label fx:id="email" alignment="CENTER_RIGHT"
+							contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 							<font>
 								<Font name="Segoe UI Bold" size="14.0" />
 							</font>
@@ -31,7 +35,7 @@
 							</GridPane.margin>
 						</Label>
 
-						<Label text="ADMIN">
+						<Label fx:id="title" text="ADMIN">
 							<font>
 								<Font name="Segoe UI Bold" size="24.0" />
 							</font>
@@ -40,7 +44,7 @@
 							</GridPane.margin>
 						</Label>
 
-						<Label text="Sheetu Ahuja">
+						<Label fx:id="name" text="Sheetu Ahuja">
 							<font>
 								<Font name="Segoe UI Bold" size="24.0" />
 							</font>
@@ -53,50 +57,67 @@
 
 
 
-				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="BOOKED ROOM RECORDS">
+				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+					text="BOOKED ROOM RECORDS">
 					<font>
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView id="cancelList" fx:id="bookedRoomsList" layoutX="76.0" layoutY="240.0" prefHeight="200.0" prefWidth="200.0">
+				<ListView id="cancelList" fx:id="roomRecordsList" layoutX="76.0"
+					layoutY="240.0" prefHeight="200.0" prefWidth="200.0">
 
 				</ListView>
-				<GridPane layoutX="400.0" layoutY="220.0" visible="false">
+				<GridPane fx:id="roomDetails" layoutX="400.0" layoutY="220.0"
+					visible="false">
 					<children>
 						<Label text="ROOM" />
-						<Label text="C01" GridPane.columnIndex="1" />
+						<Label fx:id="roomName" text="C01" GridPane.columnIndex="1" />
 						<Label text="ROOM CAPACITY" GridPane.rowIndex="1" />
-						<Label text="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Label fx:id="roomCapacity" text="200" GridPane.columnIndex="1"
+							GridPane.rowIndex="1" />
 						<Label text="TIME SLOT" GridPane.rowIndex="2" />
-						<Label text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<Label fx:id="roomSlot" text="11th October, 11:30-1"
+							GridPane.columnIndex="1" GridPane.rowIndex="2" />
 					</children>
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="150.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="200.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 				</GridPane>
-            <Button id="button" fx:id="cancelBookingButton" layoutX="475.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#cancelBooking" prefHeight="50.0" prefWidth="200.0" text="CANCEL BOOKING" visible="false" />
+				<Button id="button" fx:id="cancelBookingButton" layoutX="475.0"
+					layoutY="440.0" mnemonicParsing="false" onMouseClicked="#cancelBooking"
+					prefHeight="50.0" prefWidth="200.0" text="CANCEL BOOKING" visible="false" />
 			</children>
 		</Pane>
-      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/back.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
-   </children>
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="/res/home.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/back.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
+	</children>
 </AnchorPane>

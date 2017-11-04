@@ -1,6 +1,13 @@
 package ui;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Map;
 
 import backend.Admin;
@@ -24,9 +31,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class CancelBooking {
-	
+
 	public User currUser;
-	
+	public ArrayList<User> listOfUsers;
+
 	@FXML
 	private Label name;
 
@@ -35,7 +43,7 @@ public class CancelBooking {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private Label roomName;
 
@@ -44,40 +52,36 @@ public class CancelBooking {
 
 	@FXML
 	private Label roomSlot;
-	
+
 	@FXML
 	private GridPane roomDetails;
-	
-	@FXML
-	private ListView<String> bookedRoomsList;
 
 	@FXML
 	private ListView<String> roomRecordsList;
-	
+
 	@FXML
 	private Button cancelBookingButton;
-	
+
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
 		try {
 
 			String path;
-			if(currUser.getTypeOfUser().equals("Admin")) {
+			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
-			} else if(currUser.getTypeOfUser().equals("Faculty")) {
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
 				path = "/fxml/FacultyHome.fxml";
 			} else {
 				path = "/fxml/StudentHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
-			
-			
+
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				Admin admin = (Admin) currUser;
 				AdminHomeUI controller = loader.<AdminHomeUI>getController();
@@ -89,14 +93,13 @@ public class CancelBooking {
 				controller.currFaculty = faculty;
 				controller.populate();
 			} else {
-				
+
 				Student student = (Student) currUser;
 				StudentHomeUI controller = loader.<StudentHomeUI>getController();
 				controller.currStudent = student;
 				controller.populate();
 			}
-			
-			
+
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -106,7 +109,7 @@ public class CancelBooking {
 		}
 
 	}
-	
+
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
@@ -116,7 +119,7 @@ public class CancelBooking {
 			roomRecordsList.getItems().add("No booking!");
 			roomDetails.setVisible(false);
 			cancelBookingButton.setVisible(false);
-			
+
 		} else {
 
 			for (Map.Entry<Slot, ClassRoom> entry : currUser.getBookedRooms().entrySet()) {
@@ -124,15 +127,13 @@ public class CancelBooking {
 				Slot key = entry.getKey();
 				ClassRoom value = entry.getValue();
 
-				roomRecordsList.getItems().add(value.getRoomNumber().toUpperCase() + ", "
-						+ key.displayFormattedDate());
+				roomRecordsList.getItems().add(value.getRoomNumber().toUpperCase() + ", " + key.displayFormattedDate());
 
 			}
 
 		}
-		
-		roomRecordsList.getSelectionModel().selectedItemProperty()
-		.addListener(new ChangeListener<String>() {
+
+		roomRecordsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -142,40 +143,39 @@ public class CancelBooking {
 				String[] details = newValue.split(",");
 				roomName.setText(details[0]);
 				try {
-					roomCapacity.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
+					roomCapacity
+							.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
 				} catch (ClassNotFoundException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				roomSlot.setText(details[1] + details[2]);	
-				
+				roomSlot.setText(details[1] + details[2]);
+
 			}
 		});
 
 	}
 
-	
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
 		try {
 
 			String path;
-			if(currUser.getTypeOfUser().equals("Admin")) {
+			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
-			} else if(currUser.getTypeOfUser().equals("Faculty")) {
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
 				path = "/fxml/FacultyHome.fxml";
 			} else {
 				path = "/fxml/StudentHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
-			
-			
+
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				Admin admin = (Admin) currUser;
 				AdminHomeUI controller = loader.<AdminHomeUI>getController();
@@ -187,14 +187,13 @@ public class CancelBooking {
 				controller.currFaculty = faculty;
 				controller.populate();
 			} else {
-				
+
 				Student student = (Student) currUser;
 				StudentHomeUI controller = loader.<StudentHomeUI>getController();
 				controller.currStudent = student;
 				controller.populate();
 			}
-			
-			
+
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -204,24 +203,54 @@ public class CancelBooking {
 		}
 
 	}
-	
+
 	@FXML
-	private void cancelBooking(MouseEvent event)
-	{
-		deserializeUsers();
+	private void cancelBooking(MouseEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 		String selectedItem = roomRecordsList.getSelectionModel().getSelectedItem();
 		String[] bookingdetails = selectedItem.split(",");
-		for(Map.Entry<Slot, ClassRoom> mp: currUser.getBookedRooms().entrySet()){
+		for (Map.Entry<Slot, ClassRoom> mp : currUser.getBookedRooms().entrySet()) {
 			Slot key = mp.getKey();
 			ClassRoom value = mp.getValue();
 			String[] slot = key.displayFormattedDate().split(",");
-			if(value.getRoomNumber().equalsIgnoreCase(bookingdetails[0]) && slot[0].equalsIgnoreCase(bookingdetails[1]) && slot[1].equalsIgnoreCase(bookingdetails[1])) {
+			if (value.getRoomNumber().equalsIgnoreCase(bookingdetails[0]) && slot[0].equalsIgnoreCase(bookingdetails[1])
+					&& slot[1].equalsIgnoreCase(bookingdetails[1])) {
 				currUser.cancelBooking(value, key);
+
 			}
 		}
+
+		if (title.getText().equalsIgnoreCase("Admin")) {
+			Admin user = (Admin) currUser;
+			deserializeUsers();
+			for (int i = 0; i < listOfUsers.size(); i++) {
+				if (listOfUsers.get(i).getEmailID().equals(user.getEmailID())) {
+					listOfUsers.remove(i);
+					listOfUsers.add(i, user);
+				}
+			}
+		} else if (title.getText().equalsIgnoreCase("Faculty")) {
+			Faculty user = (Faculty) currUser;
+			deserializeUsers();
+			for (int i = 0; i < listOfUsers.size(); i++) {
+				if (listOfUsers.get(i).getEmailID().equals(user.getEmailID())) {
+					listOfUsers.remove(i);
+					listOfUsers.add(i, user);
+				}
+			}
+		} else {
+
+			Student user = (Student) currUser;
+			deserializeUsers();
+			for (int i = 0; i < listOfUsers.size(); i++) {
+				if (listOfUsers.get(i).getEmailID().equals(user.getEmailID())) {
+					listOfUsers.remove(i);
+					listOfUsers.add(i, user);
+				}
+			}
+		}
+
 		serializeUsers();
 	}
-
 
 	@FXML
 	private void logout(MouseEvent event) {
@@ -241,6 +270,65 @@ public class CancelBooking {
 		}
 
 	}
-	
-	
+
+	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
+
+		/*
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
+		 * 
+		 */
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/users.txt"));
+			User user;
+			listOfUsers = new ArrayList<User>();
+			try {
+
+				while (true) {
+					user = (User) in.readObject();
+					listOfUsers.add(user);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				listOfUsers = new ArrayList<User>();
+			}
+
+		}
+
+	}
+
+	public void serializeUsers() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/users.txt"));
+
+			for (int i = 0; i < listOfUsers.size(); i++) {
+				User newUser = listOfUsers.get(i);
+				out.writeObject(newUser);
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
 }

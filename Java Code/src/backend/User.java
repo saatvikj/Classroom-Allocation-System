@@ -133,12 +133,12 @@ public class User implements Serializable {
 				return false;
 			} else {
 
-				if(slot1.getDate().equals(slot2.getDate())) {
+				if (slot1.getDate().equals(slot2.getDate())) {
 					return false;
 				} else {
 					return true;
 				}
-			
+
 			}
 		} else {
 
@@ -172,12 +172,10 @@ public class User implements Serializable {
 
 			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(reqRoom.getRoomNumber())) {
 
-				if(allRooms.get(i).getBookedSlots().containsKey(reqSlot.getDay()))
-				{
+				if (allRooms.get(i).getBookedSlots().containsKey(reqSlot.getDay())) {
 					allRooms.get(i).getBookedSlots().get(reqSlot.getDay()).put(reqSlot, this);
-			
-				}
-				else{
+
+				} else {
 					Map<Slot, Object> newmap = new HashMap<Slot, Object>();
 					newmap.put(reqSlot, this);
 					allRooms.get(i).getBookedSlots().put(reqSlot.getDay(), newmap);
@@ -185,25 +183,53 @@ public class User implements Serializable {
 			}
 
 		}
-		
+
 		if (bookedRooms == null) {
 			bookedRooms = new HashMap<Slot, ClassRoom>();
 			bookedRooms.put(reqSlot, reqRoom);
 		} else {
 			bookedRooms.put(reqSlot, reqRoom);
 		}
-		
+
 		serializeRooms();
 
 	}
-	
 
-	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot) {
+	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot) throws FileNotFoundException, IOException, ClassNotFoundException {
 		/*
 		 * It calls the method cancelBooking from bookedRoom object with
 		 * bookedSlot as parameter and then makes this entry in its own
 		 * hashmap(bookedRooms) as null.
 		 */
+
+		deserializeRooms();
+		for (int i = 0; i < allRooms.size(); i++) {
+
+			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(bookedRoom.getRoomNumber())) {
+
+				if (allRooms.get(i).getBookedSlots().containsKey(bookedSlot.getDay())) {
+
+					for(Map.Entry<Slot, Object> map: allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).entrySet() ) {
+						Slot key = map.getKey();
+						Object value = map.getValue();
+						
+						if (key.getDate().getDay() == bookedSlot.getDate().getDay() && 
+							key.getDate().getMonth() == bookedSlot.getDate().getMonth() &&
+							key.getDate().getYear() == bookedSlot.getDate().getYear() &&
+							key.getStartTime().equals(bookedSlot.getStartTime()) &&
+							key.getEndTime().equals(bookedSlot.getEndTime())) {
+							
+							allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).remove(key);
+							break;
+						}
+					}
+					
+				}
+
+			}
+		}
+		serializeRooms();
+
 	}
 
 	public void populateNotifications() {
@@ -213,8 +239,6 @@ public class User implements Serializable {
 		 * request status for student etc etc)
 		 */
 	}
-	
-	
 
 	public void deserialize() {
 
