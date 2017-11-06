@@ -1,9 +1,9 @@
 package backend;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Request {
-	
+
 	private String purpose;
 	private ClassRoom preferredRoom;
 	private int requiredCapacity;
@@ -11,9 +11,12 @@ public class Request {
 	private Date timeStamp;
 	private boolean currentStatus;
 	private Student sourceStudent;
-	
-	
-	public Request(String purpose, ClassRoom preferredRoom, int requiredCapacity, Slot timeSlot, Date timeStamp,
+
+	Request() {
+
+	}
+
+	Request(String purpose, ClassRoom preferredRoom, int requiredCapacity, Slot timeSlot, Date timeStamp,
 			boolean currentStatus, Student sourceStudent) {
 		super();
 		this.purpose = purpose;
@@ -81,15 +84,25 @@ public class Request {
 		this.sourceStudent = sourceStudent;
 	}
 
-	public boolean checkExpiry()
-	{
+	public boolean checkExpiry() {
 		/*
-		 * Checks whether the current request has been there for more than 5 days or not
-			Returns true if it is expired (more than 5 days) otherwise returns false.
-			Will be called to check if the request in arraylist is to be cancelled or not. If yes, replace it with null.
+		 * Checks whether the current request has been there for more than 5
+		 * days or not Returns true if it is expired (more than 5 days)
+		 * otherwise returns false. Will be called to check if the request in
+		 * arraylist is to be cancelled or not. If yes, replace it with null.
 		 */
-		return true;
+
+		Date today = new Date();
+		if (today.getDate() - this.timeStamp.getDate() == 5) {
+			if (today.getTime() >= this.timeStamp.getTime()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (today.getDate() - this.timeStamp.getDate() > 5) {
+			return true;
+		}
+		return false;
 	}
-	
 
 }

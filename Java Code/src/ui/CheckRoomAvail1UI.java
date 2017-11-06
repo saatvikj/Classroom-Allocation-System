@@ -16,9 +16,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -58,49 +60,62 @@ public class CheckRoomAvail1UI {
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
 
-			Date dt;
-			String dat[] = date.getValue().toString().split("\\-");
-			dt = new Date(Integer.parseInt(dat[0]) - 1900, Integer.parseInt(dat[1]) - 1, Integer.parseInt(dat[2]));
-			String day = daysOfWeek[date.getValue().getDayOfWeek().getValue() - 1];
-			String timeSlot = slot.getText();
-			String requiredCap = reqCapacity.getText();
-			int reqcap = Integer.parseInt(requiredCap);
+			boolean validity = checkEmptiness(preferredRoom.getText(), slot.getText(), reqCapacity.getText(),
+					date.getValue() == null);
 
-			String startTime = timeSlot.split("\\-")[0];
-			int startTimeHour = Integer.parseInt(startTime.split("\\:")[0]);
-			int startTimeMinute = Integer.parseInt(startTime.split("\\:")[1]);
-			Time sTime = new Time(startTimeHour, startTimeMinute, 0);
-			String endTime = timeSlot.split("\\-")[1];
-			int endTimeHour = Integer.parseInt(endTime.split("\\:")[0]);
-			int endTimeMinute = Integer.parseInt(endTime.split("\\:")[1]);
-			Time eTime = new Time(endTimeHour, endTimeMinute, 0);
+			System.out.println(date.toString());
 
-			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
-			ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
+			if (validity) {
+				Date dt;
+				String dat[] = date.getValue().toString().split("\\-");
+				dt = new Date(Integer.parseInt(dat[0]) - 1900, Integer.parseInt(dat[1]) - 1, Integer.parseInt(dat[2]));
+				String day = daysOfWeek[date.getValue().getDayOfWeek().getValue() - 1];
+				String timeSlot = slot.getText();
+				String requiredCap = reqCapacity.getText();
+				int reqcap = Integer.parseInt(requiredCap);
+				String startTime = timeSlot.split("\\-")[0];
+				int startTimeHour = Integer.parseInt(startTime.split("\\:")[0]);
+				int startTimeMinute = Integer.parseInt(startTime.split("\\:")[1]);
+				Time sTime = new Time(startTimeHour, startTimeMinute, 0);
+				String endTime = timeSlot.split("\\-")[1];
+				int endTimeHour = Integer.parseInt(endTime.split("\\:")[0]);
+				int endTimeMinute = Integer.parseInt(endTime.split("\\:")[1]);
+				Time eTime = new Time(endTimeHour, endTimeMinute, 0);
 
-			ArrayList<ClassRoom> eligibleRooms = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
-			for (int c = 0; c < eligibleRooms.size(); c++) {
-				if (eligibleRooms.get(c).getRoomNumber().equals(userRoom.getRoomNumber())) {
-					ClassRoom temp = eligibleRooms.get(c);
-					ClassRoom pref = eligibleRooms.get(0);
-					eligibleRooms.remove(0);
-					eligibleRooms.add(0, temp);
-					eligibleRooms.remove(c);
-					eligibleRooms.add(c, pref);
+				Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
+				ClassRoom userRoom = currUser.getCorrespondingRoom(preferredRoom.getText());
 
+				ArrayList<ClassRoom> eligibleRooms = currUser.checkRoomAvailability(userRoom, userSlot, reqcap);
+				for (int c = 0; c < eligibleRooms.size(); c++) {
+					if (eligibleRooms.get(c).getRoomNumber().equals(userRoom.getRoomNumber())) {
+						ClassRoom temp = eligibleRooms.get(c);
+						ClassRoom pref = eligibleRooms.get(0);
+						eligibleRooms.remove(0);
+						eligibleRooms.add(0, temp);
+						eligibleRooms.remove(c);
+						eligibleRooms.add(c, pref);
+
+					}
 				}
+
+				CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
+				controller.currUser = currUser;
+				controller.relevantRooms = eligibleRooms;
+				controller.requiredSlot = userSlot;
+				controller.requiredCapacity = reqcap;
+				controller.populate();
+				stage.show();
+
+				((Node) (event.getSource())).getScene().getWindow().hide();
+			} else {
+
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error!");
+				alert.setHeaderText(null);
+				alert.setContentText("At least one of the fields is empty, try again.");
+				alert.showAndWait();
+
 			}
-
-			CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
-			controller.currUser = currUser;
-			controller.relevantRooms = eligibleRooms;
-			controller.requiredSlot = userSlot;
-			controller.requiredCapacity = reqcap;
-			controller.populate();
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -119,19 +134,18 @@ public class CheckRoomAvail1UI {
 		try {
 
 			String path;
-			if(currUser.getTypeOfUser().equals("Admin")) {
+			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
 			} else {
 				path = "/fxml/FacultyHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
-			
-			
+
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				Admin admin = (Admin) currUser;
 				AdminHomeUI controller = loader.<AdminHomeUI>getController();
@@ -142,9 +156,8 @@ public class CheckRoomAvail1UI {
 				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
 				controller.currFaculty = faculty;
 				controller.populate();
-			} 
-			
-			
+			}
+
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -161,19 +174,18 @@ public class CheckRoomAvail1UI {
 		try {
 
 			String path;
-			if(currUser.getTypeOfUser().equals("Admin")) {
+			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
 			} else {
 				path = "/fxml/FacultyHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
-			
-			
+
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				Admin admin = (Admin) currUser;
 				AdminHomeUI controller = loader.<AdminHomeUI>getController();
@@ -184,9 +196,8 @@ public class CheckRoomAvail1UI {
 				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
 				controller.currFaculty = faculty;
 				controller.populate();
-			} 
-			
-			
+			}
+
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -212,6 +223,16 @@ public class CheckRoomAvail1UI {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	public boolean checkEmptiness(String roomNo, String slot, String capacity, boolean date) {
+
+		if (roomNo.length() == 0 || slot.length() == 0 || capacity.length() == 0 || date) {
+			return false;
+		} else {
+			return true;
 		}
 
 	}

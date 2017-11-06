@@ -73,6 +73,14 @@ public class Slot implements Serializable {
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
+	
+	public String getPurpose() {
+		return purpose;
+	}
+
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
 
 	@Override
 	public String toString() {
