@@ -91,10 +91,6 @@ public class CheckRoomAvail1UI {
 				}
 			}
 
-			for (int k = 0; k < eligibleRooms.size(); k++) {
-				System.out.println(eligibleRooms.get(k).getRoomNumber());
-			}
-
 			CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
 			controller.currUser = currUser;
 			controller.relevantRooms = eligibleRooms;

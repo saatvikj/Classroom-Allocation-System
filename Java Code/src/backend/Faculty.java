@@ -21,7 +21,7 @@ public class Faculty extends User {
 	@Override
 	public ArrayList<String> populateNotifications() {
 		
-		return listOfNotifications;
+		return super.populateNotifications();
 
 	}
 

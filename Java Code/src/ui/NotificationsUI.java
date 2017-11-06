@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class NotificationsUI {
 
 	public User currUser;
-	
+	public ArrayList<String> notifs = new ArrayList<String>();
 	@FXML
 	private Label name;
 
@@ -35,8 +35,7 @@ public class NotificationsUI {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
-		
-		ArrayList<String> notifs = currUser.populateNotifications();
+		notifs = currUser.populateNotifications();
 		if(notifs.size() == 0)
 		{
 			notificationsListView.getItems().add("You have no notifications!");

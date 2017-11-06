@@ -34,9 +34,9 @@ public class Admin extends User {
 		
 	}
 	
-	public void populateNotifications()
+	public ArrayList<String> populateNotifications()
 	{
-		
+		return super.populateNotifications();
 	}
 	
 

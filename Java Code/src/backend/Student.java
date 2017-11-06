@@ -57,9 +57,9 @@ public class Student extends User{
 		
 	}
 	
-	public void populateNotifications()
+	public ArrayList<String> populateNotifications()
 	{
-		
+		return super.populateNotifications();
 	}
 	
 
