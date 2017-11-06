@@ -40,7 +40,8 @@ public class Student extends User {
 	}
 
 	@Override
-	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity) throws ClassNotFoundException, IOException {
+	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
+			throws ClassNotFoundException, IOException {
 
 		deserializeRequests();
 		Request studentRequest = new Request();
@@ -54,8 +55,6 @@ public class Student extends User {
 		allRequests.add(studentRequest);
 		serializeRequests();
 
-		
-		
 	}
 
 	public void addToTimeTable(Slot _slot, Course _course) {
@@ -77,9 +76,9 @@ public class Student extends User {
 	public ArrayList<String> populateNotifications() {
 		return super.populateNotifications();
 	}
-	
+
 	public void deserializeRequests() throws ClassNotFoundException, IOException {
-		
+
 		ObjectInputStream in = null;
 		allRequests = new ArrayList<Request>();
 		try {
@@ -98,16 +97,21 @@ public class Student extends User {
 
 			}
 
+		} catch (FileNotFoundException e) {
+
 		} finally {
 
-			in.close();
-
+			if (in != null) {
+				in.close();
+			} else {
+				allRequests = new ArrayList<Request>();
+			}
 		}
-		
+
 	}
-	
+
 	public void serializeRequests() throws FileNotFoundException, IOException {
-		
+
 		ObjectOutputStream out = null;
 
 		try {
@@ -126,8 +130,7 @@ public class Student extends User {
 			out.close();
 
 		}
-		
-		
+
 	}
 
 }

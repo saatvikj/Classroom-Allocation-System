@@ -1,9 +1,11 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Request {
+public class Request implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String purpose;
 	private ClassRoom preferredRoom;
 	private int requiredCapacity;

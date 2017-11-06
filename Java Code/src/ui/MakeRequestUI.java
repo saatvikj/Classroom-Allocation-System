@@ -57,6 +57,7 @@ public class MakeRequestUI {
 	
 	
 	public void populate(){
+		System.out.println("abc");
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser());
