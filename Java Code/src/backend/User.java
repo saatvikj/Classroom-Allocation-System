@@ -247,7 +247,7 @@ public class User implements Serializable {
 			
 			if (key.getDate().getDay() == day-1) {
 				
-				String notification = "You have " + value.getRoomNumber() + " booked today at " + key.getStartTime();
+				String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at " + key.getStartTime();
 				listOfNotifications.add(notification);				
 			}
 		}
