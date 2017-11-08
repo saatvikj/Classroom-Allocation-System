@@ -16,7 +16,7 @@ import exceptions.NoResultFoundException;
 public class Student extends User {
 
 	private Map<Slot, Course> timetable;
-	private ArrayList<Request> allRequests = new ArrayList<>();
+	private transient ArrayList<Request> allRequests = new ArrayList<>();
 
 	public Student(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);

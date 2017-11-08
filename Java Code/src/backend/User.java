@@ -24,7 +24,7 @@ public class User implements Serializable {
 	protected Map<Slot, ClassRoom> bookedRooms = new HashMap<Slot, ClassRoom>();
 	protected String typeOfUser;
 	public ArrayList<String> listOfNotifications;
-	private ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
+	private transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
 	public User() {
 

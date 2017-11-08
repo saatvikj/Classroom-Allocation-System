@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Admin extends User {
 	
-	private ArrayList<Request> listOfRequests;
+	private transient ArrayList<Request> listOfRequests;
 	
 	public Admin(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);

@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 import backend.ClassRoom;
@@ -23,9 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MakeRequestUI {
-	
+
 	public String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-	
+
 	public Student currUser;
 
 	@FXML
@@ -36,40 +37,39 @@ public class MakeRequestUI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private TextField preferredRoom;
-	
+
 	@FXML
 	private TextField reqCapacity;
-	
+
 	@FXML
 	private TextField purpose;
-	
+
 	@FXML
 	private DatePicker date;
-	
+
 	@FXML
 	private TextField startTime;
-	
+
 	@FXML
 	private TextField endTime;
-	
-	
-	public void populate(){
+
+	public void populate() {
 		System.out.println("abc");
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser());
 	}
-	
+
 	@FXML
-	public void submitRequest(MouseEvent event) throws ClassNotFoundException, IOException{
-		
-		boolean validity = checkEmptiness(preferredRoom.getText(), reqCapacity.getText(), purpose.getText(), startTime.getText(), endTime.getText(), date.getValue() == null);
-		if(validity)
-		{
-		
+	public void submitRequest(MouseEvent event) throws ClassNotFoundException, IOException {
+
+		boolean validity = checkEmptiness(preferredRoom.getText(), reqCapacity.getText(), purpose.getText(),
+				startTime.getText(), endTime.getText(), date.getValue() == null);
+		if (validity) {
+
 			String prefRoom = preferredRoom.getText().toString();
 			int reqCap = Integer.parseInt(reqCapacity.getText().toString());
 			String purposeRoom = purpose.getText().toString();
@@ -79,7 +79,7 @@ public class MakeRequestUI {
 			String day = daysOfWeek[date.getValue().getDayOfWeek().getValue() - 1];
 			String startT = startTime.getText().toString();
 			String endT = endTime.getText().toString();
-			
+
 			int startTimeHour = Integer.parseInt(startT.split("\\:")[0]);
 			int startTimeMinute = Integer.parseInt(startT.split("\\:")[1]);
 			Time sTime = new Time(startTimeHour, startTimeMinute, 0);
@@ -88,26 +88,39 @@ public class MakeRequestUI {
 			Time eTime = new Time(endTimeHour, endTimeMinute, 0);
 			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
 			ClassRoom userRoom = currUser.getCorrespondingRoom(prefRoom);
-			currUser.makeBooking(userRoom, userSlot, reqCap);
-		}
-		else
-		{
+
+			ArrayList<ClassRoom> rooms = currUser.checkRoomAvailability(userRoom, userSlot, reqCap);
+			boolean check = false;
+			for (int i = 0; i < rooms.size(); i++) {
+				if (rooms.get(i).getRoomNumber().equalsIgnoreCase(userRoom.getRoomNumber())) {
+					check = true;
+				}
+			}
+			if (check) {
+				currUser.makeBooking(userRoom, userSlot, reqCap);
+			} else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error!");
+				alert.setHeaderText(null);
+				alert.setContentText("The room is already booked, please make another request.");
+				alert.showAndWait();
+			}
+		} else {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Error!");
 			alert.setHeaderText(null);
 			alert.setContentText("At least one of the fields is empty, try again.");
 			alert.showAndWait();
 		}
-		
+
 	}
-	
-	
+
 	public boolean checkEmptiness(String text, String text2, String text3, String text4, String text5, boolean b) {
 		// TODO Auto-generated method stub
-		if(text.length() == 0|| text2.length() == 0|| text3.length() == 0 || text4.length() == 0 || text5.length() == 0 || b){
+		if (text.length() == 0 || text2.length() == 0 || text3.length() == 0 || text4.length() == 0
+				|| text5.length() == 0 || b) {
 			return false;
-		}
-		else{
+		} else {
 			return true;
 		}
 	}
@@ -130,7 +143,7 @@ public class MakeRequestUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
@@ -149,7 +162,7 @@ public class MakeRequestUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -168,6 +181,5 @@ public class MakeRequestUI {
 		}
 
 	}
-	
 
 }

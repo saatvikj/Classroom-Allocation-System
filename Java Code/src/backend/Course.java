@@ -18,7 +18,7 @@ public class Course implements Serializable {
 	private int credits;
 	private String courseName;
 	private Map<Slot, ClassRoom> courseTimeTable = new HashMap<Slot, ClassRoom>();
-	private ArrayList<ClassRoom> allRooms;
+	private transient ArrayList<ClassRoom> allRooms;
 
 	public Map<Slot, ClassRoom> getCourseTimeTable() {
 		return courseTimeTable;
