@@ -86,7 +86,7 @@ public class MakeRequestUI {
 			int endTimeHour = Integer.parseInt(endT.split("\\:")[0]);
 			int endTimeMinute = Integer.parseInt(endT.split("\\:")[1]);
 			Time eTime = new Time(endTimeHour, endTimeMinute, 0);
-			Slot userSlot = new Slot(dt, day, Slot.TYPES[3], sTime, eTime);
+			Slot userSlot = new Slot(dt, day, purposeRoom, sTime, eTime);
 			ClassRoom userRoom = currUser.getCorrespondingRoom(prefRoom);
 
 			ArrayList<ClassRoom> rooms = currUser.checkRoomAvailability(userRoom, userSlot, reqCap);

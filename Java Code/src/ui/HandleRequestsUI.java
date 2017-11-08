@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import backend.Admin;
 import backend.Request;
 import backend.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -79,7 +81,7 @@ public class HandleRequestsUI {
 		
 		if(reqList.size() == 0)
 		{
-			requestsList.getItems().add("No Rooms found!");
+			requestsList.getItems().add("No pending requests!");
 			
 		}
 		else
@@ -89,6 +91,22 @@ public class HandleRequestsUI {
 				requestsList.getItems().add(reqList.get(i).getPreferredRoom().getRoomNumber().toUpperCase() + "  Dated : " + reqList.get(i).getTimeSlot().displayFormattedDate());
 			}
 		}
+		
+		requestsList.getSelectionModel().selectedItemProperty()
+		.addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				// TODO Auto-generated method stub
+				requestPane.setVisible(true);
+
+				int index = requestsList.getSelectionModel().getSelectedIndex();
+				roomNumber.setText(reqList.get(index).getPreferredRoom().getRoomNumber().toUpperCase());
+				roomPurpose.setText(reqList.get(index).getPurpose());
+				roomCap.setText(Integer.toString(reqList.get(index).getRequiredCapacity()));
+				roomSlot.setText(reqList.get(index).getTimeSlot().displayFormattedDate());
+			}
+		});
 	}
 
 	
