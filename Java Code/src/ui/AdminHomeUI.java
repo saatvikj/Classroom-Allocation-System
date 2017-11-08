@@ -99,16 +99,19 @@ public class AdminHomeUI {
 	}
 
 	@FXML
-	private void handleRequests(MouseEvent event) {
+	private void handleRequests(MouseEvent event) throws ClassNotFoundException {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/HandleRequests.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HandleRequests.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			HandleRequestsUI controller = loader.<HandleRequestsUI>getController();
+			controller.currAdmin = currAdmin;
+			controller.populate();
 
+			stage.show();
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {

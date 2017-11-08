@@ -1,5 +1,12 @@
 package backend;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Admin extends User {
@@ -38,6 +45,63 @@ public class Admin extends User {
 	{
 		return super.populateNotifications();
 	}
+	
+	public void deserializeRequests() throws ClassNotFoundException, IOException {
+
+		ObjectInputStream in = null;
+		listOfRequests = new ArrayList<Request>();
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/requests.txt"));
+			Request request;
+
+			try {
+
+				while (true) {
+					request = (Request) in.readObject();
+					listOfRequests.add(request);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				listOfRequests = new ArrayList<Request>();
+			}
+		}
+
+	}
+
+	public void serializeRequests() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/requests.txt"));
+
+			for (int i = 0; i < listOfRequests.size(); i++) {
+				Request request = listOfRequests.get(i);
+				if (!request.checkExpiry()) {
+					out.writeObject(request);
+				}
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
 	
 
 	
