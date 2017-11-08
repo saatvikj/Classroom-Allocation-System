@@ -20,7 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class HandleRequestsUI {
-	
+
 	public Admin currAdmin;
 
 	@FXML
@@ -31,37 +31,41 @@ public class HandleRequestsUI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private ListView<String> requestsList;
-	
+
 	@FXML
 	private Label roomNumber;
-	
+
 	@FXML
 	private Label roomPurpose;
-	
+
 	@FXML
 	private Label roomCap;
-	
+
 	@FXML
 	private Label roomSlot;
-	
+
 	@FXML
 	private Label studentName;
-	
+
 	@FXML
 	private GridPane requestPane;
-	
+
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/AdminHome.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+
+			AdminHomeUI controller = loader.<AdminHomeUI>getController();
+			controller.currAdmin = currAdmin;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -71,54 +75,67 @@ public class HandleRequestsUI {
 		}
 
 	}
-	
+
 	public void populate() throws ClassNotFoundException, IOException {
 		name.setText(currAdmin.getName());
 		email.setText(currAdmin.getEmailID());
 		title.setText(currAdmin.getTypeOfUser().toUpperCase());
 		currAdmin.deserializeRequests();
 		ArrayList<Request> reqList = currAdmin.getListOfRequests();
-		
-		if(reqList.size() == 0)
-		{
+
+		if (reqList.size() == 0) {
 			requestsList.getItems().add("No pending requests!");
-			
-		}
-		else
-		{
-			for(int i = 0; i < reqList.size(); i++)
-			{
-				requestsList.getItems().add(reqList.get(i).getPreferredRoom().getRoomNumber().toUpperCase() + "  Dated : " + reqList.get(i).getTimeSlot().displayFormattedDate());
+
+		} else {
+			for (int i = 0; i < reqList.size(); i++) {
+				requestsList.getItems().add(reqList.get(i).getPreferredRoom().getRoomNumber().toUpperCase()
+						+ "  Dated : " + reqList.get(i).getTimeSlot().displayFormattedDate());
 			}
 		}
-		
-		requestsList.getSelectionModel().selectedItemProperty()
-		.addListener(new ChangeListener<String>() {
+
+		requestsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				// TODO Auto-generated method stub
-				requestPane.setVisible(true);
 
-				int index = requestsList.getSelectionModel().getSelectedIndex();
-				roomNumber.setText(reqList.get(index).getPreferredRoom().getRoomNumber().toUpperCase());
-				roomPurpose.setText(reqList.get(index).getPurpose());
-				roomCap.setText(Integer.toString(reqList.get(index).getRequiredCapacity()));
-				roomSlot.setText(reqList.get(index).getTimeSlot().displayFormattedDate());
+				try {
+
+					if (!(newValue.equalsIgnoreCase("No pending requests!"))) {
+
+						requestPane.setVisible(true);
+						int index = requestsList.getSelectionModel().getSelectedIndex();
+						roomNumber.setText(reqList.get(index).getPreferredRoom().getRoomNumber().toUpperCase());
+						roomPurpose.setText(reqList.get(index).getPurpose());
+						roomCap.setText(Integer.toString(reqList.get(index).getRequiredCapacity()));
+						roomSlot.setText(reqList.get(index).getTimeSlot().displayFormattedDate());
+
+					}
+
+				} catch (NullPointerException e) {
+
+					requestsList.getItems().add("No pending requests!");
+					requestPane.setVisible(false);
+
+				}
+
 			}
 		});
 	}
 
-	
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/AdminHome.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdminHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+
+			AdminHomeUI controller = loader.<AdminHomeUI>getController();
+			controller.currAdmin = currAdmin;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -128,7 +145,7 @@ public class HandleRequestsUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -147,5 +164,21 @@ public class HandleRequestsUI {
 		}
 
 	}
+	
+	
+	@FXML
+	private void acceptRequest(MouseEvent event) {
+		
+		int requestIndex = requestsList.getSelectionModel().getSelectedIndex();
+		currAdmin.handleRequests(requestIndex, true);
+	}
 
+	
+	@FXML
+	private void rejectRequest(MouseEvent event) {
+		
+		int requestIndex = requestsList.getSelectionModel().getSelectedIndex();
+		currAdmin.handleRequests(requestIndex, false);
+		
+	}
 }

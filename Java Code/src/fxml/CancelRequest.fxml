@@ -9,7 +9,7 @@
 <?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CancelRequestUI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CancelRequestUI">
 	<children>
 
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
@@ -56,7 +56,7 @@
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<ListView layoutX="76.0" layoutY="240.0" prefHeight="200.0" prefWidth="250.0">
+		<ListView layoutX="76.0" layoutY="240.0" prefHeight="200.0" prefWidth="300.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="Request 1, Dated: 12/10/2017" />

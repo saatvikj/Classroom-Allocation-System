@@ -256,10 +256,6 @@ public class User implements Serializable {
 		
 	}
 
-	public void deserialize() {
-
-	}
-
 	public void serializeRooms() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;

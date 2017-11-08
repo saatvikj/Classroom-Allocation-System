@@ -58,10 +58,10 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView fx:id="requestsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="200.0">
+				<ListView fx:id="requestsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
 					
 				</ListView>
-				<GridPane fx:id="requestPane" visible="false" layoutX="400.0" layoutY="220.0">
+				<GridPane fx:id="requestPane" layoutX="400.0" layoutY="220.0" visible="false">
 					<children>
 						<Label text="ROOM" />
 						<Label fx:id="roomNumber" text="C01" GridPane.columnIndex="1" />
@@ -73,12 +73,12 @@
 						<Label fx:id="roomSlot" text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 						<Label text="SOURCE STUDENT" GridPane.rowIndex="4" />
 						<Label fx:id="studentName" text="Saatvik Jain" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-						<Button id="button" mnemonicParsing="false" text="Accept" GridPane.rowIndex="5">
+						<Button id="button" mnemonicParsing="false" onMouseClicked="#acceptRequest" text="Accept" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="70.0" />
 							</GridPane.margin>
 						</Button>
-						<Button id="button" mnemonicParsing="false" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
+						<Button id="button" mnemonicParsing="false" onMouseClicked="#rejectRequest" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="20.0" />
 							</GridPane.margin>

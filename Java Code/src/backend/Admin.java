@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Admin extends User {
 	
@@ -28,6 +29,22 @@ public class Admin extends User {
 	
 	public void handleRequests(int indexOfRequest, boolean choice)
 	{
+		
+		if(choice == false) {
+			listOfRequests.get(indexOfRequest).setCurrentStatus(false);
+		} else {
+			
+			Request currRequest = listOfRequests.get(indexOfRequest);
+			Slot requestSlot = currRequest.getTimeSlot();
+			String day = requestSlot.getDay();
+			
+			if(currRequest.getPreferredRoom().getBookedSlots().containsKey(day)){
+				Map<Slot, Object> requestDayMap = currRequest.getPreferredRoom().getBookedSlots().get(day);
+				
+			}
+			
+		
+		}
 		
 	}
 	

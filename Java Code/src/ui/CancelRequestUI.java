@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class CancelRequestUI {
-	
+
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
@@ -30,7 +30,7 @@ public class CancelRequestUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
@@ -49,7 +49,7 @@ public class CancelRequestUI {
 		}
 
 	}
-	
+
 	@FXML
 	private void logout(MouseEvent event) {
 

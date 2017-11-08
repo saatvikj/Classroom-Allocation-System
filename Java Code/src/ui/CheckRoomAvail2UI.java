@@ -55,12 +55,33 @@ public class CheckRoomAvail2UI {
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/AdminHome.fxml"));
+
+			String path;
+			if (currUser.getTypeOfUser().equals("Admin")) {
+				path = "/fxml/AdminHome.fxml";
+			} else {
+				path = "/fxml/FacultyHome.fxml";
+			}
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+
+			if (currUser.getTypeOfUser().equals("Admin")) {
+				Admin admin = (Admin) currUser;
+				AdminHomeUI controller = loader.<AdminHomeUI>getController();
+				controller.currAdmin = admin;
+				controller.populate();
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
+				Faculty faculty = (Faculty) currUser;
+				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
+				controller.currFaculty = faculty;
+				controller.populate();
+			}
+
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -68,18 +89,22 @@ public class CheckRoomAvail2UI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
+
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
+
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
+			controller.currUser = currUser;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();

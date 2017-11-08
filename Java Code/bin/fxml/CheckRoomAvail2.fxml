@@ -9,40 +9,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-	prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail2UI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail2UI">
 	<children>
-		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160"
-			text="CHECK ROOM AVAILABILITY">
+		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160" text="CHECK ROOM AVAILABILITY">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<Label layoutX="76.0" layoutY="220.0" prefHeight="26.0"
-			prefWidth="406.0" text="List of available rooms as per your requirement: ">
+		<Label layoutX="76.0" layoutY="220.0" prefHeight="26.0" prefWidth="406.0" text="List of available rooms as per your requirement: ">
 			<font>
 				<Font size="17.0" />
 			</font>
 		</Label>
-		<ListView fx:id="relevantRoomsList" layoutX="76.0" layoutY="260.0"
-			prefHeight="150.0" prefWidth="200.0">
+		<ListView fx:id="relevantRoomsList" layoutX="76.0" layoutY="260.0" prefHeight="150.0" prefWidth="300.0">
 
 		</ListView>
 		<Label layoutX="76.0" layoutY="434.0" text="*Tap to book the room" />
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="575.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP"
-					text="sheetu@iiitd.ac.in">
+				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -70,25 +61,18 @@
 				</Label>
 			</children>
 		</GridPane>
-		<Button fx:id="book" id="button" layoutX="450.0" layoutY="320.0"
-			mnemonicParsing="false" onMouseClicked="#bookRoom" prefHeight="50.0"
-			prefWidth="200.0" text="BOOK ROOM" />
-		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
-			pickOnBounds="true" preserveRatio="true">
+		<Button id="button" fx:id="book" layoutX="450.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#bookRoom" prefHeight="50.0" prefWidth="200.0" text="BOOK ROOM" />
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/home.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
-			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/back.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
-			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/logouticon.png" />
 			</image>

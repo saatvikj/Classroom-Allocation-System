@@ -59,10 +59,10 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView fx:id="roomRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="200.0">
+				<ListView fx:id="roomRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
 					
 				</ListView>
-				<GridPane visible="false" fx:id="roomDetails" layoutX="400.0" layoutY="220.0">
+				<GridPane fx:id="roomDetails" layoutX="400.0" layoutY="220.0" visible="false">
 					<children>
 						<Label text="ROOM" />
 						<Label fx:id="roomName" GridPane.columnIndex="1" />

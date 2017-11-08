@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane stylesheets="@application.css" id="homePnae" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT2UI">
+<Pane id="homePnae" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT2UI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
@@ -60,7 +60,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0" prefWidth="200.0">
+		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0" prefWidth="300.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="CSE101" />

@@ -129,16 +129,30 @@ public class BookedRoomsUI {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				// TODO Auto-generated method stub
-				roomDetails.setVisible(true);
-				String[] details = newValue.split(",");
-				roomName.setText(details[0]);
+				
 				try {
-					roomCapacity.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
-				} catch (ClassNotFoundException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
+					if(!(newValue.equalsIgnoreCase("No booking!"))) {
+
+						roomDetails.setVisible(true);
+						String[] details = newValue.split(",");
+						roomName.setText(details[0]);
+						try {
+							roomCapacity.setText(Integer.toString(currUser.getCorrespondingRoom(roomName.getText()).getCapacity()));
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						roomSlot.setText(details[1] + details[2]);	
+
+						
+					}
+					
+					
+				} catch (NullPointerException e) {
+					roomDetails.setVisible(false);
+					roomRecordsList.getItems().add("No booked rooms!");
 				}
-				roomSlot.setText(details[1] + details[2]);	
 				
 			}
 		});

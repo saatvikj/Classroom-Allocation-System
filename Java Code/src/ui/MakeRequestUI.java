@@ -57,7 +57,6 @@ public class MakeRequestUI {
 	private TextField endTime;
 
 	public void populate() {
-		System.out.println("abc");
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser());
@@ -128,12 +127,15 @@ public class MakeRequestUI {
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/StudentHome.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			StudentHomeUI controller = loader.<StudentHomeUI>getController();
+			controller.currStudent = currUser;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -147,12 +149,15 @@ public class MakeRequestUI {
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/StudentHome.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentHome.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			StudentHomeUI controller = loader.<StudentHomeUI>getController();
+			controller.currStudent = currUser;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
