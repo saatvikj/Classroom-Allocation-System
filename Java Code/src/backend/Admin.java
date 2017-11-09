@@ -30,7 +30,7 @@ public class Admin extends User {
 	
 	public void handleRequests(int indexOfRequest, boolean choice) throws FileNotFoundException, IOException, ClassNotFoundException
 	{
-		
+		deserializeRequests();
 		if(choice == false) {
 			listOfRequests.get(indexOfRequest).setCurrentStatus(-1);
 		} else {
@@ -52,6 +52,7 @@ public class Admin extends User {
 				room.getBookedSlots().put(day, newMap);
 			}
 			
+			serializeRequests();
 			System.out.println(listOfRequests.get(indexOfRequest).getCurrentStatus());
 			serializeRooms();
 		}
