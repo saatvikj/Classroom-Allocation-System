@@ -72,7 +72,7 @@ public class NotificationsUI {
 	}
 
 	@FXML
-	private void homeButtonClicked(MouseEvent event) {
+	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 

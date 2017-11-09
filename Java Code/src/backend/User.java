@@ -23,8 +23,8 @@ public class User implements Serializable {
 	protected String encryptedPassword;
 	protected Map<Slot, ClassRoom> bookedRooms = new HashMap<Slot, ClassRoom>();
 	protected String typeOfUser;
-	public ArrayList<String> listOfNotifications;
-	private transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
+	public ArrayList<String> listOfNotifications = new ArrayList<String>();
+	protected transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
 	public User() {
 

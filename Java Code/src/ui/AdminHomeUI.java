@@ -27,6 +27,7 @@ public class AdminHomeUI {
 	}
 
 	public void populate() {
+		
 		nameAdmin.setText(currAdmin.getName());
 		emailAdmin.setText(currAdmin.getEmailID());
 	}

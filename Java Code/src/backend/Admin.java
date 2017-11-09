@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Admin extends User {
@@ -27,25 +28,36 @@ public class Admin extends User {
 		this.listOfRequests = listOfRequests;
 	}
 	
-	public void handleRequests(int indexOfRequest, boolean choice)
+	public void handleRequests(int indexOfRequest, boolean choice) throws FileNotFoundException, IOException, ClassNotFoundException
 	{
 		
 		if(choice == false) {
-			listOfRequests.get(indexOfRequest).setCurrentStatus(false);
+			listOfRequests.get(indexOfRequest).setCurrentStatus(-1);
 		} else {
-			
+			deserializeRooms();
+			deserializeRequests();
 			Request currRequest = listOfRequests.get(indexOfRequest);
 			Slot requestSlot = currRequest.getTimeSlot();
 			String day = requestSlot.getDay();
+
+			ClassRoom room = getCorrespondingRoom(listOfRequests.get(indexOfRequest).getPreferredRoom().getRoomNumber());
 			
-			if(currRequest.getPreferredRoom().getBookedSlots().containsKey(day)){
-				Map<Slot, Object> requestDayMap = currRequest.getPreferredRoom().getBookedSlots().get(day);
-				
+			if(room.getBookedSlots().containsKey(day)){
+				Map<Slot, Object> requestDayMap = room.getBookedSlots().get(day);
+				requestDayMap.put(requestSlot, currRequest.getSourceStudent());
+				listOfRequests.get(indexOfRequest).setCurrentStatus(+1);
+			} else {
+				Map<Slot, Object> newMap = new HashMap<>();
+				newMap.put(requestSlot, currRequest.getSourceStudent());
+				room.getBookedSlots().put(day, newMap);
 			}
 			
-		
+			System.out.println(listOfRequests.get(indexOfRequest).getCurrentStatus());
+			serializeRooms();
 		}
 		
+		System.out.println("serialize done");
+		serializeRequests();
 	}
 	
 	public void addToStudent()
@@ -76,7 +88,9 @@ public class Admin extends User {
 
 				while (true) {
 					request = (Request) in.readObject();
-					listOfRequests.add(request);
+					if(request.getCurrentStatus() == 0) {
+						listOfRequests.add(request);
+					}
 				}
 
 			} catch (EOFException e) {

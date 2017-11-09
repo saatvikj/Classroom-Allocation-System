@@ -125,7 +125,7 @@ public class MakeRequestUI {
 	}
 
 	@FXML
-	private void homeButtonClicked(MouseEvent event) {
+	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 
@@ -147,7 +147,7 @@ public class MakeRequestUI {
 	}
 
 	@FXML
-	private void backButtonClicked(MouseEvent event) {
+	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 

@@ -45,7 +45,7 @@ public class Student extends User {
 
 		deserializeRequests();
 		Request studentRequest = new Request();
-		studentRequest.setCurrentStatus(false);
+		studentRequest.setCurrentStatus(0);
 		studentRequest.setPreferredRoom(reqRoom);
 		studentRequest.setPurpose(reqSlot.getPurpose());
 		studentRequest.setRequiredCapacity(reqCapacity);
@@ -81,6 +81,7 @@ public class Student extends User {
 
 		ObjectInputStream in = null;
 		allRequests = new ArrayList<Request>();
+		System.out.println("bcbcbc");
 		try {
 
 			in = new ObjectInputStream(new FileInputStream("./src/res/requests.txt"));
@@ -90,7 +91,26 @@ public class Student extends User {
 
 				while (true) {
 					request = (Request) in.readObject();
-					allRequests.add(request);
+					System.out.println(request.getCurrentStatus());
+					if (request.getCurrentStatus() == 0) {
+						allRequests.add(request);
+					} else if (request.getCurrentStatus() == 1) {
+						if (request.getSourceStudent().getEmailID().equals(this.getEmailID())) {
+
+							Map<Slot, ClassRoom> bookedMap = this.getBookedRooms();
+							bookedMap.put(request.getTimeSlot(), request.getPreferredRoom());
+							System.out.println("a");
+							this.listOfNotifications.add("Your request for "
+									+ request.getPreferredRoom().getRoomNumber().toUpperCase() + " has been accepted!");
+						}
+					} else {
+
+						if (request.getSourceStudent().getEmailID().equals(this.getEmailID())) {
+							this.listOfNotifications.add("Your request for "
+									+ request.getPreferredRoom().getRoomNumber().toUpperCase() + " has been rejected!");
+						}
+					}
+
 				}
 
 			} catch (EOFException e) {

@@ -63,7 +63,7 @@ public class CancelBooking {
 	private Button cancelBookingButton;
 
 	@FXML
-	private void homeButtonClicked(MouseEvent event) {
+	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 
@@ -167,7 +167,7 @@ public class CancelBooking {
 	}
 
 	@FXML
-	private void backButtonClicked(MouseEvent event) {
+	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 

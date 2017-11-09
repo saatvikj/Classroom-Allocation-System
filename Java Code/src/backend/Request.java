@@ -11,7 +11,7 @@ public class Request implements Serializable {
 	private int requiredCapacity;
 	private Slot timeSlot;
 	private Date timeStamp;
-	private boolean currentStatus;
+	private int currentStatus;
 	private Student sourceStudent;
 
 	Request() {
@@ -19,7 +19,7 @@ public class Request implements Serializable {
 	}
 
 	Request(String purpose, ClassRoom preferredRoom, int requiredCapacity, Slot timeSlot, Date timeStamp,
-			boolean currentStatus, Student sourceStudent) {
+			int currentStatus, Student sourceStudent) {
 		super();
 		this.purpose = purpose;
 		this.preferredRoom = preferredRoom;
@@ -70,11 +70,11 @@ public class Request implements Serializable {
 		this.timeStamp = timeStamp;
 	}
 
-	public boolean isCurrentStatus() {
+	public int getCurrentStatus() {
 		return currentStatus;
 	}
 
-	public void setCurrentStatus(boolean currentStatus) {
+	public void setCurrentStatus(int currentStatus) {
 		this.currentStatus = currentStatus;
 	}
 

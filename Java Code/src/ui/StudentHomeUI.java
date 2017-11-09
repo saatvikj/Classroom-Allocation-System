@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import backend.Student;
@@ -26,20 +27,26 @@ public class StudentHomeUI {
 
 	}
 
-	public void populate() {
+	public void populate() throws FileNotFoundException, IOException, ClassNotFoundException {
+		currStudent.deserializeRequests();
 		nameStudent.setText(currStudent.getName());
 		emailStudent.setText(currStudent.getEmailID());
+		
 	}
 
 	@FXML
 	private void showNotifications(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/NotificationsUI.fxml"));
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NotificationsUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			
+			NotificationsUI controller = loader.<NotificationsUI>getController();
+			controller.currUser = currStudent;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
