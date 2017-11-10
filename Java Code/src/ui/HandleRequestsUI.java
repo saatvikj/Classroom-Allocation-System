@@ -179,6 +179,7 @@ public class HandleRequestsUI {
 		deserializeUsers();
 		int requestIndex = requestsList.getSelectionModel().getSelectedIndex();
 		currAdmin.handleRequests(requestIndex, true);
+		requestsList.getItems().remove(requestIndex);
 		serializeUsers();
 	}
 
@@ -188,6 +189,7 @@ public class HandleRequestsUI {
 		deserializeUsers();
 		int requestIndex = requestsList.getSelectionModel().getSelectedIndex();
 		currAdmin.handleRequests(requestIndex, false);
+		requestsList.getItems().remove(requestIndex);
 		serializeUsers();
 	}
 

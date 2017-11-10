@@ -97,6 +97,17 @@ public class MakeRequestUI {
 			}
 			if (check) {
 				System.out.println("Request submitted.");
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Alert!");
+				alert.setHeaderText(null);
+				alert.setContentText("Your request has been submitted!");
+				alert.showAndWait();
+				preferredRoom.setText("");
+				reqCapacity.setText("");
+				date.getEditor().clear();
+				purpose.setText("");
+				startTime.setText("");
+				endTime.setText("");
 				currUser.makeBooking(userRoom, userSlot, reqCap);
 			} else {
 				Alert alert = new Alert(AlertType.INFORMATION);
