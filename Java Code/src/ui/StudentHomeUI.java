@@ -1,9 +1,16 @@
 package ui;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import backend.Student;
+import backend.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,6 +23,7 @@ import javafx.stage.Stage;
 public class StudentHomeUI {
 
 	public Student currStudent;
+	private ArrayList<User> listOfUsers = new ArrayList<User>();
 
 	@FXML
 	private Label nameStudent;
@@ -28,7 +36,9 @@ public class StudentHomeUI {
 	}
 
 	public void populate() throws FileNotFoundException, IOException, ClassNotFoundException {
+		deserializeUsers();
 		currStudent.deserializeRequests();
+		serializeUsers();
 		nameStudent.setText(currStudent.getName());
 		emailStudent.setText(currStudent.getEmailID());
 		
@@ -275,4 +285,71 @@ public class StudentHomeUI {
 
 	}
 
+	
+	public void serializeUsers() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/users.txt"));
+
+			for (int i = 0; i < listOfUsers.size(); i++) {
+
+				if (listOfUsers.get(i).getEmailID().equals(currStudent.getEmailID())) {
+					out.writeObject(currStudent);
+				} else {
+
+					User newUser = listOfUsers.get(i);
+					out.writeObject(newUser);
+				}
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
+	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
+
+		/*
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
+		 * 
+		 */
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/users.txt"));
+			User user;
+
+			try {
+
+				while (true) {
+					user = (User) in.readObject();
+					listOfUsers.add(user);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				listOfUsers = new ArrayList<User>();
+			}
+
+		}
+
+	}
+	
 }

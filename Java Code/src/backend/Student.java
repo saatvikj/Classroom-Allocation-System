@@ -43,6 +43,7 @@ public class Student extends User {
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 			throws ClassNotFoundException, IOException {
 
+		System.out.println("Inside make booking function");
 		deserializeRequests();
 		Request studentRequest = new Request();
 		studentRequest.setCurrentStatus(0);
@@ -81,7 +82,6 @@ public class Student extends User {
 
 		ObjectInputStream in = null;
 		allRequests = new ArrayList<Request>();
-		System.out.println("bcbcbc");
 		try {
 
 			in = new ObjectInputStream(new FileInputStream("./src/res/requests.txt"));
@@ -91,23 +91,41 @@ public class Student extends User {
 
 				while (true) {
 					request = (Request) in.readObject();
-					System.out.println(request.getCurrentStatus());
+					System.out.println(request.getPreferredRoom().getRoomNumber()+" "+request.getCurrentStatus());
 					if (request.getCurrentStatus() == 0) {
 						allRequests.add(request);
 					} else if (request.getCurrentStatus() == 1) {
 						if (request.getSourceStudent().getEmailID().equals(this.getEmailID())) {
 
 							Map<Slot, ClassRoom> bookedMap = this.getBookedRooms();
-							bookedMap.put(request.getTimeSlot(), request.getPreferredRoom());
-							System.out.println("a");
-							this.listOfNotifications.add("Your request for "
-									+ request.getPreferredRoom().getRoomNumber().toUpperCase() + " has been accepted!");
+
+							boolean flag = false;
+
+							for (Map.Entry<Slot, ClassRoom> entry : bookedMap.entrySet()) {
+								Slot key = entry.getKey();								
+								ClassRoom value = entry.getValue();
+								if (key.displayFormattedDate().equals(request.getTimeSlot().displayFormattedDate()) && value.getRoomNumber().equals(request.getPreferredRoom().getRoomNumber())) {
+									flag = true;
+								}
+							}
+							
+							if (!flag) {
+								bookedMap.put(request.getTimeSlot(), request.getPreferredRoom());
+							}
+							
+							if (this.listOfNotifications != null) {
+							this.listOfNotifications.add("Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()+ " has been accepted!"); } else {
+								this.listOfNotifications = new ArrayList<>();
+								this.listOfNotifications.add("Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()+ " has been accepted!");
+							}
 						}
 					} else {
 
 						if (request.getSourceStudent().getEmailID().equals(this.getEmailID())) {
-							this.listOfNotifications.add("Your request for "
-									+ request.getPreferredRoom().getRoomNumber().toUpperCase() + " has been rejected!");
+							// this.listOfNotifications.add("Your request for "
+							// +
+							// request.getPreferredRoom().getRoomNumber().toUpperCase()
+							// + " has been rejected!");
 						}
 					}
 

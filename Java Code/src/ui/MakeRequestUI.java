@@ -96,6 +96,7 @@ public class MakeRequestUI {
 				}
 			}
 			if (check) {
+				System.out.println("Request submitted.");
 				currUser.makeBooking(userRoom, userSlot, reqCap);
 			} else {
 				Alert alert = new Alert(AlertType.INFORMATION);

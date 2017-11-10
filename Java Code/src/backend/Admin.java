@@ -30,29 +30,25 @@ public class Admin extends User {
 	
 	public void handleRequests(int indexOfRequest, boolean choice) throws FileNotFoundException, IOException, ClassNotFoundException
 	{
-		deserializeRequests();
 		if(choice == false) {
 			listOfRequests.get(indexOfRequest).setCurrentStatus(-1);
 		} else {
 			deserializeRooms();
-			deserializeRequests();
 			Request currRequest = listOfRequests.get(indexOfRequest);
 			Slot requestSlot = currRequest.getTimeSlot();
 			String day = requestSlot.getDay();
-
+			listOfRequests.get(indexOfRequest).setCurrentStatus(1);
 			ClassRoom room = getCorrespondingRoom(listOfRequests.get(indexOfRequest).getPreferredRoom().getRoomNumber());
 			
 			if(room.getBookedSlots().containsKey(day)){
 				Map<Slot, Object> requestDayMap = room.getBookedSlots().get(day);
 				requestDayMap.put(requestSlot, currRequest.getSourceStudent());
-				listOfRequests.get(indexOfRequest).setCurrentStatus(+1);
 			} else {
 				Map<Slot, Object> newMap = new HashMap<>();
 				newMap.put(requestSlot, currRequest.getSourceStudent());
 				room.getBookedSlots().put(day, newMap);
 			}
 			
-			serializeRequests();
 			System.out.println(listOfRequests.get(indexOfRequest).getCurrentStatus());
 			serializeRooms();
 		}

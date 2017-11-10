@@ -196,7 +196,8 @@ public class User implements Serializable {
 
 	}
 
-	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot)
+			throws FileNotFoundException, IOException, ClassNotFoundException {
 		/*
 		 * It calls the method cancelBooking from bookedRoom object with
 		 * bookedSlot as parameter and then makes this entry in its own
@@ -209,20 +210,21 @@ public class User implements Serializable {
 			if (allRooms.get(i).getRoomNumber().equalsIgnoreCase(bookedRoom.getRoomNumber())) {
 
 				if (allRooms.get(i).getBookedSlots().containsKey(bookedSlot.getDay())) {
-					
-					for(Map.Entry<Slot, Object> map: allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).entrySet() ) {
+
+					for (Map.Entry<Slot, Object> map : allRooms.get(i).getBookedSlots().get(bookedSlot.getDay())
+							.entrySet()) {
 						Slot key = map.getKey();
 						Object value = map.getValue();
-						if (key.getDate().getDate() == bookedSlot.getDate().getDate() && 
-							key.getDate().getMonth() == bookedSlot.getDate().getMonth() &&
-							key.getDate().getYear() == bookedSlot.getDate().getYear() &&
-							key.getStartTime().equals(bookedSlot.getStartTime()) &&
-							key.getEndTime().equals(bookedSlot.getEndTime())) {
+						if (key.getDate().getDate() == bookedSlot.getDate().getDate()
+								&& key.getDate().getMonth() == bookedSlot.getDate().getMonth()
+								&& key.getDate().getYear() == bookedSlot.getDate().getYear()
+								&& key.getStartTime().equals(bookedSlot.getStartTime())
+								&& key.getEndTime().equals(bookedSlot.getEndTime())) {
 							allRooms.get(i).getBookedSlots().get(bookedSlot.getDay()).remove(key);
 							break;
 						}
 					}
-					
+
 				}
 
 			}
@@ -237,23 +239,42 @@ public class User implements Serializable {
 		 * refreshes the listOfNotifications attribute. (New requests for admin,
 		 * request status for student etc etc)
 		 */
-		listOfNotifications = new ArrayList<String>();
-		Calendar calendar = Calendar.getInstance();
-		int day = calendar.get(Calendar.DAY_OF_WEEK);
-		for (Map.Entry<Slot, ClassRoom> map: bookedRooms.entrySet()) {
-			
-			Slot key = map.getKey();
-			ClassRoom value = map.getValue();
-			
-			if (key.getDate().getDay() == day-1) {
-				
-				String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at " + key.getStartTime();
-				listOfNotifications.add(notification);				
+		if (listOfNotifications != null) {
+			Calendar calendar = Calendar.getInstance();
+			int day = calendar.get(Calendar.DAY_OF_WEEK);
+			for (Map.Entry<Slot, ClassRoom> map : bookedRooms.entrySet()) {
+
+				Slot key = map.getKey();
+				ClassRoom value = map.getValue();
+
+				if (key.getDate().getDay() == day - 1) {
+
+					String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at "
+							+ key.getStartTime();
+					listOfNotifications.add(notification);
+				}
 			}
+		} else {
+			listOfNotifications = new ArrayList<>();
+			Calendar calendar = Calendar.getInstance();
+			int day = calendar.get(Calendar.DAY_OF_WEEK);
+			for (Map.Entry<Slot, ClassRoom> map : bookedRooms.entrySet()) {
+
+				Slot key = map.getKey();
+				ClassRoom value = map.getValue();
+
+				if (key.getDate().getDay() == day - 1) {
+
+					String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at "
+							+ key.getStartTime();
+					listOfNotifications.add(notification);
+				}
+			}
+
 		}
-		
+
 		return this.listOfNotifications;
-		
+
 	}
 
 	public void serializeRooms() throws FileNotFoundException, IOException {
