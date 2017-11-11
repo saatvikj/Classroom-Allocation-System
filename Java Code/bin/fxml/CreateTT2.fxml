@@ -9,17 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane id="homePnae" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT2UI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+	prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT2UI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="10.0" prefWidth="575.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
+				<Label alignment="CENTER_RIGHT" contentDisplay="TOP"
+					text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -49,18 +55,21 @@
 		</GridPane>
 
 
-		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="CREATE YOUR PERSONALIZED TIME TABLE">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+			text="CREATE YOUR PERSONALIZED TIME TABLE">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
 
-		<Label layoutX="76.0" layoutY="220.0" prefHeight="21.0" prefWidth="270.0" text="Here are the list of relevant courses- ">
+		<Label layoutX="76.0" layoutY="220.0" prefHeight="21.0"
+			prefWidth="270.0" text="Here are the list of relevant courses- ">
 			<font>
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0" prefWidth="300.0">
+		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0"
+			prefWidth="300.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="CSE101" />
@@ -71,7 +80,8 @@
 				</FXCollections>
 			</items>
 		</ListView>
-		<Button id="button" layoutX="475.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD" />
+		<Button id="button" layoutX="475.0" layoutY="508.0"
+			mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD" />
 		<GridPane layoutX="400.0" layoutY="258.0">
 			<children>
 				<Label text="CODE" />
@@ -83,34 +93,47 @@
 				<Label text="PRE REQUISITES" GridPane.rowIndex="3" />
 				<Label text="None" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 				<Label text="POST CONDITIONS" GridPane.rowIndex="4" />
-				<Label text="Lorem Ipsum" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<Label text="Lorem Ipsum" GridPane.columnIndex="1"
+					GridPane.rowIndex="4" />
 			</children>
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+					prefWidth="150.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+					prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="50.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 		</GridPane>
-      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/back.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="/res/home.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/back.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </Pane>

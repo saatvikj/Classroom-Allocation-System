@@ -31,9 +31,6 @@ public class StudentHomeUI {
 	@FXML
 	private Label emailStudent;
 
-	public void initialize() {
-
-	}
 
 	public void populate() throws FileNotFoundException, IOException, ClassNotFoundException {
 		deserializeUsers();
@@ -111,29 +108,10 @@ public class StudentHomeUI {
 
 	}
 
-	@FXML
-	private void makeBooking(MouseEvent event) {
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	@FXML
 	private void makeRequest(MouseEvent event) {
 
-		Parent root;
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MakeRequest.fxml"));
 			Stage stage = new Stage();
@@ -152,53 +130,20 @@ public class StudentHomeUI {
 
 	}
 
-	@FXML
-	private void handleRequests(MouseEvent event) {
 
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/HandleRequests.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	private void confirmBooking(MouseEvent event) {
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CheckRoomAvail2.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	@FXML
 	private void createTimeTable(MouseEvent event) {
 
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT1.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			MakeTimeTableUI controller = loader.<MakeTimeTableUI>getController();
+			controller.currStudent = currStudent;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
@@ -244,25 +189,6 @@ public class StudentHomeUI {
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	private void searchResults(MouseEvent event) {
-
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT2.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
-
-			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} catch (IOException e) {
 			e.printStackTrace();
