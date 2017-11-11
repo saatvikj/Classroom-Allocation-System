@@ -22,6 +22,8 @@ public class DatabaseGenerator {
 	private ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 	private String fileName = "./src/res/MainTT.csv";
 	private String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+	private ArrayList<String> exemptedWords = new ArrayList<>();
+	private Map<String, Integer> frequency = new HashMap<>();
 
 	public void populateRooms() {
 		BufferedReader br = null;
@@ -81,14 +83,14 @@ public class DatabaseGenerator {
 
 					InputStreamReader isr = new InputStreamReader(System.in);
 					BufferedReader br = new BufferedReader(isr);
-					
-					System.out.println("Capacity of "+roomName+":");
-					
+
+					System.out.println("Capacity of " + roomName + ":");
+
 					String cap = br.readLine();
 					int capacity = Integer.parseInt(cap);
-					
+
 					rm.setCapacity(capacity);
-					
+
 					allRooms.add(rm);
 				}
 
@@ -134,6 +136,8 @@ public class DatabaseGenerator {
 					String postCon = courseDetails[12];
 					postCon = postCon.replaceAll("\\|", ",");
 					c.setPostConditions(postCon.split("\\\\"));
+
+					generateKeywords(postCon, c.getCourseName());
 
 					for (int i = 6; i <= 10; i++) {
 
@@ -345,8 +349,61 @@ public class DatabaseGenerator {
 
 	}
 
+	public void generateKeywords(String postConditions, String name) {
+
+		String[] postCons = postConditions.split("\\\\");
+
+		for (int i = 0; i < postCons.length; i++) {
+
+			String[] allWords = postCons[i].split(" ");
+
+			for (int j = 0; j < allWords.length; j++) {
+
+				if (allWords[j].contains(",")) {
+					allWords[j] = allWords[j].replaceAll(",", "");
+				}
+
+				if (!exemptedWords.contains(allWords[j])) {
+					Integer count = frequency.get(allWords[j].toLowerCase());
+					if (count == null) {
+						frequency.put(allWords[j].toLowerCase(), 1);
+					} else {
+						frequency.put(allWords[j].toLowerCase(), count + 1);
+					}
+				}
+			}
+
+		}
+
+		String[] courseName = name.split(" ");
+		for (int k = 0; k < courseName.length; k++) {
+
+			if (!exemptedWords.contains(courseName[k])) {
+				Integer count = frequency.get(courseName[k]);
+				if (count == null) {
+					frequency.put(courseName[k], 1);
+				} else {
+					frequency.put(courseName[k], count + 1);
+				}
+			}
+
+		}
+		
+		
+		for (Map.Entry<String, Integer> entry: frequency.entrySet()) {
+			System.out.println(entry.getKey()+" "+entry.getValue());
+		}
+
+	}
+
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		DatabaseGenerator ob = new DatabaseGenerator();
+
+		for (int i = 0; i < Constants.words.length; i++) {
+
+			ob.exemptedWords.add(Constants.words[i]);
+
+		}
 
 		ob.populateRooms();
 
@@ -358,19 +415,22 @@ public class DatabaseGenerator {
 
 		ob.serializeCourses();
 
-//		for (int i = 0; i < ob.allRooms.size(); i++) {
-//
-//			for (int j = 0; j < ob.daysOfWeek.length; j++) {
-//				if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) != null) {
-//					Map<Slot, Object> m = ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
-//					Iterator it = m.entrySet().iterator();
-//					while (it.hasNext()) {
-//						Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
-//						System.out.println(mm.getKey().toString() + " " + ((Course) mm.getValue()).getCourseName());
-//					}
-//				}
-//			}
-//		}
+		// for (int i = 0; i < ob.allRooms.size(); i++) {
+		//
+		// for (int j = 0; j < ob.daysOfWeek.length; j++) {
+		// if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) !=
+		// null) {
+		// Map<Slot, Object> m =
+		// ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
+		// Iterator it = m.entrySet().iterator();
+		// while (it.hasNext()) {
+		// Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
+		// System.out.println(mm.getKey().toString() + " " + ((Course)
+		// mm.getValue()).getCourseName());
+		// }
+		// }
+		// }
+		// }
 
 	}
 
