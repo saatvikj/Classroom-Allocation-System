@@ -7,6 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import backend.AutocompletionlTextField?>
 
 <Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
@@ -59,7 +60,7 @@
 			</font>
 		</Label>
 
-		<TextField fx:id="searchKeyword" layoutX="76.0" layoutY="250.0"
+		<AutocompletionlTextField fx:id="searchKeyword" layoutX="76.0" layoutY="250.0"
 			prefHeight="40.0" prefWidth="500.0" promptText="Enter post condition" />
 
 

@@ -1,7 +1,9 @@
 package ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import backend.AutocompletionlTextField;
 import backend.Student;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,15 +30,28 @@ public class MakeTimeTableUI {
 	private Label email;
 
 	@FXML
-	private TextField searchKeyword;
+	private AutocompletionlTextField searchKeyword;
 
 	@FXML
 	private MenuButton courseType;
+	
+	private ArrayList<String> rel = new ArrayList<String>();
 
 	public void populate() {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
 		title.setText(currStudent.getTypeOfUser());
+		rel.add("Meghna Gupta");
+		rel.add("Saatvik Jain");
+		rel.add("Sheetu Ahuja");
+		rel.add("Vivek Kumar");
+		rel.add("Raj Ayyar");
+		rel.add("Shravika Mittal");
+		rel.add("Shivam Gupta");
+		rel.add("Shubham Gupta");
+		rel.add("Bhumanyoo Varshney");
+		rel.add("Brihi Joshi");
+		searchKeyword.getEntries().addAll(rel);
 	}
 
 	@FXML
