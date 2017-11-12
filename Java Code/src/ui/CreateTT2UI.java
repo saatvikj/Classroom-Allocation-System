@@ -141,6 +141,7 @@ public class CreateTT2UI {
 				stage.setScene(new Scene(loader.load(), 800, 600));
 				CreateTT3UI controller = loader.<CreateTT3UI>getController();
 				controller.currStudent = currStudent;
+				controller.selectedCourse = relevantCourses.get(selectedCourseIndex);
 				controller.populate();
 				stage.show();
 

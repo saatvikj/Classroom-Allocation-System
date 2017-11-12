@@ -62,25 +62,7 @@
 				<ListView fx:id="labRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
 					
 				</ListView>
-				<GridPane fx:id="roomDetails" layoutX="400.0" layoutY="220.0" visible="false">
-					<children>
-						<Label text="ROOM" />
-						<Label fx:id="roomName" GridPane.columnIndex="1" />
-						<Label text="ROOM CAPACITY" GridPane.rowIndex="1" />
-						<Label fx:id="roomCapacity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-						<Label text="TIME SLOT" GridPane.rowIndex="2" />
-						<Label fx:id="roomSlot" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-					</children>
-					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-					</columnConstraints>
-					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-					</rowConstraints>
-				</GridPane>
+
 				<ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="/res/home.png" />
@@ -96,7 +78,7 @@
 						<Image url="/res/logouticon.png" />
 					</image>
 				</ImageView>
-            <ListView fx:id="tutorialRecordsList1" layoutX="424.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" />
+            <ListView fx:id="tutorialRecordsList" layoutX="424.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" />
             <Label layoutX="212.0" layoutY="220.0" text="LABS" />
             <Label layoutX="545.0" layoutY="220.0" text="TUTORIALS" />
             <Button layoutX="199.0" layoutY="517.0" mnemonicParsing="false" text="ADD">
