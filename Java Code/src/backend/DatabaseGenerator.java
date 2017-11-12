@@ -296,6 +296,18 @@ public class DatabaseGenerator {
 		}
 		return null;
 	}
+	
+	public String checkAlpha(String word){
+		char[] charWord = word.toCharArray();
+		String newString = "";
+		for(int i = 0; i < charWord.length; i++){
+			if(Character.isLetter(charWord[i])){
+				newString = newString + charWord[i];
+				
+			}
+		}
+		return newString;
+	}
 
 	public int getType(String type) {
 
