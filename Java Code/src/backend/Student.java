@@ -43,7 +43,6 @@ public class Student extends User {
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 			throws ClassNotFoundException, IOException {
 
-		System.out.println("Inside make booking function");
 		deserializeRequests();
 		Request studentRequest = new Request();
 		studentRequest.setCurrentStatus(0);
@@ -63,7 +62,8 @@ public class Student extends User {
 	}
 
 	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit) throws NoResultFoundException {
-
+		
+		
 		
 		
 		return null;

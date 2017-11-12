@@ -134,7 +134,7 @@ public class StudentHomeUI {
 
 
 	@FXML
-	private void createTimeTable(MouseEvent event) {
+	private void createTimeTable(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT1.fxml"));

@@ -10,7 +10,7 @@ public class Constants {
 			"apply", "discuss", "in", "terms", "term", "it", "if", "also", "&", "its", "explain", "concepts", "various",
 			"work", "with", "use", "using", "find", "determine", "familiar", "related", "their", "there", "describe",
 			"simply", "write", "define", "demonstrate", "clear", "put", "make", "between", "well", "around", "often",
-			"about", "know", "different"};
+			"about", "know", "different","a","an","or","on","by","be","", "students", "are"};
 	
 	
 	

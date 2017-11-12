@@ -10,10 +10,14 @@ import java.io.ObjectOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class DatabaseGenerator {
@@ -24,6 +28,7 @@ public class DatabaseGenerator {
 	private String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 	private ArrayList<String> exemptedWords = new ArrayList<>();
 	private Map<String, Integer> frequency = new HashMap<>();
+	private ArrayList<String> autoCompleteText = new ArrayList<>();
 
 	public void populateRooms() {
 		BufferedReader br = null;
@@ -135,9 +140,9 @@ public class DatabaseGenerator {
 
 					String postCon = courseDetails[12];
 					postCon = postCon.replaceAll("\\|", ",");
-					c.setPostConditions(postCon.split("\\\\"));
-
 					generateKeywords(postCon, c.getCourseName());
+
+					c.setPostConditions(postCon.split("\\\\"));
 
 					for (int i = 6; i <= 10; i++) {
 
@@ -296,14 +301,14 @@ public class DatabaseGenerator {
 		}
 		return null;
 	}
-	
-	public String checkAlpha(String word){
+
+	public String checkAlpha(String word) {
 		char[] charWord = word.toCharArray();
 		String newString = "";
-		for(int i = 0; i < charWord.length; i++){
-			if(Character.isLetter(charWord[i])){
+		for (int i = 0; i < charWord.length; i++) {
+			if (Character.isLetter(charWord[i])) {
 				newString = newString + charWord[i];
-				
+
 			}
 		}
 		return newString;
@@ -360,6 +365,27 @@ public class DatabaseGenerator {
 		}
 
 	}
+	
+	public void serializeAutoCompleteText() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/autocomplete.txt"));
+
+			for (int i = 0; i < autoCompleteText.size(); i++) {
+				String word = autoCompleteText.get(i);
+				out.writeObject(word);
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
 
 	public void generateKeywords(String postConditions, String name) {
 
@@ -371,17 +397,17 @@ public class DatabaseGenerator {
 
 			for (int j = 0; j < allWords.length; j++) {
 
-				if (allWords[j].contains(",")) {
-					allWords[j] = allWords[j].replaceAll(",", "");
-				}
-
+				allWords[j] = checkAlpha(allWords[j]).toLowerCase();
+				allWords[j] = allWords[j].replaceAll("â", "");
 				if (!exemptedWords.contains(allWords[j])) {
-					Integer count = frequency.get(allWords[j].toLowerCase());
-					if (count == null) {
-						frequency.put(allWords[j].toLowerCase(), 1);
+
+					if (frequency.containsKey(allWords[j])) {
+						int count = frequency.get(allWords[j]);
+						frequency.replace(allWords[j], count + 1);
 					} else {
-						frequency.put(allWords[j].toLowerCase(), count + 1);
+						frequency.put(allWords[j], 1);
 					}
+
 				}
 			}
 
@@ -391,21 +417,32 @@ public class DatabaseGenerator {
 		for (int k = 0; k < courseName.length; k++) {
 
 			if (!exemptedWords.contains(courseName[k])) {
-				Integer count = frequency.get(courseName[k]);
-				if (count == null) {
-					frequency.put(courseName[k], 1);
+				courseName[k] = checkAlpha(courseName[k]).toLowerCase();
+				courseName[k] = courseName[k].replaceAll("â", "");
+				if (frequency.containsKey(courseName[k])) {
+					int count = frequency.get(courseName[k]);
+					frequency.replace(courseName[k], count + 1);
 				} else {
-					frequency.put(courseName[k], count + 1);
+					frequency.put(courseName[k], 1);
 				}
 			}
 
 		}
-		
-		
-		for (Map.Entry<String, Integer> entry: frequency.entrySet()) {
-			System.out.println(entry.getKey()+" "+entry.getValue());
-		}
 
+	}
+
+	static <K, V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K, V> map) {
+
+		List<Entry<K, V>> sortedEntries = new ArrayList<Entry<K, V>>(map.entrySet());
+
+		Collections.sort(sortedEntries, new Comparator<Entry<K, V>>() {
+			@Override
+			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
+				return e2.getValue().compareTo(e1.getValue());
+			}
+		});
+
+		return sortedEntries;
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -413,8 +450,7 @@ public class DatabaseGenerator {
 
 		for (int i = 0; i < Constants.words.length; i++) {
 
-			ob.exemptedWords.add(Constants.words[i]);
-
+			ob.exemptedWords.add(Constants.words[i].toLowerCase());
 		}
 
 		ob.populateRooms();
@@ -426,6 +462,15 @@ public class DatabaseGenerator {
 		ob.serializeRooms();
 
 		ob.serializeCourses();
+		
+		List<Entry<String, Integer>> ebt = entriesSortedByValues(ob.frequency);
+		
+		for(int i = 0; i < ebt.size(); i++){
+			ob.autoCompleteText.add(ebt.get(i).getKey());
+		}
+		
+		ob.serializeAutoCompleteText();
+		
 
 		// for (int i = 0; i < ob.allRooms.size(); i++) {
 		//

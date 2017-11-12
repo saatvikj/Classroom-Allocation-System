@@ -1,10 +1,15 @@
 package ui;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import backend.AutocompletionlTextField;
 import backend.Student;
+import backend.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -37,20 +42,11 @@ public class MakeTimeTableUI {
 	
 	private ArrayList<String> rel = new ArrayList<String>();
 
-	public void populate() {
+	public void populate() throws ClassNotFoundException, FileNotFoundException, IOException {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
 		title.setText(currStudent.getTypeOfUser());
-		rel.add("Meghna Gupta");
-		rel.add("Saatvik Jain");
-		rel.add("Sheetu Ahuja");
-		rel.add("Vivek Kumar");
-		rel.add("Raj Ayyar");
-		rel.add("Shravika Mittal");
-		rel.add("Shivam Gupta");
-		rel.add("Shubham Gupta");
-		rel.add("Bhumanyoo Varshney");
-		rel.add("Brihi Joshi");
+		deserializeAutoCompleteText();
 		searchKeyword.getEntries().addAll(rel);
 	}
 
@@ -132,6 +128,46 @@ public class MakeTimeTableUI {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+
+	}
+	
+	
+	public void deserializeAutoCompleteText() throws IOException, ClassNotFoundException, FileNotFoundException {
+
+		/*
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
+		 * 
+		 */
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/autocomplete.txt"));
+			String str;
+
+			try {
+
+				while (true) {
+					str = (String) in.readObject();
+					rel.add(str);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				rel = new ArrayList<String>();
+			}
+
 		}
 
 	}
