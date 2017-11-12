@@ -2,13 +2,22 @@ package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 
+import backend.ClassRoom;
+import backend.Course;
+import backend.Slot;
 import backend.Student;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +27,7 @@ import javafx.stage.Stage;
 public class CreateTT2UI {
 	
 	public Student currStudent;
+	public ArrayList<Course> relevantCourses;
 
 	@FXML
 	private Label name;
@@ -29,6 +39,24 @@ public class CreateTT2UI {
 	private Label email;
 	
 	@FXML
+	private Label courseCode;
+	
+	@FXML
+	private Label abbreviation;
+	
+	@FXML
+	private Label prereqs;
+	
+	@FXML
+	private Label credits;
+	
+	@FXML
+	private Label instructor;
+	
+	@FXML
+	private Button addToTimeTable;
+	
+	@FXML
 	private ListView<String> relevantCoursesList;
 	
 	@FXML
@@ -38,6 +66,48 @@ public class CreateTT2UI {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
 		title.setText(currStudent.getTypeOfUser());
+		
+		if (relevantCourses.isEmpty()) {
+			relevantCoursesList.getItems().add("No courses found!");
+			relevantPane.setVisible(false);
+			addToTimeTable.setVisible(false);
+		} else {
+
+			for(int i=0;i<relevantCourses.size();i++) {
+				relevantCoursesList.getItems().add(relevantCourses.get(i).getCourseCode());
+			}
+		}
+		
+		relevantCoursesList.getSelectionModel().selectedItemProperty()
+		.addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				// TODO Auto-generated method stub
+				
+				try {
+					
+					if(!(newValue.equalsIgnoreCase("No courses found!"))) {
+
+						relevantPane.setVisible(true);
+						addToTimeTable.setVisible(true);
+						int index = relevantCoursesList.getSelectionModel().getSelectedIndex();
+						courseCode.setText(relevantCourses.get(index).getCourseName());
+						abbreviation.setText(relevantCourses.get(index).getAcronym().toUpperCase());
+						credits.setText(Integer.toString(relevantCourses.get(index).getCredits()));
+						prereqs.setText(Arrays.toString(relevantCourses.get(index).getPreReqs()));
+						instructor.setText(relevantCourses.get(index).getInstructor());
+					}
+					
+					
+				} catch (NullPointerException e) {
+					relevantPane.setVisible(false);
+					addToTimeTable.setVisible(false);
+					relevantCoursesList.getItems().add("No courses found!");
+				}
+				
+			}
+		});
 		
 	}
 

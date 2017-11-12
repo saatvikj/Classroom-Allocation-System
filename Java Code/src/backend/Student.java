@@ -17,6 +17,7 @@ public class Student extends User {
 
 	private Map<Slot, Course> timetable;
 	private transient ArrayList<Request> allRequests = new ArrayList<>();
+	private transient ArrayList<Course> allCourses = new ArrayList<>();
 
 	public Student(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);
@@ -61,19 +62,37 @@ public class Student extends User {
 
 	}
 
-	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit) throws NoResultFoundException {
+	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit) throws NoResultFoundException, ClassNotFoundException, FileNotFoundException, IOException {
+
+		deserializeCourses();
 		
-		
-		
-		
-		return null;
+		ArrayList<Course> relevantCourses = new ArrayList<>();
+		for (int i=0;i<allCourses.size();i++) {
+			
+			boolean currCourseRelevancy = false;
+			for(int j=0;j<allCourses.get(i).getPostConditions().length;j++) {
+				String postCon = allCourses.get(i).getPostConditions()[j].toLowerCase();
+				for(int k=0;k<keywords.length;k++) {
+					if(postCon.contains(keywords[k].toLowerCase())) {
+						currCourseRelevancy = true;
+					}
+				}
+			}
+			
+			if(currCourseRelevancy) {
+				relevantCourses.add(allCourses.get(i));
+			}
+		}
+
+		if(relevantCourses.isEmpty()) {
+			throw new NoResultFoundException("No courses match your search!");
+		} else {
+			return relevantCourses;
+		}
+
 	}
 
 	public void viewTimeTable() {
-
-	}
-
-	public void cancelRequest(Slot timeSlot) {
 
 	}
 
@@ -117,8 +136,9 @@ public class Student extends User {
 								bookedMap.put(request.getTimeSlot(), request.getPreferredRoom());
 							}
 
-							if (this.listOfNotifications != null && !(this.listOfNotifications.contains("Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
-												+ " has been accepted!"))) {
+							if (this.listOfNotifications != null && !(this.listOfNotifications.contains(
+									"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
+											+ " has been accepted!"))) {
 								this.listOfNotifications.add(
 										"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
 												+ " has been accepted!");
@@ -132,8 +152,9 @@ public class Student extends User {
 					} else {
 
 						if (request.getSourceStudent().getEmailID().equals(this.getEmailID())) {
-							if (this.listOfNotifications != null && !(this.listOfNotifications.contains("Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
-									+ " has been rejected!"))) {
+							if (this.listOfNotifications != null && !(this.listOfNotifications.contains(
+									"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
+											+ " has been rejected!"))) {
 								this.listOfNotifications.add(
 										"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
 												+ " has been rejected!");
@@ -183,6 +204,46 @@ public class Student extends User {
 		} finally {
 
 			out.close();
+
+		}
+
+	}
+
+	public void deserializeCourses() throws IOException, ClassNotFoundException, FileNotFoundException {
+
+		/*
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
+		 * 
+		 */
+		ObjectInputStream in = null;
+		allCourses = new ArrayList<>();
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/courses.txt"));
+			Course course;
+
+			try {
+
+				while (true) {
+					course = (Course) in.readObject();
+					allCourses.add(course);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				allCourses = new ArrayList<Course>();
+			}
 
 		}
 

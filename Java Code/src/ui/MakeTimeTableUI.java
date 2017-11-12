@@ -8,8 +8,10 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import backend.AutocompletionlTextField;
+import backend.Course;
 import backend.Student;
 import backend.User;
+import exceptions.NoResultFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -105,7 +107,7 @@ public class MakeTimeTableUI {
 	}
 
 	@FXML
-	private void searchResults(MouseEvent event) {
+	private void searchResults(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 
 		String keywords = searchKeyword.getText().toString();
 		String[] keywordsArray = keywords.split(",");
@@ -119,28 +121,42 @@ public class MakeTimeTableUI {
 			}
 
 		}
+		boolean audit = false;
+		if (type.equalsIgnoreCase("Audit")) {
+			audit = true;
+		}
 
 		boolean validity = checkEmptiness(keywords, type);
 		if (validity) {
 			try {
-				
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT2.fxml"));
-				Stage stage = new Stage();
-				stage.setTitle("IIIT Delhi");
-				stage.setScene(new Scene(loader.load(), 800, 600));
-				CreateTT2UI controller = loader.<CreateTT2UI>getController();
-				controller.currStudent = currStudent;
-				controller.populate();
-				stage.show();
+				ArrayList<Course> relevantCourses = currStudent.giveRelevantCourses(keywordsArray, audit);
+				try {
 
-				((Node) (event.getSource())).getScene().getWindow().hide();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT2.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("IIIT Delhi");
+					stage.setScene(new Scene(loader.load(), 800, 600));
+					CreateTT2UI controller = loader.<CreateTT2UI>getController();
+					controller.currStudent = currStudent;
+					controller.relevantCourses = relevantCourses;
+					controller.populate();
+					stage.show();
 
+					((Node) (event.getSource())).getScene().getWindow().hide();
 
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (NoResultFoundException e) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error!");
+				alert.setHeaderText(null);
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 			}
-		}
-		else{
+
+		} else {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Error!");
 			alert.setHeaderText(null);

@@ -72,9 +72,9 @@
 			prefWidth="300.0">
 	
 		</ListView>
-		<Button id="button" layoutX="475.0" layoutY="508.0"
+		<Button fx:id="addToTimeTable" id="button" layoutX="475.0" layoutY="508.0" visible="false"
 			mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD" />
-		<GridPane visible="false" fx:id="relvantPane" layoutX="400.0" layoutY="258.0">
+		<GridPane visible="false" fx:id="relevantPane" layoutX="400.0" layoutY="258.0">
 			<children>
 				<Label text="CODE" />
 				<Label fx:id="courseCode" text="CSE101" GridPane.columnIndex="1" />
