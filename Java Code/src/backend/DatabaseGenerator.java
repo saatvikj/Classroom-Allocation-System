@@ -168,10 +168,19 @@ public class DatabaseGenerator {
 								for (int k = 1; k < splitDateVenue.length; k++) {
 
 									ClassRoom slotRoom = getCorrespondingRoom(splitDateVenue[k]);
-									Map<Slot, ClassRoom> newTT = c.getCourseTimeTable();
-									newTT.put(slt, slotRoom);
+									Map<Slot, List<ClassRoom>> newTT = c.getCourseTimeTable();
+									
+									if(newTT.containsKey(slt)) {
+										List<ClassRoom> rooms = newTT.get(slt);
+										rooms.add(slotRoom);
+										newTT.put(slt, rooms);
+									} else {
+										List<ClassRoom> rooms = new ArrayList<ClassRoom>();
+										rooms.add(slotRoom);
+										newTT.put(slt, rooms);
+									}
+									
 									c.setCourseTimeTable(newTT);
-
 								}
 
 							}

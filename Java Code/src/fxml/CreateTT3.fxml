@@ -59,7 +59,7 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView fx:id="labRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
+				<ListView fx:id="labRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" visible="false">
 					
 				</ListView>
 
@@ -78,15 +78,15 @@
 						<Image url="/res/logouticon.png" />
 					</image>
 				</ImageView>
-            <ListView fx:id="tutorialRecordsList" layoutX="424.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" />
-            <Label layoutX="212.0" layoutY="220.0" text="LABS" />
-            <Label layoutX="545.0" layoutY="220.0" text="TUTORIALS" />
-            <Button layoutX="199.0" layoutY="517.0" mnemonicParsing="false" text="ADD">
+            <ListView fx:id="tutorialRecordsList" layoutX="424.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" visible="false" />
+            <Label fx:id="labLabel" layoutX="212.0" layoutY="220.0" text="LABS" visible="false" />
+            <Label fx:id="tutorialLabel" layoutX="545.0" layoutY="220.0" text="TUTORIALS" visible="false" />
+            <Button fx:id="addLabButton" layoutX="199.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#addLabs" text="ADD" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="551.0" layoutY="518.0" mnemonicParsing="false" text="ADD">
+            <Button fx:id="addTutorialButton" layoutX="551.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#addTutorials" text="ADD" visible="false">
                <font>
                   <Font size="14.0" />
                </font>

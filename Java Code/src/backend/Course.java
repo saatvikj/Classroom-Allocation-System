@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Course implements Serializable {
@@ -17,14 +18,14 @@ public class Course implements Serializable {
 	private String courseCode;
 	private int credits;
 	private String courseName;
-	private Map<Slot, ClassRoom> courseTimeTable = new HashMap<Slot, ClassRoom>();
+	private Map<Slot, List<ClassRoom>> courseTimeTable = new HashMap<Slot, List<ClassRoom>>();
 	private transient ArrayList<ClassRoom> allRooms;
 
-	public Map<Slot, ClassRoom> getCourseTimeTable() {
+	public Map<Slot, List<ClassRoom>> getCourseTimeTable() {
 		return courseTimeTable;
 	}
 
-	public void setCourseTimeTable(Map<Slot, ClassRoom> courseTimeTable) {
+	public void setCourseTimeTable(Map<Slot, List<ClassRoom>> courseTimeTable) {
 		this.courseTimeTable = courseTimeTable;
 	}
 

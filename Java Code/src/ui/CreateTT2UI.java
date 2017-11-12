@@ -1,7 +1,12 @@
 package ui;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -11,6 +16,7 @@ import backend.ClassRoom;
 import backend.Course;
 import backend.Slot;
 import backend.Student;
+import backend.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -31,6 +37,7 @@ public class CreateTT2UI {
 	
 	public Student currStudent;
 	public ArrayList<Course> relevantCourses;
+	private ArrayList<User> listOfUsers = new ArrayList<>();
 
 	@FXML
 	private Label name;
@@ -115,12 +122,13 @@ public class CreateTT2UI {
 	}
 	
 	@FXML
-	private void addCourse(MouseEvent event){
+	private void addCourse(MouseEvent event) throws FileNotFoundException, IOException, ClassNotFoundException{
 		
+		deserializeUsers();
 		int selectedCourseIndex = relevantCoursesList.getSelectionModel().getSelectedIndex();
 		Course selectedCourse = relevantCourses.get(selectedCourseIndex);
 		currStudent.addToTimeTable(selectedCourse);
-		
+		serializeUsers();
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirm!");
 		alert.setHeaderText("The course has been added.");
@@ -221,6 +229,73 @@ public class CreateTT2UI {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+
+	}
+	
+	
+	public void serializeUsers() throws FileNotFoundException, IOException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new FileOutputStream("./src/res/users.txt"));
+
+			for (int i = 0; i < listOfUsers.size(); i++) {
+
+				if (listOfUsers.get(i).getEmailID().equals(currStudent.getEmailID())) {
+					out.writeObject(currStudent);
+				} else {
+
+					User newUser = listOfUsers.get(i);
+					out.writeObject(newUser);
+				}
+			}
+
+		} finally {
+
+			out.close();
+
+		}
+
+	}
+
+	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
+
+		/*
+		 * Deserializes the list of registered users into the ArrayList so that
+		 * checking can be done.
+		 * 
+		 */
+		ObjectInputStream in = null;
+
+		try {
+
+			in = new ObjectInputStream(new FileInputStream("./src/res/users.txt"));
+			User user;
+
+			try {
+
+				while (true) {
+					user = (User) in.readObject();
+					listOfUsers.add(user);
+				}
+
+			} catch (EOFException e) {
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+		} finally {
+
+			if (in != null) {
+				in.close();
+			} else {
+				listOfUsers = new ArrayList<User>();
+			}
+
 		}
 
 	}

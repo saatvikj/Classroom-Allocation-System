@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import exceptions.NoResultFoundException;
@@ -61,20 +62,62 @@ public class Student extends User {
 
 	public void addToTimeTable(Course _course) {
 
-		for (Map.Entry<Slot, ClassRoom> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
+		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
 
 			Slot slt = courseTimeTable.getKey();
 			
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					System.out.println(slt.getDay());
+					//System.out.println(slt.getDay());
 					timetable.put(slt, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					System.out.println(slt.getDay());
+					//System.out.println(slt.getDay());
 					timetable.put(slt, _course);
+				}
+			}
+		}
+	}
+	
+	public void addToTimeTableLabs(Slot _slot, Course _course) {
+
+		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
+
+			Slot slt = courseTimeTable.getKey();
+			
+			if (timetable != null) {
+				if (slt.getPurpose().equals(Slot.TYPES[1])) {
+					//System.out.println(slt.getDay());
+					timetable.put(_slot, _course);
+				}
+			} else {
+				timetable = new HashMap<Slot, Course>();
+				if (slt.getPurpose().equals(Slot.TYPES[1])) {
+					//System.out.println(slt.getDay());
+					timetable.put(_slot, _course);
+				}
+			}
+		}
+	}
+	
+	public void addToTimeTableTutorials(Slot _slot, Course _course) {
+
+		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
+
+			Slot slt = courseTimeTable.getKey();
+			
+			if (timetable != null) {
+				if (slt.getPurpose().equals(Slot.TYPES[2])) {
+					//System.out.println(slt.getDay());
+					timetable.put(_slot, _course);
+				}
+			} else {
+				timetable = new HashMap<Slot, Course>();
+				if (slt.getPurpose().equals(Slot.TYPES[2])) {
+					//System.out.println(slt.getDay());
+					timetable.put(_slot, _course);
 				}
 			}
 		}
