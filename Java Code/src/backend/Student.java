@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import exceptions.NoResultFoundException;
@@ -58,47 +59,62 @@ public class Student extends User {
 
 	}
 
-	public void addToTimeTable(Slot _slot, Course _course) {
+	public void addToTimeTable(Course _course) {
 
+		for (Map.Entry<Slot, ClassRoom> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
+
+			Slot slt = courseTimeTable.getKey();
+			
+			if (timetable != null) {
+				if (slt.getPurpose().equals(Slot.TYPES[0])) {
+					System.out.println(slt.getDay());
+					timetable.put(slt, _course);
+				}
+			} else {
+				timetable = new HashMap<Slot, Course>();
+				if (slt.getPurpose().equals(Slot.TYPES[0])) {
+					System.out.println(slt.getDay());
+					timetable.put(slt, _course);
+				}
+			}
+		}
 	}
 
-	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit) throws NoResultFoundException, ClassNotFoundException, FileNotFoundException, IOException {
+	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit)
+			throws NoResultFoundException, ClassNotFoundException, FileNotFoundException, IOException {
 
 		deserializeCourses();
-		
+
 		ArrayList<Course> relevantCourses = new ArrayList<>();
-		for (int i=0;i<allCourses.size();i++) {
-			
+		for (int i = 0; i < allCourses.size(); i++) {
+
 			boolean currCourseRelevancy = false;
-			for(int j=0;j<allCourses.get(i).getPostConditions().length;j++) {
+			for (int j = 0; j < allCourses.get(i).getPostConditions().length; j++) {
 				String postCon = allCourses.get(i).getPostConditions()[j].toLowerCase();
-				for(int k=0;k<keywords.length;k++) {
-					if(postCon.contains(keywords[k].toLowerCase())) {
-						currCourseRelevancy = true;
-					}
-				}
-			}
-			
-			
-			String name = allCourses.get(i).getCourseName();
-			String splitName[] = name.split(" "); 
-			
-			for(int l=0;l<splitName.length;l++) {
-				for(int k=0;k<keywords.length;k++) {
-					if(keywords[k].equalsIgnoreCase(splitName[l])) {
+				for (int k = 0; k < keywords.length; k++) {
+					if (postCon.contains(keywords[k].toLowerCase())) {
 						currCourseRelevancy = true;
 					}
 				}
 			}
 
-			
-			
-			if(currCourseRelevancy) {
+			String name = allCourses.get(i).getCourseName();
+			String splitName[] = name.split(" ");
+
+			for (int l = 0; l < splitName.length; l++) {
+				for (int k = 0; k < keywords.length; k++) {
+					if (keywords[k].equalsIgnoreCase(splitName[l])) {
+						currCourseRelevancy = true;
+					}
+				}
+			}
+
+			if (currCourseRelevancy) {
 				relevantCourses.add(allCourses.get(i));
 			}
 		}
 
-		if(relevantCourses.isEmpty()) {
+		if (relevantCourses.isEmpty()) {
 			throw new NoResultFoundException("No courses match your search!");
 		} else {
 			return relevantCourses;

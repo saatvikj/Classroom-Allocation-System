@@ -110,6 +110,14 @@ public class CreateTT2UI {
 		});
 		
 	}
+	
+	@FXML
+	private void addCourse(MouseEvent event){
+		
+		int selectedCourseIndex = relevantCoursesList.getSelectionModel().getSelectedIndex();
+		Course selectedCourse = relevantCourses.get(selectedCourseIndex);
+		currStudent.addToTimeTable(selectedCourse);
+	}
 
 
 	
