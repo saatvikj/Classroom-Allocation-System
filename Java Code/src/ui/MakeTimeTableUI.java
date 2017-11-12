@@ -10,14 +10,19 @@ import java.util.ArrayList;
 import backend.AutocompletionlTextField;
 import backend.Student;
 import backend.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -39,7 +44,56 @@ public class MakeTimeTableUI {
 
 	@FXML
 	private MenuButton courseType;
-	
+
+	boolean flag = false;
+
+	@FXML
+	public void credit(ActionEvent event) {
+
+		for (MenuItem item : courseType.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("Credit")) {
+				chk.setSelected(true);
+				flag = true;
+				courseType.setText("Credit");
+			}
+
+		}
+		for (MenuItem it : courseType.getItems()) {
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if (!ch.getText().equals("Credit")) {
+				if (ch.isSelected()) {
+					ch.setSelected(false);
+				}
+			}
+		}
+
+	}
+
+	@FXML
+	public void audit(ActionEvent event) {
+
+		for (MenuItem item : courseType.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("Audit")) {
+				chk.setSelected(true);
+				courseType.setText("Audit");
+			}
+
+		}
+		for (MenuItem it : courseType.getItems()) {
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if (!ch.getText().equals("Audit")) {
+				if (ch.isSelected()) {
+					ch.setSelected(false);
+				}
+			}
+		}
+
+	}
+
 	private ArrayList<String> rel = new ArrayList<String>();
 
 	public void populate() throws ClassNotFoundException, FileNotFoundException, IOException {
@@ -53,18 +107,54 @@ public class MakeTimeTableUI {
 	@FXML
 	private void searchResults(MouseEvent event) {
 
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/CreateTT2.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
-			stage.show();
+		String keywords = searchKeyword.getText().toString();
+		String[] keywordsArray = keywords.split(",");
+		String type = "";
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
+		for (MenuItem item : courseType.getItems()) {
 
-		} catch (IOException e) {
-			e.printStackTrace();
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.isSelected()) {
+				type = chk.getText();
+			}
+
+		}
+
+		boolean validity = checkEmptiness(keywords, type);
+		if (validity) {
+			try {
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT2.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("IIIT Delhi");
+				stage.setScene(new Scene(loader.load(), 800, 600));
+				CreateTT2UI controller = loader.<CreateTT2UI>getController();
+				controller.currStudent = currStudent;
+				controller.populate();
+				stage.show();
+
+				((Node) (event.getSource())).getScene().getWindow().hide();
+
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else{
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Error!");
+			alert.setHeaderText(null);
+			alert.setContentText("At least one of the fields is empty, try again.");
+			alert.showAndWait();
+		}
+	}
+
+	public boolean checkEmptiness(String enteredName, String enteredEmail) {
+
+		if (enteredName.length() == 0 || enteredEmail.length() == 0) {
+			return false;
+		} else {
+			return true;
 		}
 
 	}
@@ -131,8 +221,7 @@ public class MakeTimeTableUI {
 		}
 
 	}
-	
-	
+
 	public void deserializeAutoCompleteText() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*

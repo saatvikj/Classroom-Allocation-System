@@ -67,8 +67,9 @@
 		<MenuButton fx:id="courseType" layoutX="76.0" layoutY="314.0"
 			mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" text="Type of Course">
 			<items>
-				<CheckMenuItem mnemonicParsing="false" text="Credit" />
-				<CheckMenuItem mnemonicParsing="false" text="Audit" />
+				<CheckMenuItem mnemonicParsing="false" onAction="#credit" text="Credit" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#audit"
+							text="Audit" />
 			</items>
 		</MenuButton>
 		<Button id="button" layoutX="300.0" layoutY="402.0"

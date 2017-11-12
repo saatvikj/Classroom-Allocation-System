@@ -24,7 +24,7 @@
 					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label alignment="CENTER_RIGHT" contentDisplay="TOP"
+				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP"
 					text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
@@ -34,7 +34,7 @@
 					</GridPane.margin>
 				</Label>
 
-				<Label text="STUDENT">
+				<Label fx:id="title" text="STUDENT">
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
@@ -43,7 +43,7 @@
 					</GridPane.margin>
 				</Label>
 
-				<Label text="Saatvik Jain">
+				<Label fx:id="name" text="Saatvik Jain">
 					<font>
 						<Font name="Segoe UI Bold" size="24.0" />
 					</font>
@@ -68,32 +68,24 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<ListView layoutX="76.0" layoutY="277.0" prefHeight="250.0"
+		<ListView fx:id="relevantCoursesList" layoutX="76.0" layoutY="277.0" prefHeight="250.0"
 			prefWidth="300.0">
-			<items>
-				<FXCollections fx:factory="observableArrayList">
-					<String fx:value="CSE101" />
-					<String fx:value="CSE201" />
-					<String fx:value="CSE502" />
-					<String fx:value="CSE2XX" />
-					<String fx:value="MTH2XX" />
-				</FXCollections>
-			</items>
+	
 		</ListView>
 		<Button id="button" layoutX="475.0" layoutY="508.0"
 			mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="ADD" />
-		<GridPane layoutX="400.0" layoutY="258.0">
+		<GridPane visible="false" fx:id="relvantPane" layoutX="400.0" layoutY="258.0">
 			<children>
 				<Label text="CODE" />
-				<Label text="CSE101" GridPane.columnIndex="1" />
+				<Label fx:id="courseCode" text="CSE101" GridPane.columnIndex="1" />
 				<Label text="ABBREVIATION" GridPane.rowIndex="1" />
-				<Label text="IP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label fx:id="abbreviation" text="IP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 				<Label text="CREDITS" GridPane.rowIndex="2" />
-				<Label text="4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Label fx:id="credits" text="4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 				<Label text="PRE REQUISITES" GridPane.rowIndex="3" />
-				<Label text="None" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-				<Label text="POST CONDITIONS" GridPane.rowIndex="4" />
-				<Label text="Lorem Ipsum" GridPane.columnIndex="1"
+				<Label fx:id="prereqs" text="None" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Label text="INSTRUCTOR" GridPane.rowIndex="4" />
+				<Label fx:id="instructor" text="Lorem Ipsum" GridPane.columnIndex="1"
 					GridPane.rowIndex="4" />
 			</children>
 			<columnConstraints>
