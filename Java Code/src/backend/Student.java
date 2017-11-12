@@ -79,6 +79,20 @@ public class Student extends User {
 				}
 			}
 			
+			
+			String name = allCourses.get(i).getCourseName();
+			String splitName[] = name.split(" "); 
+			
+			for(int l=0;l<splitName.length;l++) {
+				for(int k=0;k<keywords.length;k++) {
+					if(keywords[k].equalsIgnoreCase(splitName[l])) {
+						currCourseRelevancy = true;
+					}
+				}
+			}
+
+			
+			
 			if(currCourseRelevancy) {
 				relevantCourses.add(allCourses.get(i));
 			}
