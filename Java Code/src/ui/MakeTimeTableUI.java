@@ -140,6 +140,7 @@ public class MakeTimeTableUI {
 					controller.currStudent = currStudent;
 					controller.relevantCourses = relevantCourses;
 					controller.populate();
+					controller.audit = audit;
 					stage.show();
 
 					((Node) (event.getSource())).getScene().getWindow().hide();

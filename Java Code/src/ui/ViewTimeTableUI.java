@@ -48,31 +48,30 @@ public class ViewTimeTableUI {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
 		title.setText(currStudent.getTypeOfUser());
-		System.out.println(day);
 		if (day == 1) {
 			currDay = "Sunday";
 		} else if (day == 2) {
 			currDay = "Monday";
-		}else if (day == 2) {
+		} else if (day == 2) {
 			currDay = "Tuesday";
-		}else if (day == 2) {
+		} else if (day == 2) {
 			currDay = "Wednesday";
-		}else if (day == 2) {
+		} else if (day == 2) {
 			currDay = "Thursday";
-		}else if (day == 2) {
+		} else if (day == 2) {
 			currDay = "Friday";
-		}else if (day == 2) {
+		} else if (day == 2) {
 			currDay = "Saturday";
 		}
+
 		
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals(currDay)){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			
+			displayDayTimeTable(c, s, currDay);
+
 		}
-		
 
 	}
 
@@ -97,14 +96,12 @@ public class ViewTimeTableUI {
 				}
 			}
 		}
-		
+
 		timetableList.getItems().clear();
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals("Monday")){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			displayDayTimeTable(c, s, "Monday");
 		}
 
 	}
@@ -131,12 +128,10 @@ public class ViewTimeTableUI {
 			}
 		}
 		timetableList.getItems().clear();
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals("Tuesday")){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			displayDayTimeTable(c, s, "Tuesday");
 		}
 
 	}
@@ -163,12 +158,10 @@ public class ViewTimeTableUI {
 			}
 		}
 		timetableList.getItems().clear();
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals("Wednesday")){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			displayDayTimeTable(c, s, "Wednesday");
 		}
 
 	}
@@ -195,12 +188,10 @@ public class ViewTimeTableUI {
 			}
 		}
 		timetableList.getItems().clear();
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals("Thursday")){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			displayDayTimeTable(c, s, "Thursday");
 		}
 
 	}
@@ -227,12 +218,10 @@ public class ViewTimeTableUI {
 			}
 		}
 		timetableList.getItems().clear();
-		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+		for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 			Slot s = mp.getKey();
 			Course c = mp.getValue();
-			if(s.getDay().equals("Friday")){
-				timetableList.getItems().add(c.getAcronym() + " "  + s.getStartTime() + "-" + s.getEndTime() + " " + s.getPurpose());
-			}
+			displayDayTimeTable(c, s, "Friday");
 		}
 
 	}
@@ -294,4 +283,38 @@ public class ViewTimeTableUI {
 
 	}
 
+	
+	public void displayDayTimeTable(Course c, Slot s,String currDay) {
+		Map<Course, Integer> labPreferences = null;
+		Map<Course, Integer> tutPreferences = null;
+
+		if (s.getPurpose().equals(Slot.TYPES[1])) {
+			if (c.getCourseTimeTable().get(s).size() >= 1) {
+				labPreferences = currStudent.getLabPref();
+			}
+		} else if (s.getPurpose().equals(Slot.TYPES[2])) {
+			if (c.getCourseTimeTable().get(s).size() >= 1) {
+				tutPreferences = currStudent.getLabPref();
+			}
+
+		}
+
+		if (s.getDay().equals(currDay) && labPreferences != null) {
+			timetableList.getItems().add(c.getAcronym() + " " + s.getStartTime() + "-" + s.getEndTime() + " "
+					+ s.getPurpose() + " "
+					+ c.getCourseTimeTable().get(s).get(labPreferences.get(c)).getRoomNumber().toUpperCase());
+
+		} else if (s.getDay().equals(currDay) && tutPreferences != null) {
+
+			timetableList.getItems().add(c.getAcronym() + " " + s.getStartTime() + "-" + s.getEndTime() + " "
+					+ s.getPurpose() + " "
+					+ c.getCourseTimeTable().get(s).get(tutPreferences.get(c)).getRoomNumber().toUpperCase());
+
+		} else if(s.getDay().equals(currDay)){
+			timetableList.getItems().add(c.getAcronym() + " " + s.getStartTime() + "-" + s.getEndTime() + " "
+					+ s.getPurpose() + " " + c.getCourseTimeTable().get(s).get(0).getRoomNumber().toUpperCase());
+
+		}
+	}
+	
 }

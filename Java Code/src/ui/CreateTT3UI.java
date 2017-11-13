@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,8 @@ public class CreateTT3UI {
 	public Student currStudent;
 	public Course selectedCourse;
 	
-	private ArrayList<Slot> slotList = new ArrayList<Slot>();
+	private ArrayList<Slot> labSlotList = new ArrayList<Slot>();
+	private ArrayList<Slot> tutSlotList = new ArrayList<Slot>();
 	private ArrayList<ClassRoom> rooomsList = new ArrayList<ClassRoom>();
 	private ArrayList<User> listOfUsers = new ArrayList<>();
 
@@ -81,7 +83,7 @@ public class CreateTT3UI {
 					labLabel.setVisible(true);
 					labRecordsList.setVisible(true);
 					addLabButton.setVisible(true);
-					slotList.add(slt);
+					labSlotList.add(slt);
 					rooomsList.add(room.get(i));
 					labRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime() + ", " + room.get(i).getRoomNumber());
 			
@@ -89,7 +91,7 @@ public class CreateTT3UI {
 			}
 			else if(slt.getPurpose().equals(Slot.TYPES[2])){
 				for(int i = 0; i < room.size(); i++){
-					slotList.add(slt);
+					tutSlotList.add(slt);
 					rooomsList.add(room.get(i));
 					tutorialLabel.setVisible(true);
 					tutorialRecordsList.setVisible(true);
@@ -106,7 +108,16 @@ public class CreateTT3UI {
 	private void addLabs(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException{
 		deserializeUsers();
 		int index = labRecordsList.getSelectionModel().getSelectedIndex();
-		currStudent.addToTimeTableLabs(slotList.get(index), selectedCourse);
+		currStudent.addToTimeTableLabs(labSlotList.get(index), selectedCourse);
+		
+		if (currStudent.getLabPref() == null) {
+			Map<Course, Integer> labPref = new HashMap<Course, Integer>();
+			labPref.put(selectedCourse, index);
+			currStudent.setLabPref(labPref);
+		} else {
+			currStudent.getLabPref().put(selectedCourse, index);
+		}
+		
 		serializeUsers();		
 	}
 	
@@ -114,7 +125,16 @@ public class CreateTT3UI {
 	private void addTutorials(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException{
 		deserializeUsers();
 		int index = tutorialRecordsList.getSelectionModel().getSelectedIndex();
-		currStudent.addToTimeTableTutorials(slotList.get(index), selectedCourse);
+		currStudent.addToTimeTableTutorials(tutSlotList.get(index), selectedCourse);
+
+		if (currStudent.getTutPref() == null) {
+			Map<Course, Integer> tutPref = new HashMap<Course, Integer>();
+			tutPref.put(selectedCourse, index);
+			currStudent.setTutPref(tutPref);
+		} else {
+			currStudent.getTutPref().put(selectedCourse, index);
+		}
+		
 		serializeUsers();
 	}
 	

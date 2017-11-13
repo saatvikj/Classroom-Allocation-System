@@ -20,6 +20,8 @@ public class Student extends User {
 	private Map<Slot, Course> timetable;
 	private transient ArrayList<Request> allRequests = new ArrayList<>();
 	private transient ArrayList<Course> allCourses = new ArrayList<>();
+	private Map<Course, Integer> tutPref = new HashMap<>();
+	private Map<Course, Integer> labPref = new HashMap<>();
 
 	public Student(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);
@@ -40,6 +42,22 @@ public class Student extends User {
 
 	public void setAllRequests(ArrayList<Request> allRequests) {
 		this.allRequests = allRequests;
+	}
+
+	public Map<Course, Integer> getTutPref() {
+		return tutPref;
+	}
+
+	public void setTutPref(Map<Course, Integer> tutPref) {
+		this.tutPref = tutPref;
+	}
+
+	public Map<Course, Integer> getLabPref() {
+		return labPref;
+	}
+
+	public void setLabPref(Map<Course, Integer> labPref) {
+		this.labPref = labPref;
 	}
 
 	@Override
@@ -65,58 +83,58 @@ public class Student extends User {
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
 
 			Slot slt = courseTimeTable.getKey();
-			
+
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(slt, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(slt, _course);
 				}
 			}
 		}
 	}
-	
+
 	public void addToTimeTableLabs(Slot _slot, Course _course) {
 
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
 
 			Slot slt = courseTimeTable.getKey();
-			
+
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[1])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(_slot, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[1])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(_slot, _course);
 				}
 			}
 		}
 	}
-	
+
 	public void addToTimeTableTutorials(Slot _slot, Course _course) {
 
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
 
 			Slot slt = courseTimeTable.getKey();
-			
+
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[2])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(_slot, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[2])) {
-					//System.out.println(slt.getDay());
+					// System.out.println(slt.getDay());
 					timetable.put(_slot, _course);
 				}
 			}
