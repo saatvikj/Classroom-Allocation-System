@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -129,41 +130,68 @@ public class CreateTT2UI {
 		Course selectedCourse = relevantCourses.get(selectedCourseIndex);
 		currStudent.addToTimeTable(selectedCourse);
 		serializeUsers();
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("Confirm!");
-		alert.setHeaderText("The course has been added.");
-		alert.setResizable(false);
-		alert.setContentText("Do you want to add tutorials and labs as well?");
-		Optional<ButtonType> result = alert.showAndWait();
-		if(!result.isPresent()) {
+		int countLab = 0;
+		int countTutorial = 0;
+		for(Map.Entry<Slot, List<ClassRoom>> map : selectedCourse.getCourseTimeTable().entrySet()){
+			Slot slt = map.getKey();
+			List<ClassRoom> room = map.getValue();
 			
-		} else if(result.get() == ButtonType.OK) {
-		
-			relevantCoursesList.getItems().remove(selectedCourseIndex);
-			
-			try {
-
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT3.fxml"));
-				Stage stage = new Stage();
-				stage.setTitle("IIIT Delhi");
-				stage.setScene(new Scene(loader.load(), 800, 600));
-				CreateTT3UI controller = loader.<CreateTT3UI>getController();
-				controller.currStudent = currStudent;
-				controller.selectedCourse = relevantCourses.get(selectedCourseIndex);
-				controller.populate();
-				stage.show();
-
-				((Node) (event.getSource())).getScene().getWindow().hide();
-
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(slt.getPurpose().equals(Slot.TYPES[1])){
+				countLab++;
 			}
+		}
+		
+		for(Map.Entry<Slot, List<ClassRoom>> map : selectedCourse.getCourseTimeTable().entrySet()){
+			Slot slt = map.getKey();
+			List<ClassRoom> room = map.getValue();
 			
+			if(slt.getPurpose().equals(Slot.TYPES[2])){
+				countTutorial++;
+			}
+		}
+		if(countLab == 0 && countTutorial == 0){
 			
+			currStudent.addToTimeTable(selectedCourse);
 			
-		} else if(result.get() == ButtonType.CANCEL) {
-
+		}else{
+		
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Confirm!");
+			alert.setHeaderText("The course has been added.");
+			alert.setResizable(false);
+			alert.setContentText("Do you want to add tutorials and labs as well?");
+			Optional<ButtonType> result = alert.showAndWait();
+			if(!result.isPresent()) {
+				
+			} else if(result.get() == ButtonType.OK) {
 			
+				relevantCoursesList.getItems().remove(selectedCourseIndex);
+				
+				try {
+	
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT3.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("IIIT Delhi");
+					stage.setScene(new Scene(loader.load(), 800, 600));
+					CreateTT3UI controller = loader.<CreateTT3UI>getController();
+					controller.currStudent = currStudent;
+					controller.selectedCourse = relevantCourses.get(selectedCourseIndex);
+					controller.populate();
+					stage.show();
+	
+					((Node) (event.getSource())).getScene().getWindow().hide();
+	
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
+				
+			} else if(result.get() == ButtonType.CANCEL) {
+	
+				
+				
+			}
 			
 		}
 	}
@@ -197,7 +225,7 @@ public class CreateTT2UI {
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StudentHome.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT1.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));

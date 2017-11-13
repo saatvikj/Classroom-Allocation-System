@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
+import backend.ClassRoom;
+import backend.Course;
+import backend.Slot;
 import backend.Student;
 import backend.User;
 import javafx.fxml.FXML;
@@ -38,7 +42,14 @@ public class StudentHomeUI {
 		serializeUsers();
 		nameStudent.setText(currStudent.getName());
 		emailStudent.setText(currStudent.getEmailID());
-		
+
+//		code to print the time table
+//		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
+//			Slot s = mp.getKey();
+//			Course c = mp.getValue();
+//			System.out.println(s.getDay() + " " + s.getStartTime() + "-" + s.getEndTime() + " " + c.getAcronym() + " " + s.getPurpose());
+//		}
+//		
 	}
 
 	@FXML
@@ -159,10 +170,13 @@ public class StudentHomeUI {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/fxml/TimeTable.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TimeTable.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			ViewTimeTableUI controller = loader.<ViewTimeTableUI>getController();
+			controller.currStudent = currStudent;
+			controller.populate();
 			stage.show();
 
 			((Node) (event.getSource())).getScene().getWindow().hide();

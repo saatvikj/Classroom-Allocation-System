@@ -1,5 +1,7 @@
-/res/
-/ui/
+/.classpath
+/.project
 /backend/
 /exceptions/
 /fxml/
+/res/
+/ui/

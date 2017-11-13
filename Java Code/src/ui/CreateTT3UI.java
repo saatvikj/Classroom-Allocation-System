@@ -49,6 +49,12 @@ public class CreateTT3UI {
 	private Button addLabButton;
 	
 	@FXML
+	private Label labLabel;
+	
+	@FXML
+	private Label tutorialLabel;
+	
+	@FXML
 	private Button addTutorialButton;
 	
 	@FXML
@@ -72,6 +78,7 @@ public class CreateTT3UI {
 			
 			if(slt.getPurpose().equals(Slot.TYPES[1])){
 				for(int i = 0; i <room.size(); i++){
+					labLabel.setVisible(true);
 					labRecordsList.setVisible(true);
 					addLabButton.setVisible(true);
 					slotList.add(slt);
@@ -84,6 +91,7 @@ public class CreateTT3UI {
 				for(int i = 0; i < room.size(); i++){
 					slotList.add(slt);
 					rooomsList.add(room.get(i));
+					tutorialLabel.setVisible(true);
 					tutorialRecordsList.setVisible(true);
 					addTutorialButton.setVisible(true);
 					tutorialRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime() + ", " + room.get(i).getRoomNumber());
