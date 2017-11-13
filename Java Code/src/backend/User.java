@@ -23,7 +23,7 @@ public class User implements Serializable {
 	protected String encryptedPassword;
 	protected Map<Slot, ClassRoom> bookedRooms = new HashMap<Slot, ClassRoom>();
 	protected String typeOfUser;
-	public ArrayList<String> listOfNotifications = new ArrayList<String>();
+	public transient ArrayList<String> listOfNotifications = new ArrayList<String>();
 	protected transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
 	public User() {
@@ -239,22 +239,7 @@ public class User implements Serializable {
 		 * refreshes the listOfNotifications attribute. (New requests for admin,
 		 * request status for student etc etc)
 		 */
-		if (listOfNotifications != null) {
-			Calendar calendar = Calendar.getInstance();
-			int day = calendar.get(Calendar.DAY_OF_WEEK);
-			for (Map.Entry<Slot, ClassRoom> map : bookedRooms.entrySet()) {
 
-				Slot key = map.getKey();
-				ClassRoom value = map.getValue();
-
-				if (key.getDate().getDay() == day - 1) {
-
-					String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at "
-							+ key.getStartTime();
-					listOfNotifications.add(notification);
-				}
-			}
-		} else {
 			listOfNotifications = new ArrayList<>();
 			Calendar calendar = Calendar.getInstance();
 			int day = calendar.get(Calendar.DAY_OF_WEEK);
@@ -271,7 +256,7 @@ public class User implements Serializable {
 				}
 			}
 
-		}
+		
 
 		return this.listOfNotifications;
 

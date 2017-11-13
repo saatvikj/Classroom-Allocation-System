@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Tooltip?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.*?>
+
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ViewAllCoursesUI">
+	<children>
+		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
+			<children>
+
+				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
+					<columnConstraints>
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="575.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="150.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Label fx:id="email" alignment="CENTER_RIGHT"
+							contentDisplay="TOP" text="sheetu@iiitd.ac.in">
+							<font>
+								<Font name="Segoe UI Bold" size="14.0" />
+							</font>
+							<GridPane.margin>
+								<Insets right="12.0" top="54.0" />
+							</GridPane.margin>
+						</Label>
+
+						<Label fx:id="title" text="ADMIN">
+							<font>
+								<Font name="Segoe UI Bold" size="24.0" />
+							</font>
+							<GridPane.margin>
+								<Insets right="12.0" top="12.0" />
+							</GridPane.margin>
+						</Label>
+
+						<Label fx:id="name" text="Sheetu Ahuja">
+							<font>
+								<Font name="Segoe UI Bold" size="24.0" />
+							</font>
+							<GridPane.margin>
+								<Insets bottom="40.0" right="12.0" />
+							</GridPane.margin>
+						</Label>
+					</children>
+				</GridPane>
+
+
+
+				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+					text="BOOKED ROOM RECORDS">
+					<font>
+						<Font name="Segoe UI" size="36.0" />
+					</font>
+				</Label>
+				<ListView fx:id="courseRecordsList" layoutX="76.0" layoutY="240.0"
+					prefHeight="250.0" prefWidth="300.0">
+
+				</ListView>
+				<GridPane fx:id="courseDetails" layoutX="400.0" layoutY="220.0"
+					visible="false">
+					<children>
+						<Label text="NAME" />
+						<Label fx:id="courseName" GridPane.columnIndex="1" />
+						<Label text="ACRONYM" GridPane.rowIndex="1" />
+						<Label fx:id="courseAcronym" GridPane.columnIndex="1"
+							GridPane.rowIndex="1" />
+						<Label text="INSTRUCTOR" GridPane.rowIndex="2" />
+						<Label fx:id="courseInstructor" GridPane.columnIndex="1"
+							GridPane.rowIndex="2" />
+						<Label text="CREDITS" GridPane.rowIndex="3" />
+						<Label fx:id="courseCredits" GridPane.rowIndex="3"
+							GridPane.columnIndex="1" />
+						<Label layoutX="10.0" layoutY="27.0" text="PRE-REQUISITES"
+							GridPane.rowIndex="4" />
+						<Label fx:id="coursePreReqs" layoutX="10.0" layoutY="27.0"
+							GridPane.rowIndex="4" GridPane.columnIndex="1" />
+					</children>
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="150.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="200.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+				</GridPane>
+				<ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0"
+					onMouseClicked="#homeButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/home.png" />
+					</image>
+				</ImageView>
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+					layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/back.png" />
+					</image>
+				</ImageView>
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+					layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+					preserveRatio="true">
+					<image>
+						<Image url="/res/logouticon.png" />
+					</image>
+				</ImageView>
+			</children>
+		</Pane>
+	</children>
+</AnchorPane>

@@ -105,5 +105,11 @@
 				<Image url="/res/logouticon.png" />
 			</image>
 		</ImageView>
+		<Button layoutX="610.0" layoutY="545.0" mnemonicParsing="false"
+			onMouseClicked="#showCourses" prefHeight="45.0" text="View all courses">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Button>
 	</children>
 </Pane>

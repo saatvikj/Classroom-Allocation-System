@@ -41,7 +41,7 @@ public class FacultyHomeUI {
 	}
 
 	@FXML
-	private void showNotifications(MouseEvent event) {
+	private void showNotifications(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NotificationsUI.fxml"));
@@ -141,6 +141,25 @@ public class FacultyHomeUI {
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@FXML
+	private void showCourses(MouseEvent event) throws ClassNotFoundException {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ViewAllCourses.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			ViewAllCoursesUI controller = loader.<ViewAllCoursesUI>getController();
+			controller.currUser = currFaculty;
+			controller.populate();
+
+			stage.show();
+			((Node) (event.getSource())).getScene().getWindow().hide();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

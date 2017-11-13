@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdminHomeUI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdminHomeUI">
 	<children>
 		<GridPane prefHeight="150.0">
 			<columnConstraints>
@@ -20,7 +20,7 @@
 				<RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label id="homeHead" alignment="CENTER" onMouseClicked="#homeButtonClicked" text="Home">
+				<Label id="homeHead" alignment="CENTER" text="Home">
 					<GridPane.margin>
 						<Insets left="98.0" />
 					</GridPane.margin>
@@ -90,5 +90,10 @@
             <Image url="/res/logouticon.png" />
          </image>
       </ImageView>
+      <Button layoutX="610.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#showCourses" prefHeight="45.0" text="View all courses">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
 	</children>
 </Pane>

@@ -34,10 +34,16 @@ public class NotificationsUI {
 	private ListView<String> notificationsListView;
 
 	
-	public void populate() {
+	public void populate() throws ClassNotFoundException, IOException {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
+		
+		if(currUser.getTypeOfUser().equals("Admin"))
+		{
+			Admin currAdmin = (Admin) currUser;
+			currAdmin.deserializeRequests();
+		}
 		notifs = currUser.populateNotifications();
 		if(notifs.size() == 0)
 		{

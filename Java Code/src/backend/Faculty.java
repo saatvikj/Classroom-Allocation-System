@@ -2,6 +2,7 @@ package backend;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 public class Faculty extends User {
@@ -25,22 +26,22 @@ public class Faculty extends User {
 	public ArrayList<String> populateNotifications() {
 		
 		ArrayList<String> notifications =  super.populateNotifications();
-//		Calendar cal = Calendar.getInstance();
-//		int day = cal.get(Calendar.DAY_OF_WEEK);
-//		for(int i = 0; i < coursesTaught.size(); i++){
-//			Map<Slot, ClassRoom> courseMap = coursesTaught.get(i).getCourseTimeTable();
-//			for(Map.Entry<Slot, ClassRoom> it : courseMap.entrySet()){
-//				Slot key = it.getKey();
-//				ClassRoom val = it.getValue();
-//				String currday = key.getDay();
-//				if(currday.equals(week[day-1]))
-//				{
-//					notifications.add("You have a "  + coursesTaught.get(i).getAcronym().toUpperCase() + " class in " + val.getRoomNumber().toUpperCase() + " at " + key.getStartTime());
-//				}
-//			}
-//				
-//		}
-//			
+		Calendar cal = Calendar.getInstance();
+		int day = cal.get(Calendar.DAY_OF_WEEK);
+		for(int i = 0; i < coursesTaught.size(); i++){
+			Map<Slot, List<ClassRoom>> courseMap = coursesTaught.get(i).getCourseTimeTable();
+			for(Map.Entry<Slot, List<ClassRoom>> it : courseMap.entrySet()){
+				Slot key = it.getKey();
+				List<ClassRoom> val = it.getValue();
+				String currday = key.getDay();
+				if(currday.equals(week[day-1]) && key.getPurpose().equals(Slot.TYPES[0]))
+				{
+					notifications.add("You have a "  + coursesTaught.get(i).getAcronym().toUpperCase() + " class in " + val.get(0).getRoomNumber().toUpperCase() + " at " + key.getStartTime());
+				}
+			}
+				
+		}
+			
 		
 		return notifications;
 

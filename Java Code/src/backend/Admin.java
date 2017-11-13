@@ -69,7 +69,17 @@ public class Admin extends User {
 	
 	public ArrayList<String> populateNotifications()
 	{
-		return super.populateNotifications();
+		
+		ArrayList<String> listNotif = super.populateNotifications();
+		int count = 0;
+		for(int i = 0; i< listOfRequests.size(); i++){
+			if(listOfRequests.get(i).getCurrentStatus() == 0){
+				count = count + 1;
+			}
+		}
+		listNotif.add("You have " + count + " requests pending!");
+		
+		return listNotif;
 	}
 	
 	public void deserializeRequests() throws ClassNotFoundException, IOException {
