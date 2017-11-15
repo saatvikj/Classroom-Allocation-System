@@ -39,9 +39,9 @@ public class NotificationsUI {
 	private ListView<String> notificationsListView;
 
 	/**
-	 * This sets the name, email ID and title of the current
-	 * logged in user and populates the notifications according
-	 * to the type of user.
+	 * This sets the name, email ID and title of the current logged in user and
+	 * populates the notifications according to the type of user.
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -73,8 +73,10 @@ public class NotificationsUI {
 	}
 
 	/**
-	 * Handler of the mouse click of logout button 
-	 * @param event: The mouse event
+	 * Handler of the mouse click of logout button
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -97,7 +99,9 @@ public class NotificationsUI {
 
 	/**
 	 * Handler of the mouse click of the home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML

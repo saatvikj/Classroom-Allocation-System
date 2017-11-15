@@ -33,6 +33,7 @@ public class SignUp {
 	private ArrayList<Course> allCourses = new ArrayList<Course>();
 
 	/**
+	 * Getter function that returns the name of the user.
 	 * 
 	 * @return name
 	 */
@@ -41,6 +42,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter function that sets the name of the user
 	 * 
 	 * @param name
 	 */
@@ -49,6 +51,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Getter function that returns the email id of a user
 	 * 
 	 * @return emailID
 	 */
@@ -58,6 +61,8 @@ public class SignUp {
 
 	/**
 	 * 
+	 * Setter function to set the email id
+	 * 
 	 * @param emailID
 	 */
 	public void setEmailID(String emailID) {
@@ -65,6 +70,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Getter function that returns the type of user
 	 * 
 	 * @return typeOfUser
 	 */
@@ -73,6 +79,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter function that sets the type of user
 	 * 
 	 * @param typeOfUser
 	 */
@@ -81,6 +88,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Getter method that returns the password
 	 * 
 	 * @return password
 	 */
@@ -89,6 +97,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter method that sets the value of password
 	 * 
 	 * @param password
 	 */
@@ -97,6 +106,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Getter method to get the confirmedPassword
 	 * 
 	 * @return confirmPassword
 	 */
@@ -105,6 +115,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter method to set the confirmedPassword
 	 * 
 	 * @param confirmPassword
 	 */
@@ -113,6 +124,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Getter method that returns the list of users
 	 * 
 	 * @return listOfUsers
 	 */
@@ -121,6 +133,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter method that sets the value of listof users
 	 * 
 	 * @param listOfUsers
 	 */
@@ -130,6 +143,8 @@ public class SignUp {
 
 	/**
 	 * 
+	 * Getter method to get the list of all courses
+	 * 
 	 * @return allCourses
 	 */
 	public ArrayList<Course> getAllCourses() {
@@ -137,6 +152,7 @@ public class SignUp {
 	}
 
 	/**
+	 * Setter method that sets the value of allCourses
 	 * 
 	 * @param allCourses
 	 */
@@ -145,16 +161,15 @@ public class SignUp {
 	}
 
 	/**
+	 * It checks whether the email ID is a valid IIIT Delhi email ID or not.
+	 * Check after @ it is iiitd.ac.in or not (Substring) Returns true if it is
+	 * a valid email ID, else returns false meghna16056@iiitd.ac.in
 	 * 
 	 * @return boolean
 	 * @throws InvalidEmailException
 	 */
 	public boolean validateEmail() throws InvalidEmailException {
-		/*
-		 * It checks whether the email ID is a valid IIIT Delhi email ID or not.
-		 * Check after @ it is iiitd.ac.in or not (Substring) Returns true if it
-		 * is a valid email ID, else returns false meghna16056@iiitd.ac.in
-		 */
+
 		if (this.getEmailID().contains("@")) {
 
 			if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
@@ -170,15 +185,14 @@ public class SignUp {
 
 	/**
 	 * 
+	 * It checks whether the entered password is strong enough or not. Length >=
+	 * 8 At Least one digit and at least one alphabet Returns true when a
+	 * password is strong, false when it is not
+	 * 
 	 * @return boolean
 	 * @throws WeakPasswordException
 	 */
 	public boolean checkStrongPassword() throws WeakPasswordException {
-		/*
-		 * It checks whether the entered password is strong enough or not.
-		 * Length >= 8 At Least one digit and at least one alphabet Returns true
-		 * when a password is strong, false when it is not
-		 */
 
 		String pass = this.password;
 		if (pass.length() >= 8) {
@@ -210,18 +224,20 @@ public class SignUp {
 
 	/**
 	 * 
+	 * 
+	 * It encrypts the user’s password (safety feature) Encryption function (to
+	 * be thought of) Returns the encrypted password
+	 * 
 	 * @return
 	 */
 	public String encryptPassword() {
-		/*
-		 * It encrypts the user’s password (safety feature) Encryption function
-		 * (to be thought of) Returns the encrypted password
-		 */
 
 		return md5(this.password);
 	}
 
 	/**
+	 * 
+	 * md5 encryption method.
 	 * 
 	 * @param input
 	 * @return string
@@ -249,6 +265,10 @@ public class SignUp {
 	}
 
 	/**
+	 *
+	 * If the user is a faculty, iterate over the entire courses objects and see
+	 * if that faculty has any courses taught, if yes then append the course
+	 * objects to the list of courses in the faculty.
 	 * 
 	 * @param facultyName
 	 * @return facCourses
@@ -257,11 +277,6 @@ public class SignUp {
 	 */
 	public ArrayList<Course> addCoursesToFaculty(String facultyName) throws ClassNotFoundException, IOException {
 
-		/*
-		 * If the user is a faculty, iterate over the entire courses objects and
-		 * see if that faculty has any courses taught, if yes then append the
-		 * course objects to the list of courses in the faculty.
-		 */
 		deserializeCourses();
 		ArrayList<Course> facCourses = new ArrayList<Course>();
 		for (int i = 0; i < allCourses.size(); i++) {
@@ -275,31 +290,30 @@ public class SignUp {
 
 	/**
 	 * 
+	 * 
+	 * First deserializes the file to populate array list,adds newUser to it and
+	 * then serializes it back again.
+	 * 
 	 * @param newUser
 	 * @throws FileNotFoundException
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
 	public void addUserToDatabase(User newUser) throws FileNotFoundException, ClassNotFoundException, IOException {
-		/*
-		 * First deserializes the file to populate array list,adds newUser to it
-		 * and then serializes it back again.
-		 */
+
 		deserializeUsers();
 		listOfUsers.add(newUser);
 		serializeUsers();
 	}
 
 	/**
+	 * If confirmed and entered password match, it returns true, else returns
+	 * false
 	 * 
 	 * @return boolean
 	 * @throws PasswordNotMatchException
 	 */
 	public boolean passwordMatch() throws PasswordNotMatchException {
-		/*
-		 * If confirmed and entered password match, it returns true, else
-		 * returns false
-		 */
 
 		if (this.getPassword().equals(this.getConfirmPassword())) {
 			return true;
@@ -309,6 +323,7 @@ public class SignUp {
 	}
 
 	/**
+	 * This method checks if the user is already registered or not
 	 * 
 	 * @return boolean
 	 * @throws AlreadyRegisteredUserException

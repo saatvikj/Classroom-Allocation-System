@@ -40,7 +40,9 @@ public class LoginUI {
 
 	/**
 	 * The handler for mouse click of login button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -53,7 +55,7 @@ public class LoginUI {
 
 		boolean validity = checkEmptiness(email, password);
 		if (!validity) {
-					generateAlert("Error!", "At least one of the fields is empty, try again.");
+			generateAlert("Error!", "At least one of the fields is empty, try again.");
 		}
 
 		if (validity) {
@@ -72,15 +74,15 @@ public class LoginUI {
 						allResults = true;
 					} catch (WrongPasswordException e) {
 						// TODO: handle exception
-					generateAlert("Error!", e.getMessage());						
+						generateAlert("Error!", e.getMessage());
 					}
 
 				} catch (UnregisteredUserExcpetion e) {
-					generateAlert("Error!", e.getMessage());					
+					generateAlert("Error!", e.getMessage());
 				}
 
 			} catch (InvalidEmailException e) {
-					generateAlert("Error!", e.getMessage());
+				generateAlert("Error!", e.getMessage());
 			}
 
 			if (allResults) {
@@ -139,9 +141,11 @@ public class LoginUI {
 
 	/**
 	 * This checks whether all the fields are filled or not
+	 * 
 	 * @param enteredEmail
 	 * @param enteredPassword
-	 * @return boolean: returns true if all fields are filled, else returns false
+	 * @return boolean: returns true if all fields are filled, else returns
+	 *         false
 	 */
 	public boolean checkEmptiness(String enteredEmail, String enteredPassword) {
 
@@ -155,6 +159,7 @@ public class LoginUI {
 
 	/**
 	 * The handler for mouse click of back button
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -178,18 +183,20 @@ public class LoginUI {
 	}
 
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
 	}
 

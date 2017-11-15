@@ -102,7 +102,7 @@
 						<Image url="/res/logouticon.png" />
 					</image>
 				</ImageView>
-            <Button layoutX="511.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#viewPostConds" text="View Post Conditions" visible="false">
+            <Button fx:id="postConditionButton" layoutX="511.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#viewPostConds" text="View Post Conditions" visible="false">
                <font>
                   <Font size="14.0" />
                </font>

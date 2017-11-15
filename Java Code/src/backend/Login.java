@@ -28,6 +28,7 @@ public class Login {
 	private User currentUser;
 
 	/**
+	 * Getter method that returns the email id of a user.
 	 * 
 	 * @return emailID
 	 */
@@ -36,6 +37,7 @@ public class Login {
 	}
 
 	/**
+	 * Setter method to set the email id of a user
 	 * 
 	 * @param emailID
 	 */
@@ -44,6 +46,7 @@ public class Login {
 	}
 
 	/**
+	 * Getter method that returns the password of a user
 	 * 
 	 * @return password
 	 */
@@ -52,6 +55,7 @@ public class Login {
 	}
 
 	/**
+	 * Setter method that sets the password of a user
 	 * 
 	 * @param password
 	 */
@@ -60,6 +64,7 @@ public class Login {
 	}
 
 	/**
+	 * Getter method that returns the type of user
 	 * 
 	 * @return typeOfUser
 	 */
@@ -68,6 +73,7 @@ public class Login {
 	}
 
 	/**
+	 * Setter method that sets the type of user
 	 * 
 	 * @param typeOfUser
 	 */
@@ -76,6 +82,7 @@ public class Login {
 	}
 
 	/**
+	 * Getter method that returns the current User
 	 * 
 	 * @return currentUser
 	 */
@@ -84,6 +91,7 @@ public class Login {
 	}
 
 	/**
+	 * Setter method that sets the current user
 	 * 
 	 * @param currentUser
 	 */
@@ -92,16 +100,14 @@ public class Login {
 	}
 
 	/**
+	 * It checks whether the email ID is a valid IIIT Delhi email ID or not.
+	 * Returns true if it is valid, else returns false.
 	 * 
 	 * @return boolean
 	 * @throws InvalidEmailException
 	 */
 	public boolean validateEmail() throws InvalidEmailException {
 
-		/*
-		 * It checks whether the email ID is a valid IIIT Delhi email ID or not.
-		 * Returns true if it is valid, else returns false.
-		 */
 		if (this.getEmailID().contains("@")) {
 
 			if (this.getEmailID().split("\\@")[1].split("\\.")[0].equals("iiitd")) {
@@ -117,6 +123,9 @@ public class Login {
 
 	/**
 	 * 
+	 * It checks if that emailID is of a registered user or not. Returns true if
+	 * it is, else returns false.
+	 * 
 	 * @return boolean
 	 * @throws UnregisteredUserExcpetion
 	 * @throws ClassNotFoundException
@@ -126,10 +135,6 @@ public class Login {
 	public boolean checkIfRegistered()
 			throws UnregisteredUserExcpetion, ClassNotFoundException, FileNotFoundException, IOException {
 
-		/*
-		 * It checks if that emailID is of a registered user or not. Returns
-		 * true if it is, else returns false.
-		 */
 		deserializeUsers();
 		for (int i = 0; i < listOfUsers.size(); i++) {
 			if (listOfUsers.get(i).getEmailID().equals(emailID)) {
@@ -140,6 +145,7 @@ public class Login {
 	}
 
 	/**
+	 * This functions checks if the password entered by the user matches or not.
 	 * 
 	 * @return boolean
 	 * @throws WrongPasswordException
@@ -164,18 +170,18 @@ public class Login {
 
 	/**
 	 * 
+	 * It encrypts the user’s password (safety feature) Encryption function (to
+	 * be thought of) Returns the encrypted password
+	 * 
 	 * @return string
 	 */
 	public String encryptPassword() {
-		/*
-		 * It encrypts the user’s password (safety feature) Encryption function
-		 * (to be thought of) Returns the encrypted password
-		 */
 
 		return md5(this.password);
 	}
 
 	/**
+	 * md5 password encryption method
 	 * 
 	 * @param input
 	 * @return string
@@ -203,6 +209,7 @@ public class Login {
 	}
 
 	/**
+	 * This method deserializes the users.txt file into allUsers arraylist
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -249,15 +256,14 @@ public class Login {
 
 	/**
 	 * 
+	 * It iterates through the list of users and returns the current user who
+	 * just entered the details.
+	 * 
 	 * @return User
 	 * @throws UnregisteredUserExcpetion
 	 */
 	public User getLoggedInUser() throws UnregisteredUserExcpetion {
 
-		/*
-		 * It iterates through the list of users and returns the current user
-		 * who just entered the details.
-		 */
 		for (int i = 0; i < listOfUsers.size(); i++) {
 			if (listOfUsers.get(i).getEmailID().equals(emailID)
 					&& listOfUsers.get(i).getEncryptedPassword().equals(encryptPassword())) {

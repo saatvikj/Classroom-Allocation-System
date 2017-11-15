@@ -31,11 +31,15 @@ public class User implements Serializable {
 	public transient ArrayList<String> listOfNotifications = new ArrayList<String>();
 	protected transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
+	/**
+	 * Default constructor of User class
+	 */
 	public User() {
 
 	}
 
 	/**
+	 * Parameterized constructor of User class
 	 * 
 	 * @param name
 	 * @param emailID
@@ -51,6 +55,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the typeOfUser
 	 * 
 	 * @return typeOfUser
 	 */
@@ -59,6 +64,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the typeOfUser
 	 * 
 	 * @param typeOfUser
 	 */
@@ -67,6 +73,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the name of the user
 	 * 
 	 * @return name
 	 */
@@ -75,6 +82,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the name of the user
 	 * 
 	 * @param name
 	 */
@@ -83,6 +91,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the email id of a user
 	 * 
 	 * @return emailID
 	 */
@@ -91,6 +100,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the email id of a user
 	 * 
 	 * @param emailID
 	 */
@@ -99,6 +109,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the encrypted password of a user
 	 * 
 	 * @return encryptedPassword
 	 */
@@ -107,6 +118,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the encrypted password of a user
 	 * 
 	 * @param encryptedPassword
 	 */
@@ -115,6 +127,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the bookedRooms of a user
 	 * 
 	 * @return bookedRooms
 	 */
@@ -123,6 +136,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the value of booked rooms of a user
 	 * 
 	 * @param bookedRooms
 	 */
@@ -131,6 +145,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the list of notifications of a user
 	 * 
 	 * @return listOfNotifications
 	 */
@@ -139,6 +154,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the value of listOfBotifications
 	 * 
 	 * @param listOfNotifications
 	 */
@@ -147,16 +163,8 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * 
-	 */
-	public void viewRoomBooked() {
-		/*
-		 * Iterates through the hashmap and prints all the rooms booked by that
-		 * User, else prints a fancy message of no bookings.
-		 */
-	}
-
-	/**
+	 * It directly calls the method checkIfValidSlot with reqSlot as the
+	 * parameter.
 	 * 
 	 * @param reqRoom
 	 * @param reqSlot
@@ -167,10 +175,7 @@ public class User implements Serializable {
 	 */
 	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot, int reqCap)
 			throws ClassNotFoundException, IOException {
-		/*
-		 * It directly calls the method checkIfEmptyInSlot of the reqRoom object
-		 * with reqSlot as the parameter.
-		 */
+
 		deserializeRooms();
 
 		ArrayList<ClassRoom> eligibleRooms = new ArrayList<ClassRoom>();
@@ -201,6 +206,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Checks if both the slots passed as parameter clash or not
 	 * 
 	 * @param slot1
 	 * @param slot2
@@ -241,6 +247,9 @@ public class User implements Serializable {
 
 	/**
 	 * 
+	 * It calls the method makeBooking of the reqRoom object with reqSlot as the
+	 * first parameter rest is handled by inheritance (comment).
+	 * 
 	 * @param reqRoom
 	 * @param reqSlot
 	 * @param reqCapacity
@@ -249,10 +258,6 @@ public class User implements Serializable {
 	 */
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 			throws ClassNotFoundException, IOException {
-		/*
-		 * It calls the method makeBooking of the reqRoom object with reqSlot as
-		 * the first parameter rest is handled by inheritance (comment).
-		 */
 
 		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
@@ -284,6 +289,10 @@ public class User implements Serializable {
 
 	/**
 	 * 
+	 * It calls the method cancelBooking from bookedRoom object with bookedSlot
+	 * as parameter and then makes this entry in its own hashmap(bookedRooms) as
+	 * null.
+	 * 
 	 * @param bookedRoom
 	 * @param bookedSlot
 	 * @throws FileNotFoundException
@@ -292,11 +301,6 @@ public class User implements Serializable {
 	 */
 	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot)
 			throws FileNotFoundException, IOException, ClassNotFoundException {
-		/*
-		 * It calls the method cancelBooking from bookedRoom object with
-		 * bookedSlot as parameter and then makes this entry in its own
-		 * hashmap(bookedRooms) as null.
-		 */
 
 		deserializeRooms();
 		for (int i = 0; i < allRooms.size(); i++) {
@@ -328,15 +332,13 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * It goes through the required things to give notification about and
+	 * refreshes the listOfNotifications attribute. (New requests for admin,
+	 * request status for student etc etc)
 	 * 
 	 * @return listOfNotifications
 	 */
 	public ArrayList<String> populateNotifications() {
-		/*
-		 * It goes through the required things to give notification about and
-		 * refreshes the listOfNotifications attribute. (New requests for admin,
-		 * request status for student etc etc)
-		 */
 
 		listOfNotifications = new ArrayList<>();
 		Calendar calendar = Calendar.getInstance();
@@ -357,6 +359,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * This function serializes the rooms in rooms.txt file
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -383,6 +386,7 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * This method deserializes the rooms.txt file
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -419,6 +423,8 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * This function returns the room object according to the roomNumber
+	 * entered.
 	 * 
 	 * @param venue
 	 * @return ClassRoom

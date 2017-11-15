@@ -21,6 +21,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
+ * The class SatabaseGenerator reads the csv file and then serializes all the
+ * data into the respective txt files. This class is run only once, and then the
+ * text files are later used in all the functionalities.
  * 
  * @author Saatvik Jain & Meghna Gupta
  *
@@ -36,7 +39,9 @@ public class DatabaseGenerator {
 	private ArrayList<String> autoCompleteText = new ArrayList<>();
 
 	/**
-	 * 
+	 * This function reads the CSV file and populates all the rooms present in
+	 * the CSV, and then serializes the object of the class ClassRoom into the
+	 * rooms.txt file.
 	 */
 	public void populateRooms() {
 		BufferedReader br = null;
@@ -73,6 +78,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * Splits the line of the CSV file to extract the room information, and then
+	 * calls the makeRoom function to make the new ClassRoom.
 	 * 
 	 * @param details
 	 * @throws IOException
@@ -89,6 +96,14 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * This function asks the user to enter the capacity of each room. It then
+	 * sets the vslue of room capacity into the object of ClassRoom and adds the
+	 * room to allRooms arraylist.
+	 * 
+	 * @param bookingDetails
+	 * @throws IOException
+	 */
 	public void makeRoom(String bookingDetails) throws IOException {
 
 		if (!(bookingDetails.equals("-"))) {
@@ -119,6 +134,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function checks whether a room already exists or not. It returns
+	 * true if the room doesn't exist and false if it does.
 	 * 
 	 * @param roomName
 	 * @return boolean
@@ -133,7 +150,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
-	 * 
+	 * This function reads the CSV file and then populates the Course objects
+	 * into the allCourses.txt file and then serializes it.
 	 */
 	public void populateCourses() {
 
@@ -234,7 +252,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
-	 * 
+	 * This function slpits the CSV file to extract the bookedslots of a
+	 * praticular room and then books those slot.
 	 */
 	public void bookSlots() {
 		BufferedReader br = null;
@@ -318,6 +337,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function returns the ClassRoom object according to the RoomNumber
+	 * provided.
 	 * 
 	 * @param venue
 	 * @return ClassRoom
@@ -332,6 +353,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function returns the Course object according to the courseName input
+	 * by the user.
 	 * 
 	 * @param name
 	 * @return Course
@@ -346,6 +369,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function checks if the word contains only alphabet or not
 	 * 
 	 * @param word
 	 * @return String
@@ -363,6 +387,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * Returns +1 and -1 based on mandatory/elective course
 	 * 
 	 * @param type
 	 * @return int
@@ -378,6 +403,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function serializes the allRooms arraylist into rooms.txt file
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -404,6 +430,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function serializes the allCourses array list into courses.txt file
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -430,6 +457,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function serializes the autoCompleteText array list into
+	 * autocomplete.txt file.
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -456,6 +485,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function generates the keywords according to the postconditions.
 	 * 
 	 * @param postConditions
 	 * @param name
@@ -505,6 +535,8 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * This function sorts the map in decreasing order of the values i.e. is the
+	 * frequency
 	 * 
 	 * @param map
 	 * @return sortedEntries
@@ -524,6 +556,7 @@ public class DatabaseGenerator {
 	}
 
 	/**
+	 * Main method of the Database Generator
 	 * 
 	 * @param args
 	 * @throws FileNotFoundException

@@ -73,10 +73,9 @@ public class CreateTT3UI {
 	private ListView<String> tutorialRecordsList;
 
 	/**
-	 * This sets the name, email ID and title of the current
-	 * logged in student and populates both the lists of labs
-	 * and tutorials with all available labs and tutorials if
-	 * any. 
+	 * This sets the name, email ID and title of the current logged in student
+	 * and populates both the lists of labs and tutorials with all available
+	 * labs and tutorials if any.
 	 */
 	public void populate() {
 
@@ -116,9 +115,11 @@ public class CreateTT3UI {
 	}
 
 	/**
-	 * It is handler of mouse click on add lab button. It adds the selected
-	 * lab to the user's object and serializes the user.
-	 * @param event: The mouse event
+	 * It is handler of mouse click on add lab button. It adds the selected lab
+	 * to the user's object and serializes the user.
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -128,7 +129,7 @@ public class CreateTT3UI {
 		deserializeUsers();
 		int index = labRecordsList.getSelectionModel().getSelectedIndex();
 		currStudent.addToTimeTableLabs(labSlotList.get(index), selectedCourse);
-		generateAlert("Success!","This lab has been added to your time table!");
+		generateAlert("Success!", "This lab has been added to your time table!");
 
 		if (currStudent.getLabPref() == null) {
 			Map<Course, Integer> labPref = new HashMap<Course, Integer>();
@@ -144,7 +145,9 @@ public class CreateTT3UI {
 	/**
 	 * It is handler of mouse click on add tutorial button. It adds the selected
 	 * tutorial to the user's object and serializes the user.
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -154,7 +157,7 @@ public class CreateTT3UI {
 		deserializeUsers();
 		int index = tutorialRecordsList.getSelectionModel().getSelectedIndex();
 		currStudent.addToTimeTableTutorials(tutSlotList.get(index), selectedCourse);
-		generateAlert("Success!","This tutorial has been added to your time table!");
+		generateAlert("Success!", "This tutorial has been added to your time table!");
 		if (currStudent.getTutPref() == null) {
 			Map<Course, Integer> tutPref = new HashMap<Course, Integer>();
 			tutPref.put(selectedCourse, index);
@@ -168,7 +171,9 @@ public class CreateTT3UI {
 
 	/**
 	 * The handler of mouse click on home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -195,7 +200,9 @@ public class CreateTT3UI {
 
 	/**
 	 * The handler for mouse click of back button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -223,7 +230,9 @@ public class CreateTT3UI {
 
 	/**
 	 * The handler for mouse event of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -246,6 +255,7 @@ public class CreateTT3UI {
 
 	/**
 	 * It serializes the list of users back into the database
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -278,6 +288,7 @@ public class CreateTT3UI {
 
 	/**
 	 * It deserializes the list of users into the class
+	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
@@ -322,19 +333,21 @@ public class CreateTT3UI {
 	}
 
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
-	}	
+	}
 
 }

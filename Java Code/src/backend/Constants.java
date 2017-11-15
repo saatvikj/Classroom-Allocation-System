@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Class that stores all the Constants
  * 
  * @author Saatvik Jain & Meghna Gupta
  *

@@ -29,6 +29,7 @@ public class Student extends User {
 	private Map<Course, Integer> labPref = new HashMap<>();
 
 	/**
+	 * Parameterized constructor for a Student class
 	 * 
 	 * @param name
 	 * @param emailID
@@ -41,6 +42,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Getter method that returns the timetable of a student
 	 * 
 	 * @return timetable
 	 */
@@ -49,6 +51,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Setter method that sets the timetable of a student
 	 * 
 	 * @param timetable
 	 */
@@ -57,6 +60,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Getter method that returns the allRequests array list
 	 * 
 	 * @return allRequests
 	 */
@@ -65,6 +69,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Setter method that sets the value of allRequests
 	 * 
 	 * @param allRequests
 	 */
@@ -73,6 +78,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Getter method that returns tutPref of a student
 	 * 
 	 * @return tutPref
 	 */
@@ -81,6 +87,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Setter method that sets the value of tutPref of a student
 	 * 
 	 * @param tutPref
 	 */
@@ -89,6 +96,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Getter method that returns labPref of a student
 	 * 
 	 * @return labPref
 	 */
@@ -97,6 +105,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * Setter method that sets the value of labPref of a student
 	 * 
 	 * @param labPref
 	 */
@@ -105,7 +114,8 @@ public class Student extends User {
 	}
 
 	/**
-	 * 
+	 * The function that makes a request on behalf of a student and then
+	 * serializes the allRequests arraylist
 	 */
 	@Override
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
@@ -126,6 +136,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function adds a course to the timetable of a student
 	 * 
 	 * @param _course
 	 */
@@ -151,6 +162,8 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function adds labs according to the slot provided in the time table
+	 * of a student
 	 * 
 	 * @param _slot
 	 * @param _course
@@ -177,6 +190,8 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function adds tutorials according to the slot provided in the time
+	 * table of a student
 	 * 
 	 * @param _slot
 	 * @param _course
@@ -203,6 +218,9 @@ public class Student extends User {
 	}
 
 	/**
+	 * 
+	 * This function gives the list of relevant courses as per the keywords
+	 * entered by a user
 	 * 
 	 * @param keywords
 	 * @param audit
@@ -255,13 +273,8 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function populates the notifications of a student
 	 * 
-	 */
-	public void viewTimeTable() {
-
-	}
-
-	/**
 	 * @return notifs
 	 */
 	public ArrayList<String> populateNotifications() {
@@ -281,6 +294,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function deserializes the requests from a requests.txt
 	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -371,6 +385,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function serializes the requests into a requests.txt file
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -399,6 +414,7 @@ public class Student extends User {
 	}
 
 	/**
+	 * This function deserializes the courses.txt file into an arraylist
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException

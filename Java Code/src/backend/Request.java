@@ -20,13 +20,15 @@ public class Request implements Serializable {
 	private Student sourceStudent;
 
 	/**
-	 * 
+	 * Default constructor of the class Request
 	 */
 	Request() {
 
 	}
 
 	/**
+	 * 
+	 * Parameterized Constructor of the class Request
 	 * 
 	 * @param purpose
 	 * @param preferredRoom
@@ -49,6 +51,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter method to return the purpose of a request
 	 * 
 	 * @return purpose
 	 */
@@ -57,6 +60,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the purpose of a request
 	 * 
 	 * @param purpose
 	 */
@@ -65,6 +69,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter method to get the preferredRoom
 	 * 
 	 * @return preferredRoom
 	 */
@@ -73,6 +78,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the preferredRoom
 	 * 
 	 * @param preferredRoom
 	 */
@@ -81,6 +87,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter method to return the required capacity
 	 * 
 	 * @return requiredCapacity
 	 */
@@ -89,6 +96,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter method that sets the required capacity
 	 * 
 	 * @param requiredCapacity
 	 */
@@ -97,6 +105,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter function to return the timeslot
 	 * 
 	 * @return timeSlot
 	 */
@@ -105,6 +114,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the value of timeSlot
 	 * 
 	 * @param timeSlot
 	 */
@@ -113,6 +123,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter function to get the TimeStamp of the request
 	 * 
 	 * @return timeStamp
 	 */
@@ -121,6 +132,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the timeStamp of the request
 	 * 
 	 * @param timeStamp
 	 */
@@ -129,6 +141,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter function to return the current status of the request
 	 * 
 	 * @return currentStatus
 	 */
@@ -137,6 +150,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the current status of the request
 	 * 
 	 * @param currentStatus
 	 */
@@ -145,6 +159,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Getter function to get the source Student of the request.
 	 * 
 	 * @return sourceStudent
 	 */
@@ -153,6 +168,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the source student of the request
 	 * 
 	 * @param sourceStudent
 	 */
@@ -161,6 +177,7 @@ public class Request implements Serializable {
 	}
 
 	/**
+	 * This function checks if the request has expired or not.
 	 * 
 	 * @return boolean
 	 */

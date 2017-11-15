@@ -28,8 +28,8 @@ public class AdminHomeUI {
 	private Label emailAdmin;
 
 	/**
-	 * This function sets the name and the email ID of the
-	 * current logged in admin.
+	 * This function sets the name and the email ID of the current logged in
+	 * admin.
 	 */
 	public void populate() {
 
@@ -39,7 +39,9 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of view booked rooms
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
@@ -66,7 +68,9 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of cancel room booking
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
@@ -91,7 +95,9 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of make booking
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void makeBooking(MouseEvent event) {
@@ -119,8 +125,11 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of handle reqests
-	 * @param event: The mouse event
-	 * @throws ClassNotFoundException: Can arise while deserializing requests
+	 * 
+	 * @param event:
+	 *            The mouse event
+	 * @throws ClassNotFoundException:
+	 *             Can arise while deserializing requests
 	 */
 	@FXML
 	private void handleRequests(MouseEvent event) throws ClassNotFoundException {
@@ -146,8 +155,11 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of notifications tab
-	 * @param event: The mouse event
-	 * @throws ClassNotFoundException: Can arise while deserializing requests.
+	 * 
+	 * @param event:
+	 *            The mouse event
+	 * @throws ClassNotFoundException:
+	 *             Can arise while deserializing requests.
 	 */
 	@FXML
 	private void showNotifications(MouseEvent event) throws ClassNotFoundException {
@@ -171,7 +183,9 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of logout
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -194,8 +208,11 @@ public class AdminHomeUI {
 
 	/**
 	 * This is handler for mouse click of show all courses.
-	 * @param event: The mouse event
-	 * @throws ClassNotFoundException: Can arise while deserializing courses.
+	 * 
+	 * @param event:
+	 *            The mouse event
+	 * @throws ClassNotFoundException:
+	 *             Can arise while deserializing courses.
 	 */
 	@FXML
 	private void showCourses(MouseEvent event) throws ClassNotFoundException {

@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Admin Class that extends User Class
+ * 
  * @author Saatvik Jain & Meghna Gupta
  *
  */
@@ -20,6 +22,8 @@ public class Admin extends User {
 	private transient ArrayList<Request> listOfRequests;
 
 	/**
+	 * Parameterized constructor of the class Admin. Instantiates an aboject of
+	 * type Admin.
 	 * 
 	 * @param name
 	 * @param emailID
@@ -32,6 +36,7 @@ public class Admin extends User {
 	}
 
 	/**
+	 * Getter function that returns the listOfRequests of Admin.
 	 * 
 	 * @return listOfRequests
 	 */
@@ -40,6 +45,7 @@ public class Admin extends User {
 	}
 
 	/**
+	 * Setter function that sets the value of listOfRequests
 	 * 
 	 * @param listOfRequests
 	 */
@@ -48,6 +54,9 @@ public class Admin extends User {
 	}
 
 	/**
+	 * This function takes the index of request selected by user, and according
+	 * to the choice passed as parameter, handles it and then serializes the
+	 * requests list.
 	 * 
 	 * @param indexOfRequest
 	 * @param choice
@@ -84,7 +93,10 @@ public class Admin extends User {
 	}
 
 	/**
-	 * @return listNotif
+	 * The function populates the notifications list of the admin, and gives the
+	 * number of requests pending. It also calls the superclass method.
+	 * 
+	 * @return ArrayList<String> - listNotif
 	 */
 	public ArrayList<String> populateNotifications() {
 
@@ -101,6 +113,7 @@ public class Admin extends User {
 	}
 
 	/**
+	 * This function deserializes the text file to obtain the list of requests.
 	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -141,6 +154,8 @@ public class Admin extends User {
 	}
 
 	/**
+	 * This function serializes the updated listOfRequests into the requests.txt
+	 * file.
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException

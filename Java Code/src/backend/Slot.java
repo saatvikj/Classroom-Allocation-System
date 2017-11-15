@@ -20,11 +20,15 @@ public class Slot implements Serializable {
 	private Time startTime;
 	private Time endTime;
 
+	/**
+	 * DEfault Constructor of the Slot class
+	 */
 	public Slot() {
 
 	}
 
 	/**
+	 * Parameterized Constructor of the Slot class
 	 * 
 	 * @param date
 	 * @param day
@@ -42,7 +46,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
-	 * 
+	 * equals method implementation for the Slot objects
 	 */
 	@Override
 	public boolean equals(Object arg0) {
@@ -59,6 +63,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Getter method to return the date
 	 * 
 	 * @return date
 	 */
@@ -67,6 +72,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the date
 	 * 
 	 * @param date
 	 */
@@ -75,6 +81,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Getter method to get the day
 	 * 
 	 * @return day
 	 */
@@ -83,6 +90,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the day
 	 * 
 	 * @param day
 	 */
@@ -91,6 +99,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Getter method to get the startTime
 	 * 
 	 * @return startTime
 	 */
@@ -99,6 +108,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the startTime
 	 * 
 	 * @param startTime
 	 */
@@ -107,6 +117,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Getter method to get the endTime
 	 * 
 	 * @return endTime
 	 */
@@ -115,6 +126,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the value of endTime
 	 * 
 	 * @param endTime
 	 */
@@ -123,6 +135,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Getter method that returns the purpose of a slot
 	 * 
 	 * @return purpose
 	 */
@@ -131,6 +144,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the purpose of a request
 	 * 
 	 * @param purpose
 	 */
@@ -139,7 +153,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
-	 * 
+	 * toString method for a slot object
 	 */
 	@Override
 	public String toString() {
@@ -147,6 +161,7 @@ public class Slot implements Serializable {
 	}
 
 	/**
+	 * This function prints the date and time in a beautified manner
 	 * 
 	 * @return string
 	 */

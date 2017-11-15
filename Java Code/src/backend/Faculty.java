@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Faculty class that extends the User class
  * 
  * @author Saatvik Jain & Meghna Gupta
  *
@@ -16,6 +17,7 @@ public class Faculty extends User {
 	private String[] week = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
 	/**
+	 * Parameterized constructor of the Class Faculty
 	 * 
 	 * @param name
 	 * @param emailID
@@ -27,6 +29,7 @@ public class Faculty extends User {
 	}
 
 	/**
+	 * Getter method that returns the coursesTaught arraylist
 	 * 
 	 * @return coursesTaught
 	 */
@@ -35,6 +38,7 @@ public class Faculty extends User {
 	}
 
 	/**
+	 * Setter method that sets the coursesTaught
 	 * 
 	 * @param coursesTaught
 	 */
@@ -43,6 +47,9 @@ public class Faculty extends User {
 	}
 
 	/**
+	 * This function populates the notifications of Faculty and informs him
+	 * which all of his class are scheduled, where and at what time
+	 * 
 	 * @return notifications
 	 */
 	@Override

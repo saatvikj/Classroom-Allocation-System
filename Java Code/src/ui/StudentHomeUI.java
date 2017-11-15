@@ -20,7 +20,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -41,8 +43,8 @@ public class StudentHomeUI {
 	private Label emailStudent;
 
 	/**
-	 * This sets the name and email ID of the current
-	 * logged in student.
+	 * This sets the name and email ID of the current logged in student.
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -58,7 +60,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of notifications tab.
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -86,7 +90,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of view booked rooms
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
@@ -113,7 +119,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of cancel booking
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
@@ -138,7 +146,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of make request
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void makeRequest(MouseEvent event) {
@@ -163,7 +173,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of make time table
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -189,34 +201,45 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of view time table
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
 	private void viewTimeTable(MouseEvent event) throws ClassNotFoundException {
 
-		Parent root;
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TimeTable.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("IIIT Delhi");
-			stage.setScene(new Scene(loader.load(), 800, 600));
-			ViewTimeTableUI controller = loader.<ViewTimeTableUI>getController();
-			controller.currStudent = currStudent;
-			controller.populate();
-			stage.show();
+		if (currStudent.getTimetable() != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TimeTable.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("IIIT Delhi");
+				stage.setScene(new Scene(loader.load(), 800, 600));
+				ViewTimeTableUI controller = loader.<ViewTimeTableUI>getController();
+				controller.currStudent = currStudent;
+				controller.populate();
+				stage.show();
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
+				((Node) (event.getSource())).getScene().getWindow().hide();
 
-		} catch (IOException e) {
-			e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Error!");
+			alert.setHeaderText(null);
+			alert.setContentText("Your time-table is empty!");
+			alert.showAndWait();
 		}
 
 	}
 
 	/**
 	 * Handler for mouse click of cancel request
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -243,7 +266,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -266,6 +291,7 @@ public class StudentHomeUI {
 
 	/**
 	 * This serializes the list of users back into the database
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -298,6 +324,7 @@ public class StudentHomeUI {
 
 	/**
 	 * This deserializes the user into the class
+	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
@@ -338,7 +365,9 @@ public class StudentHomeUI {
 
 	/**
 	 * Handler for mouse click of view all course
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML

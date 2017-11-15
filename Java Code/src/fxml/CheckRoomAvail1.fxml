@@ -8,42 +8,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-	prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail1UI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckRoomAvail1UI">
 	<children>
-		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160"
-			text="CHECK ROOM AVAILABILITY">
+		<Label alignment="TOP_LEFT" layoutX="60" layoutY="160" text="CHECK ROOM AVAILABILITY">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<TextField fx:id="preferredRoom" layoutX="76.0" layoutY="220.0"
-			prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred Room" />
-		<TextField fx:id="reqCapacity" layoutX="76.0" layoutY="284.0"
-			prefHeight="40.0" prefWidth="500.0" promptText="Enter required Capacity" />
-		<DatePicker fx:id="date" layoutX="76.0" layoutY="348.0" 
-			prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred date" />
-		<Button id="button" layoutX="300.0" layoutY="500.0"
-			mnemonicParsing="false" onMouseClicked="#confirmBooking" prefHeight="50.0"
-			prefWidth="200.0" text="CHECK">
+		<TextField fx:id="preferredRoom" layoutX="76.0" layoutY="220.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred Room" />
+		<TextField fx:id="reqCapacity" layoutX="76.0" layoutY="284.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter required Capacity" />
+		<DatePicker fx:id="date" layoutX="76.0" layoutY="348.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred date" />
+		<Button id="button" layoutX="300.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#confirmBooking" prefHeight="50.0" prefWidth="200.0" text="CHECK">
 			<font>
 				<Font size="16.0" />
 			</font>
 		</Button>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="575.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP"
-					text="sheetu@iiitd.ac.in">
+				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -71,28 +59,22 @@
 				</Label>
 			</children>
 		</GridPane>
-		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
-			pickOnBounds="true" preserveRatio="true">
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/home.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
-			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/back.png" />
 			</image>
 		</ImageView>
-		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
-			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
-			preserveRatio="true">
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="/res/logouticon.png" />
 			</image>
 		</ImageView>
-		<TextField fx:id="slot" layoutX="76.0" layoutY="412.0"
-			prefHeight="40.0" prefWidth="500.0" promptText="Enter time slot" />
+		<TextField fx:id="slot" layoutX="76.0" layoutY="412.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter time slot (hh:mm-hh:mm)" />
 
 	</children>
 </Pane>

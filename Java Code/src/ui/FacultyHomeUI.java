@@ -37,8 +37,7 @@ public class FacultyHomeUI {
 	private Label emailFaculty;
 
 	/**
-	 * This sets the name and email ID of the current
-	 * logged in faculty.
+	 * This sets the name and email ID of the current logged in faculty.
 	 */
 	public void populate() {
 		nameFaculty.setText(currFaculty.getName());
@@ -47,7 +46,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler for mouse click of notifications tab
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -73,7 +74,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler for mouse click of view booked rooms
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
@@ -100,7 +103,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler for mouse click of cancel booking
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
@@ -125,7 +130,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler of the mouse click of make booking
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void makeBooking(MouseEvent event) {
@@ -153,7 +160,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler for mouse click of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -176,7 +185,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler of mouse click of show all courses button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -201,7 +212,9 @@ public class FacultyHomeUI {
 
 	/**
 	 * The handler of mouse click of show my courses button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML

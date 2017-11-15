@@ -67,7 +67,9 @@ public class HandleRequestsUI {
 
 	/**
 	 * The handler for mouse click of home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
@@ -93,9 +95,9 @@ public class HandleRequestsUI {
 	}
 
 	/**
-	 * This sets the name and email ID of the current
-	 * logged in admin and populates the list with the
-	 * current list of requests.
+	 * This sets the name and email ID of the current logged in admin and
+	 * populates the list with the current list of requests.
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -149,7 +151,9 @@ public class HandleRequestsUI {
 
 	/**
 	 * The handler for mouse click of back button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
@@ -176,7 +180,9 @@ public class HandleRequestsUI {
 
 	/**
 	 * The handler for mouse click of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -198,10 +204,12 @@ public class HandleRequestsUI {
 	}
 
 	/**
-	 * The handler for mouse click of accept request button, it then changes
-	 * the status of the request and books the room for the user and serializes
-	 * the rooms and requests.
-	 * @param event: The mouse event
+	 * The handler for mouse click of accept request button, it then changes the
+	 * status of the request and books the room for the user and serializes the
+	 * rooms and requests.
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws FileNotFoundException
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -217,9 +225,11 @@ public class HandleRequestsUI {
 	}
 
 	/**
-	 * The handler for mouse click of reject request button, it then changes
-	 * the status of the request and serializes the request.
-	 * @param event: The mouse event
+	 * The handler for mouse click of reject request button, it then changes the
+	 * status of the request and serializes the request.
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws FileNotFoundException
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -236,6 +246,7 @@ public class HandleRequestsUI {
 
 	/**
 	 * This serializes the list of users back into the database
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -268,6 +279,7 @@ public class HandleRequestsUI {
 
 	/**
 	 * This deserializes the list of users into the class
+	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException

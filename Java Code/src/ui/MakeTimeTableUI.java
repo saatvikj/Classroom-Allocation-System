@@ -56,7 +56,9 @@ public class MakeTimeTableUI {
 
 	/**
 	 * Handler for clicking of credit in drop down list
-	 * @param event: The event
+	 * 
+	 * @param event:
+	 *            The event
 	 */
 	@FXML
 	public void credit(ActionEvent event) {
@@ -84,7 +86,9 @@ public class MakeTimeTableUI {
 
 	/**
 	 * Handler for clicking of audit on drop down list
-	 * @param event: the event
+	 * 
+	 * @param event:
+	 *            the event
 	 */
 	@FXML
 	public void audit(ActionEvent event) {
@@ -112,8 +116,9 @@ public class MakeTimeTableUI {
 	private ArrayList<String> rel = new ArrayList<String>();
 
 	/**
-	 * This sets the name and email ID of current logged in
-	 * student and populates the auto complete textfield suggestions 
+	 * This sets the name and email ID of current logged in student and
+	 * populates the auto complete textfield suggestions
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -127,9 +132,11 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * Handler for mouse click of search button, it sets the course type and 
+	 * Handler for mouse click of search button, it sets the course type and
 	 * relevant courses list for the next page.
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -178,19 +185,21 @@ public class MakeTimeTableUI {
 				}
 
 			} catch (NoResultFoundException e) {
-				generateAlert("Error!",e.getMessage());
+				generateAlert("Error!", e.getMessage());
 			}
 
 		} else {
-			generateAlert("Error!","At least one of the fields is empty, try again.!");
+			generateAlert("Error!", "At least one of the fields is empty, try again.!");
 		}
 	}
 
 	/**
 	 * This checks whether all entered fields are filled or not
+	 * 
 	 * @param enteredName
 	 * @param enteredEmail
-	 * @return boolean: returns true if all fields are filled, else returns false
+	 * @return boolean: returns true if all fields are filled, else returns
+	 *         false
 	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail) {
 
@@ -204,7 +213,9 @@ public class MakeTimeTableUI {
 
 	/**
 	 * Handler for mouse click of home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -230,8 +241,10 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * Handler for mouse click of back button 
-	 * @param event: The mouse event
+	 * Handler for mouse click of back button
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -258,7 +271,9 @@ public class MakeTimeTableUI {
 
 	/**
 	 * Handler for mouse click of logout page
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -281,6 +296,7 @@ public class MakeTimeTableUI {
 
 	/**
 	 * This deserializes the auto complete text suggestions
+	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
@@ -320,18 +336,20 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
 	}
 

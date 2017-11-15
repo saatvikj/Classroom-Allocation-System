@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * ClassRoom class that stores the properties of a room
  * 
  * @author Saatvik Jain & Meghna Gupta
  *
@@ -19,13 +20,15 @@ public class ClassRoom implements Serializable {
 	private Map<String, Map<Slot, Object>> bookedSlots = new HashMap<String, Map<Slot, Object>>();
 
 	/**
-	 * 
+	 *
+	 * Default Constructor of ClassRoom Class.
 	 */
 	public ClassRoom() {
 
 	}
 
 	/**
+	 * Getter method to return the RoomNumber.
 	 * 
 	 * @return roomNumber
 	 */
@@ -34,6 +37,7 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the room number of the corresponding room.
 	 * 
 	 * @param roomNumber
 	 */
@@ -42,6 +46,7 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * Getter method to return the Map of BookedSlots.
 	 * 
 	 * @return bookedSlots
 	 */
@@ -50,6 +55,7 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the value of bookedSlots map
 	 * 
 	 * @param bookedSlots
 	 */
@@ -58,6 +64,7 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * Getter method to return the seating capacity of a room
 	 * 
 	 * @return capacity
 	 */
@@ -66,6 +73,7 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * Setter method to set the capacity of a classroom
 	 * 
 	 * @param capacity
 	 */
@@ -74,6 +82,8 @@ public class ClassRoom implements Serializable {
 	}
 
 	/**
+	 * toString method for the ClassRoom class
+	 * 
 	 * @return string
 	 */
 	@Override

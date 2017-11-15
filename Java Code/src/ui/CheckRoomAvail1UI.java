@@ -62,11 +62,13 @@ public class CheckRoomAvail1UI {
 	private DatePicker date;
 
 	/**
-	 * This is handler for mouse click of confirm booking button. It then extracts
-	 * all the data, checks for availibility of the room and generates a list of 
-	 * all relevant rooms according to the specification of the user and redirects to next
-	 * page for user selection and final booking.
-	 * @param event: The mouse event
+	 * This is handler for mouse click of confirm booking button. It then
+	 * extracts all the data, checks for availibility of the room and generates
+	 * a list of all relevant rooms according to the specification of the user
+	 * and redirects to next page for user selection and final booking.
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -129,19 +131,19 @@ public class CheckRoomAvail1UI {
 					((Node) (event.getSource())).getScene().getWindow().hide();
 				} else {
 					if (eligibleRooms.size() == 0) {
-						generateAlert("Error!","Room isn't available!");
+						generateAlert("Error!", "Room isn't available!");
 
 					} else {
 						if (eligibleRooms.get(0).getRoomNumber().equalsIgnoreCase(preferredRoom.getText())) {
 							generateAlert("Success!", "The room is available!");
 						} else {
-							generateAlert("Error!","Room isn't available!");
+							generateAlert("Error!", "Room isn't available!");
 						}
 					}
 				}
 			} else {
 
-				generateAlert("Error!","At least one of the fields is empty, try again!");
+				generateAlert("Error!", "At least one of the fields is empty, try again!");
 
 			}
 		} catch (IOException e) {
@@ -151,8 +153,8 @@ public class CheckRoomAvail1UI {
 	}
 
 	/**
-	 * This function sets the name, email ID and title of the
-	 * current logged in user.
+	 * This function sets the name, email ID and title of the current logged in
+	 * user.
 	 */
 	public void populate() {
 		name.setText(currUser.getName());
@@ -164,7 +166,9 @@ public class CheckRoomAvail1UI {
 
 	/**
 	 * This is handler for mouse click of home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -216,7 +220,9 @@ public class CheckRoomAvail1UI {
 
 	/**
 	 * This is handler for mouse click of back button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -268,7 +274,9 @@ public class CheckRoomAvail1UI {
 
 	/**
 	 * This is handler for mouse click of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -291,11 +299,13 @@ public class CheckRoomAvail1UI {
 
 	/**
 	 * This function puts a check on whether all the fields have values or not.
+	 * 
 	 * @param roomNo
 	 * @param slot
 	 * @param capacity
 	 * @param date
-	 * @return boolean: returns true if all fields are not empty, else returns false
+	 * @return boolean: returns true if all fields are not empty, else returns
+	 *         false
 	 */
 	public boolean checkEmptiness(String roomNo, String slot, String capacity, boolean date) {
 
@@ -308,8 +318,9 @@ public class CheckRoomAvail1UI {
 	}
 
 	/**
-	 * This function is used to disable all those cells in the datepicker 
-	 * which are representing past days.
+	 * This function is used to disable all those cells in the datepicker which
+	 * are representing past days.
+	 * 
 	 * @return dayCellFactory
 	 */
 	private Callback<DatePicker, DateCell> getDayCellFactory() {
@@ -335,20 +346,21 @@ public class CheckRoomAvail1UI {
 		return dayCellFactory;
 	}
 
-
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
 	}
 

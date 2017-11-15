@@ -69,9 +69,9 @@ public class CancelRequestUI {
 	private Button cancelButton;
 
 	/**
-	 * This function sets the name and email ID of the
-	 * current logged in student and populates its list
-	 * with the current requests of the user. 
+	 * This function sets the name and email ID of the current logged in student
+	 * and populates its list with the current requests of the user.
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -124,7 +124,9 @@ public class CancelRequestUI {
 
 	/**
 	 * This is handler for mouse click of home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -150,9 +152,10 @@ public class CancelRequestUI {
 	}
 
 	/**
-	 * This is handler for mouse click of cancel request button, it 
-	 * goes through the list of requests and removes the selected request
-	 * and serializes the remaining requests back into the database.
+	 * This is handler for mouse click of cancel request button, it goes through
+	 * the list of requests and removes the selected request and serializes the
+	 * remaining requests back into the database.
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -173,7 +176,9 @@ public class CancelRequestUI {
 
 	/**
 	 * This is handler for mouse click of back button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -200,7 +205,9 @@ public class CancelRequestUI {
 
 	/**
 	 * This is handler for mouse click of logout button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -223,6 +230,7 @@ public class CancelRequestUI {
 
 	/**
 	 * This deserializes the list of requests into the class.
+	 * 
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -263,6 +271,7 @@ public class CancelRequestUI {
 
 	/**
 	 * This serializes the list of requests back into the database.
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */

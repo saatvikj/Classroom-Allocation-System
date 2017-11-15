@@ -22,7 +22,9 @@ public class HomePageUI {
 
 	/**
 	 * The handler for mouse click of sign up button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void openSignUp(ActionEvent event) {
@@ -44,7 +46,9 @@ public class HomePageUI {
 
 	/**
 	 * The handler for mouse click of sign up button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void openLogin(ActionEvent event) {

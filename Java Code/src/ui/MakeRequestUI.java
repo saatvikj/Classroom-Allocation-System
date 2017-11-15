@@ -72,13 +72,15 @@ public class MakeRequestUI {
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser());
 		date.setDayCellFactory(this.getDayCellFactory());
-		
+
 	}
 
 	/**
-	 * The handler for click of submit request button. It creates a new
-	 * request and serializes it into the database.
-	 * @param event The mouse event
+	 * The handler for click of submit request button. It creates a new request
+	 * and serializes it into the database.
+	 * 
+	 * @param event
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -128,20 +130,22 @@ public class MakeRequestUI {
 				generateAlert("Error!", "The room is already booked, please make another request");
 			}
 		} else {
-			generateAlert("Error!","At least one of the fields is empty, try again.");
+			generateAlert("Error!", "At least one of the fields is empty, try again.");
 		}
 
 	}
 
 	/**
 	 * It checks whether all fields entered are filled or not
+	 * 
 	 * @param text
 	 * @param text2
 	 * @param text3
 	 * @param text4
 	 * @param text5
 	 * @param b
-	 * @return boolean: returns true if all fields are filled, else returns false
+	 * @return boolean: returns true if all fields are filled, else returns
+	 *         false
 	 */
 	public boolean checkEmptiness(String text, String text2, String text3, String text4, String text5, boolean b) {
 		// TODO Auto-generated method stub
@@ -155,7 +159,9 @@ public class MakeRequestUI {
 
 	/**
 	 * The handler for mouse click of home button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -182,7 +188,9 @@ public class MakeRequestUI {
 
 	/**
 	 * The handler for mouse click of back button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -209,7 +217,9 @@ public class MakeRequestUI {
 
 	/**
 	 * The handler for mouse click of logout button
-	 * @param event: The  mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -229,47 +239,50 @@ public class MakeRequestUI {
 		}
 
 	}
-	
+
 	/**
 	 * It disables the cells of the datepicker before the current date
+	 * 
 	 * @return dayCellFactory
 	 */
 	private Callback<DatePicker, DateCell> getDayCellFactory() {
-   	 
-        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
- 
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
- 
-                        // Disable Monday, Tueday, Wednesday.
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #f0f0f0");
-                        }
-                    }
-                };
-            }
-        };
-        return dayCellFactory;
-    }
+
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+
+						// Disable Monday, Tueday, Wednesday.
+						if (item.isBefore(LocalDate.now())) {
+							setDisable(true);
+							setStyle("-fx-background-color: #f0f0f0");
+						}
+					}
+				};
+			}
+		};
+		return dayCellFactory;
+	}
 
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
 	}
 }

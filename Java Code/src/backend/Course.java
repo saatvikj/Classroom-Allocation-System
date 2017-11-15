@@ -27,6 +27,7 @@ public class Course implements Serializable {
 	private transient ArrayList<ClassRoom> allRooms;
 
 	/**
+	 * Getter function to return the Map courseTimeTable
 	 * 
 	 * @return courseTimeTable
 	 */
@@ -35,6 +36,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the value of courseTimeTable
 	 * 
 	 * @param courseTimeTable
 	 */
@@ -43,13 +45,14 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Default constructor of the class Course
 	 */
 	public Course() {
 
 	}
 
 	/**
+	 * Getter function that returns the course name
 	 * 
 	 * @return courseName
 	 */
@@ -58,6 +61,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the value of courseName
 	 * 
 	 * @param courseName
 	 */
@@ -66,6 +70,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function to return the pre-requisites of that particular course
 	 * 
 	 * @return preReqs
 	 */
@@ -74,6 +79,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the value of pre-requisites
 	 * 
 	 * @param preReqs
 	 */
@@ -82,6 +88,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function that returns the postconditions of that particular course
 	 * 
 	 * @return postConditions
 	 */
@@ -90,6 +97,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the postCondition of a course
 	 * 
 	 * @param postConditions
 	 */
@@ -98,6 +106,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function that returns the acronym of a course
 	 * 
 	 * @return acronym
 	 */
@@ -106,6 +115,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the value of acronym of a course
 	 * 
 	 * @param acronym
 	 */
@@ -114,6 +124,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function that returns the courseType-credit/audit
 	 * 
 	 * @return courseType
 	 */
@@ -122,6 +133,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function that sets the courseType-credit/audit
 	 * 
 	 * @param courseType
 	 */
@@ -130,6 +142,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function that returns the name of the instructor
 	 * 
 	 * @return instructor
 	 */
@@ -138,6 +151,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the name of the instructor
 	 * 
 	 * @param instructor
 	 */
@@ -146,6 +160,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function that return the code of a Course
 	 * 
 	 * @return courseCode
 	 */
@@ -154,6 +169,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the code of a course
 	 * 
 	 * @param courseCode
 	 */
@@ -162,6 +178,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Getter function to return the credits of a course
 	 * 
 	 * @return credits
 	 */
@@ -170,6 +187,7 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * Setter function to set the number of credits of a course
 	 * 
 	 * @param credits
 	 */
@@ -178,6 +196,9 @@ public class Course implements Serializable {
 	}
 
 	/**
+	 * toString method for the class Course which displays all the attributes of
+	 * a course object.
+	 * 
 	 * @return string
 	 */
 	@Override

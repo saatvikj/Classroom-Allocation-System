@@ -52,7 +52,9 @@ public class SignUpUI {
 
 	/**
 	 * Handler for selection of admin in drop down
-	 * @param event: The event
+	 * 
+	 * @param event:
+	 *            The event
 	 */
 	@FXML
 	public void admin(ActionEvent event) {
@@ -80,7 +82,9 @@ public class SignUpUI {
 
 	/**
 	 * Handler for selection of faculty in drop down
-	 * @param event: The event
+	 * 
+	 * @param event:
+	 *            The event
 	 */
 	@FXML
 	public void faculty(ActionEvent event) {
@@ -107,7 +111,9 @@ public class SignUpUI {
 
 	/**
 	 * Handler for selection of student in the dropdown
-	 * @param event: The event
+	 * 
+	 * @param event:
+	 *            The event
 	 */
 	@FXML
 	public void student(ActionEvent event) {
@@ -134,7 +140,9 @@ public class SignUpUI {
 
 	/**
 	 * Handler for mouse click of sign up button
-	 * @param event: The mouse event
+	 * 
+	 * @param event:
+	 *            The mouse event
 	 * @throws FileNotFoundException
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -159,7 +167,7 @@ public class SignUpUI {
 
 		boolean validity = checkEmptiness(name, email, password, confirmPass);
 		if (!validity) {
-			generateAlert("Error!","At least one of the fields is empty, try again.");
+			generateAlert("Error!", "At least one of the fields is empty, try again.");
 		}
 
 		if (validity) {
@@ -183,18 +191,18 @@ public class SignUpUI {
 						allResults = true;
 
 					} catch (WeakPasswordException e) {
-						generateAlert("Error!",e.getMessage());
+						generateAlert("Error!", e.getMessage());
 					}
 
 				} catch (PasswordNotMatchException e) {
-					generateAlert("Error!",e.getMessage());
+					generateAlert("Error!", e.getMessage());
 				}
 
 			} catch (InvalidEmailException e) {
-				generateAlert("Error!",e.getMessage());
+				generateAlert("Error!", e.getMessage());
 
 			} catch (AlreadyRegisteredUserException e) {
-				generateAlert("Error!",e.getMessage());
+				generateAlert("Error!", e.getMessage());
 			}
 
 			if (allResults) {
@@ -237,11 +245,13 @@ public class SignUpUI {
 
 	/**
 	 * This checks whethe all fields are filled or not
+	 * 
 	 * @param enteredName
 	 * @param enteredEmail
 	 * @param enteredPassword
 	 * @param enteredConfirmPass
-	 * @return boolean: returns true if all fields are filled, else returns false
+	 * @return boolean: returns true if all fields are filled, else returns
+	 *         false
 	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail, String enteredPassword,
 			String enteredConfirmPass) {
@@ -255,21 +265,22 @@ public class SignUpUI {
 
 	}
 
-
 	/**
-	 * This function is used to display an alert with the given 
-	 * specifications.
-	 * @param title: The title of the alert
-	 * @param message: The content of the alert
+	 * This function is used to display an alert with the given specifications.
+	 * 
+	 * @param title:
+	 *            The title of the alert
+	 * @param message:
+	 *            The content of the alert
 	 */
-	public generateAlert(String title, String message) {
+	public void generateAlert(String title, String message) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle(title);
-				alert.setHeaderText(null);
-				alert.setContentText(message);
-				alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
 
-	}	
+	}
 
 }
