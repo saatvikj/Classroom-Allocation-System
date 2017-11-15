@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import backend.AutocompletionlTextField;
+import backend.AutoComplete;
 import backend.Course;
 import backend.Student;
 import backend.User;
@@ -47,7 +47,7 @@ public class MakeTimeTableUI {
 	private Label email;
 
 	@FXML
-	private AutocompletionlTextField searchKeyword;
+	private AutoComplete searchKeyword;
 
 	@FXML
 	private MenuButton courseType;

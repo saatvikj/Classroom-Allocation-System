@@ -17,14 +17,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class AutocompletionlTextField extends TextField {
-	// Local variables
-	// entries to autocomplete
+public class AutoComplete extends TextField {
+
 	private final SortedSet<String> entries;
-	// popup GUI
 	private ContextMenu entriesPopup;
 
-	public AutocompletionlTextField() {
+	public AutoComplete() {
 		super();
 		this.entries = new TreeSet<>();
 		this.entriesPopup = new ContextMenu();
@@ -43,35 +41,26 @@ public class AutocompletionlTextField extends TextField {
 	 * "Suggestion" specific listners
 	 */
 	private void setListner() {
-		// Add "suggestions" by changing text
 		textProperty().addListener((observable, oldValue, newValue) -> {
 			String enteredText = getText();
-			// always hide suggestion if nothing has been entered (only
-			// "spacebars" are dissalowed in TextFieldWithLengthLimit)
 			if (enteredText == null || enteredText.isEmpty()) {
 				entriesPopup.hide();
 			} else {
-				// filter all possible suggestions depends on "Text", case
-				// insensitive
 				List<String> filteredEntries = entries.stream()
 						.filter(e -> e.toLowerCase().contains(enteredText.toLowerCase())).collect(Collectors.toList());
-				// some suggestions are found
 				if (!filteredEntries.isEmpty()) {
-					// build popup - list of "CustomMenuItem"
 					populatePopup(filteredEntries, enteredText);
-					if (!entriesPopup.isShowing()) { // optional
-						entriesPopup.show(AutocompletionlTextField.this, Side.BOTTOM, 0, 0); // position
-																								// of
-																								// popup
+					if (!entriesPopup.isShowing()) {
+						entriesPopup.show(AutoComplete.this, Side.BOTTOM, 0, 0); 
+																								
+																								
 					}
-					// no suggestions -> hide
 				} else {
 					entriesPopup.hide();
 				}
 			}
 		});
 
-		// Hide always by focus-in (optional) and out
 		focusedProperty().addListener((observableValue, oldValue, newValue) -> {
 			entriesPopup.hide();
 		});
@@ -85,25 +74,18 @@ public class AutocompletionlTextField extends TextField {
 	 *            The set of matching strings.
 	 */
 	private void populatePopup(List<String> searchResult, String searchReauest) {
-		// List of "suggestions"
 		List<CustomMenuItem> menuItems = new LinkedList<>();
-		// List size - 10 or founded suggestions count
 		int maxEntries = 7;
 		int count = Math.min(searchResult.size(), maxEntries);
-		// Build list as set of labels
 		for (int i = 0; i < count; i++) {
 			final String result = searchResult.get(i);
-			// label with graphic (text flow) to highlight founded subtext in
-			// suggestions
 			Label entryLabel = new Label();
 			entryLabel.setGraphic(buildTextFlow(result, searchReauest));
-			entryLabel.setPrefHeight(10); // don't sure why it's changed with
-											// "graphic"
+			entryLabel.setPrefHeight(10);								
 			entryLabel.setPrefWidth(300);
 			CustomMenuItem item = new CustomMenuItem(entryLabel, true);
 			menuItems.add(item);
 
-			// if any suggestion is select set it into text and close popup
 			item.setOnAction(actionEvent -> {
 				setText(result);
 				positionCaret(result.length());
@@ -111,7 +93,6 @@ public class AutocompletionlTextField extends TextField {
 			});
 		}
 
-		// "Refresh" context menu
 		entriesPopup.getItems().clear();
 		entriesPopup.getItems().addAll(menuItems);
 	}
