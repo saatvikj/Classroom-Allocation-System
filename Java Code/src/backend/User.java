@@ -15,6 +15,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,6 +35,13 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @param name
+	 * @param emailID
+	 * @param encryptedPassword
+	 * @param typeOfUser
+	 */
 	public User(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super();
 		this.name = name;
@@ -38,54 +50,105 @@ public class User implements Serializable {
 		this.typeOfUser = typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @return typeOfUser
+	 */
 	public String getTypeOfUser() {
 		return typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @param typeOfUser
+	 */
 	public void setTypeOfUser(String typeOfUser) {
 		this.typeOfUser = typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return emailID
+	 */
 	public String getEmailID() {
 		return emailID;
 	}
 
+	/**
+	 * 
+	 * @param emailID
+	 */
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
 	}
 
+	/**
+	 * 
+	 * @return encryptedPassword
+	 */
 	public String getEncryptedPassword() {
 		return encryptedPassword;
 	}
 
+	/**
+	 * 
+	 * @param encryptedPassword
+	 */
 	public void setEncryptedPassword(String encryptedPassword) {
 		this.encryptedPassword = encryptedPassword;
 	}
 
+	/**
+	 * 
+	 * @return bookedRooms
+	 */
 	public Map<Slot, ClassRoom> getBookedRooms() {
 		return bookedRooms;
 	}
 
+	/**
+	 * 
+	 * @param bookedRooms
+	 */
 	public void setBookedRooms(Map<Slot, ClassRoom> bookedRooms) {
 		this.bookedRooms = bookedRooms;
 	}
 
+	/**
+	 * 
+	 * @return listOfNotifications
+	 */
 	public ArrayList<String> getListOfNotifications() {
 		return listOfNotifications;
 	}
 
+	/**
+	 * 
+	 * @param listOfNotifications
+	 */
 	public void setListOfNotifications(ArrayList<String> listOfNotifications) {
 		this.listOfNotifications = listOfNotifications;
 	}
 
+	/**
+	 * 
+	 */
 	public void viewRoomBooked() {
 		/*
 		 * Iterates through the hashmap and prints all the rooms booked by that
@@ -93,6 +156,15 @@ public class User implements Serializable {
 		 */
 	}
 
+	/**
+	 * 
+	 * @param reqRoom
+	 * @param reqSlot
+	 * @param reqCap
+	 * @return eligibleRooms
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public ArrayList<ClassRoom> checkRoomAvailability(ClassRoom reqRoom, Slot reqSlot, int reqCap)
 			throws ClassNotFoundException, IOException {
 		/*
@@ -128,6 +200,12 @@ public class User implements Serializable {
 		return eligibleRooms;
 	}
 
+	/**
+	 * 
+	 * @param slot1
+	 * @param slot2
+	 * @return boolean
+	 */
 	public boolean checkIfValidSlot(Slot slot1, Slot slot2) {
 		if (slot1.equals(slot2)) {
 			if ((slot1.getDate().equals(new Date(0000, 00, 00)))) {
@@ -161,6 +239,14 @@ public class User implements Serializable {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param reqRoom
+	 * @param reqSlot
+	 * @param reqCapacity
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 			throws ClassNotFoundException, IOException {
 		/*
@@ -196,6 +282,14 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @param bookedRoom
+	 * @param bookedSlot
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void cancelBooking(ClassRoom bookedRoom, Slot bookedSlot)
 			throws FileNotFoundException, IOException, ClassNotFoundException {
 		/*
@@ -233,6 +327,10 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @return listOfNotifications
+	 */
 	public ArrayList<String> populateNotifications() {
 		/*
 		 * It goes through the required things to give notification about and
@@ -240,28 +338,29 @@ public class User implements Serializable {
 		 * request status for student etc etc)
 		 */
 
-			listOfNotifications = new ArrayList<>();
-			Calendar calendar = Calendar.getInstance();
-			int day = calendar.get(Calendar.DAY_OF_WEEK);
-			for (Map.Entry<Slot, ClassRoom> map : bookedRooms.entrySet()) {
+		listOfNotifications = new ArrayList<>();
+		Calendar calendar = Calendar.getInstance();
+		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		for (Map.Entry<Slot, ClassRoom> map : bookedRooms.entrySet()) {
+			Slot key = map.getKey();
+			ClassRoom value = map.getValue();
 
-				Slot key = map.getKey();
-				ClassRoom value = map.getValue();
-
-				if (key.getDate().getDay() == day - 1) {
-
-					String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at "
-							+ key.getStartTime();
-					listOfNotifications.add(notification);
-				}
+			if (key.getDate().getDay() == day - 1) {
+				String notification = "You have " + value.getRoomNumber().toUpperCase() + " booked today at "
+						+ key.getStartTime();
+				listOfNotifications.add(notification);
 			}
-
-		
+		}
 
 		return this.listOfNotifications;
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeRooms() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -283,6 +382,11 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void deserializeRooms() throws IOException, ClassNotFoundException {
 		/*
 		 * Deserialize the file listofcourses.txt into the arraylist
@@ -314,6 +418,13 @@ public class User implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @param venue
+	 * @return ClassRoom
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public ClassRoom getCorrespondingRoom(String venue) throws ClassNotFoundException, IOException {
 
 		deserializeRooms();

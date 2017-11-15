@@ -8,17 +8,23 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MakeRequestUI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+	prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MakeRequestUI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="10.0" prefWidth="575.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
+				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP"
+					text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -47,36 +53,50 @@
 			</children>
 		</GridPane>
 
-		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="MAKE A REQUEST">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+			text="MAKE A REQUEST">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<TextField fx:id="preferredRoom" layoutX="76.0" layoutY="220.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred room" />
-		<TextField fx:id="reqCapacity" layoutX="76.0" layoutY="275.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter required Capacity" />
-		<TextField fx:id="purpose" layoutX="76.0" layoutY="330.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter purpose" />
-		<DatePicker fx:id="date" layoutX="76.0" layoutY="385.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter date" />
-		<TextField fx:id="startTime" layoutX="76.0" layoutY="440.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter start time" />
-		<TextField fx:id="endTime" layoutX="76.0" layoutY="495.0" prefHeight="40.0" prefWidth="500.0" promptText="Enter end time" />
-		<Button id="button" layoutX="300.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#submitRequest" prefHeight="40.0" prefWidth="200.0" text="SUBMIT">
+		<TextField fx:id="preferredRoom" layoutX="76.0" layoutY="220.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter preferred room" />
+		<TextField fx:id="reqCapacity" layoutX="76.0" layoutY="275.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter required Capacity" />
+		<TextField fx:id="purpose" layoutX="76.0" layoutY="330.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter purpose" />
+		<DatePicker fx:id="date" layoutX="76.0" layoutY="385.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter date" />
+		<TextField fx:id="startTime" layoutX="76.0" layoutY="440.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter start time" />
+		<TextField fx:id="endTime" layoutX="76.0" layoutY="495.0"
+			prefHeight="40.0" prefWidth="500.0" promptText="Enter end time" />
+		<Button id="button" layoutX="300.0" layoutY="546.0"
+			mnemonicParsing="false" onMouseClicked="#submitRequest" prefHeight="40.0"
+			prefWidth="200.0" text="SUBMIT">
 			<font>
 				<Font name="Segoe UI" size="15.0" />
 			</font>
 		</Button>
-      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/back.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="/res/home.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/back.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </Pane>

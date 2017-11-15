@@ -14,6 +14,11 @@ import exceptions.InvalidEmailException;
 import exceptions.UnregisteredUserExcpetion;
 import exceptions.WrongPasswordException;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class Login {
 
 	private String emailID;
@@ -22,38 +27,75 @@ public class Login {
 	private ArrayList<User> listOfUsers = new ArrayList<User>();
 	private User currentUser;
 
+	/**
+	 * 
+	 * @return emailID
+	 */
 	public String getEmailID() {
 		return emailID;
 	}
 
+	/**
+	 * 
+	 * @param emailID
+	 */
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
 	}
 
+	/**
+	 * 
+	 * @return password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return typeOfUser
+	 */
 	public String getTypeOfUser() {
 		return typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @param typeOfUser
+	 */
 	public void setTypeOfUser(String typeOfUser) {
 		this.typeOfUser = typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @return currentUser
+	 */
 	public User getCurrentUser() {
 		return currentUser;
 	}
 
+	/**
+	 * 
+	 * @param currentUser
+	 */
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws InvalidEmailException
+	 */
 	public boolean validateEmail() throws InvalidEmailException {
 
 		/*
@@ -73,6 +115,14 @@ public class Login {
 
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws UnregisteredUserExcpetion
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public boolean checkIfRegistered()
 			throws UnregisteredUserExcpetion, ClassNotFoundException, FileNotFoundException, IOException {
 
@@ -89,6 +139,11 @@ public class Login {
 		throw new UnregisteredUserExcpetion("Email-id is not registered. Please register first!");
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws WrongPasswordException
+	 */
 	public boolean checkPassword() throws WrongPasswordException {
 
 		/*
@@ -107,15 +162,24 @@ public class Login {
 
 	}
 
+	/**
+	 * 
+	 * @return string
+	 */
 	public String encryptPassword() {
 		/*
-		 * It encrypts the user’s password (safety feature) Encryption
-		 * function (to be thought of) Returns the encrypted password
+		 * It encrypts the user’s password (safety feature) Encryption function
+		 * (to be thought of) Returns the encrypted password
 		 */
 
 		return md5(this.password);
 	}
 
+	/**
+	 * 
+	 * @param input
+	 * @return string
+	 */
 	public static String md5(String input) {
 
 		String md5 = null;
@@ -138,6 +202,12 @@ public class Login {
 		return md5;
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -177,6 +247,11 @@ public class Login {
 
 	}
 
+	/**
+	 * 
+	 * @return User
+	 * @throws UnregisteredUserExcpetion
+	 */
 	public User getLoggedInUser() throws UnregisteredUserExcpetion {
 
 		/*

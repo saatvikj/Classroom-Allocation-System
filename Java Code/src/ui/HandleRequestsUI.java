@@ -25,6 +25,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class HandleRequestsUI {
 
 	public Admin currAdmin;
@@ -60,6 +65,10 @@ public class HandleRequestsUI {
 	@FXML
 	private GridPane requestPane;
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
@@ -83,6 +92,11 @@ public class HandleRequestsUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void populate() throws ClassNotFoundException, IOException {
 		currAdmin.deserializeRequests();
 		name.setText(currAdmin.getName());
@@ -131,6 +145,10 @@ public class HandleRequestsUI {
 		});
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
@@ -154,6 +172,10 @@ public class HandleRequestsUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -173,6 +195,13 @@ public class HandleRequestsUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	private void acceptRequest(MouseEvent event) throws FileNotFoundException, ClassNotFoundException, IOException {
 
@@ -183,6 +212,13 @@ public class HandleRequestsUI {
 		serializeUsers();
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	private void rejectRequest(MouseEvent event) throws FileNotFoundException, ClassNotFoundException, IOException {
 
@@ -193,6 +229,11 @@ public class HandleRequestsUI {
 		serializeUsers();
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -220,6 +261,12 @@ public class HandleRequestsUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*

@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,13 +17,20 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class MakeRequestUI {
 
 	public String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
@@ -56,12 +64,23 @@ public class MakeRequestUI {
 	@FXML
 	private TextField endTime;
 
+	/**
+	 * 
+	 */
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser());
+		date.setDayCellFactory(this.getDayCellFactory());
+		
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	public void submitRequest(MouseEvent event) throws ClassNotFoundException, IOException {
 
@@ -96,7 +115,6 @@ public class MakeRequestUI {
 				}
 			}
 			if (check) {
-				System.out.println("Request submitted.");
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Alert!");
 				alert.setHeaderText(null);
@@ -126,6 +144,16 @@ public class MakeRequestUI {
 
 	}
 
+	/**
+	 * 
+	 * @param text
+	 * @param text2
+	 * @param text3
+	 * @param text4
+	 * @param text5
+	 * @param b
+	 * @return boolean
+	 */
 	public boolean checkEmptiness(String text, String text2, String text3, String text4, String text5, boolean b) {
 		// TODO Auto-generated method stub
 		if (text.length() == 0 || text2.length() == 0 || text3.length() == 0 || text4.length() == 0
@@ -136,6 +164,11 @@ public class MakeRequestUI {
 		}
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -158,6 +191,11 @@ public class MakeRequestUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -180,6 +218,10 @@ public class MakeRequestUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -198,5 +240,33 @@ public class MakeRequestUI {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * @return dayCellFactory
+	 */
+	private Callback<DatePicker, DateCell> getDayCellFactory() {
+   	 
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+ 
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+ 
+                        // Disable Monday, Tueday, Wednesday.
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #f0f0f0");
+                        }
+                    }
+                };
+            }
+        };
+        return dayCellFactory;
+    }
+
 
 }

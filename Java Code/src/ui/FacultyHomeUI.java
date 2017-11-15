@@ -21,6 +21,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class FacultyHomeUI {
 
 	public Faculty currFaculty;
@@ -31,15 +36,19 @@ public class FacultyHomeUI {
 	@FXML
 	private Label emailFaculty;
 
-	public void initialize() {
-
-	}
-
+	/**
+	 * 
+	 */
 	public void populate() {
 		nameFaculty.setText(currFaculty.getName());
 		emailFaculty.setText(currFaculty.getEmailID());
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showNotifications(MouseEvent event) throws ClassNotFoundException {
 
@@ -61,6 +70,10 @@ public class FacultyHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
 
@@ -84,6 +97,10 @@ public class FacultyHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
 
@@ -105,6 +122,10 @@ public class FacultyHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void makeBooking(MouseEvent event) {
 
@@ -117,6 +138,7 @@ public class FacultyHomeUI {
 			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
 			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
 			controller.currUser = currFaculty;
+			controller.onlyAvailability = false;
 			controller.populate();
 
 			stage.show();
@@ -128,6 +150,10 @@ public class FacultyHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -146,7 +172,12 @@ public class FacultyHomeUI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showCourses(MouseEvent event) throws ClassNotFoundException {
 		try {
@@ -156,6 +187,32 @@ public class FacultyHomeUI {
 			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
 			ViewAllCoursesUI controller = loader.<ViewAllCoursesUI>getController();
 			controller.currUser = currFaculty;
+			controller.myCourses = false;
+			controller.populate();
+
+			stage.show();
+			((Node) (event.getSource())).getScene().getWindow().hide();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
+	@FXML
+	private void showMyCourses(MouseEvent event) throws ClassNotFoundException {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ViewAllCourses.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
+			ViewAllCoursesUI controller = loader.<ViewAllCoursesUI>getController();
+			controller.currUser = currFaculty;
+			controller.myCourses = true;
 			controller.populate();
 
 			stage.show();

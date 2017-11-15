@@ -3,6 +3,11 @@ package backend;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class Request implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,10 +19,23 @@ public class Request implements Serializable {
 	private int currentStatus;
 	private Student sourceStudent;
 
+	/**
+	 * 
+	 */
 	Request() {
 
 	}
 
+	/**
+	 * 
+	 * @param purpose
+	 * @param preferredRoom
+	 * @param requiredCapacity
+	 * @param timeSlot
+	 * @param timeStamp
+	 * @param currentStatus
+	 * @param sourceStudent
+	 */
 	Request(String purpose, ClassRoom preferredRoom, int requiredCapacity, Slot timeSlot, Date timeStamp,
 			int currentStatus, Student sourceStudent) {
 		super();
@@ -30,62 +48,122 @@ public class Request implements Serializable {
 		this.sourceStudent = sourceStudent;
 	}
 
+	/**
+	 * 
+	 * @return purpose
+	 */
 	public String getPurpose() {
 		return purpose;
 	}
 
+	/**
+	 * 
+	 * @param purpose
+	 */
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
 
+	/**
+	 * 
+	 * @return preferredRoom
+	 */
 	public ClassRoom getPreferredRoom() {
 		return preferredRoom;
 	}
 
+	/**
+	 * 
+	 * @param preferredRoom
+	 */
 	public void setPreferredRoom(ClassRoom preferredRoom) {
 		this.preferredRoom = preferredRoom;
 	}
 
+	/**
+	 * 
+	 * @return requiredCapacity
+	 */
 	public int getRequiredCapacity() {
 		return requiredCapacity;
 	}
 
+	/**
+	 * 
+	 * @param requiredCapacity
+	 */
 	public void setRequiredCapacity(int requiredCapacity) {
 		this.requiredCapacity = requiredCapacity;
 	}
 
+	/**
+	 * 
+	 * @return timeSlot
+	 */
 	public Slot getTimeSlot() {
 		return timeSlot;
 	}
 
+	/**
+	 * 
+	 * @param timeSlot
+	 */
 	public void setTimeSlot(Slot timeSlot) {
 		this.timeSlot = timeSlot;
 	}
 
+	/**
+	 * 
+	 * @return timeStamp
+	 */
 	public Date getTimeStamp() {
 		return timeStamp;
 	}
 
+	/**
+	 * 
+	 * @param timeStamp
+	 */
 	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 
+	/**
+	 * 
+	 * @return currentStatus
+	 */
 	public int getCurrentStatus() {
 		return currentStatus;
 	}
 
+	/**
+	 * 
+	 * @param currentStatus
+	 */
 	public void setCurrentStatus(int currentStatus) {
 		this.currentStatus = currentStatus;
 	}
 
+	/**
+	 * 
+	 * @return sourceStudent
+	 */
 	public Student getSourceStudent() {
 		return sourceStudent;
 	}
 
+	/**
+	 * 
+	 * @param sourceStudent
+	 */
 	public void setSourceStudent(Student sourceStudent) {
 		this.sourceStudent = sourceStudent;
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean checkExpiry() {
 		/*
 		 * Checks whether the current request has been there for more than 5

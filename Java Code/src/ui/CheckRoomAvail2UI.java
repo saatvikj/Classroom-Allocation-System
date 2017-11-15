@@ -28,17 +28,22 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CheckRoomAvail2UI {
-	
+
 	public User currUser;
 	public ArrayList<ClassRoom> relevantRooms;
 	public Slot requiredSlot;
 	public int requiredCapacity;
-	public ArrayList<User> listOfUsers; 
-	
+	public ArrayList<User> listOfUsers;
+
 	@FXML
 	private ListView<String> relevantRoomsList;
-	
+
 	@FXML
 	private Label name;
 
@@ -47,11 +52,14 @@ public class CheckRoomAvail2UI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private Button book;
-	
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) {
 
@@ -90,12 +98,15 @@ public class CheckRoomAvail2UI {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) {
 
 		try {
-
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckRoomAvail1.fxml"));
 
@@ -104,6 +115,7 @@ public class CheckRoomAvail2UI {
 			stage.setScene(new Scene(loader.load(), 800, 600));
 			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
 			controller.currUser = currUser;
+			controller.onlyAvailability = false;
 			controller.populate();
 			stage.show();
 
@@ -114,7 +126,11 @@ public class CheckRoomAvail2UI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -133,53 +149,51 @@ public class CheckRoomAvail2UI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 */
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
-		if(relevantRooms.size() == 0)
-		{
+		if (relevantRooms.size() == 0) {
 			relevantRoomsList.getItems().add("No Rooms found!");
-			
-		}
-		else
-		{
-			for(int i = 0; i < relevantRooms.size(); i++)
-			{
-				relevantRoomsList.getItems().add(relevantRooms.get(i).getRoomNumber().toUpperCase() + "     Capacity : " + relevantRooms.get(i).getCapacity());
+
+		} else {
+			for (int i = 0; i < relevantRooms.size(); i++) {
+				relevantRoomsList.getItems().add(relevantRooms.get(i).getRoomNumber().toUpperCase() + "     Capacity : "
+						+ relevantRooms.get(i).getCapacity());
 			}
 		}
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
-	public void bookRoom() throws ClassNotFoundException, IOException{
-				
-		if(relevantRooms.size()!= 0)
-		{
-			currUser.makeBooking(relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()), requiredSlot, requiredCapacity);
-			if(title.getText().equalsIgnoreCase("Admin"))
-			{
-				Admin user = (Admin)currUser;
+	public void bookRoom() throws ClassNotFoundException, IOException {
+
+		if (relevantRooms.size() != 0) {
+			currUser.makeBooking(relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()),
+					requiredSlot, requiredCapacity);
+			if (title.getText().equalsIgnoreCase("Admin")) {
+				Admin user = (Admin) currUser;
 				deserializeUsers();
-				for(int i = 0; i < listOfUsers.size(); i++)
-				{
-					if(listOfUsers.get(i).getEmailID().equals(user.getEmailID()))
-					{
+				for (int i = 0; i < listOfUsers.size(); i++) {
+					if (listOfUsers.get(i).getEmailID().equals(user.getEmailID())) {
 						listOfUsers.remove(i);
 						listOfUsers.add(i, user);
 					}
 				}
-			}
-			else if(title.getText().equalsIgnoreCase("Faculty"))
-			{
-				Faculty user = (Faculty)currUser;
+			} else if (title.getText().equalsIgnoreCase("Faculty")) {
+				Faculty user = (Faculty) currUser;
 				deserializeUsers();
-				for(int i = 0; i < listOfUsers.size(); i++)
-				{
-					if(listOfUsers.get(i).getEmailID().equals(user.getEmailID()))
-					{
+				for (int i = 0; i < listOfUsers.size(); i++) {
+					if (listOfUsers.get(i).getEmailID().equals(user.getEmailID())) {
 						listOfUsers.remove(i);
 						listOfUsers.add(i, user);
 					}
@@ -187,17 +201,15 @@ public class CheckRoomAvail2UI {
 			}
 
 			serializeUsers();
-			
-			
-			
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Confirm Message");
 			alert.setHeaderText(null);
-			alert.setContentText("Your room "+relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex()).getRoomNumber().toUpperCase()+" has been booked!");
+			alert.setContentText(
+					"Your room " + relevantRooms.get(relevantRoomsList.getSelectionModel().getSelectedIndex())
+							.getRoomNumber().toUpperCase() + " has been booked!");
 			alert.showAndWait();
-		}
-		else
-		{
+		} else {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Error!");
 			alert.setHeaderText(null);
@@ -205,7 +217,13 @@ public class CheckRoomAvail2UI {
 			alert.showAndWait();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -244,7 +262,12 @@ public class CheckRoomAvail2UI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;

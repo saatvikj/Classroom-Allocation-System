@@ -10,20 +10,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT3UI">
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CreateTT3UI">
 	<children>
 		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 
 				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 					<columnConstraints>
-						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="575.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="150.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
+						<Label fx:id="email" alignment="CENTER_RIGHT"
+							contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 							<font>
 								<Font name="Segoe UI Bold" size="14.0" />
 							</font>
@@ -54,43 +58,58 @@
 
 
 
-				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="ADD TUTORIALS AND LABS">
+				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+					text="ADD TUTORIALS AND LABS">
 					<font>
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView fx:id="labRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" visible="false">
-					
+				<ListView fx:id="labRecordsList" layoutX="76.0" layoutY="240.0"
+					prefHeight="250.0" prefWidth="300.0" visible="false">
+
 				</ListView>
 
-				<ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
+				<ImageView id="homeBut" fitHeight="75.0" fitWidth="75.0"
+					onMouseClicked="#homeButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
 					<image>
 						<Image url="/res/home.png" />
 					</image>
 				</ImageView>
-				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+					layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+					preserveRatio="true">
 					<image>
 						<Image url="/res/back.png" />
 					</image>
 				</ImageView>
-				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+				<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+					layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+					preserveRatio="true">
 					<image>
 						<Image url="/res/logouticon.png" />
 					</image>
 				</ImageView>
-            <ListView fx:id="tutorialRecordsList" layoutX="424.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0" visible="false" />
-            <Label fx:id="labLabel" layoutX="212.0" layoutY="220.0" text="LABS" visible="false" />
-            <Label fx:id="tutorialLabel" layoutX="545.0" layoutY="220.0" text="TUTORIALS" visible="false" />
-            <Button fx:id="addLabButton" layoutX="199.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#addLabs" text="ADD" visible="false">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="addTutorialButton" layoutX="551.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#addTutorials" text="ADD" visible="false">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
+				<ListView fx:id="tutorialRecordsList" layoutX="424.0"
+					layoutY="240.0" prefHeight="250.0" prefWidth="300.0" visible="false" />
+				<Label fx:id="labLabel" layoutX="212.0" layoutY="220.0" text="LABS"
+					visible="false" />
+				<Label fx:id="tutorialLabel" layoutX="545.0" layoutY="220.0"
+					text="TUTORIALS" visible="false" />
+				<Button fx:id="addLabButton" layoutX="199.0" layoutY="517.0"
+					mnemonicParsing="false" onMouseClicked="#addLabs" text="ADD"
+					visible="false">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Button>
+				<Button fx:id="addTutorialButton" layoutX="551.0" layoutY="518.0"
+					mnemonicParsing="false" onMouseClicked="#addTutorials" text="ADD"
+					visible="false">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Button>
 			</children>
 		</Pane>
 	</children>

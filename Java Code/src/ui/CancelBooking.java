@@ -30,6 +30,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CancelBooking {
 
 	public User currUser;
@@ -62,6 +67,11 @@ public class CancelBooking {
 	@FXML
 	private Button cancelBookingButton;
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -110,6 +120,9 @@ public class CancelBooking {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
@@ -166,6 +179,11 @@ public class CancelBooking {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -214,6 +232,13 @@ public class CancelBooking {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 		String selectedItem = roomRecordsList.getSelectionModel().getSelectedItem();
@@ -274,6 +299,10 @@ public class CancelBooking {
 		serializeUsers();
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -293,6 +322,12 @@ public class CancelBooking {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -332,6 +367,11 @@ public class CancelBooking {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;

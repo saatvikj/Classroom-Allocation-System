@@ -8,7 +8,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class App extends Application {
+
+	/**
+	 * 
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -25,6 +34,10 @@ public class App extends Application {
 		}
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

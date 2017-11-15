@@ -24,6 +24,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class StudentHomeUI {
 
 	public Student currStudent;
@@ -35,7 +40,12 @@ public class StudentHomeUI {
 	@FXML
 	private Label emailStudent;
 
-
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void populate() throws FileNotFoundException, IOException, ClassNotFoundException {
 		deserializeUsers();
 		currStudent.deserializeRequests();
@@ -43,15 +53,13 @@ public class StudentHomeUI {
 		nameStudent.setText(currStudent.getName());
 		emailStudent.setText(currStudent.getEmailID());
 
-//		code to print the time table
-//		for(Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()){
-//			Slot s = mp.getKey();
-//			Course c = mp.getValue();
-//			System.out.println(s.getDay() + " " + s.getStartTime() + "-" + s.getEndTime() + " " + c.getAcronym() + " " + s.getPurpose());
-//		}
-//		
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showNotifications(MouseEvent event) throws ClassNotFoundException {
 
@@ -61,7 +69,7 @@ public class StudentHomeUI {
 			Stage stage = new Stage();
 			stage.setTitle("IIIT Delhi");
 			stage.setScene(new Scene(loader.load(), 800, 600));
-			
+
 			NotificationsUI controller = loader.<NotificationsUI>getController();
 			controller.currUser = currStudent;
 			controller.populate();
@@ -75,6 +83,10 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
 
@@ -98,6 +110,10 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
 
@@ -119,7 +135,10 @@ public class StudentHomeUI {
 
 	}
 
-
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void makeRequest(MouseEvent event) {
 
@@ -141,9 +160,11 @@ public class StudentHomeUI {
 
 	}
 
-
-
-
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void createTimeTable(MouseEvent event) throws ClassNotFoundException {
 
@@ -165,8 +186,13 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
-	private void viewTimeTable(MouseEvent event) {
+	private void viewTimeTable(MouseEvent event) throws ClassNotFoundException {
 
 		Parent root;
 		try {
@@ -187,6 +213,11 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void cancelRequest(MouseEvent event) throws ClassNotFoundException {
 
@@ -203,13 +234,16 @@ public class StudentHomeUI {
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -229,7 +263,11 @@ public class StudentHomeUI {
 
 	}
 
-	
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -257,6 +295,12 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -296,6 +340,11 @@ public class StudentHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showCourses(MouseEvent event) throws ClassNotFoundException {
 		try {
@@ -314,5 +363,5 @@ public class StudentHomeUI {
 		}
 
 	}
-	
+
 }

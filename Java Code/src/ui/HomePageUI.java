@@ -13,9 +13,17 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class HomePageUI {
-	
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void openSignUp(ActionEvent event) {
 
@@ -34,12 +42,16 @@ public class HomePageUI {
 		}
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void openLogin(ActionEvent event) {
 
 		Parent root;
 		try {
-			
+
 			FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
 			root = ldr.load();
 			Stage stage = new Stage();
@@ -54,4 +66,3 @@ public class HomePageUI {
 		}
 	}
 }
-

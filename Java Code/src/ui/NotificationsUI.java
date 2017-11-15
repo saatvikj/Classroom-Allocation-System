@@ -17,6 +17,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class NotificationsUI {
 
 	public User currUser;
@@ -29,35 +34,43 @@ public class NotificationsUI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private ListView<String> notificationsListView;
 
-	
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void populate() throws ClassNotFoundException, IOException {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
-		
-		if(currUser.getTypeOfUser().equals("Admin"))
-		{
+
+		if (currUser.getTypeOfUser().equals("Admin")) {
+
 			Admin currAdmin = (Admin) currUser;
 			currAdmin.deserializeRequests();
+			notifs = currAdmin.populateNotifications();
+		} else if (currUser.getTypeOfUser().equals("Student")) {
+			Student currStudent = (Student) currUser;
+			// currStudent.deserializeRequests();
+			notifs = currStudent.populateNotifications();
 		}
-		notifs = currUser.populateNotifications();
-		if(notifs.size() == 0)
-		{
+		if (notifs.size() == 0) {
 			notificationsListView.getItems().add("You have no notifications!");
-		}
-		else
-		{
-			for(int i = 0; i < notifs.size(); i++)
-			{
+		} else {
+			for (int i = 0; i < notifs.size(); i++) {
 				notificationsListView.getItems().add(notifs.get(i));
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -77,6 +90,11 @@ public class NotificationsUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 

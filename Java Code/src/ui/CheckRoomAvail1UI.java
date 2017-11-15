@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Time;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 import backend.Admin;
 import backend.ClassRoom;
@@ -21,13 +23,22 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DateCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CheckRoomAvail1UI {
 
 	public String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 	public User currUser;
+
+	public boolean onlyAvailability = false;
 
 	@FXML
 	private Label name;
@@ -50,6 +61,11 @@ public class CheckRoomAvail1UI {
 	@FXML
 	private DatePicker date;
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void confirmBooking(MouseEvent event) throws ClassNotFoundException {
 
@@ -98,15 +114,41 @@ public class CheckRoomAvail1UI {
 					}
 				}
 
-				CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
-				controller.currUser = currUser;
-				controller.relevantRooms = eligibleRooms;
-				controller.requiredSlot = userSlot;
-				controller.requiredCapacity = reqcap;
-				controller.populate();
-				stage.show();
+				if (!onlyAvailability) {
+					CheckRoomAvail2UI controller = loader.<CheckRoomAvail2UI>getController();
+					controller.currUser = currUser;
+					controller.relevantRooms = eligibleRooms;
+					controller.requiredSlot = userSlot;
+					controller.requiredCapacity = reqcap;
+					controller.populate();
+					stage.show();
 
-				((Node) (event.getSource())).getScene().getWindow().hide();
+					((Node) (event.getSource())).getScene().getWindow().hide();
+				} else {
+					if (eligibleRooms.size() == 0) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Error!");
+						alert.setHeaderText(null);
+						alert.setContentText("Room isn't available!");
+						alert.showAndWait();
+
+					} else {
+						if (eligibleRooms.get(0).getRoomNumber().equalsIgnoreCase(preferredRoom.getText())) {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("Success!");
+							alert.setHeaderText(null);
+							alert.setContentText("The room is available!");
+							alert.showAndWait();
+
+						} else {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("Error!");
+							alert.setHeaderText(null);
+							alert.setContentText("Room isn't available!");
+							alert.showAndWait();
+						}
+					}
+				}
 			} else {
 
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -122,22 +164,34 @@ public class CheckRoomAvail1UI {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void populate() {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
+		date.setDayCellFactory(this.getDayCellFactory());
+
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
-	private void homeButtonClicked(MouseEvent event) {
+	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 
 			String path;
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
-			} else {
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
 				path = "/fxml/FacultyHome.fxml";
+			} else {
+				path = "/fxml/StudentHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -156,6 +210,11 @@ public class CheckRoomAvail1UI {
 				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
 				controller.currFaculty = faculty;
 				controller.populate();
+			} else {
+				Student student = (Student) currUser;
+				StudentHomeUI controller = loader.<StudentHomeUI>getController();
+				controller.currStudent = student;
+				controller.populate();
 			}
 
 			stage.show();
@@ -168,16 +227,23 @@ public class CheckRoomAvail1UI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
-	private void backButtonClicked(MouseEvent event) {
+	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
 		try {
 
 			String path;
 			if (currUser.getTypeOfUser().equals("Admin")) {
 				path = "/fxml/AdminHome.fxml";
-			} else {
+			} else if (currUser.getTypeOfUser().equals("Faculty")) {
 				path = "/fxml/FacultyHome.fxml";
+			} else {
+				path = "/fxml/StudentHome.fxml";
 			}
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -196,6 +262,11 @@ public class CheckRoomAvail1UI {
 				FacultyHomeUI controller = loader.<FacultyHomeUI>getController();
 				controller.currFaculty = faculty;
 				controller.populate();
+			} else {
+				Student student = (Student) currUser;
+				StudentHomeUI controller = loader.<StudentHomeUI>getController();
+				controller.currStudent = student;
+				controller.populate();
 			}
 
 			stage.show();
@@ -208,6 +279,10 @@ public class CheckRoomAvail1UI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -227,6 +302,14 @@ public class CheckRoomAvail1UI {
 
 	}
 
+	/**
+	 * 
+	 * @param roomNo
+	 * @param slot
+	 * @param capacity
+	 * @param date
+	 * @return boolean
+	 */
 	public boolean checkEmptiness(String roomNo, String slot, String capacity, boolean date) {
 
 		if (roomNo.length() == 0 || slot.length() == 0 || capacity.length() == 0 || date) {
@@ -235,6 +318,33 @@ public class CheckRoomAvail1UI {
 			return true;
 		}
 
+	}
+
+	/**
+	 * 
+	 * @return dayCellFactory
+	 */
+	private Callback<DatePicker, DateCell> getDayCellFactory() {
+
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+
+						// Disable Monday, Tueday, Wednesday.
+						if (item.isBefore(LocalDate.now())) {
+							setDisable(true);
+							setStyle("-fx-background-color: #f0f0f0");
+						}
+					}
+				};
+			}
+		};
+		return dayCellFactory;
 	}
 
 }

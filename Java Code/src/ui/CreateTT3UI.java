@@ -22,17 +22,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CreateTT3UI {
 
 	public Student currStudent;
 	public Course selectedCourse;
-	
+
 	private ArrayList<Slot> labSlotList = new ArrayList<Slot>();
 	private ArrayList<Slot> tutSlotList = new ArrayList<Slot>();
 	private ArrayList<ClassRoom> rooomsList = new ArrayList<ClassRoom>();
@@ -40,76 +47,89 @@ public class CreateTT3UI {
 
 	@FXML
 	private Label name;
-	
+
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private Label email;
-	
+
 	@FXML
 	private Button addLabButton;
-	
+
 	@FXML
 	private Label labLabel;
-	
+
 	@FXML
 	private Label tutorialLabel;
-	
+
 	@FXML
 	private Button addTutorialButton;
-	
+
 	@FXML
 	private ListView<String> labRecordsList;
-	
+
 	@FXML
 	private ListView<String> tutorialRecordsList;
-	
-	
-	
-	
+
+	/**
+	 * 
+	 */
 	public void populate() {
-		
+
 		name.setText(currStudent.getName());
 		title.setText("STUDENT");
 		email.setText(currStudent.getEmailID());
-		
-		for(Map.Entry<Slot, List<ClassRoom>> map : selectedCourse.getCourseTimeTable().entrySet()){
+
+		for (Map.Entry<Slot, List<ClassRoom>> map : selectedCourse.getCourseTimeTable().entrySet()) {
 			Slot slt = map.getKey();
 			List<ClassRoom> room = map.getValue();
-			
-			if(slt.getPurpose().equals(Slot.TYPES[1])){
-				for(int i = 0; i <room.size(); i++){
+
+			if (slt.getPurpose().equals(Slot.TYPES[1])) {
+				for (int i = 0; i < room.size(); i++) {
 					labLabel.setVisible(true);
 					labRecordsList.setVisible(true);
 					addLabButton.setVisible(true);
 					labSlotList.add(slt);
 					rooomsList.add(room.get(i));
-					labRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime() + ", " + room.get(i).getRoomNumber());
-			
+					labRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime()
+							+ ", " + room.get(i).getRoomNumber());
+
 				}
-			}
-			else if(slt.getPurpose().equals(Slot.TYPES[2])){
-				for(int i = 0; i < room.size(); i++){
+			} else if (slt.getPurpose().equals(Slot.TYPES[2])) {
+				for (int i = 0; i < room.size(); i++) {
 					tutSlotList.add(slt);
 					rooomsList.add(room.get(i));
 					tutorialLabel.setVisible(true);
 					tutorialRecordsList.setVisible(true);
 					addTutorialButton.setVisible(true);
-					tutorialRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime() + ", " + room.get(i).getRoomNumber());
-			
+					tutorialRecordsList.getItems().add(slt.getDay() + " " + slt.getStartTime() + "-" + slt.getEndTime()
+							+ ", " + room.get(i).getRoomNumber());
+
 				}
 			}
 		}
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
-	private void addLabs(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException{
+	private void addLabs(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 		deserializeUsers();
 		int index = labRecordsList.getSelectionModel().getSelectedIndex();
 		currStudent.addToTimeTableLabs(labSlotList.get(index), selectedCourse);
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Success!");
+		alert.setHeaderText(null);
+		alert.setContentText("This lab has been added to your time table!");
+		alert.showAndWait();
+
 		if (currStudent.getLabPref() == null) {
 			Map<Course, Integer> labPref = new HashMap<Course, Integer>();
 			labPref.put(selectedCourse, index);
@@ -117,15 +137,27 @@ public class CreateTT3UI {
 		} else {
 			currStudent.getLabPref().put(selectedCourse, index);
 		}
-		
-		serializeUsers();		
+
+		serializeUsers();
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
-	private void addTutorials(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException{
+	private void addTutorials(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 		deserializeUsers();
 		int index = tutorialRecordsList.getSelectionModel().getSelectedIndex();
 		currStudent.addToTimeTableTutorials(tutSlotList.get(index), selectedCourse);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Success!");
+		alert.setHeaderText(null);
+		alert.setContentText("This tutorial has been added to your time table!");
+		alert.showAndWait();
 
 		if (currStudent.getTutPref() == null) {
 			Map<Course, Integer> tutPref = new HashMap<Course, Integer>();
@@ -134,10 +166,15 @@ public class CreateTT3UI {
 		} else {
 			currStudent.getTutPref().put(selectedCourse, index);
 		}
-		
+
 		serializeUsers();
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -159,7 +196,12 @@ public class CreateTT3UI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -182,7 +224,11 @@ public class CreateTT3UI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -202,7 +248,11 @@ public class CreateTT3UI {
 
 	}
 
-
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -230,6 +280,12 @@ public class CreateTT3UI {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -268,6 +324,5 @@ public class CreateTT3UI {
 		}
 
 	}
-	
-	
+
 }

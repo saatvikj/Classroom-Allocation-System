@@ -7,6 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class Course implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,106 +26,160 @@ public class Course implements Serializable {
 	private Map<Slot, List<ClassRoom>> courseTimeTable = new HashMap<Slot, List<ClassRoom>>();
 	private transient ArrayList<ClassRoom> allRooms;
 
+	/**
+	 * 
+	 * @return courseTimeTable
+	 */
 	public Map<Slot, List<ClassRoom>> getCourseTimeTable() {
 		return courseTimeTable;
 	}
 
+	/**
+	 * 
+	 * @param courseTimeTable
+	 */
 	public void setCourseTimeTable(Map<Slot, List<ClassRoom>> courseTimeTable) {
 		this.courseTimeTable = courseTimeTable;
 	}
 
+	/**
+	 * 
+	 */
 	public Course() {
 
 	}
 
+	/**
+	 * 
+	 * @return courseName
+	 */
 	public String getCourseName() {
 		return courseName;
 	}
 
+	/**
+	 * 
+	 * @param courseName
+	 */
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
 
+	/**
+	 * 
+	 * @return preReqs
+	 */
 	public String[] getPreReqs() {
 		return preReqs;
 	}
 
+	/**
+	 * 
+	 * @param preReqs
+	 */
 	public void setPreReqs(String[] preReqs) {
 		this.preReqs = preReqs;
 	}
 
+	/**
+	 * 
+	 * @return postConditions
+	 */
 	public String[] getPostConditions() {
 		return postConditions;
 	}
 
+	/**
+	 * 
+	 * @param postConditions
+	 */
 	public void setPostConditions(String[] postConditions) {
 		this.postConditions = postConditions;
 	}
 
+	/**
+	 * 
+	 * @return acronym
+	 */
 	public String getAcronym() {
 		return acronym;
 	}
 
+	/**
+	 * 
+	 * @param acronym
+	 */
 	public void setAcronym(String acronym) {
 		this.acronym = acronym;
 	}
 
+	/**
+	 * 
+	 * @return courseType
+	 */
 	public int getCourseType() {
 		return courseType;
 	}
 
+	/**
+	 * 
+	 * @param courseType
+	 */
 	public void setCourseType(int courseType) {
 		this.courseType = courseType;
 	}
 
+	/**
+	 * 
+	 * @return instructor
+	 */
 	public String getInstructor() {
 		return instructor;
 	}
 
+	/**
+	 * 
+	 * @param instructor
+	 */
 	public void setInstructor(String instructor) {
 		this.instructor = instructor;
 	}
 
+	/**
+	 * 
+	 * @return courseCode
+	 */
 	public String getCourseCode() {
 		return courseCode;
 	}
 
+	/**
+	 * 
+	 * @param courseCode
+	 */
 	public void setCourseCode(String courseCode) {
 		this.courseCode = courseCode;
 	}
 
+	/**
+	 * 
+	 * @return credits
+	 */
 	public int getCredits() {
 		return credits;
 	}
 
+	/**
+	 * 
+	 * @param credits
+	 */
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
 
-	public void bookRooms() {
-		/*
-		 * Iterate over the the Time Table, and then call the function
-		 * makeBooking of the ClassRoom object as ClassRoom.makeBooking(Slot,
-		 * this) and then makes the same changes in the object in the arraylist
-		 * as well and at the end serializes the entire arraylist. If two slots
-		 * have same start and end time and same day, we will add two separate
-		 * key value pairs in the hashmap corresponding to that day which will
-		 * be differentiated on the basis of Date.
-		 */
-	}
-
-	public void deserialize() {
-		/*
-		 * It deserializes the entire text file and stores it in the arraylist.
-		 */
-	}
-
-	public void serialize() {
-		/*
-		 * It serializes the arraylist allRooms into its text file.
-		 */
-	}
-
+	/**
+	 * @return string
+	 */
 	@Override
 	public String toString() {
 		return "Course [preReqs=" + Arrays.toString(preReqs) + ", postConditions=" + Arrays.toString(postConditions)

@@ -12,6 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class AdminHomeUI {
 
 	public Admin currAdmin;
@@ -22,16 +27,19 @@ public class AdminHomeUI {
 	@FXML
 	private Label emailAdmin;
 
-	public void initialize() {
-
-	}
-
+	/**
+	 * 
+	 */
 	public void populate() {
 
 		nameAdmin.setText(currAdmin.getName());
 		emailAdmin.setText(currAdmin.getEmailID());
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
 
@@ -55,6 +63,10 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
 
@@ -76,6 +88,10 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void makeBooking(MouseEvent event) {
 
@@ -88,6 +104,7 @@ public class AdminHomeUI {
 			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
 			CheckRoomAvail1UI controller = loader.<CheckRoomAvail1UI>getController();
 			controller.currUser = currAdmin;
+			controller.onlyAvailability = false;
 			controller.populate();
 
 			stage.show();
@@ -99,6 +116,11 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void handleRequests(MouseEvent event) throws ClassNotFoundException {
 
@@ -121,6 +143,11 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showNotifications(MouseEvent event) throws ClassNotFoundException {
 
@@ -141,6 +168,10 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -160,6 +191,11 @@ public class AdminHomeUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void showCourses(MouseEvent event) throws ClassNotFoundException {
 		try {

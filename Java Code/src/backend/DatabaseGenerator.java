@@ -20,6 +20,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class DatabaseGenerator {
 
 	private ArrayList<Course> allCourses = new ArrayList<Course>();
@@ -30,6 +35,9 @@ public class DatabaseGenerator {
 	private Map<String, Integer> frequency = new HashMap<>();
 	private ArrayList<String> autoCompleteText = new ArrayList<>();
 
+	/**
+	 * 
+	 */
 	public void populateRooms() {
 		BufferedReader br = null;
 		String line = "";
@@ -64,6 +72,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @param details
+	 * @throws IOException
+	 */
 	public void checkAndMakeRoom(String[] details) throws IOException {
 
 		for (int i = 6; i <= 10; i++) {
@@ -105,6 +118,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @param roomName
+	 * @return boolean
+	 */
 	public boolean checkNewRoom(String roomName) {
 		for (int i = 0; i < allRooms.size(); i++) {
 			if (allRooms.get(i).getRoomNumber().equals(roomName)) {
@@ -114,6 +132,9 @@ public class DatabaseGenerator {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void populateCourses() {
 
 		BufferedReader br = null;
@@ -169,8 +190,8 @@ public class DatabaseGenerator {
 
 									ClassRoom slotRoom = getCorrespondingRoom(splitDateVenue[k]);
 									Map<Slot, List<ClassRoom>> newTT = c.getCourseTimeTable();
-									
-									if(newTT.containsKey(slt)) {
+
+									if (newTT.containsKey(slt)) {
 										List<ClassRoom> rooms = newTT.get(slt);
 										rooms.add(slotRoom);
 										newTT.put(slt, rooms);
@@ -179,7 +200,7 @@ public class DatabaseGenerator {
 										rooms.add(slotRoom);
 										newTT.put(slt, rooms);
 									}
-									
+
 									c.setCourseTimeTable(newTT);
 								}
 
@@ -212,6 +233,9 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void bookSlots() {
 		BufferedReader br = null;
 		String line = "";
@@ -293,6 +317,11 @@ public class DatabaseGenerator {
 		}
 	}
 
+	/**
+	 * 
+	 * @param venue
+	 * @return ClassRoom
+	 */
 	public ClassRoom getCorrespondingRoom(String venue) {
 		for (int i = 0; i < allRooms.size(); i++) {
 			if (allRooms.get(i).getRoomNumber().equals(venue)) {
@@ -302,6 +331,11 @@ public class DatabaseGenerator {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param name
+	 * @return Course
+	 */
 	public Course getCorrespondingCourse(String name) {
 		for (int i = 0; i < allCourses.size(); i++) {
 			if (allCourses.get(i).getCourseName().equals(name)) {
@@ -311,6 +345,11 @@ public class DatabaseGenerator {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param word
+	 * @return String
+	 */
 	public String checkAlpha(String word) {
 		char[] charWord = word.toCharArray();
 		String newString = "";
@@ -323,6 +362,11 @@ public class DatabaseGenerator {
 		return newString;
 	}
 
+	/**
+	 * 
+	 * @param type
+	 * @return int
+	 */
 	public int getType(String type) {
 
 		if (type.equals("Mandatory")) {
@@ -333,6 +377,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeRooms() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -354,6 +403,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeCourses() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -374,7 +428,12 @@ public class DatabaseGenerator {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeAutoCompleteText() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -396,6 +455,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @param postConditions
+	 * @param name
+	 */
 	public void generateKeywords(String postConditions, String name) {
 
 		String[] postCons = postConditions.split("\\\\");
@@ -407,7 +471,7 @@ public class DatabaseGenerator {
 			for (int j = 0; j < allWords.length; j++) {
 
 				allWords[j] = checkAlpha(allWords[j]).toLowerCase();
-				allWords[j] = allWords[j].replaceAll("â", "");
+				allWords[j] = allWords[j].replaceAll("ï¿½", "");
 				if (!exemptedWords.contains(allWords[j])) {
 
 					if (frequency.containsKey(allWords[j])) {
@@ -427,7 +491,7 @@ public class DatabaseGenerator {
 
 			if (!exemptedWords.contains(courseName[k])) {
 				courseName[k] = checkAlpha(courseName[k]).toLowerCase();
-				courseName[k] = courseName[k].replaceAll("â", "");
+				courseName[k] = courseName[k].replaceAll("ï¿½", "");
 				if (frequency.containsKey(courseName[k])) {
 					int count = frequency.get(courseName[k]);
 					frequency.replace(courseName[k], count + 1);
@@ -440,6 +504,11 @@ public class DatabaseGenerator {
 
 	}
 
+	/**
+	 * 
+	 * @param map
+	 * @return sortedEntries
+	 */
 	static <K, V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K, V> map) {
 
 		List<Entry<K, V>> sortedEntries = new ArrayList<Entry<K, V>>(map.entrySet());
@@ -454,6 +523,12 @@ public class DatabaseGenerator {
 		return sortedEntries;
 	}
 
+	/**
+	 * 
+	 * @param args
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		DatabaseGenerator ob = new DatabaseGenerator();
 
@@ -471,32 +546,14 @@ public class DatabaseGenerator {
 		ob.serializeRooms();
 
 		ob.serializeCourses();
-		
+
 		List<Entry<String, Integer>> ebt = entriesSortedByValues(ob.frequency);
-		
-		for(int i = 0; i < ebt.size(); i++){
+
+		for (int i = 0; i < ebt.size(); i++) {
 			ob.autoCompleteText.add(ebt.get(i).getKey());
 		}
-		
-		ob.serializeAutoCompleteText();
-		
 
-		// for (int i = 0; i < ob.allRooms.size(); i++) {
-		//
-		// for (int j = 0; j < ob.daysOfWeek.length; j++) {
-		// if (ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]) !=
-		// null) {
-		// Map<Slot, Object> m =
-		// ob.allRooms.get(i).getBookedSlots().get(ob.daysOfWeek[j]);
-		// Iterator it = m.entrySet().iterator();
-		// while (it.hasNext()) {
-		// Map.Entry<Slot, Object> mm = (Map.Entry<Slot, Object>) it.next();
-		// System.out.println(mm.getKey().toString() + " " + ((Course)
-		// mm.getValue()).getCourseName());
-		// }
-		// }
-		// }
-		// }
+		ob.serializeAutoCompleteText();
 
 	}
 

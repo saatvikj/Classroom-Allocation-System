@@ -27,13 +27,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CancelRequestUI {
-	
+
 	private ArrayList<Request> listOfRequests;
 
-	
 	public Student currUser;
-	
+
 	@FXML
 	private Label name;
 
@@ -42,41 +46,47 @@ public class CancelRequestUI {
 
 	@FXML
 	private Label title;
-	
+
 	@FXML
 	private GridPane requestPane;
-	
+
 	@FXML
 	private ListView<String> requestList;
-	
+
 	@FXML
 	private Label roomNumber;
-	
+
 	@FXML
 	private Label roomCap;
-	
+
 	@FXML
 	private Label reqCap;
-	
+
 	@FXML
 	private Label roomSlot;
-	
+
 	@FXML
 	private Button cancelButton;
-	
-	public void populate() throws ClassNotFoundException, IOException{
+
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public void populate() throws ClassNotFoundException, IOException {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		deserializeRequests();
-		
-		if(listOfRequests.size() == 0){
+
+		if (listOfRequests.size() == 0) {
 			requestList.getItems().add("No requests!");
 		}
-		
-		for(int i = 0; i < listOfRequests.size(); i++){
-			requestList.getItems().add("Request : " + (i+1) + " Dated : " + listOfRequests.get(i).getTimeSlot().displayFormattedDate());
+
+		for (int i = 0; i < listOfRequests.size(); i++) {
+			requestList.getItems().add(
+					"Request : " + (i + 1) + " Dated : " + listOfRequests.get(i).getTimeSlot().displayFormattedDate());
 		}
-		
+
 		requestList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
@@ -94,7 +104,7 @@ public class CancelRequestUI {
 						roomCap.setText(Integer.toString(listOfRequests.get(index).getPreferredRoom().getCapacity()));
 						roomSlot.setText(listOfRequests.get(index).getTimeSlot().displayFormattedDate());
 						cancelButton.setVisible(true);
-						
+
 					}
 
 				} catch (NullPointerException e) {
@@ -108,11 +118,13 @@ public class CancelRequestUI {
 			}
 		});
 
-			
 	}
-	
-	
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -129,17 +141,20 @@ public class CancelRequestUI {
 
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
-	
-	public void cancelRequest() throws FileNotFoundException, IOException{
-		
+	public void cancelRequest() throws FileNotFoundException, IOException {
+
 		int index = requestList.getSelectionModel().getSelectedIndex();
 		requestList.getItems().remove(index);
 		listOfRequests.remove(index);
@@ -149,9 +164,14 @@ public class CancelRequestUI {
 		alert.setContentText("Your request has been cancelled!");
 		alert.showAndWait();
 		serializeRequests();
-		
+
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -174,6 +194,10 @@ public class CancelRequestUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -192,7 +216,12 @@ public class CancelRequestUI {
 		}
 
 	}
-	
+
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void deserializeRequests() throws ClassNotFoundException, IOException {
 
 		ObjectInputStream in = null;
@@ -206,7 +235,7 @@ public class CancelRequestUI {
 
 				while (true) {
 					request = (Request) in.readObject();
-					if(request.getCurrentStatus() == 0) {
+					if (request.getCurrentStatus() == 0) {
 						listOfRequests.add(request);
 					}
 				}
@@ -228,6 +257,11 @@ public class CancelRequestUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeRequests() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -250,7 +284,5 @@ public class CancelRequestUI {
 		}
 
 	}
-
-	
 
 }

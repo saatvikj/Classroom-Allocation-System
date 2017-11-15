@@ -60,7 +60,7 @@
 					</font>
 				</Label>
 				<ListView fx:id="roomRecordsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
-					
+
 				</ListView>
 				<GridPane fx:id="roomDetails" layoutX="400.0" layoutY="220.0" visible="false">
 					<children>
@@ -96,6 +96,11 @@
 						<Image url="/res/logouticon.png" />
 					</image>
 				</ImageView>
+            <Button layoutX="137.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#checkAvail" text="Check Room Availability">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
 			</children>
 		</Pane>
 	</children>

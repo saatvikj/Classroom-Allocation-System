@@ -22,8 +22,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class LoginUI {
 
 	@FXML
@@ -32,6 +38,13 @@ public class LoginUI {
 	@FXML
 	private PasswordField userPassword;
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	private void login(ActionEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 
@@ -145,12 +158,42 @@ public class LoginUI {
 
 	}
 
+	/**
+	 * 
+	 * @param enteredEmail
+	 * @param enteredPassword
+	 * @return boolean
+	 */
 	public boolean checkEmptiness(String enteredEmail, String enteredPassword) {
 
 		if (enteredEmail.length() == 0 || enteredPassword.length() == 0) {
 			return false;
 		} else {
 			return true;
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param event
+	 */
+	@FXML
+	private void backButtonClicked(MouseEvent event) {
+
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HomePage.fxml"));
+
+			Stage stage = new Stage();
+			stage.setTitle("IIIT Delhi");
+			stage.setScene(new Scene(loader.load(), 800, 600));
+			stage.show();
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}

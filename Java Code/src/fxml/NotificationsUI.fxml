@@ -9,11 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
 
-<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.NotificationsUI">
+<Pane stylesheets="@application.css" id="homePane" maxHeight="-Infinity"
+	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+	prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.NotificationsUI">
 	<children>
 		<GridPane>
 			<children>
-				<Label id="homeHead" alignment="CENTER" onMouseClicked="#homeButtonClicked" text="Home">
+				<Label id="homeHead" alignment="CENTER" onMouseClicked="#homeButtonClicked"
+					text="Home">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -21,7 +25,8 @@
 						<Insets left="98.0" />
 					</GridPane.margin>
 				</Label>
-				<Label id="notifHead" text="Notifications" GridPane.columnIndex="1">
+				<Label id="notifHead" text="Notifications"
+					GridPane.columnIndex="1">
 					<font>
 						<Font name="Segoe UI Bold" size="36.0" />
 					</font>
@@ -46,7 +51,8 @@
 					</GridPane.margin>
 				</Label>
 
-				<Label fx:id="email" text="sheetu@iiitd.ac.in" GridPane.columnIndex="2">
+				<Label fx:id="email" text="sheetu@iiitd.ac.in"
+					GridPane.columnIndex="2">
 					<GridPane.margin>
 						<Insets right="12.0" top="54.0" />
 					</GridPane.margin>
@@ -56,21 +62,28 @@
 				</Label>
 			</children>
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="300.0"
+					prefWidth="300.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="200.0" prefWidth="200.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="100.0" prefHeight="150.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="100.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 		</GridPane>
-		<ListView fx:id="notificationsListView" layoutX="76.0" layoutY="220.0" prefHeight="200.0" prefWidth="500.0">
-			
+		<ListView fx:id="notificationsListView" layoutX="76.0"
+			layoutY="220.0" prefHeight="200.0" prefWidth="500.0">
+
 		</ListView>
-		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0" layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="740.0"
+			layoutY="540.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </Pane>

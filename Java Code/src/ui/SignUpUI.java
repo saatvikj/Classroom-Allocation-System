@@ -26,6 +26,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class SignUpUI {
 
 	@FXML
@@ -42,85 +47,98 @@ public class SignUpUI {
 
 	@FXML
 	private MenuButton userType;
-	
+
 	boolean flag = false;
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void admin(ActionEvent event) {
-		
-		for(MenuItem item: userType.getItems()) {
-			
-				CheckMenuItem chk = (CheckMenuItem) item;
-				if(chk.getText().equals("Admin")) {
-					chk.setSelected(true);
-					flag = true;
-					userType.setText("Admin");
-				}
-	
+
+		for (MenuItem item : userType.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("Admin")) {
+				chk.setSelected(true);
+				flag = true;
+				userType.setText("Admin");
+			}
+
 		}
-		for(MenuItem it: userType.getItems()){
+		for (MenuItem it : userType.getItems()) {
 			CheckMenuItem ch = (CheckMenuItem) it;
-			if(!ch.getText().equals("Admin"))
-			{
-				if(ch.isSelected())
-				{
+			if (!ch.getText().equals("Admin")) {
+				if (ch.isSelected()) {
 					ch.setSelected(false);
 				}
 			}
 		}
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void faculty(ActionEvent event) {
-		
-		for(MenuItem item: userType.getItems()) {
-			
+
+		for (MenuItem item : userType.getItems()) {
+
 			CheckMenuItem chk = (CheckMenuItem) item;
-			if(chk.getText().equals("Faculty")) {
+			if (chk.getText().equals("Faculty")) {
 				chk.setSelected(true);
 				userType.setText("Faculty");
 			}
-			
+
 		}
-		for(MenuItem it: userType.getItems()){
+		for (MenuItem it : userType.getItems()) {
 			CheckMenuItem ch = (CheckMenuItem) it;
-			if(!ch.getText().equals("Faculty"))
-			{
-				if(ch.isSelected())
-				{
+			if (!ch.getText().equals("Faculty")) {
+				if (ch.isSelected()) {
 					ch.setSelected(false);
 				}
 			}
 		}
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void student(ActionEvent event) {
-		
-		for(MenuItem item: userType.getItems()) {
-			
+
+		for (MenuItem item : userType.getItems()) {
+
 			CheckMenuItem chk = (CheckMenuItem) item;
-			if(chk.getText().equals("Student")) {
+			if (chk.getText().equals("Student")) {
 				chk.setSelected(true);
 				userType.setText("Student");
 			}
-			
+
 		}
-		for(MenuItem it: userType.getItems()){
+		for (MenuItem it : userType.getItems()) {
 			CheckMenuItem ch = (CheckMenuItem) it;
-			if(!ch.getText().equals("Student"))
-			{
-				if(ch.isSelected())
-				{
+			if (!ch.getText().equals("Student")) {
+				if (ch.isSelected()) {
 					ch.setSelected(false);
 				}
 			}
 		}
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	public void openLogin(ActionEvent event) throws FileNotFoundException, ClassNotFoundException, IOException {
 
@@ -129,17 +147,16 @@ public class SignUpUI {
 		String password = userPass.getText();
 		String confirmPass = userConfirmPass.getText();
 		String typeUser = "";
-		
-		for(MenuItem item: userType.getItems()) {
-		
+
+		for (MenuItem item : userType.getItems()) {
+
 			CheckMenuItem chk = (CheckMenuItem) item;
-			if(chk.isSelected()) {
+			if (chk.isSelected()) {
 				typeUser = chk.getText();
 			}
-			
+
 		}
-		//System.out.println(typeUser);
-		
+
 		boolean validity = checkEmptiness(name, email, password, confirmPass);
 		if (!validity) {
 
@@ -197,62 +214,61 @@ public class SignUpUI {
 				alert.showAndWait();
 
 			} catch (AlreadyRegisteredUserException e) {
-				
+
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Error!");
 				alert.setHeaderText(null);
 				alert.setContentText(e.getMessage());
 				alert.showAndWait();
-				
+
 			}
 
 			if (allResults) {
 
-				 String encryptedPass = page.encryptPassword();
-				 if(typeUser.equals("Admin"))
-				 {
-					 Admin user = new Admin(name, email, encryptedPass, typeUser);
-					 page.addUserToDatabase((user));
-					 
-				 }
-				 else if(typeUser.equals("Faculty"))
-				 {
-					 Faculty user = new Faculty(name, email, encryptedPass, typeUser);
-					 user.setCoursesTaught(page.addCoursesToFaculty(name));
-					 page.addUserToDatabase(user);
-				 }
-				 else
-				 {
-					 Student user = new Student(name, email, encryptedPass, typeUser);
-					 page.addUserToDatabase(user);
-				 }
-				 
-				 
-				 Parent root;
-				 try {
-				
-				 FXMLLoader ldr = new
-				 FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
-				 root = ldr.load();
-				 Stage stage = new Stage();
-				 stage.setTitle("IIIT Delhi");
-				 stage.setScene(new Scene(root, 800, 600));
-				 stage.show();
-				
-				 ((Node) (event.getSource())).getScene().getWindow().hide();
-				
-				 } catch (IOException e) {
-				 e.printStackTrace();
-				 }
-				
-				
+				String encryptedPass = page.encryptPassword();
+				if (typeUser.equals("Admin")) {
+					Admin user = new Admin(name, email, encryptedPass, typeUser);
+					page.addUserToDatabase((user));
+
+				} else if (typeUser.equals("Faculty")) {
+					Faculty user = new Faculty(name, email, encryptedPass, typeUser);
+					user.setCoursesTaught(page.addCoursesToFaculty(name));
+					page.addUserToDatabase(user);
+				} else {
+					Student user = new Student(name, email, encryptedPass, typeUser);
+					page.addUserToDatabase(user);
+				}
+
+				Parent root;
+				try {
+
+					FXMLLoader ldr = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+					root = ldr.load();
+					Stage stage = new Stage();
+					stage.setTitle("IIIT Delhi");
+					stage.setScene(new Scene(root, 800, 600));
+					stage.show();
+
+					((Node) (event.getSource())).getScene().getWindow().hide();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
 
 		}
 
-
 	}
 
+	/**
+	 * 
+	 * @param enteredName
+	 * @param enteredEmail
+	 * @param enteredPassword
+	 * @param enteredConfirmPass
+	 * @return boolean
+	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail, String enteredPassword,
 			String enteredConfirmPass) {
 

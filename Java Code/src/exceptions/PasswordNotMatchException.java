@@ -1,9 +1,8 @@
 package exceptions;
 
 public class PasswordNotMatchException extends Exception {
-	
-	public PasswordNotMatchException(String message)
-	{
+
+	public PasswordNotMatchException(String message) {
 		super(message);
 	}
 

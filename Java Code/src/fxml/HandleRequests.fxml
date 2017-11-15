@@ -9,20 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HandleRequestsUI">
+<AnchorPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HandleRequestsUI">
 	<children>
 		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
 
 				<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 					<columnConstraints>
-						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+						<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="575.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="150.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="sheetu@iiitd.ac.in">
+						<Label fx:id="email" alignment="CENTER_RIGHT"
+							contentDisplay="TOP" text="sheetu@iiitd.ac.in">
 							<font>
 								<Font name="Segoe UI Bold" size="14.0" />
 							</font>
@@ -53,66 +57,88 @@
 
 
 
-				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text="HANDLE REQUESTS">
+				<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+					text="HANDLE REQUESTS">
 					<font>
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<ListView fx:id="requestsList" layoutX="76.0" layoutY="240.0" prefHeight="250.0" prefWidth="300.0">
-					
+				<ListView fx:id="requestsList" layoutX="76.0" layoutY="240.0"
+					prefHeight="250.0" prefWidth="300.0">
+
 				</ListView>
-				<GridPane fx:id="requestPane" layoutX="400.0" layoutY="220.0" visible="false">
+				<GridPane fx:id="requestPane" layoutX="400.0" layoutY="220.0"
+					visible="false">
 					<children>
 						<Label text="ROOM" />
 						<Label fx:id="roomNumber" text="C01" GridPane.columnIndex="1" />
 						<Label text="PURPOSE" GridPane.rowIndex="1" />
-						<Label fx:id="roomPurpose" text="Lorem Ipsum" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Label fx:id="roomPurpose" text="Lorem Ipsum"
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
 						<Label text="REQUIRED CAPACITY" GridPane.rowIndex="2" />
-						<Label fx:id="roomCap" text="130" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<Label fx:id="roomCap" text="130" GridPane.columnIndex="1"
+							GridPane.rowIndex="2" />
 						<Label text="TIME SLOT" GridPane.rowIndex="3" />
-						<Label fx:id="roomSlot" text="11th October, 11:30-1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<Label fx:id="roomSlot" text="11th October, 11:30-1"
+							GridPane.columnIndex="1" GridPane.rowIndex="3" />
 						<Label text="SOURCE STUDENT" GridPane.rowIndex="4" />
-						<Label fx:id="studentName" text="Saatvik Jain" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-						<Button id="button" mnemonicParsing="false" onMouseClicked="#acceptRequest" text="Accept" GridPane.rowIndex="5">
+						<Label fx:id="studentName" text="Saatvik Jain"
+							GridPane.columnIndex="1" GridPane.rowIndex="4" />
+						<Button id="button" mnemonicParsing="false" onMouseClicked="#acceptRequest"
+							text="Accept" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="70.0" />
 							</GridPane.margin>
 						</Button>
-						<Button id="button" mnemonicParsing="false" onMouseClicked="#rejectRequest" text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
+						<Button id="button" mnemonicParsing="false" onMouseClicked="#rejectRequest"
+							text="Reject" GridPane.columnIndex="1" GridPane.rowIndex="5">
 							<GridPane.margin>
 								<Insets left="20.0" />
 							</GridPane.margin>
 						</Button>
 					</children>
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="150.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="200.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="50.0"
+							valignment="CENTER" vgrow="SOMETIMES" />
 					</rowConstraints>
 				</GridPane>
 			</children>
 		</Pane>
-      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/back.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="/res/home.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/back.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </AnchorPane>

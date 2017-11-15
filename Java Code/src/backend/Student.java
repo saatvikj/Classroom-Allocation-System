@@ -15,6 +15,11 @@ import java.util.Map;
 
 import exceptions.NoResultFoundException;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class Student extends User {
 
 	private Map<Slot, Course> timetable;
@@ -23,43 +28,85 @@ public class Student extends User {
 	private Map<Course, Integer> tutPref = new HashMap<>();
 	private Map<Course, Integer> labPref = new HashMap<>();
 
+	/**
+	 * 
+	 * @param name
+	 * @param emailID
+	 * @param encryptedPassword
+	 * @param typeOfUser
+	 */
 	public Student(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 
+	 * @return timetable
+	 */
 	public Map<Slot, Course> getTimetable() {
 		return timetable;
 	}
 
+	/**
+	 * 
+	 * @param timetable
+	 */
 	public void setTimetable(Map<Slot, Course> timetable) {
 		this.timetable = timetable;
 	}
 
+	/**
+	 * 
+	 * @return allRequests
+	 */
 	public ArrayList<Request> getAllRequests() {
 		return allRequests;
 	}
 
+	/**
+	 * 
+	 * @param allRequests
+	 */
 	public void setAllRequests(ArrayList<Request> allRequests) {
 		this.allRequests = allRequests;
 	}
 
+	/**
+	 * 
+	 * @return tutPref
+	 */
 	public Map<Course, Integer> getTutPref() {
 		return tutPref;
 	}
 
+	/**
+	 * 
+	 * @param tutPref
+	 */
 	public void setTutPref(Map<Course, Integer> tutPref) {
 		this.tutPref = tutPref;
 	}
 
+	/**
+	 * 
+	 * @return labPref
+	 */
 	public Map<Course, Integer> getLabPref() {
 		return labPref;
 	}
 
+	/**
+	 * 
+	 * @param labPref
+	 */
 	public void setLabPref(Map<Course, Integer> labPref) {
 		this.labPref = labPref;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void makeBooking(ClassRoom reqRoom, Slot reqSlot, int reqCapacity)
 			throws ClassNotFoundException, IOException {
@@ -78,6 +125,10 @@ public class Student extends User {
 
 	}
 
+	/**
+	 * 
+	 * @param _course
+	 */
 	public void addToTimeTable(Course _course) {
 
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
@@ -86,19 +137,24 @@ public class Student extends User {
 
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(slt, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[0])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(slt, _course);
 				}
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * @param _slot
+	 * @param _course
+	 */
 	public void addToTimeTableLabs(Slot _slot, Course _course) {
 
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
@@ -107,19 +163,24 @@ public class Student extends User {
 
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[1])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(_slot, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[1])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(_slot, _course);
 				}
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * @param _slot
+	 * @param _course
+	 */
 	public void addToTimeTableTutorials(Slot _slot, Course _course) {
 
 		for (Map.Entry<Slot, List<ClassRoom>> courseTimeTable : _course.getCourseTimeTable().entrySet()) {
@@ -128,19 +189,29 @@ public class Student extends User {
 
 			if (timetable != null) {
 				if (slt.getPurpose().equals(Slot.TYPES[2])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(_slot, _course);
 				}
 			} else {
 				timetable = new HashMap<Slot, Course>();
 				if (slt.getPurpose().equals(Slot.TYPES[2])) {
-					// System.out.println(slt.getDay());
+
 					timetable.put(_slot, _course);
 				}
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * @param keywords
+	 * @param audit
+	 * @return relevantCourses
+	 * @throws NoResultFoundException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public ArrayList<Course> giveRelevantCourses(String[] keywords, boolean audit)
 			throws NoResultFoundException, ClassNotFoundException, FileNotFoundException, IOException {
 
@@ -183,14 +254,37 @@ public class Student extends User {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void viewTimeTable() {
 
 	}
 
+	/**
+	 * @return notifs
+	 */
 	public ArrayList<String> populateNotifications() {
-		return super.populateNotifications();
+
+		ArrayList<String> notifs = super.populateNotifications();
+		try {
+			deserializeRequests();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return notifs;
 	}
 
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void deserializeRequests() throws ClassNotFoundException, IOException {
 
 		ObjectInputStream in = null;
@@ -204,7 +298,6 @@ public class Student extends User {
 
 				while (true) {
 					request = (Request) in.readObject();
-					System.out.println(request.getPreferredRoom().getRoomNumber() + " " + request.getCurrentStatus());
 					if (request.getCurrentStatus() == 0) {
 						allRequests.add(request);
 					} else if (request.getCurrentStatus() == 1) {
@@ -226,7 +319,6 @@ public class Student extends User {
 							if (!flag) {
 								bookedMap.put(request.getTimeSlot(), request.getPreferredRoom());
 							}
-
 							if (this.listOfNotifications != null && !(this.listOfNotifications.contains(
 									"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
 											+ " has been accepted!"))) {
@@ -239,6 +331,7 @@ public class Student extends User {
 										"Your request for " + request.getPreferredRoom().getRoomNumber().toUpperCase()
 												+ " has been accepted!");
 							}
+
 						}
 					} else {
 
@@ -277,6 +370,11 @@ public class Student extends User {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeRequests() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -300,6 +398,12 @@ public class Student extends User {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeCourses() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*

@@ -35,6 +35,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class CreateTT2UI {
 
 	public Student currStudent;
@@ -75,6 +80,9 @@ public class CreateTT2UI {
 	@FXML
 	private GridPane relevantPane;
 
+	/**
+	 * 
+	 */
 	public void populate() {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
@@ -122,6 +130,13 @@ public class CreateTT2UI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void addCourse(MouseEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {
 
@@ -129,22 +144,23 @@ public class CreateTT2UI {
 		int selectedCourseIndex = relevantCoursesList.getSelectionModel().getSelectedIndex();
 		Course selectedCourse = relevantCourses.get(selectedCourseIndex);
 
+		boolean auditedCourse = false;
 		if (audit) {
 
 			if (!selectedCourse.getPreReqs()[0].equalsIgnoreCase("None")) {
 
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Warning!");
-				alert.setHeaderText(null);
-				alert.setContentText(
-						"You have selected to audit the course, kindly ensure that you have the following pre-requisites covered:\n" + Arrays.toString(selectedCourse.getPreReqs()));
-				alert.showAndWait();
+				String message = "You have selected to audit the course, kindly ensure that you have the following pre-requisites covered:\n"
+						+ Arrays.toString(selectedCourse.getPreReqs());
+				generateAlert("Warning", message);
 
 			}
+
+			currStudent.addToTimeTable(selectedCourse);
+			auditedCourse = true;
+			generateAlert("Success", "The audit course has been added to your time-table");
+			return;
 		}
 
-		currStudent.addToTimeTable(selectedCourse);
-		serializeUsers();
 		int countLab = 0;
 		int countTutorial = 0;
 		for (Map.Entry<Slot, List<ClassRoom>> map : selectedCourse.getCourseTimeTable().entrySet()) {
@@ -164,17 +180,97 @@ public class CreateTT2UI {
 				countTutorial++;
 			}
 		}
-		if (countLab == 0 && countTutorial == 0) {
 
-			currStudent.addToTimeTable(selectedCourse);
+		boolean existance = false;
+		boolean clashes = false;
+		boolean labExistance = false;
+		boolean tutExistance = false;
+		if (currStudent.getTimetable() != null) {
+			for (Map.Entry<Slot, Course> map : currStudent.getTimetable().entrySet()) {
+				Course c = map.getValue();
+				Slot s = map.getKey();
+				boolean flag = true;
+				for (Map.Entry<Slot, List<ClassRoom>> mp : selectedCourse.getCourseTimeTable().entrySet()) {
+					Slot selSlot = mp.getKey();
+					if (s.getDay().equals(selSlot.getDay())) {
+						flag = flag && currStudent.checkIfValidSlot(s, selSlot);
 
-		} else {
+					}
+				}
+				if (!flag) {
+					clashes = true;
+				}
+				if (c.getCourseName().equals(selectedCourse.getCourseName())) {
+					existance = true;
+					if (countLab != 0 && s.getPurpose().equals(Slot.TYPES[1])) {
+						labExistance = true;
+					} else if (countTutorial != 0 && s.getPurpose().equals(Slot.TYPES[2])) {
+						tutExistance = true;
+					}
+				}
+			}
+		}
 
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle("Confirm!");
-			alert.setHeaderText("The course has been added.");
-			alert.setResizable(false);
-			alert.setContentText("Do you want to add tutorials and labs as well?");
+		if (!existance) {
+
+			if (!clashes) {
+
+				currStudent.addToTimeTable(selectedCourse);
+				serializeUsers();
+				if (countLab == 0 && countTutorial == 0) {
+
+					currStudent.addToTimeTable(selectedCourse);
+					generateAlert("Success", "This course has been added to your time table");
+
+				} else {
+
+					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+					alert.setTitle("Confirm!");
+					alert.setHeaderText("The course has been added.");
+					alert.setResizable(false);
+					alert.setContentText("Do you want to add tutorials and labs as well?");
+					Optional<ButtonType> result = alert.showAndWait();
+					if (!result.isPresent()) {
+
+					} else if (result.get() == ButtonType.OK) {
+
+						relevantCoursesList.getItems().remove(selectedCourseIndex);
+
+						try {
+
+							FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateTT3.fxml"));
+							Stage stage = new Stage();
+							stage.setTitle("IIIT Delhi");
+							stage.setScene(new Scene(loader.load(), 800, 600));
+							CreateTT3UI controller = loader.<CreateTT3UI>getController();
+							controller.currStudent = currStudent;
+							controller.selectedCourse = relevantCourses.get(selectedCourseIndex);
+							controller.populate();
+							stage.show();
+
+							((Node) (event.getSource())).getScene().getWindow().hide();
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+					} else if (result.get() == ButtonType.CANCEL) {
+
+					}
+
+				}
+
+			} else {
+
+				generateAlert("Error", "This course conflicts with an already existing course in your time table!");
+			}
+
+		} else if ((!tutExistance && countTutorial != 0) || (!labExistance && countLab != 0)) {
+
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Warning!");
+			alert.setHeaderText("The lectures are already added in your time table.");
+			alert.setContentText("Do you want to add tutorials/labs as well?");
 			Optional<ButtonType> result = alert.showAndWait();
 			if (!result.isPresent()) {
 
@@ -204,9 +300,18 @@ public class CreateTT2UI {
 
 			}
 
+		} else {
+			generateAlert("Warning", "This course already exists in your time table");
+
 		}
+
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -229,6 +334,11 @@ public class CreateTT2UI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -251,6 +361,10 @@ public class CreateTT2UI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -270,6 +384,11 @@ public class CreateTT2UI {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -297,6 +416,12 @@ public class CreateTT2UI {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*
@@ -334,6 +459,19 @@ public class CreateTT2UI {
 
 		}
 
+	}
+
+	/**
+	 * 
+	 * @param title
+	 * @param message
+	 */
+	public void generateAlert(String title, String message) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title + "!");
+		alert.setHeaderText(null);
+		alert.setContentText(message + "!");
+		alert.showAndWait();
 	}
 
 }

@@ -22,15 +22,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class ViewAllCoursesUI {
 
 	public User currUser;
+
+	public boolean myCourses = false;
 
 	@FXML
 	private Label name;
@@ -54,6 +64,9 @@ public class ViewAllCoursesUI {
 	private Label courseCredits;
 
 	@FXML
+	private Button postConditionButton;
+
+	@FXML
 	private Label coursePreReqs;
 
 	@FXML
@@ -61,9 +74,14 @@ public class ViewAllCoursesUI {
 
 	@FXML
 	private ListView<String> courseRecordsList;
-	
+
 	private ArrayList<Course> allCourses;
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -112,15 +130,25 @@ public class ViewAllCoursesUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void populate() throws ClassNotFoundException, IOException {
 		name.setText(currUser.getName());
 		email.setText(currUser.getEmailID());
 		title.setText(currUser.getTypeOfUser().toUpperCase());
 		deserializeCourses();
 
-		for(int i = 0; i < allCourses.size(); i++){
-			courseRecordsList.getItems().add(allCourses.get(i).getCourseName());
-
+		for (int i = 0; i < allCourses.size(); i++) {
+			if (myCourses) {
+				if (currUser.getName().equals(allCourses.get(i).getInstructor())) {
+					courseRecordsList.getItems().add(allCourses.get(i).getCourseName());
+				}
+			} else {
+				courseRecordsList.getItems().add(allCourses.get(i).getCourseName());
+			}
 		}
 
 		courseRecordsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -128,21 +156,47 @@ public class ViewAllCoursesUI {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				// TODO Auto-generated method stub
-
-				int selectedindex = courseRecordsList.getSelectionModel().getSelectedIndex();
-				Course c = allCourses.get(selectedindex);
-				courseDetails.setVisible(true);
-				courseName.setText(c.getCourseName());
-				courseAcronym.setText(c.getAcronym().toUpperCase());
-				courseInstructor.setText(c.getInstructor());
-				courseCredits.setText(Integer.toString(c.getCredits()));
-				coursePreReqs.setText(Arrays.toString(c.getPreReqs()));
+				postConditionButton.setVisible(true);
+				for (int i = 0; i < allCourses.size(); i++) {
+					if (allCourses.get(i).getCourseName().equals(newValue)) {
+						Course c = allCourses.get(i);
+						courseDetails.setVisible(true);
+						courseName.setText(c.getCourseName());
+						courseAcronym.setText(c.getAcronym().toUpperCase());
+						courseInstructor.setText(c.getInstructor());
+						courseCredits.setText(Integer.toString(c.getCredits()));
+						coursePreReqs.setText(Arrays.toString(c.getPreReqs()));
+					}
+				}
 
 			}
 		});
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
+	@FXML
+	private void viewPostConds(MouseEvent event) {
+		int i = courseRecordsList.getSelectionModel().getSelectedIndex();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Post conditions");
+		alert.setHeaderText(null);
+		String post = "";
+		for (int j = 0; j < allCourses.get(i).getPostConditions().length; j++) {
+			post = post.concat(Integer.toString(j + 1) + ") " + allCourses.get(i).getPostConditions()[j] + "\n");
+		}
+		alert.setContentText(post);
+		alert.showAndWait();
+	}
+
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -191,6 +245,10 @@ public class ViewAllCoursesUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -208,7 +266,12 @@ public class ViewAllCoursesUI {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void deserializeCourses() throws IOException, ClassNotFoundException {
 		/*
 		 * Deserialize the file listofcourses.txt into the arraylist

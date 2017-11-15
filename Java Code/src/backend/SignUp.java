@@ -17,6 +17,11 @@ import exceptions.InvalidEmailException;
 import exceptions.PasswordNotMatchException;
 import exceptions.WeakPasswordException;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class SignUp {
 
 	private String name;
@@ -27,62 +32,123 @@ public class SignUp {
 	private ArrayList<User> listOfUsers = new ArrayList<User>();
 	private ArrayList<Course> allCourses = new ArrayList<Course>();
 
+	/**
+	 * 
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return emailID
+	 */
 	public String getEmailID() {
 		return emailID;
 	}
 
+	/**
+	 * 
+	 * @param emailID
+	 */
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
 	}
 
+	/**
+	 * 
+	 * @return typeOfUser
+	 */
 	public String getTypeOfUser() {
 		return typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @param typeOfUser
+	 */
 	public void setTypeOfUser(String typeOfUser) {
 		this.typeOfUser = typeOfUser;
 	}
 
+	/**
+	 * 
+	 * @return password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return confirmPassword
+	 */
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
 
+	/**
+	 * 
+	 * @param confirmPassword
+	 */
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
 
+	/**
+	 * 
+	 * @return listOfUsers
+	 */
 	public ArrayList<User> getListOfUsers() {
 		return listOfUsers;
 	}
 
+	/**
+	 * 
+	 * @param listOfUsers
+	 */
 	public void setListOfUsers(ArrayList<User> listOfUsers) {
 		this.listOfUsers = listOfUsers;
 	}
 
+	/**
+	 * 
+	 * @return allCourses
+	 */
 	public ArrayList<Course> getAllCourses() {
 		return allCourses;
 	}
 
+	/**
+	 * 
+	 * @param allCourses
+	 */
 	public void setAllCourses(ArrayList<Course> allCourses) {
 		this.allCourses = allCourses;
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws InvalidEmailException
+	 */
 	public boolean validateEmail() throws InvalidEmailException {
 		/*
 		 * It checks whether the email ID is a valid IIIT Delhi email ID or not.
@@ -102,6 +168,11 @@ public class SignUp {
 
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws WeakPasswordException
+	 */
 	public boolean checkStrongPassword() throws WeakPasswordException {
 		/*
 		 * It checks whether the entered password is strong enough or not.
@@ -137,15 +208,24 @@ public class SignUp {
 				"Password is weak. It must contain at least 8 characters, at least one digit and one alphabet.");
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String encryptPassword() {
 		/*
-		 * It encrypts the user’s password (safety feature) Encryption
-		 * function (to be thought of) Returns the encrypted password
+		 * It encrypts the user’s password (safety feature) Encryption function
+		 * (to be thought of) Returns the encrypted password
 		 */
 
 		return md5(this.password);
 	}
 
+	/**
+	 * 
+	 * @param input
+	 * @return string
+	 */
 	public static String md5(String input) {
 
 		String md5 = null;
@@ -168,8 +248,15 @@ public class SignUp {
 		return md5;
 	}
 
+	/**
+	 * 
+	 * @param facultyName
+	 * @return facCourses
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public ArrayList<Course> addCoursesToFaculty(String facultyName) throws ClassNotFoundException, IOException {
-		
+
 		/*
 		 * If the user is a faculty, iterate over the entire courses objects and
 		 * see if that faculty has any courses taught, if yes then append the
@@ -177,15 +264,22 @@ public class SignUp {
 		 */
 		deserializeCourses();
 		ArrayList<Course> facCourses = new ArrayList<Course>();
-		for(int i=0;i<allCourses.size();i++) {
-			if(allCourses.get(i).getInstructor().equalsIgnoreCase(facultyName)) {
+		for (int i = 0; i < allCourses.size(); i++) {
+			if (allCourses.get(i).getInstructor().equalsIgnoreCase(facultyName)) {
 				facCourses.add(allCourses.get(i));
 			}
 		}
-		
+
 		return facCourses;
 	}
 
+	/**
+	 * 
+	 * @param newUser
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void addUserToDatabase(User newUser) throws FileNotFoundException, ClassNotFoundException, IOException {
 		/*
 		 * First deserializes the file to populate array list,adds newUser to it
@@ -196,6 +290,11 @@ public class SignUp {
 		serializeUsers();
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 * @throws PasswordNotMatchException
+	 */
 	public boolean passwordMatch() throws PasswordNotMatchException {
 		/*
 		 * If confirmed and entered password match, it returns true, else
@@ -208,20 +307,35 @@ public class SignUp {
 			throw new PasswordNotMatchException("Passwords don't match");
 		}
 	}
-	
-	public boolean alreadyRegistered() throws AlreadyRegisteredUserException, FileNotFoundException, ClassNotFoundException, IOException {
-		
+
+	/**
+	 * 
+	 * @return boolean
+	 * @throws AlreadyRegisteredUserException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public boolean alreadyRegistered()
+			throws AlreadyRegisteredUserException, FileNotFoundException, ClassNotFoundException, IOException {
+
 		deserializeUsers();
-		for(int i=0;i<listOfUsers.size();i++) {
-			if(listOfUsers.get(i).getEmailID().equals(emailID)) {
+		for (int i = 0; i < listOfUsers.size(); i++) {
+			if (listOfUsers.get(i).getEmailID().equals(emailID)) {
 				throw new AlreadyRegisteredUserException("User is already registered!");
 			}
 		}
-		
+
 		return false;
-		
+
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void deserializeUsers() throws FileNotFoundException, IOException, ClassNotFoundException {
 
 		ObjectInputStream in = null;
@@ -256,6 +370,11 @@ public class SignUp {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeUsers() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -277,6 +396,11 @@ public class SignUp {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void deserializeCourses() throws IOException, ClassNotFoundException {
 		/*
 		 * Deserialize the file listofcourses.txt into the arraylist

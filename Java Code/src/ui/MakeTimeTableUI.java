@@ -28,6 +28,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class MakeTimeTableUI {
 
 	public Student currStudent;
@@ -49,6 +54,10 @@ public class MakeTimeTableUI {
 
 	boolean flag = false;
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void credit(ActionEvent event) {
 
@@ -73,6 +82,10 @@ public class MakeTimeTableUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void audit(ActionEvent event) {
 
@@ -98,6 +111,12 @@ public class MakeTimeTableUI {
 
 	private ArrayList<String> rel = new ArrayList<String>();
 
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void populate() throws ClassNotFoundException, FileNotFoundException, IOException {
 		name.setText(currStudent.getName());
 		email.setText(currStudent.getEmailID());
@@ -106,6 +125,13 @@ public class MakeTimeTableUI {
 		searchKeyword.getEntries().addAll(rel);
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@FXML
 	private void searchResults(MouseEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 
@@ -166,6 +192,12 @@ public class MakeTimeTableUI {
 		}
 	}
 
+	/**
+	 * 
+	 * @param enteredName
+	 * @param enteredEmail
+	 * @return boolean
+	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail) {
 
 		if (enteredName.length() == 0 || enteredEmail.length() == 0) {
@@ -176,6 +208,11 @@ public class MakeTimeTableUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void homeButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -198,6 +235,11 @@ public class MakeTimeTableUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws ClassNotFoundException
+	 */
 	@FXML
 	private void backButtonClicked(MouseEvent event) throws ClassNotFoundException {
 
@@ -220,6 +262,10 @@ public class MakeTimeTableUI {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void logout(MouseEvent event) {
 
@@ -239,6 +285,12 @@ public class MakeTimeTableUI {
 
 	}
 
+	/**
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 */
 	public void deserializeAutoCompleteText() throws IOException, ClassNotFoundException, FileNotFoundException {
 
 		/*

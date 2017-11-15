@@ -9,17 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.geometry.*?>
 
-<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ViewTimeTableUI">
+<Pane id="homePane" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+	prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ViewTimeTableUI">
 	<children>
 		<GridPane alignment="CENTER_RIGHT" layoutX="225.0">
 			<columnConstraints>
-				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="575.0" />
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+					minWidth="10.0" prefWidth="575.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="150.0"
+					vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP" text="saatvik16261@iiitd.ac.in">
+				<Label fx:id="email" alignment="CENTER_RIGHT" contentDisplay="TOP"
+					text="saatvik16261@iiitd.ac.in">
 					<font>
 						<Font name="Segoe UI Bold" size="14.0" />
 					</font>
@@ -47,15 +53,18 @@
 				</Label>
 			</children>
 		</GridPane>
-		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0" text=" YOUR TIME-TABLE">
+		<Label alignment="TOP_LEFT" layoutX="60.0" layoutY="160.0"
+			text=" YOUR TIME-TABLE">
 			<font>
 				<Font name="Segoe UI" size="36.0" />
 			</font>
 		</Label>
-		<ListView fx:id="timetableList" layoutX="76.0" layoutY="260.0" prefHeight="200.0" prefWidth="300.0">
-			
+		<ListView fx:id="timetableList" layoutX="76.0" layoutY="260.0"
+			prefHeight="200.0" prefWidth="300.0">
+
 		</ListView>
-		<Label layoutX="76.0" layoutY="220.0" text="Today's Time-Table">
+		<Label fx:id="dayHeader" layoutX="76.0" layoutY="220.0"
+			text="Today's Time-Table">
 			<font>
 				<Font name="Segoe UI" size="16.0" />
 			</font>
@@ -65,29 +74,40 @@
 				<Font name="Segoe UI" size="18.0" />
 			</font>
 		</Label>
-		<MenuButton fx:id="dayPicker" layoutX="540.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Day">
+		<MenuButton fx:id="dayPicker" layoutX="540.0" layoutY="302.0"
+			mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Day">
 			<items>
-				<CheckMenuItem mnemonicParsing="false" onAction="#monday" text="Monday" />
-				<CheckMenuItem mnemonicParsing="false" onAction="#tuesday" text="Tuesday" />
-				<CheckMenuItem mnemonicParsing="false" onAction="#wednesday" text="Wednesday" />
-				<CheckMenuItem mnemonicParsing="false" onAction="#thursday" text="Thursday" />
-				<CheckMenuItem mnemonicParsing="false" onAction="#friday" text="Friday" />				
+				<CheckMenuItem mnemonicParsing="false" onAction="#monday"
+					text="Monday" />
+				<CheckMenuItem mnemonicParsing="false" onAction="#tuesday"
+					text="Tuesday" />
+				<CheckMenuItem mnemonicParsing="false" onAction="#wednesday"
+					text="Wednesday" />
+				<CheckMenuItem mnemonicParsing="false" onAction="#thursday"
+					text="Thursday" />
+				<CheckMenuItem mnemonicParsing="false" onAction="#friday"
+					text="Friday" />
 			</items>
 		</MenuButton>
-      <ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0" layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/back.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0" layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/res/logouticon.png" />
-         </image>
-      </ImageView>
+		<ImageView fitHeight="75.0" fitWidth="75.0" onMouseClicked="#homeButtonClicked"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="/res/home.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="75.0"
+			layoutY="8.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/back.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="150.0"
+			layoutY="8.0" onMouseClicked="#logout" pickOnBounds="true"
+			preserveRatio="true">
+			<image>
+				<Image url="/res/logouticon.png" />
+			</image>
+		</ImageView>
 	</children>
 </Pane>

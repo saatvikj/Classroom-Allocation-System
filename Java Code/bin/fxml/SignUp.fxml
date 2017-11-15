@@ -28,7 +28,8 @@
 				<MenuButton fx:id="userType" layoutX="100.0" layoutY="436.0"
 					mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Type of User">
 					<items>
-						<CheckMenuItem mnemonicParsing="false" onAction="#admin" text="Admin" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#admin"
+							text="Admin" />
 						<CheckMenuItem mnemonicParsing="false" onAction="#faculty"
 							text="Faculty" />
 						<CheckMenuItem mnemonicParsing="false" onAction="#student"

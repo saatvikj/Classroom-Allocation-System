@@ -11,26 +11,53 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Saatvik Jain & Meghna Gupta
+ *
+ */
 public class Admin extends User {
-	
+
 	private transient ArrayList<Request> listOfRequests;
-	
+
+	/**
+	 * 
+	 * @param name
+	 * @param emailID
+	 * @param encryptedPassword
+	 * @param typeOfUser
+	 */
 	public Admin(String name, String emailID, String encryptedPassword, String typeOfUser) {
 		super(name, emailID, encryptedPassword, typeOfUser);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 
+	 * @return listOfRequests
+	 */
 	public ArrayList<Request> getListOfRequests() {
 		return listOfRequests;
 	}
 
+	/**
+	 * 
+	 * @param listOfRequests
+	 */
 	public void setListOfRequests(ArrayList<Request> listOfRequests) {
 		this.listOfRequests = listOfRequests;
 	}
-	
-	public void handleRequests(int indexOfRequest, boolean choice) throws FileNotFoundException, IOException, ClassNotFoundException
-	{
-		if(choice == false) {
+
+	/**
+	 * 
+	 * @param indexOfRequest
+	 * @param choice
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void handleRequests(int indexOfRequest, boolean choice)
+			throws FileNotFoundException, IOException, ClassNotFoundException {
+		if (choice == false) {
 			listOfRequests.get(indexOfRequest).setCurrentStatus(-1);
 		} else {
 			deserializeRooms();
@@ -38,9 +65,10 @@ public class Admin extends User {
 			Slot requestSlot = currRequest.getTimeSlot();
 			String day = requestSlot.getDay();
 			listOfRequests.get(indexOfRequest).setCurrentStatus(1);
-			ClassRoom room = getCorrespondingRoom(listOfRequests.get(indexOfRequest).getPreferredRoom().getRoomNumber());
-			
-			if(room.getBookedSlots().containsKey(day)){
+			ClassRoom room = getCorrespondingRoom(
+					listOfRequests.get(indexOfRequest).getPreferredRoom().getRoomNumber());
+
+			if (room.getBookedSlots().containsKey(day)) {
 				Map<Slot, Object> requestDayMap = room.getBookedSlots().get(day);
 				requestDayMap.put(requestSlot, currRequest.getSourceStudent());
 			} else {
@@ -48,40 +76,35 @@ public class Admin extends User {
 				newMap.put(requestSlot, currRequest.getSourceStudent());
 				room.getBookedSlots().put(day, newMap);
 			}
-			
-			System.out.println(listOfRequests.get(indexOfRequest).getCurrentStatus());
+
 			serializeRooms();
 		}
-		
-		System.out.println("serialize done");
+
 		serializeRequests();
 	}
-	
-	public void addToStudent()
-	{
-		
-	}
-	
-	public void addToRoom()
-	{
-		
-	}
-	
-	public ArrayList<String> populateNotifications()
-	{
-		
+
+	/**
+	 * @return listNotif
+	 */
+	public ArrayList<String> populateNotifications() {
+
 		ArrayList<String> listNotif = super.populateNotifications();
 		int count = 0;
-		for(int i = 0; i< listOfRequests.size(); i++){
-			if(listOfRequests.get(i).getCurrentStatus() == 0){
+		for (int i = 0; i < listOfRequests.size(); i++) {
+			if (listOfRequests.get(i).getCurrentStatus() == 0) {
 				count = count + 1;
 			}
 		}
 		listNotif.add("You have " + count + " requests pending!");
-		
+
 		return listNotif;
 	}
-	
+
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void deserializeRequests() throws ClassNotFoundException, IOException {
 
 		ObjectInputStream in = null;
@@ -95,7 +118,7 @@ public class Admin extends User {
 
 				while (true) {
 					request = (Request) in.readObject();
-					if(request.getCurrentStatus() == 0) {
+					if (request.getCurrentStatus() == 0) {
 						listOfRequests.add(request);
 					}
 				}
@@ -117,6 +140,11 @@ public class Admin extends User {
 
 	}
 
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void serializeRequests() throws FileNotFoundException, IOException {
 
 		ObjectOutputStream out = null;
@@ -139,9 +167,5 @@ public class Admin extends User {
 		}
 
 	}
-
-	
-
-	
 
 }
