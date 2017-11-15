@@ -76,8 +76,9 @@ public class MakeRequestUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for click of submit request button. It creates a new
+	 * request and serializes it into the database.
+	 * @param event The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -115,11 +116,7 @@ public class MakeRequestUI {
 				}
 			}
 			if (check) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Alert!");
-				alert.setHeaderText(null);
-				alert.setContentText("Your request has been submitted!");
-				alert.showAndWait();
+				generateAlert("Alert!", "Your request has been submitted!");
 				preferredRoom.setText("");
 				reqCapacity.setText("");
 				date.getEditor().clear();
@@ -128,31 +125,23 @@ public class MakeRequestUI {
 				endTime.setText("");
 				currUser.makeBooking(userRoom, userSlot, reqCap);
 			} else {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Error!");
-				alert.setHeaderText(null);
-				alert.setContentText("The room is already booked, please make another request.");
-				alert.showAndWait();
+				generateAlert("Error!", "The room is already booked, please make another request");
 			}
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Error!");
-			alert.setHeaderText(null);
-			alert.setContentText("At least one of the fields is empty, try again.");
-			alert.showAndWait();
+			generateAlert("Error!","At least one of the fields is empty, try again.");
 		}
 
 	}
 
 	/**
-	 * 
+	 * It checks whether all fields entered are filled or not
 	 * @param text
 	 * @param text2
 	 * @param text3
 	 * @param text4
 	 * @param text5
 	 * @param b
-	 * @return boolean
+	 * @return boolean: returns true if all fields are filled, else returns false
 	 */
 	public boolean checkEmptiness(String text, String text2, String text3, String text4, String text5, boolean b) {
 		// TODO Auto-generated method stub
@@ -165,8 +154,8 @@ public class MakeRequestUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -192,8 +181,8 @@ public class MakeRequestUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of back button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -219,8 +208,8 @@ public class MakeRequestUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of logout button
+	 * @param event: The  mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -242,7 +231,7 @@ public class MakeRequestUI {
 	}
 	
 	/**
-	 * 
+	 * It disables the cells of the datepicker before the current date
 	 * @return dayCellFactory
 	 */
 	private Callback<DatePicker, DateCell> getDayCellFactory() {
@@ -268,5 +257,19 @@ public class MakeRequestUI {
         return dayCellFactory;
     }
 
+	/**
+	 * This function is used to display an alert with the given 
+	 * specifications.
+	 * @param title: The title of the alert
+	 * @param message: The content of the alert
+	 */
+	public generateAlert(String title, String message) {
 
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(title);
+				alert.setHeaderText(null);
+				alert.setContentText(message);
+				alert.showAndWait();
+
+	}
 }

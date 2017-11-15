@@ -57,8 +57,8 @@ public class BookedRoomsUI {
 	private ListView<String> roomRecordsList;
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -110,7 +110,9 @@ public class BookedRoomsUI {
 	}
 
 	/**
-	 * 
+	 * This function sets the name, email ID and title of the
+	 * current logged in user and populates it's list with list
+	 * of booked rooms of the user.
 	 */
 	public void populate() {
 		name.setText(currUser.getName());
@@ -168,8 +170,8 @@ public class BookedRoomsUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of check availibility of room
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void checkAvail(MouseEvent event) {
@@ -193,8 +195,8 @@ public class BookedRoomsUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of back button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -246,8 +248,8 @@ public class BookedRoomsUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of logout
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {

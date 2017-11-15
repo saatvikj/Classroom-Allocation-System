@@ -78,8 +78,8 @@ public class ViewAllCoursesUI {
 	private ArrayList<Course> allCourses;
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -131,7 +131,9 @@ public class ViewAllCoursesUI {
 	}
 
 	/**
-	 * 
+	 * This sets the name, email ID and title of the current
+	 * logged in user and populates the list of courses based 
+	 * on choice.
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -175,8 +177,8 @@ public class ViewAllCoursesUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of view post conditions
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void viewPostConds(MouseEvent event) {
@@ -193,8 +195,8 @@ public class ViewAllCoursesUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of back button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -246,8 +248,8 @@ public class ViewAllCoursesUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of logout button
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -268,14 +270,11 @@ public class ViewAllCoursesUI {
 	}
 
 	/**
-	 * 
+	 * This deserializes the courses into the class
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
 	public void deserializeCourses() throws IOException, ClassNotFoundException {
-		/*
-		 * Deserialize the file listofcourses.txt into the arraylist
-		 */
 
 		ObjectInputStream in = null;
 		allCourses = new ArrayList<Course>();

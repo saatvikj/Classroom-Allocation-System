@@ -81,7 +81,9 @@ public class CreateTT2UI {
 	private GridPane relevantPane;
 
 	/**
-	 * 
+	 * This function sets the name, email ID and title of the 
+	 * current logged in user, and then populates its list 
+	 * with the list of relevant courses generated from previous page.
 	 */
 	public void populate() {
 		name.setText(currStudent.getName());
@@ -131,8 +133,12 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * It first checks the selected course type, if it is audit then directly adds
+	 * to the time table and displays a warning with the pre-requisites, but if the 
+	 * course is credit then it checks for clashes, if no clashes are there, it adds the
+	 * course to the time table and in case the course has tutorials/labs then gives an option
+	 * to add those as well and then serializes the user.
+	 * @param event: The mouse event
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -262,7 +268,7 @@ public class CreateTT2UI {
 
 			} else {
 
-				generateAlert("Error", "This course conflicts with an already existing course in your time table!");
+				generateAlert("Error", "This course conflicts with an already existing course in your time table");
 			}
 
 		} else if ((!tutExistance && countTutorial != 0) || (!labExistance && countLab != 0)) {
@@ -308,8 +314,8 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -335,8 +341,8 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of back button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -362,8 +368,8 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of logout
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -385,7 +391,7 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
+	 * This serializes the list of users back into the database
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -417,7 +423,7 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
+	 * This deserializes the list of users into the class
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
@@ -462,9 +468,10 @@ public class CreateTT2UI {
 	}
 
 	/**
-	 * 
-	 * @param title
-	 * @param message
+	 * This function is used to display an alert with the given 
+	 * specifications.
+	 * @param title: The title of the alert
+	 * @param message: The content of the alert
 	 */
 	public void generateAlert(String title, String message) {
 		Alert alert = new Alert(AlertType.INFORMATION);

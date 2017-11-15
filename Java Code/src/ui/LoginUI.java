@@ -39,8 +39,8 @@ public class LoginUI {
 	private PasswordField userPassword;
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of login button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -53,12 +53,7 @@ public class LoginUI {
 
 		boolean validity = checkEmptiness(email, password);
 		if (!validity) {
-
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Error!");
-			alert.setHeaderText(null);
-			alert.setContentText("At least one of the fields is empty, try again.");
-			alert.showAndWait();
+					generateAlert("Error!", "At least one of the fields is empty, try again.");
 		}
 
 		if (validity) {
@@ -77,27 +72,15 @@ public class LoginUI {
 						allResults = true;
 					} catch (WrongPasswordException e) {
 						// TODO: handle exception
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Error!");
-						alert.setHeaderText(null);
-						alert.setContentText(e.getMessage());
-						alert.showAndWait();
+					generateAlert("Error!", e.getMessage());						
 					}
 
 				} catch (UnregisteredUserExcpetion e) {
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Error!");
-					alert.setHeaderText(null);
-					alert.setContentText(e.getMessage());
-					alert.showAndWait();
+					generateAlert("Error!", e.getMessage());					
 				}
 
 			} catch (InvalidEmailException e) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Error!");
-				alert.setHeaderText(null);
-				alert.setContentText(e.getMessage());
-				alert.showAndWait();
+					generateAlert("Error!", e.getMessage());
 			}
 
 			if (allResults) {
@@ -145,11 +128,7 @@ public class LoginUI {
 
 				} catch (UnregisteredUserExcpetion e) {
 					// TODO Auto-generated catch block
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Error!");
-					alert.setHeaderText(null);
-					alert.setContentText(e.getMessage());
-					alert.showAndWait();
+					generateAlert("Error!", e.getMessage());
 				}
 
 			}
@@ -159,10 +138,10 @@ public class LoginUI {
 	}
 
 	/**
-	 * 
+	 * This checks whether all the fields are filled or not
 	 * @param enteredEmail
 	 * @param enteredPassword
-	 * @return boolean
+	 * @return boolean: returns true if all fields are filled, else returns false
 	 */
 	public boolean checkEmptiness(String enteredEmail, String enteredPassword) {
 
@@ -175,7 +154,7 @@ public class LoginUI {
 	}
 
 	/**
-	 * 
+	 * The handler for mouse click of back button
 	 * @param event
 	 */
 	@FXML
@@ -195,6 +174,22 @@ public class LoginUI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	/**
+	 * This function is used to display an alert with the given 
+	 * specifications.
+	 * @param title: The title of the alert
+	 * @param message: The content of the alert
+	 */
+	public generateAlert(String title, String message) {
+
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(title);
+				alert.setHeaderText(null);
+				alert.setContentText(message);
+				alert.showAndWait();
 
 	}
 

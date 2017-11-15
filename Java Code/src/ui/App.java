@@ -16,7 +16,8 @@ import javafx.scene.paint.Color;
 public class App extends Application {
 
 	/**
-	 * 
+	 * The main function that runs the GUI.
+	 * @param primaryStage: The main stage to run the GUI
 	 */
 	@Override
 	public void start(Stage primaryStage) {
@@ -35,7 +36,7 @@ public class App extends Application {
 	}
 
 	/**
-	 * 
+	 * The main function that launches the application.
 	 * @param args
 	 */
 	public static void main(String[] args) {

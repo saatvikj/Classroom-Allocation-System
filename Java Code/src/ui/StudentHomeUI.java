@@ -41,7 +41,8 @@ public class StudentHomeUI {
 	private Label emailStudent;
 
 	/**
-	 * 
+	 * This sets the name and email ID of the current
+	 * logged in student.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -56,8 +57,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of notifications tab.
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -84,8 +85,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of view booked rooms
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void viewBookedRooms(MouseEvent event) {
@@ -111,8 +112,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of cancel booking
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void cancelBooking(MouseEvent event) {
@@ -136,8 +137,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of make request
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void makeRequest(MouseEvent event) {
@@ -161,8 +162,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of make time table
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -187,8 +188,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of view time table
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -214,8 +215,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of cancel request
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -241,8 +242,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of logout button
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -264,7 +265,7 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
+	 * This serializes the list of users back into the database
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -296,18 +297,13 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
+	 * This deserializes the user into the class
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 */
 	public void deserializeUsers() throws IOException, ClassNotFoundException, FileNotFoundException {
 
-		/*
-		 * Deserializes the list of registered users into the ArrayList so that
-		 * checking can be done.
-		 * 
-		 */
 		ObjectInputStream in = null;
 
 		try {
@@ -341,8 +337,8 @@ public class StudentHomeUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of view all course
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -354,6 +350,7 @@ public class StudentHomeUI {
 			stage.setScene(new Scene((Parent) loader.load(), 800, 600));
 			ViewAllCoursesUI controller = loader.<ViewAllCoursesUI>getController();
 			controller.currUser = currStudent;
+			controller.myCourses = false;
 			controller.populate();
 
 			stage.show();

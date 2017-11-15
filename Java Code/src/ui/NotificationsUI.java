@@ -39,7 +39,9 @@ public class NotificationsUI {
 	private ListView<String> notificationsListView;
 
 	/**
-	 * 
+	 * This sets the name, email ID and title of the current
+	 * logged in user and populates the notifications according
+	 * to the type of user.
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
@@ -57,6 +59,9 @@ public class NotificationsUI {
 			Student currStudent = (Student) currUser;
 			// currStudent.deserializeRequests();
 			notifs = currStudent.populateNotifications();
+		} else {
+			Faculty currFaculty = (Faculty) currUser;
+			notifs = currFaculty.populateNotifications();
 		}
 		if (notifs.size() == 0) {
 			notificationsListView.getItems().add("You have no notifications!");
@@ -68,8 +73,8 @@ public class NotificationsUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler of the mouse click of logout button 
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -91,8 +96,8 @@ public class NotificationsUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler of the mouse click of the home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML

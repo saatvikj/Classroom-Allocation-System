@@ -68,8 +68,8 @@ public class CancelBooking {
 	private Button cancelBookingButton;
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -121,7 +121,9 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
+	 * This function sets the name, email ID and title of the
+	 * current logged in user and populates it's list with list
+	 * of current bookings of the user.
 	 */
 	public void populate() {
 		name.setText(currUser.getName());
@@ -180,8 +182,8 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of back button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -233,8 +235,10 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of cancel booking button
+	 * It goes through the current user's bookings, removes the selected
+	 * booking and serializes the user again.
+	 * @param event: The mouse event
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -300,8 +304,8 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * This is handler for mouse click of logout
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -323,7 +327,7 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
+	 * This deserializes the list of users into the class.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
@@ -368,7 +372,7 @@ public class CancelBooking {
 	}
 
 	/**
-	 * 
+	 * This serializes the list of users back into the database.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */

@@ -55,8 +55,8 @@ public class MakeTimeTableUI {
 	boolean flag = false;
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for clicking of credit in drop down list
+	 * @param event: The event
 	 */
 	@FXML
 	public void credit(ActionEvent event) {
@@ -83,8 +83,8 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for clicking of audit on drop down list
+	 * @param event: the event
 	 */
 	@FXML
 	public void audit(ActionEvent event) {
@@ -112,7 +112,8 @@ public class MakeTimeTableUI {
 	private ArrayList<String> rel = new ArrayList<String>();
 
 	/**
-	 * 
+	 * This sets the name and email ID of current logged in
+	 * student and populates the auto complete textfield suggestions 
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -126,8 +127,9 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of search button, it sets the course type and 
+	 * relevant courses list for the next page.
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -176,27 +178,19 @@ public class MakeTimeTableUI {
 				}
 
 			} catch (NoResultFoundException e) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Error!");
-				alert.setHeaderText(null);
-				alert.setContentText(e.getMessage());
-				alert.showAndWait();
+				generateAlert("Error!",e.getMessage());
 			}
 
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Error!");
-			alert.setHeaderText(null);
-			alert.setContentText("At least one of the fields is empty, try again.");
-			alert.showAndWait();
+			generateAlert("Error!","At least one of the fields is empty, try again.!");
 		}
 	}
 
 	/**
-	 * 
+	 * This checks whether all entered fields are filled or not
 	 * @param enteredName
 	 * @param enteredEmail
-	 * @return boolean
+	 * @return boolean: returns true if all fields are filled, else returns false
 	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail) {
 
@@ -209,8 +203,8 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of home button
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -236,8 +230,8 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of back button 
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -263,8 +257,8 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of logout page
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -286,18 +280,13 @@ public class MakeTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * This deserializes the auto complete text suggestions
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 */
 	public void deserializeAutoCompleteText() throws IOException, ClassNotFoundException, FileNotFoundException {
 
-		/*
-		 * Deserializes the list of registered users into the ArrayList so that
-		 * checking can be done.
-		 * 
-		 */
 		ObjectInputStream in = null;
 
 		try {
@@ -327,6 +316,22 @@ public class MakeTimeTableUI {
 			}
 
 		}
+
+	}
+
+	/**
+	 * This function is used to display an alert with the given 
+	 * specifications.
+	 * @param title: The title of the alert
+	 * @param message: The content of the alert
+	 */
+	public generateAlert(String title, String message) {
+
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle(title);
+				alert.setHeaderText(null);
+				alert.setContentText(message);
+				alert.showAndWait();
 
 	}
 

@@ -59,7 +59,9 @@ public class ViewTimeTableUI {
 	String currDay = null;
 
 	/**
-	 * 
+	 * This sets the name and email ID of the current
+	 * logged in user and populates the list according
+	 * to the time table of current day.
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -85,7 +87,6 @@ public class ViewTimeTableUI {
 			currDay = "Saturday";
 		}
 
-		System.out.println(day);
 		if (currStudent.getTimetable() != null) {
 			for (Map.Entry<Slot, Course> mp : currStudent.getTimetable().entrySet()) {
 				Slot s = mp.getKey();
@@ -103,7 +104,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * Handler for selection of monday in drop down
+	 * It displays monday's time table
 	 */
 	@FXML
 	private void monday() {
@@ -142,7 +144,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * Handler for selection of tuesday in drop down
+	 * It displays tuesday's time table
 	 */
 	@FXML
 	private void tuesday() {
@@ -179,7 +182,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * Handler for selection of wednesday in drop down
+	 * It displays wednesday's time table
 	 */
 	@FXML
 	private void wednesday() {
@@ -216,7 +220,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * Handler for selection of thursday in drop down
+	 * It displays thursday's time table
 	 */
 	@FXML
 	private void thursday() {
@@ -253,7 +258,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * Handler for selection of friday in drop down
+	 * It displays friday's time table
 	 */
 	@FXML
 	private void friday() {
@@ -290,8 +296,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of home button.
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -316,8 +322,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of back button.
+	 * @param event: The mouse event
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
@@ -342,8 +348,8 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * Handler for mouse click of logout button.
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void logout(MouseEvent event) {
@@ -365,10 +371,11 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
-	 * @param c
-	 * @param s
-	 * @param currDay
+	 * This displays the time table of the current day
+	 * based on the parameters
+	 * @param c : The course
+	 * @param s : The time slot
+	 * @param currDay : Current day
 	 */
 	public void displayDayTimeTable(Course c, Slot s, String currDay) {
 		Map<Course, Integer> labPreferences = null;
@@ -404,7 +411,7 @@ public class ViewTimeTableUI {
 	}
 
 	/**
-	 * 
+	 * This deserializes the users into the class
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException

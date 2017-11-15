@@ -21,8 +21,8 @@ import javafx.stage.Stage;
 public class HomePageUI {
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of sign up button
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void openSignUp(ActionEvent event) {
@@ -43,8 +43,8 @@ public class HomePageUI {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * The handler for mouse click of sign up button
+	 * @param event: The mouse event
 	 */
 	@FXML
 	private void openLogin(ActionEvent event) {
