@@ -21,8 +21,8 @@
 			prefHeight="40.0" prefWidth="600.0" promptText="Email Address" />
 		<PasswordField fx:id="userPassword" layoutX="100.0"
 			layoutY="304.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
-		<Button id="button" fx:id="loginButton" layoutX="300.0"
-			layoutY="392.0" mnemonicParsing="false" onAction="#login" prefHeight="50.0"
+		<Button id="button" layoutX="300.0" layoutY="392.0"
+			mnemonicParsing="false" onAction="#login" prefHeight="50.0"
 			prefWidth="200.0" text="LOGIN" />
 		<ImageView fitHeight="60.0" fitWidth="60.0" layoutX="729.0"
 			layoutY="527.0" onMouseClicked="#backButtonClicked" pickOnBounds="true"
@@ -31,5 +31,11 @@
 				<Image url="/res/back.png" />
 			</image>
 		</ImageView>
+		<Label layoutX="238.0" layoutY="483.0" onMouseClicked="#alterPass"
+			text="Forgot Password?  | Reset Your Password">
+			<font>
+				<Font name="Segoe UI" size="18.0" />
+			</font>
+		</Label>
 	</children>
 </Pane>
