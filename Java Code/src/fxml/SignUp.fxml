@@ -6,9 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="49.0" prefWidth="83.0" stylesheets="@application.css"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ui.SignUpUI">
+<AnchorPane prefHeight="49.0" prefWidth="83.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SignUpUI">
 	<children>
 		<Pane id="homePane" prefHeight="600.0" prefWidth="800.0">
 			<children>
@@ -17,46 +15,30 @@
 						<Font name="Segoe UI" size="36.0" />
 					</font>
 				</Label>
-				<TextField fx:id="userName" layoutX="100.0" layoutY="95.0"
-					prefHeight="40.0" prefWidth="600.0" promptText="Name" />
-				<TextField fx:id="userEmail" layoutX="100.0" layoutY="159.0"
-					prefHeight="40.0" prefWidth="600.0" promptText="Email ID" />
-				<PasswordField fx:id="userPass" layoutX="100.0"
-					layoutY="221.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
-				<PasswordField fx:id="userConfirmPass" layoutX="100.0"
-					layoutY="285.0" prefHeight="40.0" prefWidth="600.0" promptText="Confirm Password" />
-				<MenuButton fx:id="userType" layoutX="100.0" layoutY="477.0"
-					mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Type of User">
+				<TextField fx:id="userName" layoutX="100.0" layoutY="95.0" prefHeight="40.0" prefWidth="600.0" promptText="Name" />
+				<TextField fx:id="userEmail" layoutX="100.0" layoutY="159.0" prefHeight="40.0" prefWidth="600.0" promptText="Email ID" />
+				<PasswordField fx:id="userPass" layoutX="100.0" layoutY="221.0" prefHeight="40.0" prefWidth="600.0" promptText="Password" />
+				<PasswordField fx:id="userConfirmPass" layoutX="100.0" layoutY="285.0" prefHeight="40.0" prefWidth="600.0" promptText="Confirm Password" />
+				<MenuButton fx:id="securityQuestion" layoutX="100.0" layoutY="349.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Security Question">
 					<items>
-						<CheckMenuItem mnemonicParsing="false" onAction="#admin"
-							text="Admin" />
-						<CheckMenuItem mnemonicParsing="false" onAction="#faculty"
-							text="Faculty" />
-						<CheckMenuItem mnemonicParsing="false" onAction="#student"
-							text="Student" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#q1" text="What was the name of your elementary/primary school?" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#q2" text="What is the first name of your best friend in high school?" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#q3" text="What was your childhood nickname?" />
 					</items>
 				</MenuButton>
-				<Button id="button" layoutX="300.0" layoutY="535.0"
-					mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0"
-					prefWidth="200.0" text="REGISTER">
+				<TextField fx:id="securityAnswer" layoutX="100.0" layoutY="413.0" prefHeight="40.0" prefWidth="600.0" promptText="Answer" />
+				<MenuButton fx:id="userType" layoutX="100.0" layoutY="477.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="Type of User">
+					<items>
+						<CheckMenuItem mnemonicParsing="false" onAction="#admin" text="Admin" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#faculty" text="Faculty" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#student" text="Student" />
+					</items>
+				</MenuButton>
+				<Button id="button" layoutX="300.0" layoutY="535.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="50.0" prefWidth="200.0" text="REGISTER">
 					<font>
 						<Font name="Segoe UI" size="16.0" />
 					</font>
 				</Button>
-				<MenuButton fx:id="securityQuestion" layoutX="100.0"
-					layoutY="349.0" mnemonicParsing="false" prefHeight="40.0"
-					prefWidth="600.0" text="Security Question">
-					<items>
-						<CheckMenuItem mnemonicParsing="false" onAction="#q1"
-							text="What was the name of your elementary/primary school?" />
-						<CheckMenuItem mnemonicParsing="false" onAction="#q2"
-							text="What is the first name of your best friend in high school?" />
-						<CheckMenuItem mnemonicParsing="false" onAction="#q3"
-							text="What was your childhood nickname?" />
-					</items>
-				</MenuButton>
-				<PasswordField fx:id="securityAnswer" layoutX="100.0"
-					layoutY="413.0" prefHeight="40.0" prefWidth="600.0" promptText="Answer" />
 			</children>
 		</Pane>
 	</children>

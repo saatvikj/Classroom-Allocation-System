@@ -46,9 +46,10 @@ public class LoginUI {
 	 * 
 	 * @param event:
 	 *            The mouse event
+	 * @throws ClassNotFoundException 
 	 */
 	@FXML
-	private void alterPass(MouseEvent event) {
+	private void alterPass(MouseEvent event) throws ClassNotFoundException {
 
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("");

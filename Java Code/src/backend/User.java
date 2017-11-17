@@ -8,12 +8,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import exceptions.WeakPasswordException;
 
 /**
  * 
@@ -202,6 +207,87 @@ public class User implements Serializable {
 		this.listOfNotifications = listOfNotifications;
 	}
 
+	/**
+	 * 
+	 * 
+	 * It encrypts the user’s password (safety feature) Encryption function (to
+	 * be thought of) Returns the encrypted password
+	 * 
+	 * @return
+	 */
+	public String encryptPassword(String password) {
+
+		return md5(password);
+	}
+
+	/**
+	 * 
+	 * md5 encryption method.
+	 * 
+	 * @param input
+	 * @return string
+	 */
+	public static String md5(String input) {
+
+		String md5 = null;
+		if (null == input)
+			return null;
+		try {
+			// Create MessageDigest object for MD5
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+
+			// Update input string in message digest
+			digest.update(input.getBytes(), 0, input.length());
+
+			// Converts message digest value in base 16 (hex)
+			md5 = new BigInteger(1, digest.digest()).toString(16);
+
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+		}
+		return md5;
+	}
+	
+	/**
+	 * 
+	 * It checks whether the entered password is strong enough or not. Length >=
+	 * 8 At Least one digit and at least one alphabet Returns true when a
+	 * password is strong, false when it is not
+	 * 
+	 * @return boolean
+	 * @throws WeakPasswordException
+	 */
+	public boolean checkStrongPassword(String password) throws WeakPasswordException {
+
+		String pass = password;
+		if (pass.length() >= 8) {
+			boolean flag = false;
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isDigit(pass.charAt(i))) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag == true) {
+				boolean check = false;
+				for (int i = 0; i < pass.length(); i++) {
+					if (Character.isUpperCase(pass.charAt(i)) || Character.isLowerCase(pass.charAt(i))) {
+						check = true;
+						break;
+					}
+				}
+				if (check == true) {
+					return true;
+				}
+			}
+
+		}
+
+		throw new WeakPasswordException(
+				"Password is weak. It must contain at least 8 characters, at least one digit and one alphabet.");
+	}
+	
 	/**
 	 * It directly calls the method checkIfValidSlot with reqSlot as the
 	 * parameter.
