@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 /**
- * 
+ * This is the main application, made with <3 by Meghna & Saatvik
  * @author Saatvik Jain & Meghna Gupta
  *
  */
