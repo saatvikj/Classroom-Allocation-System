@@ -17,15 +17,17 @@ public class Faculty extends User {
 	private String[] week = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
 	/**
-	 * Parameterized constructor of the Class Faculty
+	 * Parametrized constructor for faculty object
 	 * 
 	 * @param name
 	 * @param emailID
 	 * @param encryptedPassword
 	 * @param typeOfUser
+	 * @param securityQuestion
+	 * @param securityAnswer
 	 */
-	public Faculty(String name, String emailID, String encryptedPassword, String typeOfUser) {
-		super(name, emailID, encryptedPassword, typeOfUser);
+	public Faculty(String name, String emailID, String encryptedPassword, String typeOfUser, String securityQuestion, String securityAnswer) {
+		super(name, emailID, encryptedPassword, typeOfUser, securityQuestion, securityAnswer);
 	}
 
 	/**

@@ -29,9 +29,11 @@ public class Admin extends User {
 	 * @param emailID
 	 * @param encryptedPassword
 	 * @param typeOfUser
+	 * @param securityQuestion
+	 * @param securityAnswer
 	 */
-	public Admin(String name, String emailID, String encryptedPassword, String typeOfUser) {
-		super(name, emailID, encryptedPassword, typeOfUser);
+	public Admin(String name, String emailID, String encryptedPassword, String typeOfUser, String securityQuestion, String securityAnswer) {
+		super(name, emailID, encryptedPassword, typeOfUser, securityQuestion, securityAnswer);
 		// TODO Auto-generated constructor stub
 	}
 

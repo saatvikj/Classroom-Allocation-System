@@ -28,6 +28,8 @@ public class User implements Serializable {
 	protected String encryptedPassword;
 	protected Map<Slot, ClassRoom> bookedRooms = new HashMap<Slot, ClassRoom>();
 	protected String typeOfUser;
+	protected String securityQuestion;
+	protected String securityAnswer;
 	public transient ArrayList<String> listOfNotifications = new ArrayList<String>();
 	protected transient ArrayList<ClassRoom> allRooms = new ArrayList<ClassRoom>();
 
@@ -46,12 +48,14 @@ public class User implements Serializable {
 	 * @param encryptedPassword
 	 * @param typeOfUser
 	 */
-	public User(String name, String emailID, String encryptedPassword, String typeOfUser) {
+	public User(String name, String emailID, String encryptedPassword, String typeOfUser, String securityQuestion, String securityAnswer) {
 		super();
 		this.name = name;
 		this.emailID = emailID;
 		this.encryptedPassword = encryptedPassword;
 		this.typeOfUser = typeOfUser;
+		this.securityQuestion = securityQuestion;
+		this.securityAnswer = securityAnswer;
 	}
 
 	/**
@@ -124,6 +128,42 @@ public class User implements Serializable {
 	 */
 	public void setEncryptedPassword(String encryptedPassword) {
 		this.encryptedPassword = encryptedPassword;
+	}
+
+	/**
+	 * Getter method that returns the security question
+	 * 
+	 * @return securityQuestion
+	 */
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	/**
+	 * Setter method that sets the security question
+	 * 
+	 * @param securityQuestion
+	 */
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	/**
+	 * Getter method that returns the security answer
+	 * 
+	 * @return securityAnswer
+	 */
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	/**
+	 * Setter method that sets the value of securityAnswer
+	 * 
+	 * @param securityAnswer
+	 */
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 
 	/**

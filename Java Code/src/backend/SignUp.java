@@ -29,6 +29,8 @@ public class SignUp {
 	private String typeOfUser;
 	private String password;
 	private String confirmPassword;
+	private String securityQuestion;
+	private String securityAnswer;
 	private ArrayList<User> listOfUsers = new ArrayList<User>();
 	private ArrayList<Course> allCourses = new ArrayList<Course>();
 
@@ -121,6 +123,42 @@ public class SignUp {
 	 */
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	/**
+	 * Getter method that returns the value of security question
+	 * 
+	 * @return securityQuestion
+	 */
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	/**
+	 * Setter method that sets the value of security question
+	 * 
+	 * @param securityQuestion
+	 */
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	/**
+	 * Getter method that returns the value of securityAnswer
+	 * 
+	 * @return securityAnswer
+	 */
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	/**
+	 * Setter method that sets the value of securityAnswer
+	 * 
+	 * @param securityAnswer
+	 */
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 
 	/**
