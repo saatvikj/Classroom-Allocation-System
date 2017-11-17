@@ -2,6 +2,7 @@ package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 import backend.Admin;
 import backend.Faculty;
@@ -21,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -38,6 +40,45 @@ public class LoginUI {
 	@FXML
 	private PasswordField userPassword;
 
+
+	/**
+	 * The handler for mouse click of forgot password
+	 * 
+	 * @param event:
+	 *            The mouse event
+	 */
+	@FXML
+	private void alterPass(MouseEvent event) {
+
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("");
+		dialog.setHeaderText(null);
+		dialog.setContentText("Please enter your email ID:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			
+			try {
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ForgotPassword.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("IIIT Delhi");
+				stage.setScene(new Scene(loader.load(), 800, 600));
+				ForgotPasswordUI controller = loader.<ForgotPasswordUI>getController();
+				controller.emailID = result.get();
+				controller.populate();
+				stage.show();
+
+				((Node) (event.getSource())).getScene().getWindow().hide();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+
+	}
+
 	/**
 	 * The handler for mouse click of login button
 	 * 
@@ -47,6 +88,7 @@ public class LoginUI {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
+
 	@FXML
 	private void login(ActionEvent event) throws ClassNotFoundException, FileNotFoundException, IOException {
 
@@ -90,7 +132,6 @@ public class LoginUI {
 				try {
 					String typeOfUser = page.getLoggedInUser().getTypeOfUser();
 					String path;
-
 					if (typeOfUser.equals("Admin")) {
 						path = "/fxml/AdminHome.fxml";
 					} else if (typeOfUser.equals("Faculty")) {

@@ -47,6 +47,12 @@ public class SignUpUI {
 
 	@FXML
 	private MenuButton userType;
+	
+	@FXML
+	private TextField securityAnswer;
+
+	@FXML
+	private MenuButton securityQuestion;
 
 	boolean flag = false;
 
@@ -139,6 +145,88 @@ public class SignUpUI {
 	}
 
 	/**
+	 * Handler for selection of first question in the dropdown
+	 * @param event: The event
+	 */
+	@FXML
+	public void q1(ActionEvent event) {
+		
+		for (MenuItem item : securityQuestion.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("What was the name of your elementary/primary school?")) {
+				chk.setSelected(true);
+				securityQuestion.setText("What was the name of your elementary/primary school?");
+			}
+
+		}
+		for (MenuItem it : securityQuestion.getItems()) {
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if (!ch.getText().equals("What was the name of your elementary/primary school?")) {
+				if (ch.isSelected()) {
+					ch.setSelected(false);
+				}
+			}
+		}
+		
+		
+	}
+	
+	/**
+	 * Handler for selection of second question in the dropdown
+	 * @param event: The event
+	 */
+	@FXML
+	public void q2(ActionEvent event) {
+	
+		for (MenuItem item : securityQuestion.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("What is the first name of your best friend in high school?")) {
+				chk.setSelected(true);
+				securityQuestion.setText("What is the first name of your best friend in high school?");
+			}
+
+		}
+		for (MenuItem it : securityQuestion.getItems()) {
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if (!ch.getText().equals("What is the first name of your best friend in high school?")) {
+				if (ch.isSelected()) {
+					ch.setSelected(false);
+				}
+			}
+		}
+		
+	}
+	
+	/**
+	 * Handler for selection of third question in the dropdown
+	 * @param event: The event
+	 */
+	@FXML
+	public void q3(ActionEvent event) {
+		
+		for (MenuItem item : securityQuestion.getItems()) {
+
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.getText().equals("What was your childhood nickname?")) {
+				chk.setSelected(true);
+				securityQuestion.setText("What was your childhood nickname?");
+			}
+
+		}
+		for (MenuItem it : securityQuestion.getItems()) {
+			CheckMenuItem ch = (CheckMenuItem) it;
+			if (!ch.getText().equals("What was your childhood nickname?")) {
+				if (ch.isSelected()) {
+					ch.setSelected(false);
+				}
+			}
+		}
+		
+	}
+
+	/**
 	 * Handler for mouse click of sign up button
 	 * 
 	 * @param event:
@@ -154,8 +242,10 @@ public class SignUpUI {
 		String email = userEmail.getText();
 		String password = userPass.getText();
 		String confirmPass = userConfirmPass.getText();
+		String answer = securityAnswer.getText();
 		String typeUser = "";
-
+		String question = "";
+		
 		for (MenuItem item : userType.getItems()) {
 
 			CheckMenuItem chk = (CheckMenuItem) item;
@@ -164,8 +254,17 @@ public class SignUpUI {
 			}
 
 		}
+		
+		for (MenuItem item : securityQuestion.getItems()) {
 
-		boolean validity = checkEmptiness(name, email, password, confirmPass);
+			CheckMenuItem chk = (CheckMenuItem) item;
+			if (chk.isSelected()) {
+				question = chk.getText();
+			}
+
+		}
+
+		boolean validity = checkEmptiness(name, email, password, confirmPass, answer);
 		if (!validity) {
 			generateAlert("Error!", "At least one of the fields is empty, try again.");
 		}
@@ -177,6 +276,8 @@ public class SignUpUI {
 			page.setPassword(password);
 			page.setConfirmPassword(confirmPass);
 			page.setTypeOfUser(typeUser);
+			page.setSecurityQuestion(question);
+			page.setSecurityAnswer(answer);
 			boolean allResults = false;
 
 			try {
@@ -209,15 +310,15 @@ public class SignUpUI {
 
 				String encryptedPass = page.encryptPassword();
 				if (typeUser.equals("Admin")) {
-					Admin user = new Admin(name, email, encryptedPass, typeUser);
+					Admin user = new Admin(name, email, encryptedPass, typeUser,question,answer);
 					page.addUserToDatabase((user));
 
 				} else if (typeUser.equals("Faculty")) {
-					Faculty user = new Faculty(name, email, encryptedPass, typeUser);
+					Faculty user = new Faculty(name, email, encryptedPass, typeUser,question,answer);
 					user.setCoursesTaught(page.addCoursesToFaculty(name));
 					page.addUserToDatabase(user);
 				} else {
-					Student user = new Student(name, email, encryptedPass, typeUser);
+					Student user = new Student(name, email, encryptedPass, typeUser,question,answer);
 					page.addUserToDatabase(user);
 				}
 
@@ -254,10 +355,10 @@ public class SignUpUI {
 	 *         false
 	 */
 	public boolean checkEmptiness(String enteredName, String enteredEmail, String enteredPassword,
-			String enteredConfirmPass) {
+			String enteredConfirmPass, String answer) {
 
 		if (enteredName.length() == 0 || enteredEmail.length() == 0 || enteredPassword.length() == 0
-				|| enteredConfirmPass.length() == 0) {
+				|| enteredConfirmPass.length() == 0 || answer.length() == 0) {
 			return false;
 		} else {
 			return true;
